@@ -1,0 +1,1633 @@
+{% extends 'estate/base.html' %}
+
+
+{% block style %}
+<style>
+    /* Base styles for the slideshow area */
+    .slideshow-area {
+        width: 50%;              /* 50% of the parent's width */
+        max-width: 400px;        /* Maximum width on larger screens */
+        margin: 0 auto;          /* Center horizontally */
+        /* Optionally, control height using an aspect ratio if needed */
+    }
+
+    /* Make sure the images fill the container but keep their aspect ratio */
+    .slideshow-images {
+        width: 100%;
+        overflow: hidden;       /* Hide overflow if using object-fit or cropping */
+    }
+
+    .slideshow-images img {
+        width: 100%;            /* Image takes full container width */
+        height: auto;           /* Height adjusts automatically */
+        object-fit: cover;      /* Ensures the image fills the container (change to 'contain' if you prefer letterboxing) */
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .slideshow-area {
+            width: 100%;         /* Wider relative to screen on smaller devices */
+            max-width: none;     /* Remove max-width constraint */
+        }
+    }
+
+    /* Responsive adjustments for the image max-width */
+    .w-md-80 {
+        max-width: 80%; /* Default for medium and larger screens */
+    }
+
+    @media (max-width: 767.98px) { /* Small screens */
+        .w-md-80 {
+            max-width: 95%;
+        }
+    }
+
+    @media (max-width: 575.98px) { /* Extra small screens */
+        .w-md-80 {
+            max-width: 100%;
+        }
+
+        .carousel-control-prev {
+            left: 10px; /* Maintain some spacing on extra small screens */
+        }
+
+        .carousel-control-next {
+            right: 10px; /* Maintain some spacing on extra small screens */
+        }
+    }
+
+    /* Add some general horizontal spacing between the buttons */
+    .carousel-control-prev {
+        margin-right: 15px; /* Add space to the right of the previous button */
+    }
+
+    .carousel-control-next {
+        margin-left: 15px; /* Add space to the left of the next button */
+    }
+
+</style>
+{% endblock style %}
+
+
+{% block body %}
+    
+
+    
+    
+
+            <!-- Banner Section Start -->
+
+            <section class="banner-area">
+                <!-- <div class="pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap" style="background-image: url(/static/estate/images/anew//apartment-building-city-with-copy-space.jpg);"> -->
+                <div class="pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap"
+                    style="background-image: url('/static/estate/images/anew/apartment-building-city-with-copy-space.jpg');
+                            background-size: cover; 
+                            background-position: center; 
+                            background-repeat: no-repeat;">
+                </div>
+                <div class="corner-shapes"></div>
+                <div class="container container-1170 pb-200 rpb-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-xl-7 col-lg-8">
+                            <div
+                                class="banner-content rmb-65 wow fadeInUp delay-0-2s">
+                                <nav aria-label="breadcrumb"
+                                    class="mb-35 rmb-20">
+                                    <ol
+                                        class="breadcrumb wow fadeInUp delay-0-4s">
+                                        <li class="breadcrumb-item"><a
+                                                href="index.html">home</a></li>
+                                        <li
+                                            class="breadcrumb-item active">builing
+                                            projects</li>
+                                    </ol>
+                                </nav>
+                                <h1>Our Building Projects</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+            </section>
+        <!-- Banner Section End -->
+
+            <!-- Cities Area start -->
+            <!-- <section class="cities-area rel z-2 pt-120 pb-80">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-12">
+                        <div class="section-title wow fadeInUp delay-0-2s">
+                            <span class="sub-title mb-65">Cities</span>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-7">
+                        <div class="section-title text-white mb-35 wow fadeInUp delay-0-4s">
+                            <h2><span>8 cities</span> in which we created comfort</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-35">
+                        <div class="cities-select wow fadeInUp delay-0-2s">
+                            <h3>Select city:</h3>
+                            <select name="#">
+                                <option value="New York">New York</option>
+                                <option value="Memphis">Memphis</option>
+                                <option value="Seattle" selected>Seattle</option>
+                                <option value="Detroit">Detroit</option>
+                                <option value="Seattle">Nashville</option>
+                                <option value="Philadelphia">Philadelphia</option>
+                                <option value="Houston">Houston</option>
+                                <option value="Chicago">Chicago</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </section> -->
+
+            <section class="cities-area rel z-2 pt-120 pb-80 mb-50">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-12">
+                            <div class="section-title wow fadeInUp delay-0-2s">
+                                <span class="sub-title mb-65">Unparalleled
+                                    Architectural Landmarks</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-7">
+                            <div
+                                class="section-title text-white mb-35 wow fadeInUp delay-0-4s">
+                                <h2><span>Architectural Excellence</span> That
+                                    Redefines Modern Living</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-35">
+                            <div class="cities-select wow fadeInUp delay-0-2s">
+                                <h3>Discover:</h3>
+                                <div
+                                    class="text-white text-uppercase font-weight-500">
+                                    Our ongoing and completed developments set a new
+                                    benchmark in contemporary construction.
+                                    With a mix of completed structures, ongoing
+                                    projects, and visionary proposals, each building
+                                    is a statement of sophistication, comfort, and
+                                    strategic investment. These aren’t just
+                                    buildings—
+                                    they are experiences designed to elevate living
+                                    standards while delivering lasting value.
+                                    Whether securing a home or investing in
+                                    future-forward developments, the opportunity is
+                                    now.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container py-5">
+
+                <!-- Hero Section -->
+                <section class="mb-5 text-center">
+                    <h2 class="mb-3">Canaan City Estate Buildings</h2>
+                    <p class="lead mb-4">Modern Smart Homes</p>
+
+
+                    <!-- <div id="estateCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                      
+                          <div class="carousel-item active">
+                            <div class="row g-2">
+                              <div class="col-6">
+                                <img src="/static/estate/images/anew/house8.jpg"
+                                     class="d-block w-100 rounded shadow-sm"
+                                     alt="House 1"
+                                     style="height: 400px; object-fit: cover;">
+                              </div>
+                              <div class="col-6">
+                                <img src="/static/estate/images/anew/house9.jpg"
+                                     class="d-block w-100 rounded shadow-sm"
+                                     alt="House 2"
+                                     style="height: 400px; object-fit: cover;">
+                              </div>
+                            </div>
+                          </div>
+                      
+                          <div class="carousel-item">
+                            <div class="row g-2">
+                              <div class="col-6">
+                                <img src="/static/estate/images/anew/house10.jpg"
+                                     class="d-block w-100 rounded shadow-sm"
+                                     alt="House 3"
+                                     style="height: 400px; object-fit: cover;">
+                              </div>
+                              <div class="col-6">
+                                <img src="/static/estate/images/anew/house11.jpg"
+                                     class="d-block w-100 rounded shadow-sm"
+                                     alt="House 4"
+                                     style="height: 400px; object-fit: cover;">
+                              </div>
+                            </div>
+                          </div>
+                      
+                        </div>
+                      
+                        <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                    </div> -->
+
+                    <!-- <div id="estateCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                    
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center">
+                                    <img src="/static/estate/images/anew/house8.jpg"
+                                         class="d-block rounded shadow-sm"
+                                         alt="Image 1"
+                                         style="height: 400px; object-fit: cover; max-width: 80%;">
+                                </div>
+                            </div>
+                    
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <img src="/static/estate/images/anew/house9.jpg"
+                                         class="d-block rounded shadow-sm"
+                                         alt="Image 2"
+                                         style="height: 400px; object-fit: cover; max-width: 80%;">
+                                </div>
+                            </div>
+                    
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                            <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                            <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div> -->
+                      
+                    <div id="estateCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                    
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center">
+                                    <img src="/static/estate/images/anew/house8.jpg"
+                                         class="d-block rounded shadow-sm w-md-80"
+                                         alt="Image 1"
+                                         style="height: 400px; object-fit: cover;">
+                                </div>
+                            </div>
+                    
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <img src="/static/estate/images/anew/house9.jpg"
+                                         class="d-block rounded shadow-sm w-md-80"
+                                         alt="Image 2"
+                                         style="height: 400px; object-fit: cover;">
+                                </div>
+                            </div>
+                    
+                        </div>
+                    
+                        <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                            <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                    
+                        <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                            <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    
+                    
+
+                    
+                    <!-- <img src="/static/estate/images/anew/house8.jpg"
+                        alt="Canaan City Estate"
+                        class="img-fluid rounded shadow-sm mb-4"> -->
+
+                    <h4>Estate Facilities:</h4>
+                    <ul class="list-unstyled property-features mb-3">
+                        <li>Well Planned Estate Layout</li>
+                        <li>Well Gated Community</li>
+                        <li>Enhanced Security</li>
+                        <li>Dedicated Transformer</li>
+                        <li>Wide Internal Roads</li>
+                        <li>Well Planned Drainage System</li>
+                        <li>Solar Powered Street Light</li>
+                        <li>Ancillary Facilities</li>
+                        <li>No commercial activities allowed</li>
+                    </ul>
+                    <p class="text-muted">Besides the City of David Estate,
+                        Ituku-Ozalla, Enugu.</p>
+                </section>
+
+                <section class="property-section">
+
+                    <!-- 3-Bedroom Bungalow -->
+                    <div class="row mb-15">
+                        <div class="col-12">
+                            <div class="card shadow-sm">
+                                <div class="row no-gutters">
+                                    <!-- Main Image -->
+
+                                    <div class="col-md-4 d-flex flex-column">
+                                        <img
+                                            src="/static/estate/images/anew/bungalow (1).png"
+                                            alt="4‑Bedroom Duplex - Front View"
+                                            class="img-fluid rounded-top mb-2"
+                                            style>
+
+                                        <img
+                                            src="/static/estate/images/anew/bungalow (2).png"
+                                            alt="4‑Bedroom Duplex - Side View"
+                                            class="img-fluid rounded-bottom">
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h2 class="card-title">3‑Bedroom
+                                                Bungalow</h2>
+                                            <p>
+                                                <strong>Building Area:</strong>
+                                                132m<sup>2</sup> |
+                                                <strong>Plot Area:</strong>
+                                                460m<sup>2</sup>
+                                            </p>
+                                            <p><strong>Fence:</strong> 1.2m front,
+                                                1.8m sides</p>
+                                            <p><strong>Gate House:</strong>
+                                                8.6m<sup>2</sup></p>
+                                            <p><strong>Restrooms:</strong> 3 Ensuite
+                                                + 1 Visitor</p>
+
+                                            <h5 class="mt-4">Price</h5>
+                                            <p>
+                                                <strong>Outright:</strong> N65M |
+                                                <em>Installment Available</em>
+                                            </p>
+
+                                            <div class="row">
+                                                <!-- Features List -->
+                                                <div class="col-sm-8">
+                                                    <h5 class="mt-3">Premium
+                                                        Features:</h5>
+                                                    <ul
+                                                        class="list-unstyled property-features">
+                                                        <li>Wardrobe</li>
+                                                        <li>Casement Windows</li>
+                                                        <li>Kitchen Cabinets</li>
+                                                        <li>Stampe Flooring</li>
+                                                        <li>POP Ceiling</li>
+                                                        <li>Sanitary Wares</li>
+                                                        <li>Tank Stand/Tank</li>
+                                                        <li>Solar CCTV Camera</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- <div class="row gx-2 gy-2">
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/bungalow (3).png"
+                                                            alt="Feature 1"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/bungalow (4).png"
+                                                            alt="Feature 2"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/BUNGALOW COLOUR PLAN_page-0001.jpg"
+                                                            alt="Feature 3"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                </div> -->
+
+                                               
+                                                <!-- <div class="slideshow-area">
+                                                    <div class="container">
+                                                        <div class="slideshow-images">
+                                                            <img src="/static/estate/images/anew/bungalow (3).png" alt="Slide Show">
+                                                            <img src="/static/estate/images/anew/bungalow (4).png" alt="Slide Show">
+                                                            <img style="height: 160px;" src="/static/estate/images/anew/BUNGALOW COLOUR PLAN_page-0001.jpg" alt="Slide Show">
+                                                        </div>
+                                                        <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                            <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                            <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                            <span class="slideshowpagi paginginfo"></span>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+
+                                                <div class="slideshow-area">
+                                                    <div class="container">
+                                                        <div class="slideshow-images">
+                                                            <a href="/static/estate/images/anew/bungalow (3).png" class="popup-gallery">
+                                                                <img src="/static/estate/images/anew/bungalow (3).png" alt="Slide Show">
+                                                            </a>
+                                                            <a href="/static/estate/images/anew/bungalow (4).png" class="popup-gallery">
+                                                                <img src="/static/estate/images/anew/bungalow (4).png" alt="Slide Show">
+                                                            </a>
+                                                            <a href="/static/estate/images/anew/BUNGALOW COLOUR PLAN_page-0001.jpg" class="popup-gallery">
+                                                                <img style="height: 160px;" src="/static/estate/images/anew/BUNGALOW COLOUR PLAN_page-0001.jpg" alt="Slide Show">
+                                                            </a>
+                                                        </div>
+                                                        <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                            <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                            <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                            <span class="slideshowpagi paginginfo"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4‑Bedroom Duplex -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card shadow-sm">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 d-flex flex-column">
+                                        <img src="/static/estate/images/anew/duplex1.png"
+                                            alt="4‑Bedroom Duplex - Front View"
+                                            class="img-fluid rounded-top mb-2"
+                                            style>
+
+                                        <img src="/static/estate/images/anew/duplex2.png"
+                                            alt="4‑Bedroom Duplex - Side View"
+                                            class="img-fluid rounded-bottom">
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h2 class="card-title">4‑Bedroom Fully
+                                                Detached Duplex</h2>
+                                            <p>
+                                                <strong>Building Area:</strong>
+                                                229.7m<sup>2</sup> |
+                                                <strong>Plot Area:</strong>
+                                                460m<sup>2</sup>
+                                            </p>
+                                            <p>
+                                                <strong>BQ Area:</strong>
+                                                14.2m<sup>2</sup> |
+                                                <strong>Gate House:</strong>
+                                                8.6m<sup>2</sup>
+                                            </p>
+                                            <p><strong>Fence:</strong> 1.2m front,
+                                                1.8m sides</p>
+                                            <p><strong>Restrooms:</strong> 4 Ensuite
+                                                + 1 Visitor</p>
+
+                                            <h5 class="mt-4">Price</h5>
+                                            <p>
+                                                <strong>Outright:</strong> N100M |
+                                                <em>Installment Available</em>
+                                            </p>
+
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <h5 class="mt-3">Premium
+                                                        Features:</h5>
+                                                    <ul
+                                                        class="list-unstyled property-features">
+                                                        <li>Wardrobe</li>
+                                                        <li>Casement Windows</li>
+                                                        <li>Kitchen Cabinets</li>
+                                                        <li>Stampe Flooring</li>
+                                                        <li>POP Ceiling</li>
+                                                        <li>Sanitary Wares</li>
+                                                        <li>Tank Stand/Tank</li>
+                                                        <li>Solar CCTV Camera</li>
+                                                    </ul>
+                                                </div>
+ 
+                                                <!-- <div class="row gx-2 gy-2">
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/duplex3.png"
+                                                            alt="Feature 1"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/duplex4.png"
+                                                            alt="Feature 2"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/duplex5.png"
+                                                            alt="Feature 3"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="col-sm-5 d-flex justify-content-between">
+                                                    <div class="p-1 w-80">
+                                                        <img
+                                                            src="/static/estate/images/anew/DUPLEX EDITED_page-0001.jpg"
+                                                            alt="Feature 2"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                            <div class="slideshow-area">
+                                                <div class="container">
+                                                    <div class="slideshow-images">
+                                                        <a href="/static/estate/images/anew/duplex3.png" class="popup-gallery">
+                                                            <img src="/static/estate/images/anew/duplex3.png" alt="Slide Show">
+                                                        </a>
+                                                        <a href="/static/estate/images/anew/duplex4.png" class="popup-gallery">
+                                                            <img src="/static/estate/images/anew/duplex4.png" alt="Slide Show">
+                                                        </a>
+                                                        <a href="/static/estate/images/anew/duplex5.png" class="popup-gallery">
+                                                            <img src="/static/estate/images/anew/duplex5.png" alt="Slide Show">
+                                                        </a>
+                                                        <a href="/static/estate/images/anew/DUPLEX EDITED_page-0001.jpg" class="popup-gallery">
+                                                            <img src="/static/estate/images/anew/DUPLEX EDITED_page-0001.jpg" alt="Slide Show">
+                                                        </a>
+                                                    </div>
+                                                    <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                        <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                        <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                        <span class="slideshowpagi paginginfo"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="my-5 py-3 bg-light">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Features:</h2>
+                            <ul class="list-unstyled property-features">
+                                <li>POP ceiling</li>
+                                <li>Casement window</li>
+                                <li>Screeded wall</li>
+                                <li>Kitchen cabinet</li>
+                                <li>Wardrobe</li>
+                                <li>Tank Stand/Tank</li>
+                                <li>Floored Compound</li>
+                                <li>Doors</li>
+                                <li>Tiles</li>
+                                <li>Sanitary Wares</li>
+                                <li>Solar CCTV</li>
+                                <li>Painting</li>
+                            </ul>
+
+                            <h2 class="mt-4 mb-4">Building Options:</h2>
+                            <ul class="list-unstyled property-features">
+                                <li>Royal</li>
+                                <li>Advanced Carcass</li>
+                                <li>Carcass</li>
+                            </ul>
+
+                            <h2 class="mt-4 mb-4">Outright Purchase:</h2>
+                            <p>Maximum Consideration of Outright Payment Is: 90 days
+                                Or 3 months</p>
+                            <p>5% Discount Applies</p>
+
+                            <h2 class="mt-4 mb-4">Payment Options:</h2>
+                            <ul class="list-unstyled property-features">
+                                <li>Outright purchase</li>
+                                <li>Installment Purchase
+                                    <ul>
+                                        <li>Maximum of 1 year with 10% interest</li>
+                                        <li>No Discount For Payment Which Exceeds 90
+                                            Days</li>
+                                        <li>Upward review of cost of building
+                                            applies should Down payment exceeds
+                                            3months</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">1 Year Payment Plan Sample</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Building Prototype</th>
+                                            <th>Total Price</th>
+                                            <th>Down Payment</th>
+                                            <th>Monthly Payment</th>
+                                            <th>Yearly Payment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>4 Bedroom Duplex</td>
+                                            <td>N100,000,000</td>
+                                            <td>N40,000,000</td>
+                                            <td>N5,274,953</td>
+                                            <td>N63,299,439</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3 Bedroom Bungalow</td>
+                                            <td>N65,000,000</td>
+                                            <td>N30,000,000</td>
+                                            <td>N3,077,000</td>
+                                            <td>N36,925,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Carcasses -->
+                <section class="my-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Building Prototypes Options</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Carcass</th>
+                                            <th>Advanced Carcass</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>4 Bedroom Duplex</th>
+                                            <td><img
+                                                    src="/static/estate/images/anew/carcass5.jpg"
+                                                    alt="Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm"></td>
+                                            <td><img
+                                                    src="/static/estate/images/anew/carcass3.jpg"
+                                                    alt="Advanced Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>3 Bedroom Bungalow</th>
+                                            <td><img
+                                                    src="/static/estate/images/anew/carcass8.jpg"
+                                                    alt="Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm"></td>
+                                            <td><img
+                                                    src="/static/estate/images/anew/carcass1.jpg"
+                                                    alt="Advanced Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5 py-3 bg-light">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Advance Carcass - 4 Bedroom Duplex</h2>
+                            <p class="lead">N 70,000,000 INITIAL PAYMENT N30m
+                                INSTALLMENT AVAILABLE</p>
+                            <img src="/static/estate/images/anew/carcass3.jpg"
+                                alt="Advanced Carcass Details"
+                                class="img-fluid rounded shadow-sm mb-4">
+                            <ul class="list-unstyled property-features">
+                                <li>BUILDING AREA: 229.7m<sup>2</sup></li>
+                                <li>BQ AREA: 14.2m<sup>2</sup></li>
+                                <li>GATE HOUSE AREA: 8.6m<sup>2</sup></li>
+                                <li>PLOT AREA: 460m<sup>2</sup></li>
+                                <li>FENCE CONST. DETAILS: 1.2m at the front and 1.8m
+                                    on all other sides</li>
+                                <li>NUMBER OF RESTROOMS: 4 Ensuite Bedrooms + 1
+                                    Visitors Restroom.</li>
+                            </ul>
+                            <p class="text-muted">Note. The external features of the
+                                house, like design and painting, must align with the
+                                uniqueness of the buildings in the estate.</p>
+                            <p class="text-muted">Note: Cost Of Carcass and Advanced
+                                Carcass Can Be Negotiated</p>
+                            <p class="text-muted">COMPLETED STRUCTURAL WORK, ROOFED
+                                AND PLASTERED ONLY</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Carcass - 4 Bedroom Duplex</h2>
+                            <p class="lead">N65,000,000 INITIAL PAYMENT N30m
+                                INSTALLMENT AVAILABLE</p>
+                            <img src="/static/estate/images/anew/carcass5.jpg"
+                                alt="Carcass Details"
+                                class="img-fluid rounded shadow-sm mb-4">
+                            <ul class="list-unstyled property-features">
+                                <li>BUILDING AREA: 229.7m<sup>2</sup></li>
+                                <li>BQ AREA: 14.2m<sup>2</sup></li>
+                                <li>GATE HOUSE AREA: 8.6m<sup>2</sup></li>
+                                <li>PLOT AREA: 460m<sup>2</sup></li>
+                                <li>FENCE CONST. DETAILS: 1.2m at the front and 1.8m
+                                    on all other sides</li>
+                                <li>NUMBER OF RESTROOMS: 4 Ensuite Bedrooms + 1
+                                    Visitors Restroom.</li>
+                            </ul>
+                            <p class="text-muted">Note. The external features of the
+                                house, like design and painting, must align with the
+                                uniqueness of the buildings in the estate.</p>
+                            <p class="text-muted">Note: Cost Of Carcass and Advanced
+                                Carcass Can Be Negotiated</p>
+                            <p class="text-muted">COMPLETED STRUCTURAL WORK AND ROOF
+                                ONLY</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5 py-3 bg-light">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Advance Carcass - 3 Bedroom
+                                Bungalow</h2>
+                            <p class="lead">43,000,000 INITIAL PAYMENT N20m
+                                INSTALLMENT AVAILABLE</p>
+                            <img src="/static/estate/images/anew/carcass1.jpg"
+                                alt="Advanced Carcass Bungalow Details"
+                                class="img-fluid rounded shadow-sm mb-4">
+                            <ul class="list-unstyled property-features">
+                                <li>BUILDING AREA: 132m<sup>2</sup></li>
+                                <li>PLOT AREA: 460m<sup>2</sup></li>
+                                <li>FENCE CONST. DETAILS: 1.2m at the front and 1.8m
+                                    on all other sides</li>
+                                <li>GATE HOUSE: 8.6m<sup>2</sup></li>
+                                <li>NUMBER OF RESTROOMS: 3 Ensuite Bedrooms + 1
+                                    Visitors Restroom.</li>
+                            </ul>
+                            <p class="text-muted">Note. The external features of the
+                                house, like design and painting, must align with the
+                                uniqueness of the buildings in the estate.</p>
+                            <p class="text-muted">Note: Cost Of Carcass and Advanced
+                                Carcass Can Be Negotiated</p>
+                            <p class="text-muted">COMPLETED STRUCTURAL WORK, ROOFED
+                                AND PLASTERED ONLY</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="mb-4">Carcass - 3 Bedroom Bungalow</h2>
+                            <p class="lead">N40,000,000 INITIAL PAYMENT N20m</p>
+                            <img src="/static/estate/images/anew/carcass8.jpg"
+                                alt="Carcass Bungalow Details"
+                                class="img-fluid rounded shadow-sm mb-4">
+                            <ul class="list-unstyled property-features">
+                                <li>BUILDING AREA: 132m<sup>2</sup></li>
+                                <li>PLOT AREA: 460m<sup>2</sup></li>
+                                <li>FENCE CONST. DETAILS: 1.2m at the front and 1.8m
+                                    on all other sides</li>
+                                <li>GATE HOUSE: 8.6m<sup>2</sup></li>
+                                <li>NUMBER OF RESTROOMS: 3 Ensuite Bedrooms + 1
+                                    Visitors Restroom.</li>
+                            </ul>
+                            <p class="text-muted">Note: Cost Of Carcass and Advanced
+                                Carcass Can Be Negotiated</p>
+                            <p class="text-muted">COMPLETED STRUCTURAL WORK AND ROOF
+                                ONLY</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="container py-5">
+                <section class="mb-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 text-center">
+                            <h1 class="mb-4">Redan City Estate</h1>
+                            <p class="lead mb-4">Southeast REDAN City</p>
+
+                            <div id="estateCarousel2" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                            
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="/static/estate/images/anew/duplex5.png"
+                                                 class="d-block rounded shadow-sm w-md-80"
+                                                 alt="Image 1"
+                                                 style="height: 400px; object-fit: cover;">
+                                        </div>
+                                    </div>
+                            
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="/static/estate/images/anew/bungalow (9).png"
+                                                 class="d-block rounded shadow-sm w-md-80"
+                                                 alt="Image 2"
+                                                 style="height: 400px; object-fit: cover;">
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            
+                                <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel2" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                            
+                                <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel2" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+
+                            
+                            <!-- <img src="/static/estate/images/anew/house9.jpg"
+                                alt="Redan City Estate"
+                                class="img-fluid rounded shadow-sm mb-4"> -->
+                            <h4>Estate Facilities:</h4>
+                            <ul class="list-unstyled property-features">
+                                <li>Well Planned Estate Layout</li>
+                                <li>Well Gated Community</li>
+                                <li>Enhanced Security</li>
+                                <li>Dedicated Transformer</li>
+                                <li>Well Planed Drainage System</li>
+                                <li>Solar Powered Street Light</li>
+                                <li>Ancillary Facilities</li>
+                            </ul>
+                            <p class="text-muted">Enugu: By City of David Estate,
+                                Enugu. Owerri:</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="property-section">
+                    <div class="row mb-15">
+                        <div class="col-12">
+                            <div class="card shadow-sm">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 d-flex flex-column">
+                                        <img
+                                            src="/static/estate/images/anew/5bedroomduplex.jpg"
+                                            alt="5-Bedroom Duplex - Front View"
+                                            class="img-fluid rounded-top mb-2">
+                                        <img src="/static/estate/images/anew/4bedroomduplexside.jpg"
+                                            alt="5-Bedroom Duplex - Side View"
+                                            class="img-fluid rounded-bottom">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h2 class="card-title">5-Bedroom
+                                                Duplex</h2>
+                                            <p>
+                                                <strong>Plot Area:</strong> 500sqm |
+                                                <strong>Building Area:</strong>
+                                                277.23sqm
+                                            </p>
+                                            <p><strong>BQ Area:</strong>
+                                                25.37sqm</p>
+                                            <p><strong>Gate House:</strong>
+                                                18sqm</p>
+                                            <p><strong>Restrooms:</strong> All
+                                                en-suite + One Visitors Restroom</p>
+
+                                            <h5 class="mt-4">Price</h5>
+                                            <p>
+                                                <strong>Outright:</strong>
+                                                N157,000,000 |
+                                                <em>Installment Available</em>
+                                            </p>
+
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <h5 class="mt-3">Premium
+                                                        Features:</h5>
+                                                    <ul
+                                                        class="list-unstyled property-features">
+                                                        <li>Wardrobe</li>
+                                                        <li>Casement Windows</li>
+                                                        <li>Kitchen Cabinet</li>
+                                                        <li>Increte Floor</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- <div class="row gx-2 gy-2">
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/5bedroomduplex.jpg"
+                                                            alt="Feature 1"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 col-md-4">
+                                                        <img
+                                                            src="/static/estate/images/anew/5bedroomduplexplan.jpg"
+                                                            alt="Feature 2"
+                                                            class="img-fluid rounded">
+                                                    </div>
+                                                    
+                                                </div> -->
+                                                <div class="slideshow-area">
+                                                    <div class="container">
+                                                        <div class="slideshow-images">
+                                                            <a href="/static/estate/images/anew/5bedroomduplex.jpg" class="popup-gallery">
+                                                                <img src="/static/estate/images/anew/5bedroomduplex.jpg" alt="Slide Show">
+                                                            </a>
+                                                            <a href="/static/estate/images/anew/5bedroomduplexplan.jpg" class="popup-gallery">
+                                                                <img src="/static/estate/images/anew/5bedroomduplexplan.jpg" alt="Slide Show">
+                                                            </a>
+                                                        </div>
+                                                        <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                            <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                            <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                            <span class="slideshowpagi paginginfo"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="property-section">
+                        <div class="row mb-15">
+                            <div class="col-12">
+                                <div class="card shadow-sm">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4 d-flex flex-column">
+                                            <img
+                                                src="/static/estate/images/anew/4bedroomduplex.jpg"
+                                                alt="4-Bedroom Duplex - Front View"
+                                                class="img-fluid rounded-top mb-2">
+                                            <img
+                                                src="/static/estate/images/anew/4bedroomduplexside.jpg"
+                                                alt="4-Bedroom Duplex - Side View"
+                                                class="img-fluid rounded-bottom">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h2 class="card-title">4-Bedroom
+                                                    Duplex</h2>
+                                                <p>
+                                                    <strong>Plot Area:</strong>
+                                                    500sqm |
+                                                    <strong>Building Area:</strong>
+                                                    234.11sqm
+                                                </p>
+                                                <p><strong>BQ Area:</strong>
+                                                    25.37sqm</p>
+                                                <p><strong>Gate House:</strong>
+                                                    18sqm</p>
+                                                <p><strong>Restrooms:</strong> All
+                                                    en-suite + One Visitors
+                                                    Restroom</p>
+
+                                                <h5 class="mt-4">Price</h5>
+                                                <p>
+                                                    <strong>Outright:</strong>
+                                                    N132,000,000 |
+                                                    <em>Installment Available</em>
+                                                </p>
+
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <h5 class="mt-3">Premium
+                                                            Features:</h5>
+                                                        <ul
+                                                            class="list-unstyled property-features">
+                                                            <li>Wardrobe</li>
+                                                            <li>Casement
+                                                                Windows</li>
+                                                            <li>Kitchen Cabinet</li>
+                                                            <li>Increte Floor</li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <!-- <div class="row gx-2 gy-2">
+                                                        <div
+                                                            class="col-12 col-sm-6 col-md-4">
+                                                            <img
+                                                                src="/static/estate/images/anew/4bedroomduplex.jpg"
+                                                                alt="Feature 1"
+                                                                class="img-fluid rounded">
+                                                        </div>
+                                                        <div
+                                                            class="col-12 col-sm-6 col-md-4">
+                                                            <img
+                                                                src="/static/estate/images/anew/4bedroomduplexplan.jpg"
+                                                                alt="Feature 2"
+                                                                class="img-fluid rounded">
+                                                        </div>
+                                                        <div
+                                                            class="col-12 col-sm-6 col-md-4">
+                                                            <img
+                                                                src="placeholder_feature_3.jpg"
+                                                                alt="Feature 3"
+                                                                class="img-fluid rounded">
+                                                        </div>
+                                                    </div> -->
+
+                                                    <div class="slideshow-area">
+                                                        <div class="container">
+                                                            <div class="slideshow-images">
+                                                                <a href="/static/estate/images/anew/4bedroomduplex.jpg" class="popup-gallery">
+                                                                    <img src="/static/estate/images/anew/4bedroomduplex.jpg" alt="Slide Show">
+                                                                </a>
+                                                                <a href="/static/estate/images/anew/4bedroomduplexplan.jpg" class="popup-gallery">
+                                                                    <img src="/static/estate/images/anew/4bedroomduplexplan.jpg" alt="Slide Show">
+                                                                </a>
+                                                               
+                                                            </div>
+                                                            <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                                <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                                <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                                <span class="slideshowpagi paginginfo"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="property-section">
+                            <div class="row mb-15">
+                                <div class="col-12">
+                                    <div class="card shadow-sm">
+                                        <div class="row no-gutters">
+                                            <div
+                                                class="col-md-4 d-flex flex-column">
+                                                <img
+                                                    src="/static/estate/images/anew/4bedroombungalow.jpg"
+                                                    alt="4-Bedroom Bungalow - Front View"
+                                                    class="img-fluid rounded-top mb-2">
+                                                <img
+                                                    src="/static/estate/images/anew/4bedroombungalowside.jpg"
+                                                    alt="4-Bedroom Bungalow - Side View"
+                                                    class="img-fluid rounded-bottom">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h2 class="card-title">4-Bedroom
+                                                        Bungalow</h2>
+                                                    <p>
+                                                        <strong>Plot Area:</strong>
+                                                        500sqm |
+                                                        <strong>Building
+                                                            Area:</strong> 177.76sqm
+                                                    </p>
+                                                    <p><strong>BQ Area:</strong>
+                                                        25.37sqm</p>
+                                                    <p><strong>Gate House:</strong>
+                                                        18sqm</p>
+                                                    <p><strong>Restrooms:</strong>
+                                                        All en-suite + One Visitors
+                                                        Restroom</p>
+
+                                                    <h5 class="mt-4">Price</h5>
+                                                    <p>
+                                                        <strong>Outright:</strong>
+                                                        N85,000,000 |
+                                                        <em>Installment
+                                                            Available</em>
+                                                    </p>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <h5 class="mt-3">Premium
+                                                                Features:</h5>
+                                                            <ul
+                                                                class="list-unstyled property-features">
+                                                                <li>Wardrobe</li>
+                                                                <li>Casement
+                                                                    Windows</li>
+                                                                <li>Kitchen
+                                                                    Cabinet</li>
+                                                                <li>Increte
+                                                                    Floor</li>
+                                                            </ul>
+                                                        </div>
+<!-- 
+                                                        <div class="row gx-2 gy-2">
+                                                            <div
+                                                                class="col-12 col-sm-6 col-md-4">
+                                                                <img
+                                                                    src="/static/estate/images/anew/4bedroombungalowside.jpg"
+                                                                    alt="Feature 1"
+                                                                    class="img-fluid rounded">
+                                                            </div>
+                                                            <div
+                                                                class="col-12 col-sm-6 col-md-4">
+                                                                <img
+                                                                    src="/static/estate/images/anew/bungalowpln4.jpg"
+                                                                    alt="Feature 2"
+                                                                    class="img-fluid rounded">
+                                                            </div>
+                                                            
+                                                        </div> -->
+
+                                                        <div class="slideshow-area">
+                                                            <div class="container">
+                                                                <div class="slideshow-images">
+                                                                    <a href="/static/estate/images/anew/4bedroombungalowside.jpg" class="popup-gallery">
+                                                                        <img src="/static/estate/images/anew/4bedroombungalowside.jpg" alt="Slide Show">
+                                                                    </a>
+                                                                    <a href="/static/estate/images/anew/bungalowpln4.jpg" class="popup-gallery">
+                                                                        <img src="/static/estate/images/anew/bungalowpln4.jpg" alt="Slide Show">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                                    <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                                    <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                                    <span class="slideshowpagi paginginfo"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="property-section">
+                                <div class="row mb-15">
+                                    <div class="col-12">
+                                        <div class="card shadow-sm">
+                                            <div class="row no-gutters">
+                                                <div
+                                                    class="col-md-4 d-flex flex-column">
+                                                    <img
+                                                        src="/static/estate/images/anew/3bedroombungalow.jpg"
+                                                        alt="3-Bedroom Bungalow - Front View"
+                                                        class="img-fluid rounded-top mb-2">
+                                                    <img
+                                                        src="/static/estate/images/anew/3bedroombungalow.jpg"
+                                                        alt="3-Bedroom Bungalow - Side View"
+                                                        class="img-fluid rounded-bottom">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h2
+                                                            class="card-title">3-Bedroom
+                                                            Bungalow</h2>
+                                                        <p>
+                                                            <strong>Plot
+                                                                Area:</strong>
+                                                            500sqm |
+                                                            <strong>Building
+                                                                Area:</strong>
+                                                            160.88sqm
+                                                        </p>
+                                                        <p><strong>BQ Area:</strong>
+                                                            25.37sqm</p>
+                                                        <p><strong>Gate
+                                                                House:</strong>
+                                                            18sqm</p>
+                                                        <p><strong>Restrooms:</strong>
+                                                            All en-suite + One
+                                                            Visitors Restroom</p>
+
+                                                        <h5 class="mt-4">Price</h5>
+                                                        <p>
+                                                            <strong>Outright:</strong>
+                                                            N72,000,000 |
+                                                            <em>Installment
+                                                                Available</em>
+                                                        </p>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <h5
+                                                                    class="mt-3">Premium
+                                                                    Features:</h5>
+                                                                <ul
+                                                                    class="list-unstyled property-features">
+                                                                    <li>Wardrobe</li>
+                                                                    <li>Casement
+                                                                        Windows</li>
+                                                                    <li>Kitchen
+                                                                        Cabinet</li>
+                                                                    <li>Increte
+                                                                        Floor</li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <!-- <div
+                                                                class="row gx-2 gy-2">
+                                                                <div
+                                                                    class="col-12 col-sm-6 col-md-4">
+                                                                    <img
+                                                                        src="/static/estate/images/anew/3bedroombungalow.jpg"
+                                                                        alt="Feature 1"
+                                                                        class="img-fluid rounded">
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-sm-6 col-md-4">
+                                                                    <img
+                                                                        src="/static/estate/images/anew/3bedroombungalowplan.jpg"
+                                                                        alt="Feature 2"
+                                                                        class="img-fluid rounded">
+                                                                </div>
+                                                                
+                                                            </div> -->
+                                                            <div class="slideshow-area">
+                                                                <div class="container">
+                                                                    <div class="slideshow-images">
+                                                                        <a href="/static/estate/images/anew/3bedroombungalow.jpg" class="popup-gallery">
+                                                                            <img src="/static/estate/images/anew/3bedroombungalow.jpg" alt="Slide Show">
+                                                                        </a>
+                                                                        <a href="/static/estate/images/anew/3bedroombungalowplan.jpg" class="popup-gallery">
+                                                                            <img src="/static/estate/images/anew/3bedroombungalowplan.jpg" alt="Slide Show">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                                        <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                                        <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                                        <span class="slideshowpagi paginginfo"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="property-section">
+                                    <div class="row mb-15">
+                                        <div class="col-12">
+                                            <div class="card shadow-sm">
+                                                <div class="row no-gutters">
+                                                    <div
+                                                        class="col-md-4 d-flex flex-column">
+                                                        <img
+                                                            src="/static/estate/images/anew/2bedroombungalow.jpg"
+                                                            alt="2-Bedroom Semi Detached Bungalow - Front View"
+                                                            class="img-fluid rounded-top mb-2">
+                                                        <img
+                                                            src="/static/estate/images/anew/2bedroombungalowplan.jpg"
+                                                            alt="2-Bedroom Semi Detached Bungalow - Side View"
+                                                            class="img-fluid rounded-bottom">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h2
+                                                                class="card-title">2-Bedroom
+                                                                Semi Detached
+                                                                Bungalow</h2>
+                                                            <p>
+                                                                <strong>Plot
+                                                                    Area:</strong>
+                                                                500sqm |
+                                                                <strong>Building
+                                                                    Area:</strong>
+                                                                269.23sqm
+                                                            </p>
+                                                            <p><strong>BQ
+                                                                    Area:</strong>
+                                                                25.37sqm</p>
+                                                            <p><strong>Gate
+                                                                    House:</strong>
+                                                                18sqm</p>
+                                                            <p><strong>Restrooms:</strong>
+                                                                All en-suite + One
+                                                                Visitors
+                                                                Restroom</p>
+
+                                                            <h5
+                                                                class="mt-4">Price</h5>
+                                                            <p>
+                                                                <strong>Outright:</strong>
+                                                                N50,400,000 |
+                                                                <em>Installment
+                                                                    Available</em>
+                                                            </p>
+
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-sm-8">
+                                                                    <h5
+                                                                        class="mt-3">Premium
+                                                                        Features:</h5>
+                                                                    <ul
+                                                                        class="list-unstyled property-features">
+                                                                        <li>Wardrobe</li>
+                                                                        <li>Casement
+                                                                            Windows</li>
+                                                                        <li>Kitchen
+                                                                            Cabinet</li>
+                                                                        <li>Increte
+                                                                            Floor</li>
+                                                                    </ul>
+                                                                </div>
+
+                                                                <!-- <div
+                                                                    class="row gx-2 gy-2">
+                                                                    <div
+                                                                        class="col-12 col-sm-6 col-md-4">
+                                                                        <img
+                                                                            src="/static/estate/images/anew/2bedroombungalow.jpg"
+                                                                            alt="Feature 1"
+                                                                            class="img-fluid rounded">
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-12 col-sm-6 col-md-4">
+                                                                        <img
+                                                                            src="/static/estate/images/anew/2bedroombungalowplan.jpg"
+                                                                            alt="Feature 2"
+                                                                            class="img-fluid rounded">
+                                                                    </div>
+                                                                    
+                                                                </div> -->
+
+                                                                <div class="slideshow-area">
+                                                                    <div class="container">
+                                                                        <div class="slideshow-images">
+                                                                            <a href="/static/estate/images/anew/2bedroombungalow.jpg" class="popup-gallery">
+                                                                                <img src="/static/estate/images/anew/2bedroombungalow.jpg" alt="Slide Show">
+                                                                            </a>
+                                                                            <a href="/static/estate/images/anew/2bedroombungalowplan.jpg" class="popup-gallery">
+                                                                                <img src="/static/estate/images/anew/2bedroombungalowplan.jpg" alt="Slide Show">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                                                                            <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                                                                            <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                                                                            <span class="slideshowpagi paginginfo"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="my-5 py-3 bg-light">
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <h2 class="mb-4">Features:</h2>
+                                                <ul
+                                                    class="list-unstyled property-features">
+                                                    <li>POP ceiling</li>
+                                                    <li>Casement window</li>
+                                                    <li>Screeded wall</li>
+                                                    <li>Kitchen cabinet</li>
+                                                    <li>Wardrobe</li>
+                                                    <li>Executive bed</li>
+                                                    <li>Increte compound</li>
+                                                </ul>
+
+                                                <h2 class="mt-4 mb-4">Building Options:</h2>
+
+                                                <ul>
+                                                    <li>Turnkey</li>
+                                                    <li>Advanced Carcass</li>
+                                                    <li>Carcass</li>
+                                                </ul>
+
+                                                <h2 class="mt-4 mb-4">Outright
+                                                    Purchase:</h2>
+                                                <p>Maximum Consideration of Outright
+                                                    Payment Is: 90days Or
+                                                    3months</p>
+                                                <p>5% Discount Applies</p>
+
+                                                <h2 class="mt-4 mb-4">Payment
+                                                    Options:</h2>
+                                                <ul
+                                                    class="list-unstyled property-features">
+                                                    <li>Outright purchase</li>
+                                                    <li>Installment Purchase
+                                                        <ul>
+                                                            <li>Maximum of 5 years
+                                                                with 10%
+                                                                interest</li>
+                                                            <li>No Discount For
+                                                                Payment Which
+                                                                Exceeds 90 Days</li>
+                                                            <li>Note: Cost Of
+                                                                Carcass And Advanced
+                                                                Carcass Will Be
+                                                                Negotiated</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="my-5">
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <h2 class="mb-4">5 Years Payment Plan Sample</h2>
+                                                <div class="table-responsive">
+                                                    <table
+                                                        class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Building
+                                                                    Prototype</th>
+                                                                <th>Total Price</th>
+                                                                <th>Down
+                                                                    Payment</th>
+                                                                <th>Monthly
+                                                                    Payment</th>
+                                                                <th>Yearly
+                                                                    Payment</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>5 Bedroom
+                                                                    Duplex</td>
+                                                                <td>N157,000,000</td>
+                                                                <td>N75,000,000</td>
+                                                                <td>N1,742,260</td>
+                                                                <td>N20,907,120</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4 Bedroom
+                                                                    Duplex</td>
+                                                                <td>N132,000,000</td>
+                                                                <td>N60,000,000</td>
+                                                                <td>N1,529,790</td>
+                                                                <td>N18,357,480</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3 Bedroom
+                                                                    Duplex</td>
+                                                                <td>N95,000,000</td>
+                                                                <td>N55,000,000</td>
+                                                                <td>N849,885</td>
+                                                                <td>N10,198,620</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4 Bedroom
+                                                                    Bungalow</td>
+                                                                <td>N85,000,000</td>
+                                                                <td>N40,000,000</td>
+                                                                <td>N956,120</td>
+                                                                <td>N11,473,440</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3 Bedroom
+                                                                    Bungalow</td>
+                                                                <td>N72,000,000</td>
+                                                                <td>N30,000,000</td>
+                                                                <td>N892,380</td>
+                                                                <td>N10,708,560</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2 Bedroom
+                                                                    Bungalow
+                                                                    SemiDetached</td>
+                                                                <td>N50,400,000</td>
+                                                                <td>N25,000,000</td>
+                                                                <td>N539,675</td>
+                                                                <td>N6,476,100</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="my-5">
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <h2 class="mb-4">Advanced Carcass -
+                                                    4 Bedroom Duplex</h2>
+                                                <img
+                                                    src="/static/estate/images/anew/redanadvancedcarcass.jpg"
+                                                    alt="Advanced Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm mb-4">
+                                                <p class="lead">N100,000,000
+                                                    INSTALLMENT AVAILABLE</p>
+                                                <p><strong>Description:</strong></p>
+                                                <ul
+                                                    class="list-unstyled property-features">
+                                                    <li>Plot Area : 574.41sqm</li>
+                                                    <li>Building Area :
+                                                        203.17sqm</li>
+                                                    <li>BQ Area: 25.37sqm</li>
+                                                    <li>Gate House : 18sqm</li>
+                                                    <li>Number of Restroom: All
+                                                        en-suite + One Visitors
+                                                        Restroom</li>
+                                                </ul>
+                                                <p class="text-muted">COMPLETED
+                                                    STRUCTURAL WORK, ROOFED AND
+                                                    PLASTERED ONLY</p>
+                                                <p class="text-muted">Note. The
+                                                    external features of the house,
+                                                    like design and painting, must
+                                                    align with the uniqueness of the
+                                                    buildings in the estate.</p>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="my-5">
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <h2 class="mb-4">Carcass - 4 Bedroom
+                                                    Duplex</h2>
+                                                <img
+                                                    src="/static/estate/images/anew/redancarcass.jpg"
+                                                    alt="Carcass Duplex"
+                                                    class="img-fluid rounded shadow-sm mb-4">
+                                                <p class="lead">N90,000,000
+                                                    INSTALLMENT AVAILABLE</p>
+                                                <p><strong>Description:</strong></p>
+                                                <ul
+                                                    class="list-unstyled property-features">
+                                                    <li>Plot Area : 574.41sqm</li>
+                                                    <li>Building Area :
+                                                        203.17sqm</li>
+                                                    <li>BQ Area: 25.37sqm</li>
+                                                    <li>Gate House : 18sqm</li>
+                                                    <li>Number of Restroom: All
+                                                        en-suite + One Visitors
+                                                        Restroom</li>
+                                                </ul>
+                                                <p class="text-muted">COMPLETED
+                                                    STRUCTURAL WORK AND ROOFED
+                                                    ONLY</p>
+                                                <p class="text-muted">Note. The
+                                                    external features of the house,
+                                                    like design and painting, must
+                                                    align with the uniqueness of the
+                                                    buildings in the estate.</p>
+                                            </div>
+                                        </div>
+                                    </section>
+
+            </div>
+
+{% endblock body %}

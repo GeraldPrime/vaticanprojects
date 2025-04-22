@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Title -->
+    <title>Vatican Gardens Projects || Home</title>
+    <!-- Favicon Icon -->
+    <link
+      rel="shortcut icon"
+      href="/static/estate/images/logos/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/estate/vendor/fontawesome-5.14.0.min.css" />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="/static/estate/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!-- Magnific Popup -->
+    <link
+      rel="stylesheet"
+      href="/static/estate/vendor/magnific-popup/css/magnific-popup.min.css"
+    />
+    <!-- Nice Select -->
+    <link
+      rel="stylesheet"
+      href="/static/estate/vendor/nice-select/css/nice-select.min.css"
+    />
+    <!-- Animate -->
+    <link rel="stylesheet" href="/static/estate/vendor/animate.min.css" />
+    <!-- Slick -->
+    <link rel="stylesheet" href="/static/estate/vendor/slick/css/slick.min.css" />
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/static/estate/css/style.css" />
+
+    <!-- Magnific Popup CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+    />
+
+    <!-- jQuery (required for Magnific Popup) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Magnific Popup JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    
+    
+    {% block style %}
+        
+    {% endblock style %}
+        
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- Preloader -->
+      <div class="preloader"><div class="custom-loader"></div></div>
+
+      <!-- main header -->
+      <header class="main-header">
+        <!--Header-Upper-->
+        <div class="header-upper">
+          <div class="container clearfix">
+            <div class="header-inner rel d-flex align-items-center">
+              <div class="logo-outer">
+                <!-- <div class="logo"><a ><img style="height: 85px;" src="/static/estate/images/anew/vatican_logo.png" alt="Logo" title="Logo"></a></div> -->
+                <div class="logo">
+                  <a
+                    ><img
+                      style="
+                        height: 85px;
+                        background-color: white;
+                        border-radius: 50%;
+                      "
+                      src="/static/estate/images/anew/vatican_logo.png"
+                      alt="Logo"
+                      title="Logo"
+                  /></a>
+                </div>
+              </div>
+
+              <div class="nav-outer mx-auto clearfix">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-lg">
+                  <div class="navbar-header py-10">
+                    <div class="mobile-logo">
+                      <a>
+                        <img
+                          style="
+                            height: 60px;
+                            background-color: white;
+                            border-radius: 50%;
+                          "
+                          src="/static/estate/images/anew/vatican_logo.png"
+                          alt="Logo"
+                          title="Logo"
+                        />
+                      </a>
+                    </div>
+
+                    <!-- Toggle Button -->
+                    <button
+                      type="button"
+                      class="navbar-toggle"
+                      data-bs-toggle="collapse"
+                      data-bs-target=".navbar-collapse"
+                    >
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+
+                  <div class="navbar-collapse collapse clearfix">
+                    <ul class="navigation clearfix">
+                      <li>
+                        <a href="{% url 'home' %}">Home</a>
+                        <ul></ul>
+                      </li>
+                      <li><a href="{% url 'about' %}">About Us</a></li>
+
+                      <li class="dropdown">
+                        <a href="#">Properties</a>
+                        <ul>
+                          <li><a href="{% url 'estates' %}">Our Estates</a></li>
+                          <li>
+                            <a href="{% url 'buildingprojects' %}"
+                              >Building Projects</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li><a href="{% url 'downloadables' %}">Downloadables</a></li>
+
+                      <li><a href="{% url 'contact' %}">Contact us</a></li>
+
+                      <li><a>Realtors Check</a></li>
+                      <!-- https://vaticanprojects.com/realtors -->
+                    </ul>
+                  </div>
+                </nav>
+                <!-- Main Menu End-->
+              </div>
+
+              <!-- Menu Button -->
+              <div class="menu-btns">
+                <a
+                  href="https://vaticanprojects.com/realtors/referral/44709285"
+                  class="theme-btn style-three"
+                  >Realtors Registeration <i class="far fa-user-plus"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End Header Upper-->
+      </header>
+
+
+
+      
+      {% block body %}
+        
+      {% endblock body %}
+        
+
+
+
+
+
+
+      
+      <!-- footer area start -->
+      <footer class="main-footer rel z-1">
+        <div
+          class="footer-top pt-120 pb-190"
+          style="background-image: url(/static/estate/images/footer/footer-top-bg.jpg)"
+        >
+          <div class="container">
+            <div class="row gap-100 justify-content-center">
+              <div class="col-xl-4 col-lg-7">
+                <div class="section-title text-white mb-50">
+                  <span class="sub-title mb-50 rmb-20">Potential Client?</span>
+                  <h2>Reach Out</h2>
+                </div>
+                <!-- <a href="https://webmail.webserver247.com/" class="theme-btn style-two mt-35"><i class="fal fa-envelope"></i>Check mail</a> -->
+              </div>
+              <div class="col-xl-3 col-lg-5">
+                <div class="footer-top-text mb-50">
+                  23 Liberty Estate Phase 2 by library bustop independence
+                  layout <b>Enugu</b> <br />
+                  <!-- <a class="d-inline-block mt-30" href="#"><small><i class="fas fa-location"></i> Look at the map</small></a> -->
+                </div>
+              </div>
+              <div class="col-xl-3">
+                <div class="footer-top-text mb-50">
+                  <!-- <a href="callto:2348091647093">+234 809 164 7093</a><br> -->
+                  <a href="tel:+2348091647093">+234 809 164 7093</a><br />
+                  <!-- <a href="mailto:info@dax.com">info@dax.com</a><br> -->
+                  <a href="mailto:info@vaticanprojects.com"
+                    >info@vaticanprojects.com</a
+                  ><br />
+                  <a href="#" class="theme-btn style-two mt-35"
+                    ><i class="fal fa-envelope"></i> Send a Message</a
+                  >
+                </div>
+              </div>
+            </div>
+            <a
+              href="https://webmail.webserver247.com/"
+              class="theme-btn style-two mt-35"
+              ><i class="fal fa-envelope"></i>Check mail</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom pt-100 pb-70">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-2 col-md-4">
+                <div class="footer-logo mb-50 text-center text-md-start">
+                  <a
+                    ><img
+                      style="height: 85px"
+                      src="/static/estate/images/anew/vatican_logo_square.png"
+                      alt="Logo"
+                  /></a>
+                </div>
+              </div>
+              <div class="col-xl-5 col-md-8">
+                <div
+                  class="footer-text text-white mb-50 text-center text-md-start"
+                >
+                  <b>Why Wait?</b> Your Dream Home Awaits! Don't miss out on
+                  exclusive listings and unbeatable deals. Whether you're
+                  buying, selling, or investing, we make the process easy and
+                  hassle-free.
+                </div>
+              </div>
+              <div class="col-xl-2 col-md-4">
+                <div class="footer-social text-center text-md-start">
+                  <div class="social-style-one mb-50">
+                    <a
+                      href="https://www.facebook.com/share/1BX61CGSGs/?mibextid=wwXIfr"
+                      target="_blank"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    <a
+                      href="https://youtube.com/@vaticantv244?si=5MaLBS78_IR_n_aY"
+                      target="_blank"
+                      ><i class="fab fa-youtube"></i
+                    ></a>
+                    <a
+                      href="https://www.tiktok.com/@vaticangardenprojects?_t=ZM-8vAqIRJLJ0H&_r=1"
+                      target="_blank"
+                      ><i class="fab fa-tiktok"></i
+                    ></a>
+                    <a href="https://wa.me/2348091647093" target="_blank"
+                      ><i class="fab fa-whatsapp"></i
+                    ></a>
+                    <!-- <a href="+234 809 164 7093"><i class="fab fa-whatsapp"></i></a> -->
+                    <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-8">
+                <div
+                  class="copyright-area mb-50 text-xl-end text-center text-md-start"
+                >
+                  <!-- © 2023 DAX Residental Complex. All Rights Reserved / <a href="#">Privaci Policy</a> / <a href="#">Cookies</a> -->
+                  <p>© made by Gerald Devs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- footer area end -->
+
+      <!-- Scroll Top Button -->
+      <button class="scroll-top scroll-to-target" data-target="html">
+        <span class="fas fa-angle-double-up"></span>
+      </button>
+    </div>
+    <!--End pagewrapper-->
+
+    <!-- Jquery -->
+    <script src="/static/estate/vendor/jquery-3.6.0.min.js" defer></script>
+    <!-- Popper -->
+    <script src="/static/estate/vendor/bootstrap/js/popper.min.js" defer></script>
+    <!-- Bootstrap -->
+    <script src="/static/estate/vendor/bootstrap/js/bootstrap.min.js" defer></script>
+    <!-- Appear Js -->
+    <script src="/static/estate/vendor/appear.min.js" defer></script>
+    <!-- Slick -->
+    <script src="/static/estate/vendor/slick/js/slick.min.js" defer></script>
+    <!-- Magnific Popup -->
+    <script
+      src="/static/estate/vendor/magnific-popup/js/jquery.magnific-popup.min.js"
+      defer
+    ></script>
+    <!-- Nice Select -->
+    <script src="/static/estate/vendor/nice-select/js/jquery.nice-select.min.js"></script>
+    <!-- Image Loader -->
+    <script src="/static/estate/vendor/imagesloaded.pkgd.min.js"></script>
+    <!-- Circle Progress -->
+    <script src="/static/estate/vendor/circle-progress.min.js" defer></script>
+    <!-- Isotope -->
+    <script src="/static/estate/vendor/isotope.pkgd.min.js"></script>
+    <!--  WOW Animation -->
+    <script src="/static/estate/vendor/wow.min.js" defer></script>
+    <!-- Custom script -->
+    <script src="/static/estate/js/script.js" defer></script>
+  </body>
+</html>
