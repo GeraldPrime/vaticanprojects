@@ -1,0 +1,672 @@
+{% extends 'estate/base.html' %}
+
+{% block style %}
+<style>
+    /* Global Styles */
+    .estate-section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .estate-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .img-fluid {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .estate-info {
+        background: #f8f9fa;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-box {
+        padding: 1.5rem;
+        background: white;
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+    }
+
+    .info-box h3 {
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .list-unstyled li {
+        margin-bottom: 0.5rem;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Custom Styling for Different Estates */
+    .redan-title {
+        font-size: 2.25rem;
+        font-weight: bold;
+        color: #0d6efd;
+    }
+
+    .highlight-box {
+        padding: 1rem;
+        border-radius: 0.75rem;
+        text-align: center;
+        color: white;
+    }
+
+    .highlight-box-primary {
+        background-color: #0d6efd;
+    }
+
+    .highlight-box-dark {
+        background-color: #343a40;
+    }
+
+    .highlight-box-secondary {
+        background-color: #6c757d;
+    }
+</style>
+
+<style>
+    /* Responsive adjustments for the image max-width */
+    .w-md-80 {
+        max-width: 80%; /* Default for medium and larger screens */
+    }
+
+    @media (max-width: 767.98px) { /* Small screens */
+        .w-md-80 {
+            max-width: 95%;
+        }
+    }
+
+    @media (max-width: 575.98px) { /* Extra small screens */
+        .w-md-80 {
+            max-width: 100%;
+        }
+
+        .carousel-control-prev {
+            left: 10px; /* Maintain some spacing on extra small screens */
+        }
+
+        .carousel-control-next {
+            right: 10px; /* Maintain some spacing on extra small screens */
+        }
+    }
+
+    /* Add some general horizontal spacing between the buttons */
+    .carousel-control-prev {
+        margin-right: 15px; /* Add space to the right of the previous button */
+    }
+
+    .carousel-control-next {
+        margin-left: 15px; /* Add space to the left of the next button */
+    }
+</style>
+    
+{% endblock style %}
+
+
+
+{% block body %}
+    
+
+    
+       
+        
+        <!-- Banner Section Start -->
+        <section class="banner-area">
+            <!-- <div class="pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap" style="background-image: url(/static/estate/images/anew/house24.jpg);"> -->
+                <div class="pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap" 
+                    style="background-image: url('/static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg');
+                            background-size: cover; 
+                            background-position: center; 
+                            background-repeat: no-repeat;">
+                </div>
+                <div class="corner-shapes"></div>
+                <div class="container container-1170 pb-200 rpb-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="banner-content rmb-65 wow fadeInUp delay-0-2s">
+                                <nav aria-label="breadcrumb" class="mb-35 rmb-20">
+                                    <ol class="breadcrumb wow fadeInUp delay-0-4s">
+                                        <li class="breadcrumb-item"><a href="index.html">home</a></li>
+                                        <li class="breadcrumb-item active">estates</li>
+                                    </ol>
+                                </nav>
+                                <h1>Our Estates</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section End -->
+        
+        
+        <!-- Cities Area start -->
+        <section class="cities-area rel z-2 pt-120 pb-80 mb-50">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-12">
+                        <div class="section-title wow fadeInUp delay-0-2s">
+                            <span class="sub-title mb-65">Prime Developments</span>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-7">
+                        <div class="section-title text-white mb-35 wow fadeInUp delay-0-4s">
+                            <h2><span>Thriving Estates</span> Ready for Your Future</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-35">
+                        <div class="cities-select wow fadeInUp delay-0-2s">
+                            <h3>Discover:</h3>
+                            <div class=" text-white text-uppercase font-weight-500 ">
+                                Our premium developments are rapidly taking shape, offering exceptional opportunities for residents and investors alike. These thriving communities represent the perfect blend of modern living and smart investment potential.
+                            </div>
+                            <!-- <select name="#">
+                                <option value="New York">New York</option>
+                                <option value="Memphis">Memphis</option>
+                                <option value="Seattle" selected>Seattle</option>
+                                <option value="Detroit">Detroit</option>
+                                <option value="Seattle">Nashville</option>
+                                <option value="Philadelphia">Philadelphia</option>
+                                <option value="Houston">Houston</option>
+                                <option value="Chicago">Chicago</option>
+                            </select> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+      
+
+        <!-- estates section start -->
+
+        <section class="estate-section container py-5 mb-50" >
+            <!-- Estate Title -->
+            <div class="text-center mb-5">
+                <h1 class="estate-title display-4 fw-bold mb-3">Canaan City Estate</h1>
+                <h2 class="h5 text-muted">Ituku Ozalla, Enugu</h2>
+            </div>
+
+            <div id="estateCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+            
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/canaanestate1.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 1"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+            
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/canaanestate2.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 2"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/canaanestate3.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 2"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+            
+                </div>
+            
+                <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            
+                <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            
+            
+
+        
+        
+            <!-- <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <img src="/static/estate/images/anew/house10.jpg" 
+                         class="img-fluid rounded-3 shadow-lg" 
+                         alt="Canaan City Estate Exterior"
+                         style="height: 500px; object-fit: cover; width: 100%">
+                </div>
+                <div class="col-md-6">
+                    <img src="/static/estate/images/anew/house22.jpg" 
+                         class="img-fluid rounded-3 shadow-lg" 
+                         alt="Canaan City Estate Landscape"
+                         style="height: 500px; object-fit: cover; width: 100%">
+                </div>
+            </div> -->
+        
+            <!-- Property Information -->
+            <div class="estate-info bg-light rounded-4 p-4 p-lg-5 shadow-sm">
+                <div class="row g-5">
+                    <!-- Main Description -->
+                    <div class="col-12">
+                        <p class="lead fw-normal text-dark mb-4">
+                            Canaan City Estate is designed to offer a luxurious residential lifestyle and a vibrant commercial hub, 
+                            ensuring safety and serenity. A perfect buy-and-build estate with immense investment potential.
+                        </p>
+                    </div>
+        
+                    <!-- Details Grid -->
+                    <div class="col-lg-6">
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">📍 Location & Neighborhood</h3>
+                            <p>Located at Ituku Ozalla, opposite UNTH, along Enugu-Port Harcourt expressway:</p>
+                            <ul class="list-unstyled">
+                                <li>✓ UNTH Enugu</li>
+                                <li>✓ City of David Estate</li>
+                                <li>✓ New Jerusalem Estate</li>
+                                <li>✓ Many upcoming developments</li>
+                            </ul>
+                        </div>
+        
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">🏗️ Proposed Infrastructures</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Perimeter fencing</li>
+                                        <li>✓ Road network</li>
+                                        <li>✓ Solar lighting</li>
+                                        <li>✓ Electricity</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ 24/7 Security</li>
+                                        <li>✓ Drainage system</li>
+                                        <li>✓ CCTV Coverage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Pricing & Details -->
+                    <div class="col-lg-6">
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">💰 Pricing & Terms</h3>
+                            <dl class="row">
+                                <dt class="col-sm-5">Land Title:</dt>
+                                <dd class="col-sm-7">C of O</dd>
+                                
+                                <dt class="col-sm-5">Plot Size:</dt>
+                                <dd class="col-sm-7">460 sqm</dd>
+                                
+                                <dt class="col-sm-5">Price:</dt>
+                                <dd class="col-sm-7">₦10 million (installment available)</dd>
+                            </dl>
+                        </div>
+        
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">📝 Included in Price</h3>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary">Survey Fee</span>
+                                <span class="badge bg-primary">Legal Agreement</span>
+                                <span class="badge bg-primary">Allocation</span>
+                                <span class="badge bg-primary">Development Levy</span>
+                            </div>
+                        </div>
+        
+                        <div class="info-box">
+                            <h3 class="h4 mb-3 text-primary">⏱️ Allocation</h3>
+                            <p class="mb-0">Immediate allocation upon full payment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+          
+        <section class="estate-section container py-5 mb-50">
+            <!-- Title Section -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-primary mb-3">REDAN CITY OBINZE OWERRI</h1>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="border-top border-primary border-2" style="width: 80px"></div>
+                    <span class="mx-3 text-muted">Prime Development</span>
+                    <div class="border-top border-primary border-2" style="width: 80px"></div>
+                </div>
+            </div>
+            <!-- <div class="slideshow-area">
+                <div class="container">
+                    <div class="slideshow-images">
+                        <img src="/static/estate/images/anew/house23.jpg" alt="Slide Show">
+                        <img src="/static/estate/images/anew/4bedroomduplex.jpg" alt="Slide Show">
+                        <img src="/static/estate/images/anew/4bedroombungalow.jpg" alt="Slide Show">
+                    </div>
+                    <div class="navi-pagi-area" style="margin-top: 5px !important;">
+                        <button class="slideshow-prev"><i class="fal fa-long-arrow-left"></i></button>
+                        <button class="slideshow-next"><i class="fal fa-long-arrow-right"></i></button>
+                        <span class="slideshowpagi paginginfo"></span>
+                    </div>
+                </div>
+            </div> -->
+        
+            <div id="estateCarousel2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+            
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/house23.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 1"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+            
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/4bedroomduplex.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 2"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/4bedroombungalow.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 2"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+                   
+            
+                </div>
+            
+                <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel2" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            
+                <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel2" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            
+        
+            <!-- Property Information -->
+            <div class="estate-info bg-light rounded-4 p-4 p-lg-5">
+                <!-- Key Highlights -->
+                <div class="row mb-5">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <div class="text-center p-3 bg-primary text-white rounded-3">
+                            <h3 class="h5 mb-0">Instant Allocation</h3>
+                            <p class="small mb-0">Immediate ownership upon payment</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <div class="text-center p-3 bg-dark text-white rounded-3">
+                            <h3 class="h5 mb-0">Full Documentation</h3>
+                            <p class="small mb-0">C of O Title Included</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center p-3 bg-secondary text-white rounded-3">
+                            <h3 class="h5 mb-0">All-Inclusive</h3>
+                            <p class="small mb-0">No Hidden Fees</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Project Description -->
+                <div class="mb-5">
+                    <p class="lead text-dark mb-4">
+                        Redan City Obinze Owerri offers a strategic blend of residential and commercial spaces, 
+                        prioritizing safety and serenity while fostering a vibrant community. A promising 
+                        investment destination with high return potential and meticulous infrastructure planning.
+                    </p>
+                </div>
+        
+                <!-- Details Grid -->
+                <div class="row g-4">
+                    <!-- Left Column -->
+                    <div class="col-lg-6">
+                        <div class="info-box">
+                            <h3 class="h4 text-primary mb-3">📍 Strategic Location</h3>
+                            <p class="text-muted">Obinze beside Post Housing Development Ltd (PHDL)<br>
+                            Off Owerri-Port Harcourt Expressway, Imo State</p>
+                            <div class="bg-white p-3 rounded-2">
+                                <h4 class="h6 text-muted mb-2">Neighborhood Advantages:</h4>
+                                <ul class="list-unstyled">
+                                    <li>✓ Growing hub for estate developers</li>
+                                    <li>✓ Proximity to Umuokanne road</li>
+                                    <li>✓ Rapid community development</li>
+                                    <li>✓ High return investment zone</li>
+                                </ul>
+                            </div>
+                        </div>
+        
+                        <div class="info-box mt-4">
+                            <h3 class="h4 text-primary mb-3">🛡️ Military-Grade Security</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Central Military Post</li>
+                                        <li>✓ Patrol Hilux Vehicles</li>
+                                        <li>✓ 24/7 Surveillance</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Perimeter Fencing</li>
+                                        <li>✓ CCTV Coverage</li>
+                                        <li>✓ Security Lighting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Right Column -->
+                    <div class="col-lg-6">
+                        <div class="info-box">
+                            <h3 class="h4 text-primary mb-3">🏗️ Development Features</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Solar Street Lighting</li>
+                                        <li>✓ Premium Road Network</li>
+                                        <li>✓ Modern Drainage</li>
+                                        <li>✓ Electricity Grid</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Residential Zones</li>
+                                        <li>✓ Commercial Areas</li>
+                                        <li>✓ Community Spaces</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="info-box mt-4">
+                            <h3 class="h4 text-primary mb-3">📋 Investment Package</h3>
+                            <dl class="row">
+                                <dt class="col-sm-6">Land Use:</dt>
+                                <dd class="col-sm-6">Residential & Commercial</dd>
+                                
+                                <dt class="col-sm-6">Included in Price:</dt>
+                                <dd class="col-sm-6">
+                                    <span class="badge bg-primary me-1 mb-1">Survey</span>
+                                    <span class="badge bg-primary me-1 mb-1">Agreement</span>
+                                    <span class="badge bg-primary me-1 mb-1">Allocation</span>
+                                    <span class="badge bg-primary me-1 mb-1">Levy</span>
+                                </dd>
+                            </dl>
+                        </div>
+        
+                        <div class="info-box mt-4 bg-primary text-white rounded-3">
+                            <h3 class="h4 mb-3">🌟 Unique Offering</h3>
+                            <p class="mb-0">
+                                A tranquil residential haven with commercial potential, offering investors 
+                                both immediate returns and long-term appreciation in Owerri's fastest-growing zone.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <section class="estate-section container py-5 mb-50">
+            <!-- Estate Title -->
+            <div class="text-center mb-5">
+                <h1 class="estate-title display-4 fw-bold mb-3">Vatican Garden Estate Igbariam</h1>
+                <h2 class="h5 text-muted">Igbariam, Anambra</h2>
+            </div>
+
+
+        
+            <div id="estateCarousel3" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+            
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/house24.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 1"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+            
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="/static/estate/images/anew/house19.jpg"
+                                 class="d-block rounded shadow-sm w-md-80"
+                                 alt="Image 2"
+                                 style="height: 500px; object-fit: cover;">
+                        </div>
+                    </div>
+                    
+                   
+            
+                </div>
+            
+                <button class="carousel-control-prev" type="button" data-bs-target="#estateCarousel3" data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); left: 10px;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            
+                <button class="carousel-control-next" type="button" data-bs-target="#estateCarousel3" data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%); right: 10px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        
+            <!-- Property Information -->
+            <div class="estate-info bg-light rounded-4 p-4 p-lg-5 shadow-sm">
+                <div class="row g-5">
+                    <!-- Main Description -->
+                    <div class="col-12">
+                        <p class="lead fw-normal text-dark mb-4">
+                            Vatican Garden Estate Igbariam is designed as a site and service estate with top-tier infrastructures, offering a great residential lifestyle and a commercial hub that ensures safety and serenity. A buy-and-build estate with immense investment potential.
+                        </p>
+                    </div>
+        
+                    <!-- Details Grid -->
+                    <div class="col-lg-6">
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">📍 Location & Neighborhood</h3>
+                            <p>Located beside Anambra State University Igbariam Campus, with nearby landmarks including:</p>
+                            <ul class="list-unstyled">
+                                <li>✓ Coscharis Rice Mill</li>
+                                <li>✓ Anambra Airport</li>
+                                <li>✓ John Vianney Science College Igbariam</li>
+                                <li>✓ Many other upcoming estates</li>
+                            </ul>
+                        </div>
+        
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">🏗️ Proposed Infrastructures</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ Perimeter fencing</li>
+                                        <li>✓ Road network</li>
+                                        <li>✓ Solar lighting</li>
+                                        <li>✓ Electricity</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li>✓ 24/7 Security</li>
+                                        <li>✓ Drainage system</li>
+                                        <li>✓ CCTV Coverage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Pricing & Details -->
+                    <div class="col-lg-6">
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">💰 Pricing & Terms</h3>
+                            <dl class="row">
+                                <dt class="col-sm-5">Land Title:</dt>
+                                <dd class="col-sm-7">Survey Plan, Power of Attorney & Deed of Conveyance</dd>
+                                
+                                <dt class="col-sm-5">Plot Size:</dt>
+                                <dd class="col-sm-7">460 sqm</dd>
+                                
+                                <dt class="col-sm-5">Price:</dt>
+                                <dd class="col-sm-7">₦5.5 million (installment available)</dd>
+                            </dl>
+                        </div>
+        
+                        <div class="info-box mb-5">
+                            <h3 class="h4 mb-3 text-primary">📝 Included in Price</h3>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary">Survey Fee</span>
+                                <span class="badge bg-primary">Legal Agreement</span>
+                                <span class="badge bg-primary">Allocation</span>
+                                <span class="badge bg-primary">Development Levy</span>
+                            </div>
+                        </div>
+        
+                        <div class="info-box">
+                            <h3 class="h4 mb-3 text-primary">⏱️ Allocation</h3>
+                            <p class="mb-0">Immediate allocation upon full payment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+        <!-- estatyes section end  -->
+        
+      
+{% endblock body %}
