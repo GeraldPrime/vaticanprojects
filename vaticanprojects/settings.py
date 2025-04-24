@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'estate',
 ]
 
+AUTH_USER_MODEL = 'estate.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # directly after SecurityMiddleware
@@ -142,3 +144,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media', )  # Directory to store media files
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Authentication settings
+LOGIN_URL = 'signin'  # URL name for the login page
+# LOGIN_REDIRECT_URL = 'home'  # URL name for the redirect after login
+LOGOUT_REDIRECT_URL = 'signin'  # URL name for the redirect after logout
