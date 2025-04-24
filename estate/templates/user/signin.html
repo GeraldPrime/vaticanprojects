@@ -22,6 +22,7 @@
 </head>
 
 <body class="authentication-bg position-relative">
+    {% include 'user/_alerts.html' %}
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
         <div class="container">
             <div class="row justify-content-center">
@@ -71,9 +72,9 @@
                                                     placeholder="Enter your email">
                                             </div>
                                             <div class="mb-3">
-                                                <a href="auth-forgotpw.html" class="text-muted float-end"><small>Forgot
+                                                <!-- <a href="auth-forgotpw.html" class="text-muted float-end"><small>Forgot
                                                         your
-                                                        password?</small></a>
+                                                        password?</small></a> -->
                                                 <label for="password" class="form-label">Password</label>
                                                 <input class="form-control" name="password" type="password" required="" id="password"
                                                     placeholder="Enter your password">
