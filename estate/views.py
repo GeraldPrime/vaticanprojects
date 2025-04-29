@@ -166,6 +166,7 @@ def signout(request):
     return redirect('signin')
 
 
+@login_required
 def realtors_page(request):
     realtors = Realtor.objects.all()
     context={
@@ -529,7 +530,7 @@ def property_sales_list(request):
     })
 
 
-
+@login_required
 def property_sale_detail(request, id):
     """View details of a property sale and handle new payments"""
     sale = get_object_or_404(PropertySale, pk=id)
