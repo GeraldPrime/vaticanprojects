@@ -1,0 +1,147 @@
+{% extends 'user/base.html' %}
+
+
+{% block body %}
+
+ <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <!-- <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Velonic</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                        <li class="breadcrumb-item active">Contact List</li>
+                                    </ol>
+                                </div> -->
+                                <h4 class="page-title">Realtors List</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <!-- <div class="row"> -->
+                        
+
+                        
+                        
+                        <div class="profile-user-box">
+                            <div class="row align-items-center">
+
+                                <div class="col-lg-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary rounded-start-0"><i class="ri-search-line fs-16"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+        
+                                    
+                                    </div>
+                                    
+        
+                                    
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="d-flex justify-content-end align-items-center gap-2">
+                                        <a href="{% url 'create_realtor' %}" class="btn btn-primary">
+                                            <i class="ri-user-add-line align-text-bottom me-1 fs-16 lh-1"></i>
+                                            Add new Realtor
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    <!-- </div> -->
+                    <!-- End row -->
+
+                    <div class="row">
+                        {% for realtor in realtors %}
+                          
+                        
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="d-flex">
+                                            <a class="me-3" href="{% url 'realtor_detail' realtor.id %}">
+
+                                                {% if realtor.image %}
+                                                    <img src="{{ realtor.image.url }}" alt="{{ realtor.full_name }}" class="avatar-md rounded-circle">
+                                                {% else %}
+                                                    <img src="/static/user/images/users/avatar-1.jpg" alt="Default avatar" class="avatar-lg rounded-circle">
+                                                {% endif %}
+                                                <!-- <img class="avatar-md rounded-circle bx-s"
+                                                    src="/static/user/images/users/avatar-2.jpg" alt=""> -->
+                                            </a>
+                                            <div class="info">
+                                                <a href="{% url 'realtor_detail' realtor.id %}"> <h5 class="fs-18 my-1">{{realtor.first_name}} {{realtor.last_name}}</h5> </a>
+                                                
+                                                <p class="text-muted fs-15">Referral code: {{realtor.referral_code}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <a href="{% url 'edit_realtor' realtor.id %}" class="btn btn-success btn-sm me-1 tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"> <i class="ri-pencil-fill"></i> </a>
+                                            <a href="#" class="btn btn-danger btn-sm tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"> <i class="mdi mdi-delete"></i> </a>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <ul class="social-list list-inline mt-3 mb-0">
+                                        <h5 class="fs-18 my-1">Phone Number : {{realtor.phone}}</h5>
+                                                
+                                        <!-- <p class="text-muted fs-15">Address: {{realtor.address}}</p> -->
+                                       
+                                    </ul>
+                                </div>
+                                <!-- card-body -->
+                            </div>
+                            <!-- card -->
+                        </div> <!-- end col -->
+
+                        {% endfor %}
+
+                    </div> <!-- End row -->
+
+                    
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            <!-- <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <script>document.write(new Date().getFullYear())</script> © Velonic - Theme by <b>Techzaa</b>
+                        </div>
+                    </div>
+                </div>
+            </footer> -->
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    
+{% endblock body %}
+    

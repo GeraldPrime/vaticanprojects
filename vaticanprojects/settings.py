@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estate',
+    'django.contrib.humanize'
 ]
 
 AUTH_USER_MODEL = 'estate.User'
