@@ -19,9 +19,29 @@ urlpatterns = [
     # ======================ADMIN URLS=================================
     
     path('user/', views.userhome, name='user'),
-    path('signin/', views.signin, name='signin'),
-    path('signout/', views.signout, name='signout'),
-    path('profile/', views.profile, name='profile'),
+    path('user/signin/', views.signin, name='signin'),
+    path('user/signout/', views.signout, name='signout'),
+    path('user/profile/', views.profile, name='profile'),
+    path('user/create_realtor/', views.create_realtor, name='create_realtor'),
+    path('user/realtor_detail/<int:id>', views.realtor_detail, name='realtor_detail'),
+    path('user/edit_realtor/<int:id>', views.edit_realtor, name='edit_realtor'),
+    path('user/realtors_page', views.realtors_page, name='realtors_page'),
+    
+    
+    path('user/pay-all-commissions/<int:realtor_id>/', views.pay_all_commissions, name='pay_all_commissions'),
+    path('pay-commission/<int:commission_id>/', views.pay_commission, name='pay_commission'),
+    
+    
+    # Property URLs
+    path('user/properties/', views.property_list, name='property_list'),
+    path('user/properties/register/', views.register_property, name='register_property'),
+    path('user/properties/<int:property_id>/', views.property_detail, name='property_detail'),
+    path('property/edit/<int:property_id>/', views.edit_property, name='edit_property'),
+    
+    # Property Sales URLs
+    path('user/property-sales/', views.property_sales_list, name='property_sales_list'),
+    path('user/property-sales/register/', views.register_property_sale, name='register_property_sale'),
+    path('user/property-sales/<int:id>/', views.property_sale_detail, name='property_sale_detail')
 ]
 if settings.DEBUG:  # Only serve media files during development
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -20,7 +20,7 @@
                 {% if user.image %}
                   <img src="{{ user.image.url }}" class="rounded-circle mb-3" width="120" height="120">
                 {% else %}
-                  <img src="{% static 'admin/images/profile-default.png' %}" class="rounded-circle mb-3" width="120" height="120">
+                  <img src="{% static 'user/images/profile-default.png' %}" class="rounded-circle mb-3" width="120" height="120">
                 {% endif %}
                 <h4>{{ user.username }}</h4>
                 <p class="text-muted">{{ user.email }}</p>
