@@ -249,31 +249,6 @@ def realtor_detail(request,id):
     
     return render(request, "user/realtor_detail.html", context)
 
-# @login_required
-# def edit_realtor(request,id):
-#     realtor = get_object_or_404(Realtor, id=id)
-    
-#     if request.method == 'POST':
-#         # Extract form data
-#         realtor.first_name = request.POST.get('firstname')
-#         realtor.last_name = request.POST.get('lastname')
-#         realtor.email = request.POST.get('email')
-#         realtor.phone = request.POST.get('phone')
-#         realtor.account_number = request.POST.get('accnumber')
-#         realtor.bank_name = request.POST.get('bankname')
-#         realtor.address = request.POST.get('address')
-#         realtor.country = request.POST.get('country')
-        
-#         # Handle image upload
-#         if 'image' in request.FILES:
-#             realtor.image = request.FILES['image']
-            
-#         realtor.save()
-#         messages.success(request, "Realtor information updated successfully.")
-#         return redirect('realtor_detail', id=realtor.id)
-    
-#     return render(request, 'user/edit_realtor.html', {'realtor': realtor})
-
 
 @login_required
 def edit_realtor(request, id):
