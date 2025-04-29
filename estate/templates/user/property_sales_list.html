@@ -94,7 +94,7 @@
                                             data-payment-status="{% if sale.is_fully_paid %}fully_paid{% elif sale.amount_paid > 0 %}partially_paid{% else %}pending{% endif %}">
                                             <td>{{ sale.reference_number }}</td>
                                             <td>{{ sale.client_name }}</td>
-                                            <td>{{ sale.property.name }}</td>
+                                            <td>{{ sale.property_item.name }}</td>
                                             <td>{{ sale.get_property_type_display }}</td>
                                             <td>₦{{ sale.selling_price|floatformat:2 }}</td>
                                             <td>₦{{ sale.amount_paid|floatformat:2 }}</td>

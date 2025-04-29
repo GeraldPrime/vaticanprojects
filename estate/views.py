@@ -347,22 +347,6 @@ def property_list(request):
         'properties': properties
     })
 
-
-
-
-# @login_required
-# def property_detail(request, property_id):
-#     """View to display property details"""
-#     property = get_object_or_404(Property, id=property_id)
-    
-#     # Get all sales for this property - use property_item instead of property
-#     sales = PropertySale.objects.filter(property_item=property).order_by('-created_at')
-    
-#     return render(request, 'user/property_detail.html', {
-#         'property': property,
-#         'sales': sales  # Uncommented this line as you might need it
-#     })
-    
     
 @login_required
 def property_detail(request, property_id):
@@ -427,7 +411,7 @@ def register_property_sale(request):
     if request.method == 'POST':
         # Extract form data
         property_id = request.POST.get('property')
-        estate_name = request.POST.get('estate_name')
+        description = request.POST.get('description')
         property_type = request.POST.get('property_type')
         quantity = request.POST.get('quantity')
         
@@ -455,7 +439,7 @@ def register_property_sale(request):
         
        
         property_sale = PropertySale.objects.create(
-            estate_name=estate_name,
+            description=description,
             property_type=property_type,
             property_item=property_obj,
             quantity=int(quantity),

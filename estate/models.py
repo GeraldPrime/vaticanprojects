@@ -180,7 +180,7 @@ class PropertySale(models.Model):
         return ''.join(uuid.uuid4().hex[:12].upper())
     
     reference_number = models.CharField(max_length=12, default=generate_reference_number, unique=True, editable=False)
-    estate_name = models.CharField(max_length=255)
+    description = models.TextField(max_length=255)
     property_type = models.CharField(max_length=10, choices=PROPERTY_TYPE_CHOICES)
     property_item = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='sales')  # Renamed from 'property'
     quantity = models.PositiveIntegerField(help_text="Number of plots or buildings")

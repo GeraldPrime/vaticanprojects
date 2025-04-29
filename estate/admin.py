@@ -203,7 +203,7 @@ class PropertySaleAdmin(admin.ModelAdmin):
     
     fieldsets = [
         ('Property Information', {
-            'fields': ['estate_name', 'property', 'quantity']
+            'fields': ['property_item','description', 'quantity']
         }),
         ('Client Information', {
             'fields': ['client_name', 'client_address', 'client_phone']
