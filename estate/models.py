@@ -7,6 +7,8 @@ import uuid
 from decimal import Decimal
 from django.contrib.auth.models import AbstractUser
 
+import os
+
 class User(AbstractUser):
     date_joined = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='users/', null=True, blank=True)
@@ -380,16 +382,26 @@ class Payment(models.Model):
                     self.property_sale.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
     
     
-    # def save(self, *args, **kwargs):
-    #     is_new = self.pk is None
-    #     super().save(*args, **kwargs)
-        
-    #     # Only update the property sale's amount_paid if this is a new payment
-    #     if is_new:
-    #         # Recalculate the total from the database to ensure accuracy
-    #         total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
-    #             models.Sum('amount'))['amount__sum'] or Decimal('0')
-            
-    #         # Update the property sale with the accurate total
-    #         self.property_sale.amount_paid = total_payments
-    #         self.property_sale.save(update_fields=['amount_paid'])  # Only update this field
+   
+
+class FormUpload(models.Model):
+    """Model for storing uploaded forms that can be downloaded from the frontend"""
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    form_file = models.FileField(upload_to='forms/')
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    @property
+    def file_type(self):
+        """Returns the file extension of the uploaded form"""
+        _, extension = os.path.splitext(self.form_file.name)
+        return extension.upper()[1:] if extension else 'N/A'
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Form Upload'
+        verbose_name_plural = 'Form Uploads'

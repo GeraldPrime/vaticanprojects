@@ -19,6 +19,9 @@
                     <p class="text-muted mt-1 mb-0">
                         <i class="ri-calendar-line me-1"></i> Created on {{ sale.created_at|date:"M d, Y" }}
                     </p>
+                    <p class="text-muted mt-1 mb-0">
+                        <i class="ri-calendar-line me-1"></i> description : {{ sale.description }}
+                    </p>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     {% if balance_due <= 0 %}
