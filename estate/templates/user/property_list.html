@@ -86,6 +86,7 @@
                                                 <a href="{% url 'property_detail' property.id %}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i> View
                                                 </a>
+                                                <a href="{% url 'edit_property' property.id %}" class="btn btn-primary btn-sm tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="EDIT"> <i class="ri-pencil-fill"></i> </a>
                                             </td>
                                         </tr>
                                     {% endfor %}

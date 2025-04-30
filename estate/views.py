@@ -13,7 +13,7 @@ from django.db.models import Q
 
 
 
-from .models import Property, PropertySale, Payment
+from .models import Property, PropertySale, Payment, FormUpload
 from django.http import JsonResponse
 from decimal import Decimal,InvalidOperation
 from django.utils import timezone
@@ -36,11 +36,54 @@ def buildingprojects(request):
     return render(request, 'estate/buildingprojects.html')
 
 def downloadables(request):
-    return render(request, 'estate/downloadables.html')
+    """View to display all uploaded forms"""
+    forms = FormUpload.objects.all().order_by('created_at')
+    
+    context={
+        'forms': forms
+    }
+    return render(request, 'estate/downloadables.html', context)
 
 
 def contact(request):
     return render(request, 'estate/contact.html')
+
+def realtors_check(request):
+    """
+    View for realtors to search for their profile using their referral code.
+    The view accepts a GET parameter 'referral_code' and returns the matching
+    realtor profile if found.
+    """
+    search_performed = False
+    realtor = None
+    commissions = None
+    direct_referrals = None
+    
+    if 'referral_code' in request.GET and request.GET.get('referral_code').strip():
+        search_performed = True
+        referral_code = request.GET.get('referral_code').strip()
+        
+        # Try to find a realtor with the given referral code
+        try:
+            realtor = Realtor.objects.get(referral_code=referral_code)
+            
+            # Get commissions for this realtor
+            commissions = Commission.objects.filter(realtor=realtor).order_by('-created_at')
+            
+            # Get direct referrals (realtors who used this realtor's referral code)
+            direct_referrals = Realtor.objects.filter(sponsor=realtor).order_by('-created_at')
+            
+        except Realtor.DoesNotExist:
+            messages.error(request, f"No realtor found with referral code: {referral_code}")
+    
+    context = {
+        'realtor': realtor,
+        'search_performed': search_performed,
+        'commissions': commissions,
+        'direct_referrals': direct_referrals
+    }
+    
+    return render(request, 'estate/realtors_check.html', context)
 
 
 # ====================================ADMIN INTERFACE================================================================================
@@ -605,3 +648,87 @@ def pay_commission(request, commission_id):
         messages.success(request, f"Commission #{commission_id} has been marked as paid.")
         return redirect('realtor_detail', id=commission.realtor.id)
     return redirect('home')
+
+
+
+
+
+
+
+# =============================================================================
+
+
+@login_required
+def frontend_extras(request):
+    """Main view for Frontend Extras dashboard"""
+    return render(request, "user/frontend_extras.html")
+
+@login_required
+def upload_form(request):
+    """View for uploading a new form"""
+    # Get 5 most recent forms for display
+    recent_forms = FormUpload.objects.all().order_by('-created_at')[:5]
+    
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        form_file = request.FILES.get('form_file')
+        
+        if not form_file:
+            messages.error(request, "Please select a file to upload.")
+            return redirect('upload_form')
+        
+        # Create new form upload
+        form_upload = FormUpload(
+            name=name,
+            description=description,
+            form_file=form_file
+        )
+        form_upload.save()
+        
+        messages.success(request, f"Form '{name}' has been uploaded successfully!")
+        return redirect('forms_list')
+    
+    return render(request, "user/forms_upload.html", {
+        'recent_forms': recent_forms
+    })
+
+@login_required
+def forms_list(request):
+    """View to display all uploaded forms"""
+    forms = FormUpload.objects.all().order_by('-created_at')
+    
+    return render(request, "user/forms_list.html", {
+        'forms': forms
+    })
+
+@login_required
+def edit_form(request, form_id):
+    """View for editing an existing form"""
+    form = get_object_or_404(FormUpload, id=form_id)
+    
+    if request.method == 'POST':
+        # Extract form data
+        form.name = request.POST.get('name')
+        form.description = request.POST.get('description')
+        
+        # Handle file upload if new file is provided
+        if 'form_file' in request.FILES:
+            form.form_file = request.FILES['form_file']
+            
+        form.save()
+        messages.success(request, f"Form '{form.name}' updated successfully.")
+        return redirect('forms_list')
+    
+    return render(request, 'user/edit_form.html', {'form': form})
+
+@login_required
+def delete_form(request, form_id):
+    """View for deleting a form"""
+    if request.method == 'POST':
+        form = get_object_or_404(FormUpload, id=form_id)
+        form_name = form.name
+        form.delete()
+        messages.success(request, f"Form '{form_name}' has been deleted.")
+    
+    return redirect('forms_list')

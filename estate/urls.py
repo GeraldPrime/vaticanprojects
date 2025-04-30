@@ -14,6 +14,7 @@ urlpatterns = [
     path('estates/', views.estates, name='estates'),
     path('downloadables/', views.downloadables, name='downloadables'),
     path('contact/', views.contact, name='contact'),
+    path('realtors-check/', views.realtors_check, name='realtors_check'),
     
     
     # ======================ADMIN URLS=================================
@@ -26,6 +27,7 @@ urlpatterns = [
     path('user/realtor_detail/<int:id>', views.realtor_detail, name='realtor_detail'),
     path('user/edit_realtor/<int:id>', views.edit_realtor, name='edit_realtor'),
     path('user/realtors_page', views.realtors_page, name='realtors_page'),
+     
     
     
     path('user/pay-all-commissions/<int:realtor_id>/', views.pay_all_commissions, name='pay_all_commissions'),
@@ -41,7 +43,17 @@ urlpatterns = [
     # Property Sales URLs
     path('user/property-sales/', views.property_sales_list, name='property_sales_list'),
     path('user/property-sales/register/', views.register_property_sale, name='register_property_sale'),
-    path('user/property-sales/<int:id>/', views.property_sale_detail, name='property_sale_detail')
+    path('user/property-sales/<int:id>/', views.property_sale_detail, name='property_sale_detail'),
+    
+    # Frontend Extras URLs
+    path('user/frontend-extras/', views.frontend_extras, name='frontend_extras'),
+    path('user/frontend-extras/forms/upload/', views.upload_form, name='upload_form'),
+    path('user/frontend-extras/forms/', views.forms_list, name='forms_list'),
+    path('user/frontend-extras/forms/<int:form_id>/edit/', views.edit_form, name='edit_form'),
+    path('user/frontend-extras/forms/<int:form_id>/delete/', views.delete_form, name='delete_form'),
+    
+    
+    
 ]
 if settings.DEBUG:  # Only serve media files during development
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
