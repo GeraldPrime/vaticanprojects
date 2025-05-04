@@ -20,6 +20,8 @@ from django.utils import timezone
 
 from django.db.models import Sum  # Add this import
 
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -211,9 +213,39 @@ def signout(request):
 
 @login_required
 def realtors_page(request):
+    """
+    View for displaying realtors with search functionality and pagination.
+    Allows searching by name, referral code, phone number, etc.
+    """
+    # Get search parameter from the request
+    search_query = request.GET.get('search', '')
+    
+    # Start with all realtors
     realtors = Realtor.objects.all()
-    context={
-        "realtors":realtors
+    
+    # Apply search filter if a search query is provided
+    if search_query:
+        realtors = realtors.filter(
+            Q(first_name__icontains=search_query) | 
+            Q(last_name__icontains=search_query) | 
+            Q(referral_code__icontains=search_query) | 
+            Q(phone__icontains=search_query) |
+            Q(email__icontains=search_query)
+        )
+    
+    # Order the results
+    realtors = realtors.order_by('first_name', 'last_name')
+    
+    # Paginate the results
+    paginator = Paginator(realtors, 10)  # Show 10 realtors per page
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        "realtors": page_obj,  # Pass the paginated object instead of the full queryset
+        "search_query": search_query,  # Pass the search query back to the template
+        "page_obj": page_obj,  # Pagination object for creating pagination controls
+        "paginator": paginator,  # The paginator object itself
     }
     
     return render(request, "user/realtors_page.html", context )
@@ -525,7 +557,11 @@ def register_property_sale(request):
 @login_required
 def property_sales_list(request):
     """View to display all property sales"""
-    sales = PropertySale.objects.all().order_by('-created_at')
+    all_sales = PropertySale.objects.all().order_by('-created_at')
+    paginator = Paginator(all_sales, 20)            # 20 sales per page
+    page_number = request.GET.get('page', 1)        # get ?page= from URL, default to 1
+    sales = paginator.get_page(page_number) 
+    # sales = PropertySale.objects.all().order_by('-created_at')
     
     return render(request, 'user/property_sales_list.html', {
         'sales': sales
@@ -732,3 +768,112 @@ def delete_form(request, form_id):
         messages.success(request, f"Form '{form_name}' has been deleted.")
     
     return redirect('forms_list')
+
+
+
+
+@login_required
+def property_sale_invoice(request, sale_id):
+    """
+    View for displaying and printing a property sale invoice
+    """
+    sale = get_object_or_404(PropertySale, id=sale_id)
+    payments = Payment.objects.filter(property_sale=sale).order_by('-payment_date')
+    
+    # Calculate balance due
+    balance_due = sale.selling_price - sale.amount_paid
+    
+    # Get company information from settings or database
+    # These should be configured in your settings or stored in a Company model
+    company_info = {
+        'company_name': 'Your Real Estate Company',  # Replace with your company name
+        'company_address': '123 Property Street',    # Replace with your address
+        'company_city_state_zip': 'Lagos, Nigeria',  # Replace with your city/state
+        'company_phone': '+234 800 123 4567',        # Replace with your phone
+        'company_email': 'info@yourcompany.com',     # Replace with your email
+        'bank_name': 'First Bank of Nigeria',        # Replace with your bank
+        'account_name': 'Your Company Ltd',          # Replace with your account name
+        'account_number': '0123456789',              # Replace with your account number
+    }
+    
+    context = {
+        'sale': sale,
+        'payments': payments,
+        'balance_due': balance_due,
+        'now': timezone.now(),
+        **company_info,
+    }
+    
+    return render(request, 'user/property_sale_invoice.html', context)
+
+
+
+
+@login_required
+def commissions_list(request):
+    """View to display all commissions with search and filtering"""
+    # Initialize query
+    commissions = Commission.objects.all().order_by('-created_at')
+    
+    # Search parameters
+    search_query = request.GET.get('search', '')
+    payment_status = request.GET.get('payment_status', '')
+    realtor_id = request.GET.get('realtor_id', '')
+    property_ref = request.GET.get('property_ref', '')
+    date_from = request.GET.get('date_from', '')
+    date_to = request.GET.get('date_to', '')
+    
+    # Apply filters
+    if search_query:
+        # Search by reference number, property reference, or realtor name
+        commissions = commissions.filter(
+            Q(property_reference__icontains=search_query) |
+            Q(description__icontains=search_query) |
+            Q(realtor__first_name__icontains=search_query) |
+            Q(realtor__last_name__icontains=search_query)
+        )
+    
+    if payment_status:
+        is_paid = payment_status == 'paid'
+        commissions = commissions.filter(is_paid=is_paid)
+    
+    if realtor_id:
+        commissions = commissions.filter(realtor_id=realtor_id)
+        
+    if property_ref:
+        commissions = commissions.filter(property_reference__icontains=property_ref)
+    
+    if date_from:
+        commissions = commissions.filter(created_at__gte=date_from)
+    
+    if date_to:
+        commissions = commissions.filter(created_at__lte=date_to)
+    
+    # Calculate summary statistics
+    total_commissions = commissions.aggregate(Sum('amount'))['amount__sum'] or 0
+    paid_commissions = commissions.filter(is_paid=True).aggregate(Sum('amount'))['amount__sum'] or 0
+    unpaid_commissions = commissions.filter(is_paid=False).aggregate(Sum('amount'))['amount__sum'] or 0
+    
+    # Get all realtors for the filter dropdown
+    realtors = Realtor.objects.all().order_by('first_name', 'last_name')
+    
+    # Pagination
+    paginator = Paginator(commissions, 20)  # Show 20 commissions per page
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        'page_obj': page_obj,
+        'total_commissions': total_commissions,
+        'paid_commissions': paid_commissions,
+        'unpaid_commissions': unpaid_commissions,
+        'realtors': realtors,
+        'search_query': search_query,
+        'payment_status': payment_status,
+        'property_ref': property_ref,
+        'realtor_id': int(realtor_id) if realtor_id and realtor_id.isdigit() else None,
+        'date_from': date_from,
+        'date_to': date_to,
+    }
+    
+    return render(request, 'user/commissions_list.html', context)

@@ -38,12 +38,17 @@ urlpatterns = [
     path('user/properties/', views.property_list, name='property_list'),
     path('user/properties/register/', views.register_property, name='register_property'),
     path('user/properties/<int:property_id>/', views.property_detail, name='property_detail'),
-    path('property/edit/<int:property_id>/', views.edit_property, name='edit_property'),
+    path('user/property/edit/<int:property_id>/', views.edit_property, name='edit_property'),
+    
+    # commission URLs
+    path('user/commissions/', views.commissions_list, name='commissions_list'),
     
     # Property Sales URLs
     path('user/property-sales/', views.property_sales_list, name='property_sales_list'),
     path('user/property-sales/register/', views.register_property_sale, name='register_property_sale'),
     path('user/property-sales/<int:id>/', views.property_sale_detail, name='property_sale_detail'),
+    path('user/property-sale/<int:sale_id>/invoice/', views.property_sale_invoice, name='property_sale_invoice'),
+    
     
     # Frontend Extras URLs
     path('user/frontend-extras/', views.frontend_extras, name='frontend_extras'),
