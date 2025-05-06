@@ -165,6 +165,147 @@ class Property(models.Model):
         verbose_name_plural = "Properties"
 
 
+# class PropertySale(models.Model):
+#     PROPERTY_TYPE_CHOICES = [
+#         ('building', 'Building Property'),
+#         ('land', 'Land'),
+#     ]
+    
+#     PAYMENT_PLAN_CHOICES = [
+#         ('outright', 'Outright Purchase'),
+#         ('3_months', '3 Months Plan'),
+#         ('6_months', '6 Months Plan'),
+#     ]
+    
+#     # Generate a unique reference number
+#     def generate_reference_number():
+#         return ''.join(uuid.uuid4().hex[:12].upper())
+    
+#     reference_number = models.CharField(max_length=12, default=generate_reference_number, unique=True, editable=False)
+#     description = models.TextField(max_length=255)
+#     property_type = models.CharField(max_length=10, choices=PROPERTY_TYPE_CHOICES)
+#     property_item = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='sales')  # Renamed from 'property'
+#     quantity = models.PositiveIntegerField(help_text="Number of plots or buildings")
+    
+#     # Client information
+#     client_name = models.CharField(max_length=255)
+#     client_address = models.TextField()
+#     client_phone = models.CharField(max_length=20)
+    
+#     # Next of kin information
+#     next_of_kin_name = models.CharField(max_length=255)
+#     next_of_kin_address = models.TextField()
+#     next_of_kin_phone = models.CharField(max_length=20)
+    
+#     # Pricing information
+#     original_price = models.DecimalField(max_digits=12, decimal_places=2)
+#     selling_price = models.DecimalField(max_digits=12, decimal_places=2)
+#     amount_paid = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    
+#     # Payment plan
+#     payment_plan = models.CharField(max_length=10, choices=PAYMENT_PLAN_CHOICES, default='outright')
+    
+#     # Realtor and commission tracking
+#     realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE, related_name='sales')
+#     realtor_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+#     sponsor_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+#     upline_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    
+#     # Timestamps
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+    
+#     def __str__(self):
+#         return f"{self.reference_number} - {self.client_name}"
+    
+#     @property
+#     def balance_due(self):
+#         """Calculate the remaining balance to be paid"""
+#         return self.selling_price - self.amount_paid
+    
+#     @property
+#     def is_fully_paid(self):
+#         """Check if the property is fully paid for"""
+#         return self.balance_due <= Decimal('0')
+    
+#     def calculate_commission(self):
+#         """Calculate and distribute commission based on the amount paid"""
+#         if self.amount_paid <= Decimal('0'):
+#             return
+        
+#         # Get the previously paid amount before this update
+#         try:
+#             previous_paid = PropertySale.objects.get(pk=self.pk).amount_paid if self.pk else Decimal('0')
+#         except PropertySale.DoesNotExist:
+#             previous_paid = Decimal('0')
+        
+#         # Only calculate commission on the new payment amount
+#         new_payment_amount = self.amount_paid - previous_paid
+        
+#         if new_payment_amount <= Decimal('0'):
+#             return
+        
+#         # Calculate commission amounts based on the new payment amount only
+#         realtor_commission = (new_payment_amount * self.realtor_commission_percentage) / Decimal('100')
+        
+#         # Create commission for the selling realtor
+#         Commission.objects.create(
+#             realtor=self.realtor,
+#             amount=realtor_commission,
+#             description=f"Commission for property sale {self.reference_number}",
+#             property_reference=self.reference_number
+#         )
+        
+#         # Add to realtor's total commission
+#         self.realtor.total_commission += realtor_commission
+#         self.realtor.save(update_fields=['total_commission'])
+        
+#         # Process sponsor commission if exists
+#         if self.realtor.sponsor and self.sponsor_commission_percentage > Decimal('0'):
+#             sponsor_commission = (new_payment_amount * self.sponsor_commission_percentage) / Decimal('100')
+            
+#             Commission.objects.create(
+#                 realtor=self.realtor.sponsor,
+#                 amount=sponsor_commission,
+#                 description=f"Sponsor commission for property sale {self.reference_number}",
+#                 property_reference=self.reference_number
+#             )
+            
+#             self.realtor.sponsor.total_commission += sponsor_commission
+#             self.realtor.sponsor.save(update_fields=['total_commission'])
+            
+#             # Process upline commission if exists
+#             if self.realtor.sponsor.sponsor and self.upline_commission_percentage > Decimal('0'):
+#                 upline_commission = (new_payment_amount * self.upline_commission_percentage) / Decimal('100')
+                
+#                 Commission.objects.create(
+#                     realtor=self.realtor.sponsor.sponsor,
+#                     amount=upline_commission,
+#                     description=f"Upline commission for property sale {self.reference_number}",
+#                     property_reference=self.reference_number
+#                 )
+                
+#                 self.realtor.sponsor.sponsor.total_commission += upline_commission
+#                 self.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
+    
+#     def save(self, *args, **kwargs):
+#         is_new = self.pk is None
+#         old_amount_paid = Decimal('0')
+        
+#         if not is_new:
+#             try:
+#                 old_instance = PropertySale.objects.get(pk=self.pk)
+#                 old_amount_paid = old_instance.amount_paid
+#             except PropertySale.DoesNotExist:
+#                 pass
+        
+#         super().save(*args, **kwargs)
+        
+#         # Check if amount_paid has changed
+#         if is_new or old_amount_paid != self.amount_paid:
+#             self.calculate_commission()
+
+
 class PropertySale(models.Model):
     PROPERTY_TYPE_CHOICES = [
         ('building', 'Building Property'),
@@ -175,6 +316,20 @@ class PropertySale(models.Model):
         ('outright', 'Outright Purchase'),
         ('3_months', '3 Months Plan'),
         ('6_months', '6 Months Plan'),
+    ]
+    
+    MARITAL_STATUS_CHOICES = [
+        ('single', 'Single'),
+        ('married', 'Married'),
+        ('divorced', 'Divorced'),
+        ('widowed', 'Widowed'),
+    ]
+    
+    ID_TYPE_CHOICES = [
+        ('national_id', 'National ID'),
+        ('intl_passport', 'International Passport'),
+        ('drivers_license', 'Driver\'s License'),
+        ('voters_card', 'Voter\'s Card'),
     ]
     
     # Generate a unique reference number
@@ -188,14 +343,34 @@ class PropertySale(models.Model):
     quantity = models.PositiveIntegerField(help_text="Number of plots or buildings")
     
     # Client information
-    client_name = models.CharField(max_length=255)
-    client_address = models.TextField()
-    client_phone = models.CharField(max_length=20)
+    client_name = models.CharField(max_length=255, blank=True, null=True)
+    client_address = models.TextField( blank=True, null=True)
+    client_phone = models.CharField(max_length=20, blank=True, null=True)
+    client_email = models.EmailField(max_length=255, blank=True, null=True)
+    
+    # Client additional information
+    marital_status = models.CharField(max_length=10, choices=MARITAL_STATUS_CHOICES, default='single')
+    spouse_name = models.CharField(max_length=255, blank=True, null=True)
+    spouse_phone = models.CharField(max_length=20, blank=True, null=True)
+    
+    # Client identification
+    id_type = models.CharField(max_length=15, choices=ID_TYPE_CHOICES, blank=True, null=True)
+    id_number = models.CharField(max_length=50, blank=True, null=True)
+    
+    # Client origin
+    lga_of_origin = models.CharField(max_length=100, blank=True, null=True)
+    town_of_origin = models.CharField(max_length=100, blank=True, null=True)
+    state_of_origin = models.CharField(max_length=100, blank=True, null=True)
+    
+    # Client bank details
+    bank_name = models.CharField(max_length=255, blank=True, null=True)
+    account_number = models.CharField(max_length=20, blank=True, null=True)
+    account_name = models.CharField(max_length=255, blank=True, null=True)
     
     # Next of kin information
-    next_of_kin_name = models.CharField(max_length=255)
-    next_of_kin_address = models.TextField()
-    next_of_kin_phone = models.CharField(max_length=20)
+    next_of_kin_name = models.CharField(max_length=255, blank=True, null=True)
+    next_of_kin_address = models.TextField( blank=True, null=True)
+    next_of_kin_phone = models.CharField(max_length=20, blank=True, null=True)
     
     # Pricing information
     original_price = models.DecimalField(max_digits=12, decimal_places=2)

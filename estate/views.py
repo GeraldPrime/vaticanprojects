@@ -23,6 +23,22 @@ from django.db.models import Sum  # Add this import
 from django.core.paginator import Paginator
 
 
+from django.contrib.auth.forms import PasswordResetForm
+# from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+# from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import SetPasswordForm
+
+# User = get_user_model()
+
+
 # Create your views here.
 
 def home(request):
@@ -136,6 +152,11 @@ def userhome(request):
     
     
     return render(request, "user/home.html", context)
+
+
+
+
+
 
 @login_required
 def profile(request):
@@ -477,6 +498,85 @@ def edit_property(request, property_id):
     
     
 
+# @login_required
+# def register_property_sale(request):
+#     """View to register a new property sale"""
+#     properties = Property.objects.all().order_by('name')
+#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
+    
+#     if request.method == 'POST':
+#         # Extract form data
+#         property_id = request.POST.get('property')
+#         description = request.POST.get('description')
+#         property_type = request.POST.get('property_type')
+#         quantity = request.POST.get('quantity')
+        
+#         client_name = request.POST.get('client_name')
+#         client_address = request.POST.get('client_address')
+#         client_phone = request.POST.get('client_phone')
+        
+#         next_of_kin_name = request.POST.get('next_of_kin_name')
+#         next_of_kin_address = request.POST.get('next_of_kin_address')
+#         next_of_kin_phone = request.POST.get('next_of_kin_phone')
+        
+#         original_price = request.POST.get('original_price')
+#         selling_price = request.POST.get('selling_price')
+#         initial_payment = request.POST.get('initial_payment')
+#         payment_plan = request.POST.get('payment_plan')
+        
+#         realtor_id = request.POST.get('realtor')
+#         realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
+#         sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
+#         upline_commission_percentage = request.POST.get('upline_commission_percentage')
+        
+#         # Get related objects
+#         property_obj = get_object_or_404(Property, id=property_id)
+#         realtor = get_object_or_404(Realtor, id=realtor_id)
+        
+       
+#         property_sale = PropertySale.objects.create(
+#             description=description,
+#             property_type=property_type,
+#             property_item=property_obj,
+#             quantity=int(quantity),
+            
+#             client_name=client_name,
+#             client_address=client_address,
+#             client_phone=client_phone,
+            
+#             next_of_kin_name=next_of_kin_name,
+#             next_of_kin_address=next_of_kin_address,
+#             next_of_kin_phone=next_of_kin_phone,
+            
+#             original_price=Decimal(original_price),
+#             selling_price=Decimal(selling_price),
+#             payment_plan=payment_plan,
+            
+#             realtor=realtor,
+#             realtor_commission_percentage=Decimal(realtor_commission_percentage),
+#             sponsor_commission_percentage=Decimal(sponsor_commission_percentage),
+#             upline_commission_percentage=Decimal(upline_commission_percentage)
+#         )
+   
+#         if float(initial_payment) > 0:
+#             Payment.objects.create(
+#                 property_sale=property_sale,
+#                 amount=Decimal(initial_payment),
+#                 payment_method='Cash',
+#                 notes='Initial payment at registration'
+#             )
+        
+#         messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
+#         return redirect('property_sale_detail', id=property_sale.id)
+#         # return redirect('property_sale_detail', sale_id=property_sale.id)
+    
+#     return render(request, 'user/register_property_sale.html', {
+#         'properties': properties,
+#         'realtors': realtors
+#     })
+
+
+
 @login_required
 def register_property_sale(request):
     """View to register a new property sale"""
@@ -484,25 +584,47 @@ def register_property_sale(request):
     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
     
     if request.method == 'POST':
-        # Extract form data
+        # Extract basic property information
         property_id = request.POST.get('property')
         description = request.POST.get('description')
         property_type = request.POST.get('property_type')
         quantity = request.POST.get('quantity')
         
+        # Extract client information
         client_name = request.POST.get('client_name')
         client_address = request.POST.get('client_address')
         client_phone = request.POST.get('client_phone')
+        client_email = request.POST.get('client_email')
+        marital_status = request.POST.get('marital_status')
+        spouse_name = request.POST.get('spouse_name', '')
+        spouse_phone = request.POST.get('spouse_phone', '')
         
+        # Extract client identification
+        id_type = request.POST.get('id_type')
+        id_number = request.POST.get('id_number')
+        
+        # Extract client origin
+        lga_of_origin = request.POST.get('lga_of_origin')
+        town_of_origin = request.POST.get('town_of_origin')
+        state_of_origin = request.POST.get('state_of_origin')
+        
+        # Extract client bank details
+        bank_name = request.POST.get('bank_name')
+        account_number = request.POST.get('account_number')
+        account_name = request.POST.get('account_name')
+        
+        # Extract next of kin information
         next_of_kin_name = request.POST.get('next_of_kin_name')
         next_of_kin_address = request.POST.get('next_of_kin_address')
         next_of_kin_phone = request.POST.get('next_of_kin_phone')
         
+        # Extract financial information
         original_price = request.POST.get('original_price')
         selling_price = request.POST.get('selling_price')
         initial_payment = request.POST.get('initial_payment')
         payment_plan = request.POST.get('payment_plan')
         
+        # Extract realtor and commission information
         realtor_id = request.POST.get('realtor')
         realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
         sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
@@ -512,7 +634,7 @@ def register_property_sale(request):
         property_obj = get_object_or_404(Property, id=property_id)
         realtor = get_object_or_404(Realtor, id=realtor_id)
         
-       
+        # Create the property sale object with all fields
         property_sale = PropertySale.objects.create(
             description=description,
             property_type=property_type,
@@ -522,6 +644,21 @@ def register_property_sale(request):
             client_name=client_name,
             client_address=client_address,
             client_phone=client_phone,
+            client_email=client_email,
+            marital_status=marital_status,
+            spouse_name=spouse_name,
+            spouse_phone=spouse_phone,
+            
+            id_type=id_type,
+            id_number=id_number,
+            
+            lga_of_origin=lga_of_origin,
+            town_of_origin=town_of_origin,
+            state_of_origin=state_of_origin,
+            
+            bank_name=bank_name,
+            account_number=account_number,
+            account_name=account_name,
             
             next_of_kin_name=next_of_kin_name,
             next_of_kin_address=next_of_kin_address,
@@ -536,8 +673,14 @@ def register_property_sale(request):
             sponsor_commission_percentage=Decimal(sponsor_commission_percentage),
             upline_commission_percentage=Decimal(upline_commission_percentage)
         )
-   
+        
+        # Create initial payment if provided
         if float(initial_payment) > 0:
+            # Update the amount_paid field first
+            property_sale.amount_paid = Decimal(initial_payment)
+            property_sale.save()
+            
+            # Create the payment record
             Payment.objects.create(
                 property_sale=property_sale,
                 amount=Decimal(initial_payment),
@@ -547,12 +690,12 @@ def register_property_sale(request):
         
         messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
         return redirect('property_sale_detail', id=property_sale.id)
-        # return redirect('property_sale_detail', sale_id=property_sale.id)
     
     return render(request, 'user/register_property_sale.html', {
         'properties': properties,
         'realtors': realtors
     })
+
 
 @login_required
 def property_sales_list(request):
@@ -877,3 +1020,82 @@ def commissions_list(request):
     }
     
     return render(request, 'user/commissions_list.html', context)
+
+
+
+
+# =============================================================================================
+# ==================================Paswrod reset===============================
+def password_reset_request(request):
+    """
+    View for handling password reset requests
+    """
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        if password_reset_form.is_valid():
+            data = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(Q(email=data))
+            if associated_users.exists():
+                for user in associated_users:
+                    subject = "Password Reset Requested"
+                    email_template_name = "user/password_reset_email.txt"
+                    c = {
+                        "email": user.email,
+                        'domain': request.META['HTTP_HOST'],
+                        'site_name': 'Vatican Garden Estates',
+                        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                        "user": user,
+                        'token': default_token_generator.make_token(user),
+                        'protocol': 'https' if request.is_secure() else 'http',
+                    }
+                    email = render_to_string(email_template_name, c)
+                    try:
+                        send_mail(subject, email, 'admin@vaticangarden.com', [user.email], fail_silently=False)
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                    return redirect("password_reset_done")
+            else:
+                messages.error(request, "No account found with that email address.")
+                return redirect("password_reset")
+    else:
+        password_reset_form = PasswordResetForm()
+    
+    return render(request, "user/password_reset.html", {"password_reset_form": password_reset_form})
+
+def password_reset_done(request):
+    """
+    View shown after password reset request is processed
+    """
+    return render(request, "user/password_reset_done.html")
+
+def password_reset_confirm(request, uidb64, token):
+    """
+    View for confirming password reset and setting new password
+    """
+    from django.utils.http import urlsafe_base64_decode
+    
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    
+    if user is not None and default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = SetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Your password has been set. You may go ahead and log in now.")
+                return redirect('password_reset_complete')
+        else:
+            form = SetPasswordForm(user)
+        return render(request, 'user/password_reset_confirm.html', {'form': form})
+    else:
+        messages.error(request, "The password reset link was invalid, possibly because it has already been used. Please request a new password reset.")
+        return redirect('signin')
+
+def password_reset_complete(request):
+    """
+    View shown after password has been successfully reset
+    """
+    return render(request, "user/password_reset_complete.html")

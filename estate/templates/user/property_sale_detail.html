@@ -233,7 +233,7 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Client Info Tab -->
+                                <!-- Client Info Tab
                                 <div class="tab-pane" id="client-info" role="tabpanel">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -254,6 +254,10 @@
                                                                 <tr>
                                                                     <th scope="row"><i class="ri-phone-line me-2"></i>Phone</th>
                                                                     <td>{{ sale.client_phone }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-mail-line me-2"></i>Email</th>
+                                                                    <td>{{ sale.client_email }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -287,8 +291,178 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 
+
+
+                                <!-- Client Info Tab -->
+                                <div class="tab-pane" id="client-info" role="tabpanel">
+                                    <div class="row">
+                                        <!-- Basic Client Details -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Client Details</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-user-line me-2"></i>Name</th>
+                                                                    <td>{{ sale.client_name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-map-pin-line me-2"></i>Address</th>
+                                                                    <td>{{ sale.client_address }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-phone-line me-2"></i>Phone</th>
+                                                                    <td>{{ sale.client_phone }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-mail-line me-2"></i>Email</th>
+                                                                    <td>{{ sale.client_email }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-heart-line me-2"></i>Marital Status</th>
+                                                                    <td>{{ sale.get_marital_status_display }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Next of Kin Information -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Next of Kin</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-user-line me-2"></i>Name</th>
+                                                                    <td>{{ sale.next_of_kin_name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-map-pin-line me-2"></i>Address</th>
+                                                                    <td>{{ sale.next_of_kin_address }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-phone-line me-2"></i>Phone</th>
+                                                                    <td>{{ sale.next_of_kin_phone }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Spouse Information (if married) -->
+                                         
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Spouse Information</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-user-line me-2"></i>Name</th>
+                                                                    <td>{{ sale.spouse_name|default:"N/A" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-phone-line me-2"></i>Phone</th>
+                                                                    <td>{{ sale.spouse_phone|default:"N/A" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Client Identification -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Client Identification</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-id-card-line me-2"></i>ID Type</th>
+                                                                    <td>{{ sale.get_id_type_display|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-hashtag me-2"></i>ID Number</th>
+                                                                    <td>{{ sale.id_number|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Client Origin -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Client Origin</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-map-pin-line me-2"></i>Town</th>
+                                                                    <td>{{ sale.town_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-government-line me-2"></i>LGA</th>
+                                                                    <td>{{ sale.lga_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-map-2-line me-2"></i>State</th>
+                                                                    <td>{{ sale.state_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Client Bank Details -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Bank Details</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-bank-line me-2"></i>Bank Name</th>
+                                                                    <td>{{ sale.bank_name|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-user-line me-2"></i>Account Name</th>
+                                                                    <td>{{ sale.account_name|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-bank-card-line me-2"></i>Account Number</th>
+                                                                    <td>{{ sale.account_number|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Realtor Info Tab -->
                                 <div class="tab-pane" id="realtor-info" role="tabpanel">
                                     <div class="card bg-light mb-0">

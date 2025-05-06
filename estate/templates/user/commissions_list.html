@@ -1,5 +1,7 @@
 {% extends 'user/base.html' %}
 
+{% load humanize %}
+
 {% block title %}Commissions Management{% endblock %}
 
 {% block body %}
@@ -18,7 +20,7 @@
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">
                             <h4 class="mb-0">Total Commissions</h4>
-                            <h2>₦{{ total_commissions|floatformat:2 }}</h2>
+                            <h2>₦{{ total_commissions|floatformat:2|intcomma }}</h2>
                         </div>
                     </div>
                 </div>
@@ -26,7 +28,7 @@
                     <div class="card bg-success text-white mb-4">
                         <div class="card-body">
                             <h4 class="mb-0">Paid Commissions</h4>
-                            <h2>₦{{ paid_commissions|floatformat:2 }}</h2>
+                            <h2>₦{{ paid_commissions|floatformat:2|intcomma }}</h2>
                         </div>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                     <div class="card bg-warning text-white mb-4">
                         <div class="card-body">
                             <h4 class="mb-0">Unpaid Commissions</h4>
-                            <h2>₦{{ unpaid_commissions|floatformat:2 }}</h2>
+                            <h2>₦{{ unpaid_commissions|floatformat:2|intcomma }}</h2>
                         </div>
                     </div>
                 </div>
@@ -122,7 +124,7 @@
                                             {{ commission.realtor.full_name }}
                                         </a>
                                     </td>
-                                    <td>₦{{ commission.amount|floatformat:2 }}</td>
+                                    <td>₦{{ commission.amount|floatformat:2|intcomma }}</td>
                                     <td>{{ commission.description }}</td>
                                     <td>{{ commission.property_reference }}</td>
                                     <td>

@@ -63,25 +63,91 @@ class PropertyAdmin(admin.ModelAdmin):
     list_filter = ('location',)
     search_fields = ('name', 'address')
 
+# @admin.register(PropertySale)
+# class PropertySaleAdmin(admin.ModelAdmin):
+#     list_display = ('reference_number_display', 'property_display', 'client_name_display', 
+#                    'selling_price_display', 'amount_paid_display', 'balance_due_display')
+#     # Remove list_filter completely since created_at isn't accessible
+#     search_fields = ('client_name', 'property__name')
+    
+#     fieldsets = [
+#         ('Property Information', {
+#             'fields': ['property_item','description', 'quantity']
+#         }),
+#         ('Client Information', {
+#             'fields': ['client_name', 'client_address', 'client_phone']
+#         }),
+#         ('Next of Kin', {
+#             'fields': ['next_of_kin_name', 'next_of_kin_address', 'next_of_kin_phone']
+#         }),
+#         ('Pricing', {
+#             'fields': ['original_price', 'selling_price', 'amount_paid']
+#         }),
+#         ('Realtor & Commission', {
+#             'fields': ['realtor', 'realtor_commission_percentage', 'sponsor_commission_percentage', 'upline_commission_percentage']
+#         }),
+#     ]
+    
+#     def reference_number_display(self, obj):
+#         return obj.reference_number
+#     reference_number_display.short_description = 'Reference Number'
+    
+#     def property_display(self, obj):
+#         return obj.property_item.name
+#     property_display.short_description = 'Property'
+    
+#     def client_name_display(self, obj):
+#         return obj.client_name
+#     client_name_display.short_description = 'Client Name'
+    
+#     def selling_price_display(self, obj):
+#         return f"₦{obj.selling_price.quantize(Decimal('0.01'))}"
+#     selling_price_display.short_description = 'Selling Price'
+    
+#     def amount_paid_display(self, obj):
+#         return f"₦{obj.amount_paid.quantize(Decimal('0.01'))}"
+#     amount_paid_display.short_description = 'Amount Paid'
+    
+#     def balance_due_display(self, obj):
+#         return f"₦{obj.balance_due.quantize(Decimal('0.01'))}"
+#     balance_due_display.short_description = 'Balance Due'
+
+
 @admin.register(PropertySale)
 class PropertySaleAdmin(admin.ModelAdmin):
     list_display = ('reference_number_display', 'property_display', 'client_name_display', 
                    'selling_price_display', 'amount_paid_display', 'balance_due_display')
-    # Remove list_filter completely since created_at isn't accessible
-    search_fields = ('client_name', 'property__name')
+    # list_filter is removed as created_at isn't accessible
+    search_fields = ('client_name', 'property_item__name')
     
     fieldsets = [
         ('Property Information', {
-            'fields': ['property_item','description', 'quantity']
+            'fields': ['property_type', 'property_item', 'description', 'quantity']
         }),
         ('Client Information', {
-            'fields': ['client_name', 'client_address', 'client_phone']
+            'fields': [
+                'client_name', 'client_address', 'client_phone', 'client_email',
+                'marital_status', 'spouse_name', 'spouse_phone'
+            ]
+        }),
+        ('Client Identification', {
+            'fields': [
+                'id_type', 'id_number',
+                'lga_of_origin', 'town_of_origin', 'state_of_origin'
+            ]
+        }),
+        ('Client Bank Details', {
+            'fields': [
+                'bank_name', 'account_number', 'account_name'
+            ]
         }),
         ('Next of Kin', {
             'fields': ['next_of_kin_name', 'next_of_kin_address', 'next_of_kin_phone']
         }),
-        ('Pricing', {
-            'fields': ['original_price', 'selling_price', 'amount_paid']
+        ('Pricing & Payment', {
+            'fields': [
+                'original_price', 'selling_price', 'amount_paid', 'payment_plan'
+            ]
         }),
         ('Realtor & Commission', {
             'fields': ['realtor', 'realtor_commission_percentage', 'sponsor_commission_percentage', 'upline_commission_percentage']
