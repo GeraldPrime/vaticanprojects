@@ -21,12 +21,20 @@ urlpatterns = [
     
     path('user/', views.userhome, name='user'),
     path('user/signin/', views.signin, name='signin'),
+
     path('user/signout/', views.signout, name='signout'),
     path('user/profile/', views.profile, name='profile'),
     path('user/create_realtor/', views.create_realtor, name='create_realtor'),
     path('user/realtor_detail/<int:id>', views.realtor_detail, name='realtor_detail'),
     path('user/edit_realtor/<int:id>', views.edit_realtor, name='edit_realtor'),
     path('user/realtors_page', views.realtors_page, name='realtors_page'),
+    
+    
+    # Password reset URLs
+    path('password-reset/', views.password_reset_request, name='password_reset'),
+    path('password-reset/done/', views.password_reset_done, name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
+    path('password-reset-complete/', views.password_reset_complete, name='password_reset_complete'),
      
     
     

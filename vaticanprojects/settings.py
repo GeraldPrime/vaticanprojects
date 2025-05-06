@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+import dj_database_url
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,8 +91,24 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'railway',
+        # 'USER':'postgres',
+        # # 'PASSWORD':'ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa',
+        # 'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
+        # 'HOST':'shinkansen.proxy.rlwy.net',
+        # 'PORT':'26164',
     }
 }
+
+
+
+# POSTGRES_LOCALLY = True
+# if ENVIRONMENT == 'production' or POSTGRES_LOCALLY ==True:
+#     DATABASES['default']= dj_database_url.parse('postgresql://postgres:ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa@postgres-38ls.railway.internal:5432/railway')
+
+
+
 
 
 # Password validation
@@ -151,3 +170,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'signin'  # URL name for the login page
 # LOGIN_REDIRECT_URL = 'home'  # URL name for the redirect after login
 LOGOUT_REDIRECT_URL = 'signin'  # URL name for the redirect after logout
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+EMAIL_HOST = 'smtp.gmail.com'            # or smtp.gmail.com, smtp.sendgrid.net, etc.  
+EMAIL_HOST_USER = 'machovector3@gmail.com'           
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                      
+EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'            
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465  

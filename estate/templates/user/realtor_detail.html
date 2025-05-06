@@ -1,4 +1,5 @@
 {% extends 'user/base.html' %}
+{% load humanize %}
 
 {% block body %}
     <div class="content-page">
@@ -79,7 +80,7 @@
                                                         <div class="card bg-primary text-white">
                                                             <div class="card-body">
                                                                 <h5 class="card-title text-white">Total Commission</h5>
-                                                                <h2>₦{{ realtor.total_commission }}</h2>
+                                                                <h2>₦{{ realtor.total_commission|intcomma }}</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,7 +88,7 @@
                                                         <div class="card bg-success text-white">
                                                             <div class="card-body">
                                                                 <h5 class="card-title text-white">Paid Commission</h5>
-                                                                <h2>₦{{ realtor.paid_commission }}</h2>
+                                                                <h2>₦{{ realtor.paid_commission|intcomma }}</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -95,7 +96,7 @@
                                                         <div class="card bg-danger text-white">
                                                             <div class="card-body">
                                                                 <h5 class="card-title text-white">Unpaid Commission</h5>
-                                                                <h2>₦{{ realtor.unpaid_commission }}</h2>
+                                                                <h2>₦{{ realtor.unpaid_commission|intcomma }}</h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -192,7 +193,7 @@
                                             <tr>
                                                 <td>{{ commission.description }}</td>
                                                 <td>{{ commission.property_reference }}</td>
-                                                <td>₦{{ commission.amount }}</td>
+                                                <td>₦{{ commission.amount|intcomma }}</td>
                                                 <td>{{ commission.created_at|date:"M d, Y" }}</td>
                                                 <td>
                                                     {% if commission.is_paid %}
