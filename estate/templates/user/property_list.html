@@ -15,7 +15,7 @@
                 </a>
             </div>
             
-            {% if messages %}
+            <!-- {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                         {{ message }}
@@ -24,27 +24,14 @@
                         </button>
                     </div>
                 {% endfor %}
-            {% endif %}
+            {% endif %} -->
             
             <div class="card shadow">
                 <div class="card-header bg-light">
                     <div class="row">
-                        <div class="card">
-                            
-
-                        
-                        </div>
                         <div class="col-md-4">
-                            <!-- <div class="card-body">
-                                <div class="input-group">
-                                    <input type="text" id="propertySearch"  class="form-control" placeholder="Search">
-                                    <span class="input-group-append">
-                                        <button type="button" class="btn btn-primary rounded-start-0"><i class="ri-search-line fs-16"></i></button>
-                                    </span>
-                                </div>
-                            </div> -->
                             <div class="input-group">
-                                <input type="text" id="propertySearch"  class="form-control" placeholder="Search">
+                                <input type="text" id="propertySearch" class="form-control" placeholder="Search">
                                 <span class="input-group-append">
                                     <button type="button" class="btn btn-primary rounded-start-0"><i class="ri-search-line fs-16"></i></button>
                                 </span>
@@ -86,7 +73,13 @@
                                                 <a href="{% url 'property_detail' property.id %}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i> View
                                                 </a>
-                                                <a href="{% url 'edit_property' property.id %}" class="btn btn-primary btn-sm tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="EDIT"> <i class="ri-pencil-fill"></i> </a>
+                                                <a href="{% url 'edit_property' property.id %}" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                    <i class="ri-pencil-fill"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete" 
+                                                    onclick="confirmDelete({{ property.id }}, '{{ property.name|escapejs }}')">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -102,6 +95,29 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteConfirmModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the property "<span id="propertyName"></span>"?</p>
+                <p class="text-danger"><strong>This action cannot be undone.</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deletePropertyForm" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete Property</button>
+                </form>
             </div>
         </div>
     </div>
@@ -130,6 +146,28 @@
             } else {
                 row.style.display = 'none';
             }
+        });
+    });
+    
+    // Delete confirmation functionality
+    function confirmDelete(propertyId, propertyName) {
+        // Set property name in modal
+        document.getElementById('propertyName').textContent = propertyName;
+        
+        // Set form action using the correct URL pattern
+        const form = document.getElementById('deletePropertyForm');
+        form.action = "/user/property/" + propertyId + "/delete/";
+        
+        // Show modal
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+        deleteModal.show();
+    }
+    
+    // Initialize tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
         });
     });
 </script>

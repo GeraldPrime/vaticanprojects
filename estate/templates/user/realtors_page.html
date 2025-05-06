@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="">
                                                 <a href="{% url 'edit_realtor' realtor.id %}" class="btn btn-success btn-sm me-1 tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"> <i class="ri-pencil-fill"></i> </a>
-                                                <a href="#" class="btn btn-danger btn-sm tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"> <i class="mdi mdi-delete"></i> </a>
+                                                <button type="button" class="btn btn-danger btn-sm tooltips" data-bs-toggle="modal" data-bs-target="#deleteModal{{realtor.id}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"> <i class="mdi mdi-delete"></i> </button>
                                             </div>
                                         </div>
 
@@ -97,6 +97,29 @@
                                         <ul class="social-list list-inline mt-3 mb-0">
                                             <h5 class="fs-18 my-1">Phone Number : {{realtor.phone}}</h5>
                                         </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Delete Confirmation Modal for each realtor -->
+                            <div class="modal fade" id="deleteModal{{realtor.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{realtor.id}}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{realtor.id}}">Confirm Delete</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete <strong>{{realtor.first_name}} {{realtor.last_name}}</strong>?</p>
+                                            <p class="text-danger">This action cannot be undone. If this realtor has commissions or sales records, the delete operation will fail.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <form method="POST" action="{% url 'delete_realtor' realtor.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger">Delete Realtor</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

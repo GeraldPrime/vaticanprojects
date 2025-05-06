@@ -28,6 +28,7 @@ urlpatterns = [
     path('user/realtor_detail/<int:id>', views.realtor_detail, name='realtor_detail'),
     path('user/edit_realtor/<int:id>', views.edit_realtor, name='edit_realtor'),
     path('user/realtors_page', views.realtors_page, name='realtors_page'),
+    path('user/delete-realtor/<int:id>/', views.delete_realtor, name='delete_realtor'),
     
     
     # Password reset URLs
@@ -47,6 +48,7 @@ urlpatterns = [
     path('user/properties/register/', views.register_property, name='register_property'),
     path('user/properties/<int:property_id>/', views.property_detail, name='property_detail'),
     path('user/property/edit/<int:property_id>/', views.edit_property, name='edit_property'),
+    path('user/property/<int:property_id>/delete/', views.delete_property, name='delete_property'),
     
     # commission URLs
     path('user/commissions/', views.commissions_list, name='commissions_list'),
@@ -64,6 +66,9 @@ urlpatterns = [
     path('user/frontend-extras/forms/', views.forms_list, name='forms_list'),
     path('user/frontend-extras/forms/<int:form_id>/edit/', views.edit_form, name='edit_form'),
     path('user/frontend-extras/forms/<int:form_id>/delete/', views.delete_form, name='delete_form'),
+    
+    # general settings: 
+    path('user/settings/general/', views.general_settings, name='general_settings'),
     
     
     

@@ -13,7 +13,7 @@ from django.db.models import Q
 
 
 
-from .models import Property, PropertySale, Payment, FormUpload
+from .models import Property, PropertySale, Payment, FormUpload, General
 from django.http import JsonResponse
 from decimal import Decimal,InvalidOperation
 from django.utils import timezone
@@ -385,6 +385,35 @@ def edit_realtor(request, id):
     return render(request, 'user/edit_realtor.html', {'realtor': realtor})
 
 
+@login_required
+def delete_realtor(request, id):
+    """
+    View to delete a realtor after confirmation
+    """
+    # Get the realtor object or return 404
+    realtor = get_object_or_404(Realtor, id=id)
+    
+    # Check if there are commissions associated with this realtor
+    has_commissions = Commission.objects.filter(realtor=realtor).exists()
+    
+    # Check if there are property sales associated with this realtor
+    has_sales = PropertySale.objects.filter(realtor=realtor).exists()
+    
+    # If this is a POST request, delete the realtor
+    if request.method == "POST":
+        # Check if realtor can be safely deleted
+        if has_commissions or has_sales:
+            messages.warning(request, 
+                f"Cannot delete '{realtor.first_name} {realtor.last_name}' because they have associated commissions or sales records.")
+        else:
+            realtor_name = f"{realtor.first_name} {realtor.last_name}"  # Store name before deletion
+            realtor.delete()
+            messages.success(request, f"Realtor '{realtor_name}' has been deleted successfully.")
+        
+    # Redirect back to the realtors list
+    return redirect('realtors_page')
+
+
 # @permission_required('realtors.can_pay_commission', raise_exception=True)
 @login_required
 def pay_all_commissions(request, realtor_id):
@@ -496,6 +525,35 @@ def edit_property(request, property_id):
         'states': states
     })
     
+    
+    
+@login_required
+def delete_property(request, property_id):
+    """
+    View to delete a property after confirmation
+    """
+    # Get the property object or return 404
+    property_obj = get_object_or_404(Property, id=property_id)
+    
+    # Remove the user check for now, or replace with appropriate check
+    # if property_obj.user != request.user:
+    #     messages.error(request, "You don't have permission to delete this property.")
+    #     return redirect('property_list')
+    
+    # Check if there are any sales associated with this property
+    if property_obj.sales.exists():
+        messages.warning(request, 
+            f"Cannot delete '{property_obj.name}' because it has associated sales records.")
+        return redirect('property_list')
+    
+    # If this is a POST request, delete the property
+    if request.method == "POST":
+        property_name = property_obj.name  # Store name before deletion
+        property_obj.delete()
+        messages.success(request, f"Property '{property_name}' has been deleted successfully.")
+        
+    # Redirect back to the property list
+    return redirect('property_list')
     
 
 # @login_required
@@ -923,28 +981,21 @@ def property_sale_invoice(request, sale_id):
     sale = get_object_or_404(PropertySale, id=sale_id)
     payments = Payment.objects.filter(property_sale=sale).order_by('-payment_date')
     
+    
+    
     # Calculate balance due
     balance_due = sale.selling_price - sale.amount_paid
-    
-    # Get company information from settings or database
-    # These should be configured in your settings or stored in a Company model
-    company_info = {
-        'company_name': 'Your Real Estate Company',  # Replace with your company name
-        'company_address': '123 Property Street',    # Replace with your address
-        'company_city_state_zip': 'Lagos, Nigeria',  # Replace with your city/state
-        'company_phone': '+234 800 123 4567',        # Replace with your phone
-        'company_email': 'info@yourcompany.com',     # Replace with your email
-        'bank_name': 'First Bank of Nigeria',        # Replace with your bank
-        'account_name': 'Your Company Ltd',          # Replace with your account name
-        'account_number': '0123456789',              # Replace with your account number
-    }
+    settings, created = General.objects.get_or_create(id=1)
+
     
     context = {
         'sale': sale,
         'payments': payments,
         'balance_due': balance_due,
         'now': timezone.now(),
-        **company_info,
+        # 'settings':General.objects.all()
+        'settings':settings
+        # **company_info,
     }
     
     return render(request, 'user/property_sale_invoice.html', context)
@@ -1025,7 +1076,7 @@ def commissions_list(request):
 
 
 # =============================================================================================
-# ==================================Paswrod reset===============================
+# ==================================Password reset===============================
 def password_reset_request(request):
     """
     View for handling password reset requests
@@ -1099,3 +1150,46 @@ def password_reset_complete(request):
     View shown after password has been successfully reset
     """
     return render(request, "user/password_reset_complete.html")
+
+
+
+@login_required
+def general_settings(request):
+    """
+    View to handle displaying and updating general settings
+    """
+    # Get or create general settings object (assuming only one instance exists)
+    settings, created = General.objects.get_or_create(id=1)
+    
+    if request.method == 'POST':
+        # Update settings with form data
+        settings.company_bank_name = request.POST.get('bank_name')
+        settings.company_account_ame = request.POST.get('account_name')  # Note: there's a typo in your model (ame not name)
+        settings.company_account_number = request.POST.get('account_number')
+        
+        # Save the settings
+        settings.save()
+        
+        # Add success message
+        messages.success(request, 'Settings updated successfully!')
+        
+        # Redirect to the same page to prevent form resubmission
+        return redirect('general_settings')
+    
+    # Prepare context for template rendering
+    context = {
+        'settings': settings,
+        'page_title': 'General Settings'
+    }
+    
+    return render(request, 'user/general_settings.html', context)
+
+
+
+# Add this function to your views.py
+
+def custom_404_view(request, exception):
+    """
+    Custom 404 error handler that renders our 404.html template
+    """
+    return render(request, 'user/404.html', status=404)

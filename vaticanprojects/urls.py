@@ -21,3 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("estate.urls")),
 ]
+
+# Custom error handlers
+handler404 = 'estate.views.custom_404_view'  # Replace 'your_app' with your actual app name
