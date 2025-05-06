@@ -241,9 +241,9 @@
                         <div class="col-md-6">
                             <div class="card bg-light">
                                 <div class="card-body">
-                                    <p class="mb-1"><strong>Bank:</strong> {{ bank_name|default:"Bank Name" }}</p>
-                                    <p class="mb-1"><strong>Account Name:</strong> {{ account_name|default:"Company Account Name" }}</p>
-                                    <p class="mb-1"><strong>Account Number:</strong> {{ account_number|default:"0123456789" }}</p>
+                                    <p class="mb-1"><strong>Bank:</strong> {{ settings.company_bank_name|default:"N/A" }}</p>
+                                    <p class="mb-1"><strong>Account Name:</strong> {{ settings.company_account_name|default:"N/A" }}</p>
+                                    <p class="mb-1"><strong>Account Number:</strong> {{ settings.company_account_number|default:"N/A" }}</p>
                                     <p class="mb-0"><strong>Reference:</strong> Invoice #{{ sale.reference_number }}</p>
                                 </div>
                             </div>

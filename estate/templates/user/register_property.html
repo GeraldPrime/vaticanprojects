@@ -6,67 +6,69 @@
 
 <div class="content-page">
     <div class="content">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow border-0 rounded-lg">
+                        <div class="card-header bg-primary text-white p-4">
+                            <h4 class="mb-0 font-weight-bold">Register New Property</h4>
+                        </div>
 
-        <div class="container mt-4">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Register New Property</h4>
-                </div>
-                <div class="card-body">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    
-                    <form method="post" action="{% url 'register_property' %}">
-                        {% csrf_token %}
-                        
-                        <div class="form-group row">
-                            <label for="name" class="col-sm-3 col-form-label">Property Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
+                        <div class="card-body p-4">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-3" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <form method="post" action="{% url 'register_property' %}">
+                                {% csrf_token %}
+
+                                <div class="form-group row mb-3">
+                                    <label for="name" class="col-sm-3 col-form-label font-weight-bold">Property Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label for="description" class="col-sm-3 col-form-label font-weight-bold">Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your property" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label for="location" class="col-sm-3 col-form-label font-weight-bold">Location (State)</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control custom-select" id="location" name="location" required>
+                                            <option value="">-- Select State --</option>
+                                            {% for state_code, state_name in states %}
+                                                <option value="{{ state_code }}">{{ state_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label for="address" class="col-sm-3 col-form-label font-weight-bold">Full Address</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter complete property address" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-9 offset-sm-3">
+                                        <button type="submit" class="btn btn-primary px-4">Register Property</button>
+                                        <a href="{% url 'property_list' %}" class="btn btn-outline-secondary ml-2">Cancel</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        
-                        <div class="form-group row">
-                            <label for="description" class="col-sm-3 col-form-label">Description</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="location" class="col-sm-3 col-form-label">Location (State)</label>
-                            <div class="col-sm-9">
-                                <select class="form-control" id="location" name="location" required>
-                                    <option value="">-- Select State --</option>
-                                    {% for state_code, state_name in states %}
-                                        <option value="{{ state_code }}">{{ state_name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="address" class="col-sm-3 col-form-label">Full Address</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <div class="col-sm-9 offset-sm-3">
-                                <button type="submit" class="btn btn-primary">Register Property</button>
-                                <a href="{% url 'property_list' %}" class="btn btn-secondary ml-2">Cancel</a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,7 +82,7 @@
         const description = document.getElementById('description').value.trim();
         const location = document.getElementById('location').value;
         const address = document.getElementById('address').value.trim();
-        
+
         if (!name || !description || !location || !address) {
             event.preventDefault();
             alert('Please fill in all required fields.');

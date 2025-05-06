@@ -580,3 +580,18 @@ class FormUpload(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Form Upload'
         verbose_name_plural = 'Form Uploads'
+        
+        
+        
+
+class General(models.Model):
+    
+    # Company Bank Information
+    company_bank_name = models.CharField(max_length=150,blank=True, null=True)
+    company_account_name = models.CharField(max_length=150, blank=True, null=True)
+    company_account_number = models.CharField(max_length=150, blank=True, null=True)
+    # phone = models.CharField(max_length=20)
+    
+
+    def __str__(self):
+            return self.company_bank_name
