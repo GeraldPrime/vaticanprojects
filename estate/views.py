@@ -36,6 +36,12 @@ from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import SetPasswordForm
 
+# Get sales data by month for the current year
+from django.db.models.functions import TruncMonth
+from datetime import datetime
+import json
+    
+
 # User = get_user_model()
 
 
@@ -106,29 +112,77 @@ def realtors_check(request):
 
 # ====================================ADMIN INTERFACE================================================================================
 # ===================================                =================================================================================
+# @login_required
+# def userhome(request):
+#    # Calculate total sales amount (in Naira)
+#     total_sales_amount = PropertySale.objects.aggregate(Sum('selling_price'))['selling_price__sum'] or Decimal('0')
+    
+#     # Count number of property sales transactions
+#     total_sales_count = PropertySale.objects.count()
+    
+#     # Count total realtors
+#     total_realtors = Realtor.objects.count()
+    
+#     # Count paid commissions
+#     paid_commissions_count = Commission.objects.filter(is_paid=True).count()
+    
+#     # Count unpaid commissions
+#     unpaid_commissions_count = Commission.objects.filter(is_paid=False).count()
+    
+#     # Calculate total paid commissions amount
+#     total_paid_commissions = Commission.objects.filter(is_paid=True).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
+    
+#     # Calculate total unpaid commissions amount
+#     total_unpaid_commissions = Commission.objects.filter(is_paid=False).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
+    
+#     # Format the numbers with appropriate suffixes
+#     def format_number(number):
+#         if number >= 1_000_000_000:  # Billions
+#             return f"₦{number / 1_000_000_000:.1f}B"
+#         elif number >= 1_000_000:  # Millions
+#             return f"₦{number / 1_000_000:.1f}M"
+#         elif number >= 1_000:  # Thousands
+#             return f"₦{number / 1_000:.1f}K"
+#         else:
+#             return f"₦{number:.0f}"
+    
+#     context = {
+#         'total_sales_amount': format_number(total_sales_amount),
+#         'total_sales_count': total_sales_count,
+#         'total_realtors': total_realtors,
+#         'paid_commissions_count': paid_commissions_count,
+#         'unpaid_commissions_count': unpaid_commissions_count,
+#         'total_paid_commissions': format_number(total_paid_commissions),
+#         'total_unpaid_commissions': format_number(total_unpaid_commissions),
+#     }
+    
+    
+#     return render(request, "user/home.html", context)
+
+
 @login_required
 def userhome(request):
-   # Calculate total sales amount (in Naira)
+    # Calculate total sales amount (in Naira)
     total_sales_amount = PropertySale.objects.aggregate(Sum('selling_price'))['selling_price__sum'] or Decimal('0')
-    
+   
     # Count number of property sales transactions
     total_sales_count = PropertySale.objects.count()
-    
+   
     # Count total realtors
     total_realtors = Realtor.objects.count()
-    
+   
     # Count paid commissions
     paid_commissions_count = Commission.objects.filter(is_paid=True).count()
-    
+   
     # Count unpaid commissions
     unpaid_commissions_count = Commission.objects.filter(is_paid=False).count()
-    
+   
     # Calculate total paid commissions amount
     total_paid_commissions = Commission.objects.filter(is_paid=True).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
-    
+   
     # Calculate total unpaid commissions amount
     total_unpaid_commissions = Commission.objects.filter(is_paid=False).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
-    
+   
     # Format the numbers with appropriate suffixes
     def format_number(number):
         if number >= 1_000_000_000:  # Billions
@@ -139,7 +193,63 @@ def userhome(request):
             return f"₦{number / 1_000:.1f}K"
         else:
             return f"₦{number:.0f}"
+   
+    # Get sales data by month for the current year
+    current_year = datetime.now().year
+   
+    # Monthly sales data
+    monthly_sales = PropertySale.objects.filter(
+        created_at__year=current_year
+    ).annotate(
+        month=TruncMonth('created_at')
+    ).values('month').annotate(
+        total=Sum('selling_price')
+    ).order_by('month')
+   
+    # Monthly commissions data
+    monthly_commissions = Commission.objects.filter(
+        created_at__year=current_year
+    ).annotate(
+        month=TruncMonth('created_at')
+    ).values('month').annotate(
+        total=Sum('amount')
+    ).order_by('month')
+   
+    # Prepare chart data
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    sales_data = [0] * 12
+    commission_data = [0] * 12
+   
+    for entry in monthly_sales:
+        month_idx = entry['month'].month - 1  # Convert to 0-based index
+        sales_data[month_idx] = float(entry['total'])
+   
+    for entry in monthly_commissions:
+        month_idx = entry['month'].month - 1  # Convert to 0-based index
+        commission_data[month_idx] = float(entry['total'])
     
+    # Get top 5 realtors by commission earned
+    top_realtors = Realtor.objects.annotate(
+        commission_earned=Sum('commissions__amount')
+    ).exclude(
+        commission_earned=None
+    ).order_by('-commission_earned')[:5]
+    
+    top_realtors_data = []
+    for realtor in top_realtors:
+        top_realtors_data.append({
+            'name': realtor.full_name,
+            'commission': float(realtor.commission_earned or 0)
+        })
+   
+    # Format data for JavaScript
+    chart_data = {
+        'months': months,
+        'sales': sales_data,
+        'commissions': commission_data,
+        'topRealtors': top_realtors_data
+    }
+   
     context = {
         'total_sales_amount': format_number(total_sales_amount),
         'total_sales_count': total_sales_count,
@@ -148,9 +258,9 @@ def userhome(request):
         'unpaid_commissions_count': unpaid_commissions_count,
         'total_paid_commissions': format_number(total_paid_commissions),
         'total_unpaid_commissions': format_number(total_unpaid_commissions),
+        'chart_data': json.dumps(chart_data),
     }
-    
-    
+   
     return render(request, "user/home.html", context)
 
 
