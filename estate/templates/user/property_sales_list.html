@@ -1,6 +1,7 @@
 {% extends 'user/base.html' %}
 
 {% block title %}Property Sales{% endblock %}
+{% load humanize %}
 
 {% block body %}
 <div class="content-page">
@@ -90,13 +91,13 @@
                       <td>{{ sale.client_name }}</td>
                       <td>{{ sale.property_item.name }}</td>
                       <td>{{ sale.get_property_type_display }}</td>
-                      <td>₦{{ sale.selling_price|floatformat:2 }}</td>
-                      <td>₦{{ sale.amount_paid|floatformat:2 }}</td>
+                      <td>₦{{ sale.selling_price|floatformat:2|intcomma }}</td>
+                      <td>₦{{ sale.amount_paid|floatformat:2|intcomma }}</td>
                       <td>
                         {% if sale.is_fully_paid %}
                           <span class="badge badge-success">Fully Paid</span>
                         {% else %}
-                          <span class="text-danger">₦{{ sale.balance_due|floatformat:2 }}</span>
+                          <span class="text-danger">₦{{ sale.balance_due|floatformat:2|intcomma }}</span>
                         {% endif %}
                       </td>
                       <td>{{ sale.realtor.full_name }}</td>
