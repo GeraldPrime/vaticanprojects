@@ -1274,7 +1274,7 @@ def general_settings(request):
     if request.method == 'POST':
         # Update settings with form data
         settings.company_bank_name = request.POST.get('bank_name')
-        settings.company_account_ame = request.POST.get('account_name')  # Note: there's a typo in your model (ame not name)
+        settings.company_account_name = request.POST.get('account_name')  # Note: there's a typo in your model (ame not name)
         settings.company_account_number = request.POST.get('account_number')
         
         # Save the settings
