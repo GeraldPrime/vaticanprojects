@@ -100,7 +100,7 @@
                           <span class="text-danger">₦{{ sale.balance_due|floatformat:2|intcomma }}</span>
                         {% endif %}
                       </td>
-                      <td>{{ sale.realtor.full_name }}</td>
+                      <td>{{ sale.realtor.full_name }} {% if sale.realtor.is_executive %}<i class="ri-vip-crown-fill executive-crown ms-1"></i>{% endif %}</td>
                       <td>{{ sale.created_at|date:"M d, Y" }}</td>
                       <td>
                         <a href="{% url 'property_sale_detail' sale.id %}" class="btn btn-sm btn-info">

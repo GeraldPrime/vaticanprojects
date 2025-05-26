@@ -181,3 +181,53 @@ EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465  
+
+# # Email Configuration - Updated and Improved
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'machovector3@gmail.com'
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'  # Consider using environment variable for security
+# EMAIL_USE_TLS = True  # Changed from False to True
+# EMAIL_USE_SSL = False  # Changed from True to False (TLS and SSL shouldn't both be True)
+# EMAIL_PORT = 587  # Changed from 465 to 587 for TLS
+
+# # Alternative SSL configuration (uncomment if TLS doesn't work):
+# # EMAIL_USE_TLS = False
+# # EMAIL_USE_SSL = True
+# # EMAIL_PORT = 465
+
+# Timeout settings
+EMAIL_TIMEOUT = 30
+
+# Logging configuration to help debug email issues
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django.log'),
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        '__main__': {  # For your custom logger
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+# Security recommendation: Use environment variables for sensitive data
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ltks mykk ndie reoh')

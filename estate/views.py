@@ -13,7 +13,7 @@ from django.db.models import Q
 
 
 
-from .models import Property, PropertySale, Payment, FormUpload, General
+from .models import Property, PropertySale, Payment, FormUpload, General, EstateImage, Gallery
 from django.http import JsonResponse
 from decimal import Decimal,InvalidOperation
 from django.utils import timezone
@@ -40,6 +40,10 @@ from django.contrib.auth.forms import SetPasswordForm
 from django.db.models.functions import TruncMonth
 from datetime import datetime
 import json
+
+from django.views.decorators.http import require_http_methods
+from io import BytesIO
+from xhtml2pdf import pisa
     
 
 # User = get_user_model()
@@ -54,7 +58,16 @@ def about(request):
     return render(request, 'estate/about.html')
 
 def estates(request):
-    return render(request, 'estate/estates.html')
+    redan_city_images = EstateImage.objects.filter(estate='redan_city')
+    canaan_city_images = EstateImage.objects.filter(estate='canaan_city')
+    vatican_garden_images = EstateImage.objects.filter(estate='vatican_garden')
+    
+    context = {
+        'redan_city_images': redan_city_images,
+        'canaan_city_images': canaan_city_images,
+        'vatican_garden_images': vatican_garden_images,
+    }
+    return render(request, 'estate/estates.html', context)
 
 def buildingprojects(request):
     return render(request, 'estate/buildingprojects.html')
@@ -108,6 +121,24 @@ def realtors_check(request):
     }
     
     return render(request, 'estate/realtors_check.html', context)
+
+def gallery_view(request):
+    """Display gallery images with pagination"""
+    # Get all active gallery images ordered by the order field and creation date
+    gallery_images = Gallery.objects.filter(is_active=True).order_by('order', '-created_at')
+    
+    # Pagination - 12 images per page
+    paginator = Paginator(gallery_images, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        'gallery_images': page_obj,
+        'page_obj': page_obj,
+        'total_images': gallery_images.count(),
+    }
+    
+    return render(request, 'estate/gallery.html', context)
 
 
 # ====================================ADMIN INTERFACE================================================================================
@@ -1183,6 +1214,157 @@ def commissions_list(request):
     return render(request, 'user/commissions_list.html', context)
 
 
+# @login_required
+# def unpaid_commissions_print(request):
+#     """View to display unpaid commissions in a printable format"""
+#     # Get all unpaid commissions with related data
+#     unpaid_commissions = Commission.objects.filter(
+#         is_paid=False
+#     ).select_related(
+#         'realtor'
+#     ).order_by('realtor__last_name', 'realtor__first_name', '-created_at')
+    
+#     # Get property sales data for property names
+#     property_sales = {}
+#     for commission in unpaid_commissions:
+#         if commission.property_reference:
+#             try:
+#                 sale = PropertySale.objects.select_related('property_item').get(
+#                     reference_number=commission.property_reference
+#                 )
+#                 property_sales[commission.property_reference] = sale
+#             except PropertySale.DoesNotExist:
+#                 property_sales[commission.property_reference] = None
+    
+#     from django.db import models
+
+#     # Calculate totals
+#     total_unpaid_amount = unpaid_commissions.aggregate(
+#         total=models.Sum('amount')
+#     )['total'] or 0
+    
+#     # Group commissions by realtor for better organization
+#     commissions_by_realtor = {}
+#     for commission in unpaid_commissions:
+#         realtor_id = commission.realtor.id
+#         if realtor_id not in commissions_by_realtor:
+#             commissions_by_realtor[realtor_id] = {
+#                 'realtor': commission.realtor,
+#                 'commissions': [],
+#                 'total': 0
+#             }
+#         commissions_by_realtor[realtor_id]['commissions'].append(commission)
+#         commissions_by_realtor[realtor_id]['total'] += commission.amount
+    
+#     context = {
+#         'unpaid_commissions': unpaid_commissions,
+#         'commissions_by_realtor': commissions_by_realtor,
+#         'property_sales': property_sales,
+#         'total_unpaid_amount': total_unpaid_amount,
+#         'total_realtors': len(commissions_by_realtor),
+#         'total_commissions_count': unpaid_commissions.count(),
+#         'print_date': timezone.now(),
+#     }
+    
+#     return render(request, 'user/unpaid_commissions_print.html', context)
+
+
+
+@login_required
+def unpaid_commissions_print(request):
+    """View to display unpaid commissions in a printable format"""
+    # Get all unpaid commissions with related data
+    unpaid_commissions = Commission.objects.filter(
+        is_paid=False
+    ).select_related(
+        'realtor'
+    ).order_by('realtor__last_name', 'realtor__first_name', '-created_at')
+    
+    # Get property sales data for property names
+    property_sales = {}
+    for commission in unpaid_commissions:
+        if commission.property_reference:
+            try:
+                sale = PropertySale.objects.select_related('property_item').get(
+                    reference_number=commission.property_reference
+                )
+                property_sales[commission.property_reference] = sale
+            except PropertySale.DoesNotExist:
+                property_sales[commission.property_reference] = None
+    
+    from django.db import models
+
+    # Calculate totals
+    total_unpaid_amount = unpaid_commissions.aggregate(
+        total=models.Sum('amount')
+    )['total'] or 0
+    
+    # Group commissions by realtor for better organization
+    commissions_by_realtor = {}
+    for commission in unpaid_commissions:
+        realtor_id = commission.realtor.id
+        if realtor_id not in commissions_by_realtor:
+            commissions_by_realtor[realtor_id] = {
+                'realtor': commission.realtor,
+                'commissions': [],
+                'total': 0
+            }
+        commissions_by_realtor[realtor_id]['commissions'].append(commission)
+        commissions_by_realtor[realtor_id]['total'] += commission.amount
+    
+    context = {
+        'unpaid_commissions': unpaid_commissions,
+        'commissions_by_realtor': commissions_by_realtor,
+        'property_sales': property_sales,
+        'total_unpaid_amount': total_unpaid_amount,
+        'total_realtors': len(commissions_by_realtor),
+        'total_commissions_count': unpaid_commissions.count(),
+        'print_date': timezone.now(),
+    }
+    
+    return render(request, 'user/unpaid_commissions_print.html', context)
+
+@login_required
+def realtor_unpaid_commissions_print(request, realtor_id):
+    """View to display unpaid commissions for a specific realtor in a printable format"""
+    # Get the specific realtor
+    realtor = get_object_or_404(Realtor, id=realtor_id)
+    
+    # Get unpaid commissions for this specific realtor
+    unpaid_commissions = Commission.objects.filter(
+        realtor=realtor,
+        is_paid=False
+    ).order_by('-created_at')
+    
+    # Get property sales data for property names
+    property_sales = {}
+    for commission in unpaid_commissions:
+        if commission.property_reference:
+            try:
+                sale = PropertySale.objects.select_related('property_item').get(
+                    reference_number=commission.property_reference
+                )
+                property_sales[commission.property_reference] = sale
+            except PropertySale.DoesNotExist:
+                property_sales[commission.property_reference] = None
+    
+    from django.db import models
+    
+    # Calculate total unpaid amount for this realtor
+    total_unpaid_amount = unpaid_commissions.aggregate(
+        total=models.Sum('amount')
+    )['total'] or 0
+    
+    context = {
+        'realtor': realtor,
+        'unpaid_commissions': unpaid_commissions,
+        'property_sales': property_sales,
+        'total_unpaid_amount': total_unpaid_amount,
+        'print_date': timezone.now(),
+    }
+    
+    return render(request, 'user/realtor_unpaid_commissions_print.html', context)
+
 
 
 # =============================================================================================
@@ -1303,3 +1485,331 @@ def custom_404_view(request, exception):
     Custom 404 error handler that renders our 404.html template
     """
     return render(request, 'user/404.html', status=404)
+
+# ========================================================================================================
+
+
+
+
+@login_required
+def estate_images_list(request):
+    """Display all estate images organized by estate type"""
+    redan_city_images = EstateImage.objects.filter(estate='redan_city')
+    canaan_city_images = EstateImage.objects.filter(estate='canaan_city')
+    vatican_garden_images = EstateImage.objects.filter(estate='vatican_garden')
+    
+    context = {
+        'redan_city_images': redan_city_images,
+        'canaan_city_images': canaan_city_images,
+        'vatican_garden_images': vatican_garden_images,
+    }
+    
+    return render(request, 'user/estate_images_list.html', context)
+
+
+@login_required
+def add_estate_image(request):
+    """Add a new estate image"""
+    if request.method == 'POST':
+        estate = request.POST.get('estate')
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        order = request.POST.get('order', 0)
+        is_active = 'is_active' in request.POST
+        
+        # Validate estate type
+        valid_estates = ['redan_city', 'canaan_city', 'vatican_garden']
+        if estate not in valid_estates:
+            messages.error(request, "Invalid estate type selected.")
+            return redirect('estate_images_list')
+        
+        # Check if image file was uploaded
+        if 'image' not in request.FILES:
+            messages.error(request, "Please select an image to upload.")
+            return redirect('estate_images_list')
+        
+        # Create new estate image
+        image = EstateImage(
+            estate=estate,
+            title=title,
+            description=description,
+            image=request.FILES['image'],
+            order=order,
+            is_active=is_active
+        )
+        image.save()
+        
+        messages.success(request, f"Image '{title}' added successfully to {dict(EstateImage.ESTATE_CHOICES)[estate]}.")
+        return redirect('estate_images_list')
+    
+    # If not POST, redirect to list view
+    return redirect('estate_images_list')
+
+
+@login_required
+def edit_estate_image(request):
+    """Edit an existing estate image"""
+    if request.method == 'POST':
+        image_id = request.POST.get('image_id')
+        image = get_object_or_404(EstateImage, id=image_id)
+        
+        # Update fields
+        image.title = request.POST.get('title')
+        image.description = request.POST.get('description')
+        image.order = request.POST.get('order', 0)
+        image.is_active = 'is_active' in request.POST
+        
+        # Update image file if provided
+        if 'image' in request.FILES and request.FILES['image']:
+            image.image = request.FILES['image']
+        
+        image.save()
+        
+        messages.success(request, f"Image '{image.title}' updated successfully.")
+        return redirect('estate_images_list')
+    
+    # If not POST, redirect to list view
+    return redirect('estate_images_list')
+
+
+@login_required
+def delete_estate_image(request):
+    """Delete an estate image"""
+    if request.method == 'POST':
+        image_id = request.POST.get('image_id')
+        image = get_object_or_404(EstateImage, id=image_id)
+        estate_name = image.get_estate_display()
+        title = image.title
+        
+        image.delete()
+        
+        messages.success(request, f"Image '{title}' from {estate_name} deleted successfully.")
+    
+    return redirect('estate_images_list')
+
+
+# ----------------==================================-----------------------------------
+
+@login_required
+@require_http_methods(["POST"])
+def toggle_realtor_status(request, realtor_id):
+    """
+    Toggle realtor status between regular and executive.
+    Only staff members can access this view.
+    """
+    realtor = get_object_or_404(Realtor, id=realtor_id)
+    
+    # Store the old status for the success message
+    old_status = realtor.status_display
+    
+    # Toggle status
+    if realtor.status == 'regular':
+        realtor.promote_to_executive()
+        new_status = 'Executive'
+        message = f'{realtor.full_name} has been promoted to Executive Realtor! 👑'
+        message_tag = 'success'
+    else:
+        realtor.demote_to_regular()
+        new_status = 'Regular'
+        message = f'{realtor.full_name} has been changed to Regular Realtor.'
+        message_tag = 'info'
+    
+    # Add success message
+    messages.add_message(request, messages.SUCCESS if message_tag == 'success' else messages.INFO, message)
+    
+    # If it's an AJAX request, return JSON
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({
+            'success': True,
+            'new_status': new_status,
+            'is_executive': realtor.is_executive,
+            'message': message
+        })
+    
+    # Redirect back to the realtor detail page
+    return redirect('realtor_detail', id=realtor.id)
+
+
+@login_required
+@require_http_methods(["POST"])
+def bulk_update_realtor_status(request):
+    """
+    Bulk update multiple realtors' status.
+    Expects POST data with realtor_ids and target_status.
+    """
+    realtor_ids = request.POST.getlist('realtor_ids')
+    target_status = request.POST.get('target_status')
+    
+    if not realtor_ids or target_status not in ['regular', 'executive']:
+        messages.error(request, 'Invalid request parameters.')
+        return redirect('realtor_list')  # Adjust to your realtor list URL
+    
+    realtors = Realtor.objects.filter(id__in=realtor_ids)
+    updated_count = 0
+    
+    for realtor in realtors:
+        if target_status == 'executive' and realtor.status == 'regular':
+            realtor.promote_to_executive()
+            updated_count += 1
+        elif target_status == 'regular' and realtor.status == 'executive':
+            realtor.demote_to_regular()
+            updated_count += 1
+    
+    if updated_count > 0:
+        status_name = 'Executive' if target_status == 'executive' else 'Regular'
+        messages.success(request, f'{updated_count} realtor(s) have been updated to {status_name} status.')
+    else:
+        messages.info(request, 'No realtors were updated.')
+    
+    return redirect('realtor_list')  # Adjust to your realtor list URL
+
+
+
+# Optional: API endpoint for AJAX status updates
+def realtor_status_api(request, realtor_id):
+    """
+    API endpoint for realtor status operations.
+    GET: Return current status
+    POST: Update status
+    """
+    realtor = get_object_or_404(Realtor, id=realtor_id)
+    
+    if request.method == 'GET':
+        return JsonResponse({
+            'realtor_id': realtor.id,
+            'full_name': realtor.full_name,
+            'status': realtor.status,
+            'status_display': realtor.status_display,
+            'is_executive': realtor.is_executive,
+        })
+    
+    elif request.method == 'POST':
+        new_status = request.POST.get('status')
+        
+        if new_status not in ['regular', 'executive']:
+            return JsonResponse({'error': 'Invalid status'}, status=400)
+        
+        if new_status != realtor.status:
+            old_status = realtor.status_display
+            
+            if new_status == 'executive':
+                realtor.promote_to_executive()
+                message = f'{realtor.full_name} promoted to Executive! 👑'
+            else:
+                realtor.demote_to_regular()
+                message = f'{realtor.full_name} changed to Regular Realtor.'
+            
+            return JsonResponse({
+                'success': True,
+                'old_status': old_status,
+                'new_status': realtor.status_display,
+                'is_executive': realtor.is_executive,
+                'message': message
+            })
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'No change needed - realtor already has this status.'
+        })
+        
+        
+# /=====================================================
+@login_required
+def gallery_management(request):
+    """View to display all gallery images for management"""
+    gallery_images = Gallery.objects.all().order_by('order', '-created_at')
+    
+    context = {
+        'gallery_images': gallery_images,
+    }
+    return render(request, 'user/gallery_management.html', context)
+
+@login_required
+def add_gallery_image(request):
+    """View to add a new gallery image"""
+    if request.method == 'POST':
+        title = request.POST.get('title', '').strip()
+        description = request.POST.get('description', '').strip()
+        image = request.FILES.get('image')
+        order = request.POST.get('order', 0)
+        is_active = request.POST.get('is_active') == 'on'
+        
+        # Validation
+        if not image:
+            messages.error(request, 'Please select an image to upload.')
+            return redirect('gallery_management')
+        
+        try:
+            # Create new gallery image
+            gallery_image = Gallery.objects.create(
+                title=title if title else None,
+                description=description if description else None,
+                image=image,
+                order=int(order),
+                is_active=is_active
+            )
+            
+            messages.success(request, 'Gallery image added successfully!')
+            
+        except Exception as e:
+            messages.error(request, f'Error adding gallery image: {str(e)}')
+    
+    return redirect('gallery_management')
+
+@login_required
+def edit_gallery_image(request):
+    """View to edit an existing gallery image"""
+    if request.method == 'POST':
+        image_id = request.POST.get('image_id')
+        
+        try:
+            gallery_image = get_object_or_404(Gallery, id=image_id)
+            
+            # Update fields
+            title = request.POST.get('title', '').strip()
+            description = request.POST.get('description', '').strip()
+            order = request.POST.get('order', 0)
+            is_active = request.POST.get('is_active') == 'on'
+            new_image = request.FILES.get('image')
+            
+            gallery_image.title = title if title else None
+            gallery_image.description = description if description else None
+            gallery_image.order = int(order)
+            gallery_image.is_active = is_active
+            
+            # Update image if new one is provided
+            if new_image:
+                gallery_image.image = new_image
+            
+            gallery_image.save()
+            
+            messages.success(request, 'Gallery image updated successfully!')
+            
+        except Exception as e:
+            messages.error(request, f'Error updating gallery image: {str(e)}')
+    
+    return redirect('gallery_management')
+
+@login_required
+def delete_gallery_image(request):
+    """View to delete a gallery image"""
+    if request.method == 'POST':
+        image_id = request.POST.get('image_id')
+        
+        try:
+            gallery_image = get_object_or_404(Gallery, id=image_id)
+            
+            # Delete the image file from storage
+            if gallery_image.image:
+                gallery_image.image.delete(save=False)
+            
+            # Delete the database record
+            gallery_image.delete()
+            
+            messages.success(request, 'Gallery image deleted successfully!')
+            
+        except Exception as e:
+            messages.error(request, f'Error deleting gallery image: {str(e)}')
+    
+    return redirect('gallery_management')
+

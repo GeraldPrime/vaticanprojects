@@ -1,0 +1,553 @@
+Watching for file changes with StatReloader
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 39923
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 39923
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 39923
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /user/commissions/ HTTP/1.1" 200 95390
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 39880
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+Not Found: /commissions/unpaid/email/
+"POST /commissions/unpaid/email/ HTTP/1.1" 404 15552
+Not Found: /commissions/email-simple/
+"POST /commissions/email-simple/ HTTP/1.1" 404 15552
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 23763
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 23763
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /commissions/unpaid/print/ HTTP/1.1" 200 23763
+"GET /user/realtors_page HTTP/1.1" 200 67075
+"GET /user/realtor_detail/6 HTTP/1.1" 200 94124
+"GET /realtor/6/unpaid-commissions-print/ HTTP/1.1" 200 15410
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/realtor_detail/5 HTTP/1.1" 200 101741
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/realtor_detail/5 HTTP/1.1" 200 101741
+"GET /user/frontend-extras/ HTTP/1.1" 200 53806
+"GET /gallery-management/ HTTP/1.1" 200 53027
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 56096
+"GET /media/gallery/pexels-tima-miroshnichenko-5717573.jpg HTTP/1.1" 200 3404282
+"GET /gallery-management/ HTTP/1.1" 200 55836
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 16329
+"GET / HTTP/1.1" 200 60055
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/anew/bungalow%20(2).png HTTP/1.1" 200 10526971
+"GET /static/estate/images/anew/bungalow%20(7).png HTTP/1.1" 200 13743633
+"GET /static/estate/images/anew/bungalow%20(8).png HTTP/1.1" 200 12817115
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 200 44983
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 200 40385
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/3.png HTTP/1.1" 200 19020069
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 200 78407
+"GET /static/estate/images/anew/4.png HTTP/1.1" 200 16001282
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 200 334612
+"GET /admin/estate/property/ HTTP/1.1" 200 16197
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/core.js HTTP/1.1" 200 6208
+"GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /gallery-management/ HTTP/1.1" 200 57649
+"GET /media/gallery/pexels-tima-miroshnichenko-5717573.jpg HTTP/1.1" 304 0
+"GET /gallery-management/ HTTP/1.1" 200 58801
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 64878
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 200 2700895
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 70829
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 76674
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /media/gallery/bungalow_2.png HTTP/1.1" 200 10526971
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 82487
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/bungalow_2.png HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 200 61011
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 76644
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/pexels-tima-miroshnichenko-5717573.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /gallery HTTP/1.1" 301 0
+"GET /gallery/ HTTP/1.1" 200 16880
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/gallery/pexels-tima-miroshnichenko-5717573.jpg HTTP/1.1" 200 3404282
+"GET /gallery/ HTTP/1.1" 200 22958
+"GET /static/estate/images/anew/house22.jpg HTTP/1.1" 200 1292006
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 22983
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 82559
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 200 407320
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /media/gallery/pexels-tima-miroshnichenko-5717573.jpg HTTP/1.1" 304 0
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 88476
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 200 264413
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 94393
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 200 400093
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 100304
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 200 348409
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106171
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 200 420830
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 112086
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 200 429546
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 118001
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 200 399184
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 123936
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 200 358459
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 129851
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 200 378636
+"GET /gallery/ HTTP/1.1" 200 32863
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 32866
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 32866
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 32866
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 32887
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 16697
+"GET /static/estate/vendor/bootstrap/js/popper.min.js.map HTTP/1.1" 404 1946
+"GET /static/estate/vendor/bootstrap/js/bootstrap.min.js.map HTTP/1.1" 404 1955
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 404 1961
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /gallery/ HTTP/1.1" 200 32951
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 32951
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /contact/ HTTP/1.1" 200 19608
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/womanmakingcallss.jpg HTTP/1.1" 200 2039797
+"GET /downloadables/ HTTP/1.1" 200 19896
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 200 9641385
+"GET /estates/ HTTP/1.1" 200 45184
+"GET /static/estate/images/anew/canaanestate2.jpg HTTP/1.1" 200 70949
+"GET /media/estate_images/formpic2.jpg HTTP/1.1" 200 1909912
+"GET /static/estate/images/anew/canaanestate3.jpg HTTP/1.1" 200 61961
+"GET /static/estate/images/anew/house23.jpg HTTP/1.1" 200 42608
+"GET /media/estate_images/manonlaptop.jpg HTTP/1.1" 200 2700895
+"GET /static/estate/images/anew/4bedroombungalow.jpg HTTP/1.1" 200 41283
+"GET /static/estate/images/anew/4bedroomduplex.jpg HTTP/1.1" 200 37868
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/house24.jpg HTTP/1.1" 200 50581
+"GET /static/estate/images/anew/house19.jpg HTTP/1.1" 200 68169
+"GET /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
+"GET /buildingprojects/ HTTP/1.1" 200 119407
+"GET /static/estate/images/anew/house8.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/house9.jpg HTTP/1.1" 200 46986
+"GET /static/estate/images/anew/BUNGALOW%20COLOUR%20PLAN_page-0001.jpg HTTP/1.1" 200 506766
+"GET /static/estate/images/anew/apartment-building-city-with-copy-space.jpg HTTP/1.1" 200 592044
+"GET /static/estate/images/anew/bungalow%20(3).png HTTP/1.1" 200 9977248
+"GET /static/estate/images/anew/bungalow%20(2).png HTTP/1.1" 200 10526971
+"GET /static/estate/images/anew/bungalow%20(1).png HTTP/1.1" 200 10800988
+"GET /static/estate/images/anew/bungalow%20(4).png HTTP/1.1" 200 15718884
+"GET /static/estate/images/anew/duplex2.png HTTP/1.1" 200 16001282
+"GET /static/estate/images/anew/DUPLEX%20EDITED_page-0001.jpg HTTP/1.1" 200 591611
+"GET /static/estate/images/anew/duplex1.png HTTP/1.1" 200 19020069
+"GET /static/estate/images/anew/carcass5.jpg HTTP/1.1" 200 59723
+"GET /static/estate/images/anew/carcass3.jpg HTTP/1.1" 200 45704
+"GET /static/estate/images/anew/carcass8.jpg HTTP/1.1" 200 52216
+"GET /static/estate/images/anew/carcass1.jpg HTTP/1.1" 200 38440
+"GET /static/estate/images/anew/5bedroomduplex.jpg HTTP/1.1" 200 43965
+"GET /static/estate/images/anew/4bedroomduplexside.jpg HTTP/1.1" 200 55034
+"GET /static/estate/images/anew/5bedroomduplexplan.jpg HTTP/1.1" 200 96070
+"GET /static/estate/images/anew/bungalow%20(9).png HTTP/1.1" 200 2668065
+"GET /static/estate/images/anew/4bedroomduplexplan.jpg HTTP/1.1" 200 99885
+"GET /static/estate/images/anew/4bedroombungalowside.jpg HTTP/1.1" 200 38053
+"GET /static/estate/images/anew/duplex3.png HTTP/1.1" 200 12781330
+"GET /static/estate/images/anew/bungalowpln4.jpg HTTP/1.1" 200 43474
+"GET /static/estate/images/anew/3bedroombungalow.jpg HTTP/1.1" 200 39903
+"GET /static/estate/images/anew/3bedroombungalowplan.jpg HTTP/1.1" 200 46383
+"GET /static/estate/images/anew/2bedroombungalow.jpg HTTP/1.1" 200 35600
+"GET /static/estate/images/anew/2bedroombungalowplan.jpg HTTP/1.1" 200 76193
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/redanadvancedcarcass.jpg HTTP/1.1" 200 36221
+"GET /static/estate/images/anew/redancarcass.jpg HTTP/1.1" 200 37612
+"GET /static/estate/images/anew/duplex5.png HTTP/1.1" 200 19218725
+"GET /static/estate/images/anew/duplex4.png HTTP/1.1" 200 17276394
+"GET /about/ HTTP/1.1" 200 38063
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/house22.jpg HTTP/1.1" 200 1292006
+"GET /about/ HTTP/1.1" 200 38081
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/modern-building-seen-from.jpg HTTP/1.1" 200 1490733
+"GET /gallery/ HTTP/1.1" 200 32951
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 16697
+"GET /static/estate/vendor/bootstrap/js/bootstrap.min.js.map HTTP/1.1" 404 1955
+"GET /static/estate/vendor/bootstrap/js/popper.min.js.map HTTP/1.1" 404 1946
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 404 1961
+"GET /gallery/ HTTP/1.1" 200 32978
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 16697
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 404 1961
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/vendor/bootstrap/js/popper.min.js.map HTTP/1.1" 404 1946
+"GET /static/estate/vendor/bootstrap/js/bootstrap.min.js.map HTTP/1.1" 404 1955
+"GET /gallery/ HTTP/1.1" 200 33220
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 33242
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/?page=2 HTTP/1.1" 200 21780
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/?page=1 HTTP/1.1" 200 33242
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 123948
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /gallery/?page=1 HTTP/1.1" 200 31557
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /realtors-check/ HTTP/1.1" 200 15019
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/manonlaptop.jpg HTTP/1.1" 200 2700895
+"GET /realtors-check/ HTTP/1.1" 200 15019
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /realtors-check/?referral_code=61001678 HTTP/1.1" 200 48454
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/realtors/img_man_wearing_vr_9Ft1p0X.png HTTP/1.1" 200 3332893
+"GET /realtors-check/?referral_code=61001678 HTTP/1.1" 200 53305
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /realtors-check/?referral_code=30044499 HTTP/1.1" 200 36295
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/realtors/house66.png HTTP/1.1" 200 1152180
+"GET /realtors-check/?referral_code=44709285 HTTP/1.1" 200 55864
+"GET /media/realtors/dicksonimage_CUWuwnk.jpg HTTP/1.1" 200 48117
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /realtors-check/?referral_code=44709285 HTTP/1.1" 200 51238
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /realtors-check/?referral_code=44709285 HTTP/1.1" 200 55864
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /home/ HTTP/1.1" 200 60146
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 200 78407
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 200 44983
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 200 40385
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 200 334612
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/bungalow%20(8).png HTTP/1.1" 200 12817115
+"GET /static/estate/images/anew/bungalow%20(7).png HTTP/1.1" 200 13743633
+"GET /static/estate/images/anew/4.png HTTP/1.1" 200 16001282
+"GET /static/estate/images/anew/3.png HTTP/1.1" 200 19020069
+"GET /about/ HTTP/1.1" 200 38108
+"GET /static/estate/images/anew/modern-building-seen-from.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+"GET /static/admin/css/base.css HTTP/1.1" 200 22092
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/estate/realtor/ HTTP/1.1" 200 16909
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/estate/gallery/ HTTP/1.1" 200 19261
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /admin/estate/gallery/14/change/ HTTP/1.1" 200 15363
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8794
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677

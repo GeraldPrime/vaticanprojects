@@ -370,7 +370,41 @@
                                     </div>
                                     
                                     <!-- Right Column -->
+
                                     <div class="col-md">
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0"><i class="ri-team-line me-1"></i> Realtor Information</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group row mb-3">
+                <label for="realtor" class="col-sm-4 col-form-label">Selling Realtor</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control mb-2" id="realtor-search" placeholder="Search by name or referral code..." autocomplete="off">
+                    <select class="form-control" id="realtor" name="realtor" required>
+                        <option value="">-- Select Realtor --</option>
+                        {% for realtor in realtors %}
+                            <option value="{{ realtor.id }}" 
+                                    data-sponsor="{{ realtor.sponsor.id|default:'' }}" 
+                                    data-upline="{{ realtor.sponsor.sponsor.id|default:'' }}"
+                                    data-name="{{ realtor.full_name|lower }}"
+                                    data-code="{{ realtor.referral_code|lower }}">
+                                {{ realtor.full_name }}
+                                {% if realtor.is_executive %}👑{% endif %}
+                                , Referral code: {{ realtor.referral_code }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                                    <!-- <div class="col-md">
                                         
                                         <div class="card ">
                                             <div class="card-header bg-danger text-white">
@@ -383,7 +417,10 @@
                                                         <select class="form-control" id="realtor" name="realtor" required>
                                                             <option value="">-- Select Realtor --</option>
                                                             {% for realtor in realtors %}
-                                                                <option value="{{ realtor.id }}" data-sponsor="{{ realtor.sponsor.id|default:'' }}" data-upline="{{ realtor.sponsor.sponsor.id|default:'' }}">{{ realtor.full_name }} , Reffereal code: {{realtor.referral_code}}</option>
+                                                                <option value="{{ realtor.id }}" data-sponsor="{{ realtor.sponsor.id|default:'' }}" data-upline="{{ realtor.sponsor.sponsor.id|default:'' }}">{{ realtor.full_name }} 
+                                                            {% if realtor.is_executive %}
+                                                            👑
+                                                            {% endif %} , Reffereal code: {{realtor.referral_code}}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </div>
@@ -391,7 +428,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 
                                 <!-- Commission Section (For admin purposes) -->
@@ -490,6 +527,43 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('realtor-search');
+    const selectElement = document.getElementById('realtor');
+    const allOptions = Array.from(selectElement.options);
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase().trim();
+        
+        // Clear current options except the first one
+        selectElement.innerHTML = '<option value="">-- Select Realtor --</option>';
+        
+        // Filter and add matching options
+        allOptions.slice(1).forEach(option => {
+            const name = option.getAttribute('data-name') || '';
+            const code = option.getAttribute('data-code') || '';
+            
+            if (searchTerm === '' || 
+                name.includes(searchTerm) || 
+                code.includes(searchTerm)) {
+                selectElement.appendChild(option.cloneNode(true));
+            }
+        });
+        
+        // Reset selection if search term changes
+        selectElement.value = '';
+    });
+    
+    // Clear search when a realtor is selected
+    selectElement.addEventListener('change', function() {
+        if (this.value) {
+            searchInput.value = '';
+        }
+    });
+});
+</script>
 
 <script>
     const marital_status = document.getElementById("marital_status");
@@ -593,4 +667,5 @@
         calculateCommissions();
     });
 </script>
+
 {% endblock %}

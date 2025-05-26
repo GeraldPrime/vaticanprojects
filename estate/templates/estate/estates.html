@@ -204,15 +204,21 @@
 
             <div id="estateCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
+
+                   
+                    {% for image in canaan_city_images %}
             
-                    <div class="carousel-item active">
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <div class="d-flex justify-content-center">
-                            <img src="/static/estate/images/anew/canaanestate1.jpg"
+                            <img src="{{ image.image.url }}"
                                  class="d-block rounded shadow-sm w-md-80"
                                  alt="Image 1"
                                  style="height: 500px; object-fit: cover;">
                         </div>
                     </div>
+
+                    {% endfor %}
+
             
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center">

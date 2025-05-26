@@ -1,0 +1,381 @@
+{% extends 'estate/base.html' %}
+{% load static %}
+
+{% block body %}
+<!-- Banner Section Start -->
+<section class="banner-area pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap" style="background-image: url(/static/estate/images/anew/building-with-colorful-walls.jpg);">
+    <div class="corner-shapes"></div>
+    <div class="container container-1170 pb-200 rpb-0">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-xl-7 col-lg-8">
+                <div class="banner-content rmb-65 wow fadeInUp delay-0-2s">
+                    <nav aria-label="breadcrumb" class="mb-35 rmb-20">
+                        <ol class="breadcrumb wow fadeInUp delay-0-4s">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Gallery</li>
+                        </ol>
+                    </nav>
+                    <h1>Vatican Gardens Gallery</h1>
+                    <p>Explore our featured images</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Gallery Section Start -->
+<section class="gallery-section py-130 rpy-100">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center mb-70 rmb-50 wow fadeInUp delay-0-2s">
+                    <h2>Our Outreach & Properties Showcase</h2>
+                    <p>Discover exceptional properties and follow our outreach programs through our curated gallery featuring {{ total_images }} stunning images</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        {% if gallery_images %}
+        <div class="gallery-grid">
+            {% for image in gallery_images %}
+            <div class="gallery-item wow fadeInUp delay-0-{{ forloop.counter|add:1 }}s">
+                <div class="gallery-image-wrapper">
+                    <img src="{{ image.image.url }}" alt="{{ image.title|default:'Property Image' }}" class="gallery-image">
+                    
+                    <!-- Overlay -->
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            {% if image.title %}
+                            <h4 class="gallery-title" style="color: wheat;">{{ image.title }}</h4>
+                            {% endif %}
+                            {% if image.description %}
+                            <p class="gallery-description" style="color: wheat;">{{ image.description|truncatewords:15 }}</p>
+                            {% endif %}
+                            <div class="gallery-actions">
+                                <a href="{{ image.image.url }}" class="gallery-zoom" data-lightbox="gallery" data-title="{{ image.title|default:'Property Image' }}">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <div class="row mt-70 rmt-50">
+            <div class="col-12">
+                <div class="pagination-wrap text-center wow fadeInUp delay-0-2s">
+                    <nav aria-label="Gallery pagination">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=1" aria-label="First">
+                                        <i class="fas fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                        <i class="fas fa-angle-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ num }}</span>
+                                    </li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                        <i class="fas fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- Empty State -->
+        <div class="row">
+            <div class="col-12">
+                <div class="empty-gallery text-center py-100">
+                    <div class="empty-icon mb-30">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Gallery Coming Soon</h3>
+                    <p>We're currently updating our gallery with stunning property images. Please check back soon!</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- Gallery Section End -->
+
+<!-- Additional Styles -->
+<style>
+/* Gallery Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Gallery Item Styling */
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    background: #fff;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Wrapper */
+.gallery-image-wrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.1);
+}
+
+/* Overlay */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Gallery Content */
+.gallery-content {
+    text-align: center;
+    color: white;
+    padding: 30px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-content {
+    transform: translateY(0);
+}
+
+.gallery-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.gallery-description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Gallery Actions */
+.gallery-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.gallery-zoom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-zoom:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Pagination Styling */
+.pagination-wrap {
+    margin-top: 50px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.page-item .page-link {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #d6d5d5;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.page-item.active .page-link {
+    background: #007bff;
+    color: white;
+}
+
+.page-item .page-link:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Empty State */
+.empty-gallery {
+    text-align: center;
+    color: #666;
+}
+
+.empty-icon {
+    font-size: 80px;
+    color: #ddd;
+}
+
+.empty-gallery h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Section Title Enhancement */
+.section-title h2 {
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-title p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .gallery-title {
+        font-size: 20px;
+    }
+    
+    .gallery-description {
+        font-size: 13px;
+    }
+    
+    .gallery-content {
+        padding: 20px;
+    }
+}
+</style>
+
+<!-- Lightbox JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Configure lightbox
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': "Image %1 of %2"
+    });
+    
+    // Add smooth scrolling for pagination
+    const paginationLinks = document.querySelectorAll('.pagination .page-link');
+    paginationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Smooth scroll to top when changing pages
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+    });
+});
+</script>
+
+{% endblock body %}
