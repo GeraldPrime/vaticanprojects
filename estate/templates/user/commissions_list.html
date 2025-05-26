@@ -41,6 +41,25 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Add this button section to your existing commissions_list.html template -->
+            <!--     it right after the summary cards section and before the search/filter section -->
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'unpaid_commissions_print' %}" 
+                        class="btn btn-success" 
+                        target="_blank"
+                        title="Print Unpaid Commissions Report">
+                            <i class="fas fa-print me-2"></i>
+                            Print Unpaid Commissions Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        
             
             <!-- Search and Filter Section -->
             <div class="card mb-4">
@@ -122,6 +141,9 @@
                                     <td>
                                         <a href="{% url 'realtor_detail' id=commission.realtor.id %}">
                                             {{ commission.realtor.full_name }}
+                                            {% if commission.realtor.is_executive %}
+                                                <i class="ri-vip-crown-fill executive-crown ms-1"></i>
+                                            {% endif %}
                                         </a>
                                     </td>
                                     <td>₦{{ commission.amount|floatformat:2|intcomma }}</td>

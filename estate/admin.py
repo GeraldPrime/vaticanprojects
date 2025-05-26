@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from decimal import Decimal
-from .models import User, Realtor, Commission, Property, PropertySale, Payment, FormUpload
+from .models import User, Realtor, Commission, Property, PropertySale, Payment, FormUpload,Gallery
 
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'last_login', "image")
@@ -212,3 +212,16 @@ class FormUploadAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+    
+    
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('title','description','display_image', 'created_at', 'updated_at')
+    
+    
+    
+    def display_image(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="50" height="50" style="border-radius:50%;" />', obj.image.url)
+        return "No Image"
+    display_image.short_description = 'Profile'

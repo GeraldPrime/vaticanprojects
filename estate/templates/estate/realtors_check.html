@@ -1,6 +1,76 @@
 {% extends 'estate/base.html' %}
 
 {% block body %}
+    <style>
+        /* Executive styling */
+        .executive-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); }
+            to { box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .executive-crown {
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+        
+        .executive-card {
+            border: 2px solid #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+        
+        .executive-commission-card {
+            border: 3px solid #FFD700 !important;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .executive-commission-card::after {
+            content: '👑';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            opacity: 0.7;
+        }
+        
+        .executive-avatar {
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .regular-badge {
+            background: linear-gradient(45deg, #6c757d, #495057);
+            color: white;
+        }
+        
+        .executive-referral-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+        
+        .executive-title {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+    </style>
+
     <!-- Banner Section Start -->
     <section class="banner-area pt-220 pb-250 rpy-150 corner-shapes-wrap" style="background-image: url(/static/estate/images/anew/manonlaptop.jpg);">
         <div class="corner-shapes"></div>
@@ -42,7 +112,7 @@
                             <form method="GET" action="{% url 'realtors_check' %}">
                                 <div class="mb-3">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="referral_code" placeholder="Enter your referral code"  required>
+                                        <input type="text" class="form-control" name="referral_code" placeholder="Enter your referral code" required>
                                         <button class="btn btn-primary" type="submit">
                                             <i class="ri-search-line"></i> Search
                                         </button>
@@ -64,24 +134,48 @@
             <!-- Realtor Profile Section -->
             <div class="row mt-5">
                 <div class="col-sm-12">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm {% if realtor.is_executive %}executive-card{% endif %}">
                         <div class="card-header bg-white py-3">
-                            <h5 class="mb-0">Realtor Details</h5>
+                            <h5 class="mb-0 {% if realtor.is_executive %}executive-title{% endif %}">
+                                Realtor Details
+                                {% if realtor.is_executive %}
+                                    <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                {% endif %}
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-3 text-center">
                                     <div class="mb-3">
                                         {% if realtor.image %}
-                                            <img src="{{ realtor.image.url }}" alt="{{ realtor.full_name }}" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                            <img src="{{ realtor.image.url }}" alt="{{ realtor.full_name }}" 
+                                                 class="img-thumbnail rounded-circle {% if realtor.is_executive %}executive-avatar{% endif %}" 
+                                                 style="width: 150px; height: 150px; object-fit: cover;">
                                         {% else %}
-                                            <img src="/static/user/images/users/avatar-1.jpg" alt="Default avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                            <img src="/static/user/images/users/avatar-1.jpg" alt="Default avatar" 
+                                                 class="img-thumbnail rounded-circle {% if realtor.is_executive %}executive-avatar{% endif %}" 
+                                                 style="width: 150px; height: 150px; object-fit: cover;">
                                         {% endif %}
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <h4 class="text-uppercase fw-bold mb-2">{{ realtor.full_name }}</h4>
-                                    <p class="badge bg-primary mb-3">REAL ESTATE AGENT</p>
+                                    <h4 class="text-uppercase fw-bold mb-2">
+                                        {{ realtor.full_name }}
+                                        {% if realtor.is_executive %}
+                                            <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                        {% endif %}
+                                    </h4>
+                                    <div class="mb-3">
+                                        {% if realtor.is_executive %}
+                                            <span class="badge executive-badge px-3 py-2 fs-6">
+                                                👑 EXECUTIVE REALTOR
+                                            </span>
+                                        {% else %}
+                                            <span class="badge regular-badge px-3 py-2 fs-6">
+                                                REAL ESTATE AGENT
+                                            </span>
+                                        {% endif %}
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="mb-1"><i class="ri-mail-line me-2"></i> {{ realtor.email }}</p>
@@ -98,7 +192,7 @@
                             <!-- Commission Stats -->
                             <div class="row mb-4">
                                 <div class="col-md-4 mb-3">
-                                    <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card h-100 border-0 shadow-sm {% if realtor.is_executive %}executive-commission-card{% endif %}">
                                         <div class="card-body text-center p-4">
                                             <div class="rounded-circle bg-primary bg-opacity-10 p-3 mx-auto mb-3" style="width: 60px; height: 60px;">
                                                 <i class="ri-money-dollar-circle-line text-primary" style="font-size: 28px;"></i>
@@ -109,7 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card h-100 border-0 shadow-sm {% if realtor.is_executive %}executive-commission-card{% endif %}">
                                         <div class="card-body text-center p-4">
                                             <div class="rounded-circle bg-success bg-opacity-10 p-3 mx-auto mb-3" style="width: 60px; height: 60px;">
                                                 <i class="ri-check-double-line text-success" style="font-size: 28px;"></i>
@@ -120,7 +214,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card h-100 border-0 shadow-sm {% if realtor.is_executive %}executive-commission-card{% endif %}">
                                         <div class="card-body text-center p-4">
                                             <div class="rounded-circle bg-danger bg-opacity-10 p-3 mx-auto mb-3" style="width: 60px; height: 60px;">
                                                 <i class="ri-time-line text-danger" style="font-size: 28px;"></i>
@@ -135,16 +229,27 @@
                             <!-- Referral Code Section -->
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="card border-0 bg-light">
+                                    <div class="card border-0 {% if realtor.is_executive %}executive-referral-card bg-light{% else %}bg-light{% endif %}">
                                         <div class="card-body p-4">
                                             <div class="d-flex align-items-center">
                                                 <div class="me-3">
-                                                    <i class="ri-share-forward-line text-primary" style="font-size: 24px;"></i>
+                                                    <i class="ri-share-forward-line {% if realtor.is_executive %}executive-crown{% else %}text-primary{% endif %}" style="font-size: 24px;"></i>
                                                 </div>
                                                 <div>
-                                                    <h5 class="mb-1">Your Referral Code</h5>
-                                                    <h3 class="mb-1 text-primary fw-bold">{{ realtor.referral_code }}</h3>
-                                                    <p class="mb-0 text-muted">Share this code with potential realtors to earn commission on their sales.</p>
+                                                    <h5 class="mb-1">
+                                                        Your Referral Code
+                                                        {% if realtor.is_executive %}
+                                                            <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                                        {% endif %}
+                                                    </h5>
+                                                    <h3 class="mb-1 {% if realtor.is_executive %}executive-title{% else %}text-primary{% endif %} fw-bold">{{ realtor.referral_code }}</h3>
+                                                    <p class="mb-0 text-muted">
+                                                        {% if realtor.is_executive %}
+                                                            Share this premium executive code with potential realtors to earn enhanced commission on their sales.
+                                                        {% else %}
+                                                            Share this code with potential realtors to earn commission on their sales.
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +268,13 @@
                                                 </div>
                                                 <div>
                                                     <h5 class="mb-1">Referred By</h5>
-                                                    <p class="mb-0 fw-bold">{{ realtor.sponsor.full_name }} <span class="text-muted">({{ realtor.sponsor.referral_code }})</span></p>
+                                                    <p class="mb-0 fw-bold">
+                                                        {{ realtor.sponsor.full_name }} 
+                                                        {% if realtor.sponsor.is_executive %}
+                                                            <i class="ri-vip-crown-fill executive-crown ms-1"></i>
+                                                        {% endif %}
+                                                        <span class="text-muted">({{ realtor.sponsor.referral_code }})</span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,9 +291,9 @@
             {% if direct_referrals %}
             <div class="row mt-4">
                 <div class="col-md-12">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm {% if realtor.is_executive %}executive-card{% endif %}">
                         <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-                            <h5 class="mb-0">Your Direct Referrals</h5>
+                            <h5 class="mb-0 {% if realtor.is_executive %}executive-title{% endif %}">Your Direct Referrals</h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -198,7 +309,12 @@
                                     <tbody>
                                         {% for referral in direct_referrals %}
                                         <tr>
-                                            <td>{{ referral.full_name }}</td>
+                                            <td>
+                                                {{ referral.full_name }}
+                                                {% if referral.is_executive %}
+                                                    <i class="ri-vip-crown-fill executive-crown ms-1"></i>
+                                                {% endif %}
+                                            </td>
                                             <td><span class="badge bg-light text-dark">{{ referral.referral_code }}</span></td>
                                             <td>{{ referral.created_at|date:"M d, Y" }}</td>
                                             <td class="fw-bold">₦{{ referral.total_commission }}</td>
@@ -221,9 +337,14 @@
             {% if commissions %}
             <div class="row mt-4">
                 <div class="col-12">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm {% if realtor.is_executive %}executive-card{% endif %}">
                         <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-                            <h5 class="mb-0">Your Commissions</h5>
+                            <h5 class="mb-0 {% if realtor.is_executive %}executive-title{% endif %}">
+                                Your Commissions
+                                {% if realtor.is_executive %}
+                                    <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                {% endif %}
+                            </h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -241,7 +362,7 @@
                                         {% for commission in commissions %}
                                         <tr>
                                             <td>{{ commission.description }}</td>
-                                            <td><span class="text-primary">{{ commission.property_reference }}</span></td>
+                                            <td><span class="{% if realtor.is_executive %}executive-title{% else %}text-primary{% endif %}">{{ commission.property_reference }}</span></td>
                                             <td class="fw-bold">₦{{ commission.amount }}</td>
                                             <td>{{ commission.created_at|date:"M d, Y" }}</td>
                                             <td>

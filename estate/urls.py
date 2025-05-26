@@ -15,6 +15,8 @@ urlpatterns = [
     path('downloadables/', views.downloadables, name='downloadables'),
     path('contact/', views.contact, name='contact'),
     path('realtors-check/', views.realtors_check, name='realtors_check'),
+    path('gallery/', views.gallery_view, name='gallery'),
+
     
     
     # ======================ADMIN URLS=================================
@@ -53,6 +55,16 @@ urlpatterns = [
     # commission URLs
     path('user/commissions/', views.commissions_list, name='commissions_list'),
     
+    path('commissions/unpaid/print/', views.unpaid_commissions_print, name='unpaid_commissions_print'),
+    path('realtor/<int:realtor_id>/unpaid-commissions-print/', views.realtor_unpaid_commissions_print, name='realtor_unpaid_commissions_print'),
+    # Your other URLs...
+
+
+    
+    # ... rest of your URL patterns ...
+
+
+    
     # Property Sales URLs
     path('user/property-sales/', views.property_sales_list, name='property_sales_list'),
     path('user/property-sales/register/', views.register_property_sale, name='register_property_sale'),
@@ -70,6 +82,34 @@ urlpatterns = [
     # general settings: 
     path('user/settings/general/', views.general_settings, name='general_settings'),
     
+    
+    
+    path('estate-images/', views.estate_images_list, name='estate_images_list'),
+    # path('estate-images/add/', views.add_estate_image, name='add_estate_image'),
+    # path('estate-images/edit/', views.edit_estate_image, name='edit_estate_image'),
+    # path('estate-images/delete/', views.delete_estate_image, name='delete_estate_image'),
+    
+    
+     # Status management URLs
+    path('realtor/<int:realtor_id>/toggle-status/', 
+         views.toggle_realtor_status, 
+         name='toggle_realtor_status'),
+    
+    path('realtor/bulk-update-status/', 
+         views.bulk_update_realtor_status, 
+         name='bulk_update_realtor_status'),
+    
+    # API endpoint for AJAX operations (optional)
+    path('api/realtor/<int:realtor_id>/status/', 
+         views.realtor_status_api, 
+         name='realtor_status_api'),
+    
+    
+    # Gallery Management URLs
+    path('gallery-management/', views.gallery_management, name='gallery_management'),
+    path('add-gallery-image/', views.add_gallery_image, name='add_gallery_image'),
+    path('edit-gallery-image/', views.edit_gallery_image, name='edit_gallery_image'),
+    path('delete-gallery-image/', views.delete_gallery_image, name='delete_gallery_image'),
     
     
 ]
