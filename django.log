@@ -554,3 +554,334 @@ Watching for file changes with StatReloader
 "GET /user/ HTTP/1.1" 200 69939
 C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /gallery/ HTTP/1.1" 200 31557
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 304 0
+"GET /media/gallery/house3.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 304 0
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 304 0
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/commissions/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/commissions/ HTTP/1.1" 200 7324
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 200 312626
+"GET /static/user/css/app.min.css HTTP/1.1" 200 425084
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 200 761529
+"POST /user/signin/?next=/user/commissions/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70438
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 200 692
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 200 8069
+"GET /user/commissions/ HTTP/1.1" 200 101382
+"GET /user/commissions/?search=&payment_status=&realtor_id=&realtor_status=executive&property_ref=&date_from=&date_to= HTTP/1.1" 200 100827
+"GET /user/commissions/?search=&payment_status=&realtor_id=&realtor_status=regular&property_ref=&date_from=&date_to= HTTP/1.1" 200 80359
+Watching for file changes with StatReloader
+"GET /user/settings/general/ HTTP/1.1" 200 49313
+"GET /static/user/images/logo.png HTTP/1.1" 200 1836
+"GET /static/user/images/logo-sm.png HTTP/1.1" 200 826
+"GET /static/user/js/config.js HTTP/1.1" 200 1937
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /user/settings/general/ HTTP/1.1" 200 49313
+"GET /user/property-sales/ HTTP/1.1" 200 58346
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 22864
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 22864
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /realtor/6/unpaid-commissions-print/ HTTP/1.1" 200 15411
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 20261
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 22864
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24615
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24615
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/settings/general/ HTTP/1.1" 200 49313
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24615
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sales/11/ HTTP/1.1" 200 95638
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24615
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24622
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24621
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24621
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /home/ HTTP/1.1" 200 60146
+"GET /static/estate/vendor/magnific-popup/css/magnific-popup.min.css HTTP/1.1" 200 5260
+"GET /static/estate/vendor/nice-select/css/nice-select.min.css HTTP/1.1" 200 3076
+"GET /static/estate/vendor/slick/css/slick.min.css HTTP/1.1" 200 1346
+"GET /static/estate/vendor/animate.min.css HTTP/1.1" 200 59675
+"GET /static/estate/vendor/fontawesome-5.14.0.min.css HTTP/1.1" 200 173752
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 155845
+"GET /static/estate/css/style.css HTTP/1.1" 200 122535
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 200 44983
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 200 40385
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/bungalow%20(2).png HTTP/1.1" 200 10526971
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 200 78407
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 200 334612
+"GET /static/estate/images/anew/bungalow%20(8).png HTTP/1.1" 200 12817115
+"GET /static/estate/images/anew/bungalow%20(7).png HTTP/1.1" 200 13743633
+"GET /static/estate/images/anew/4.png HTTP/1.1" 200 16001282
+"GET /static/estate/images/anew/3.png HTTP/1.1" 200 19020069
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24671
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24575
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+Internal Server Error: /user/property-sale/11/invoice/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1141, in property_sale_invoice
+    return render(request, 'user/property_sale_invoice.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 240, in do_block
+    parser.invalid_block_tag(endblock, "endblock", acceptable_endblocks)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 702: 'endblock', expected 'endblock' or 'endblock body'. Did you forget to register or load this tag?
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 500 184706
+Internal Server Error: /user/property-sale/11/invoice/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1141, in property_sale_invoice
+    return render(request, 'user/property_sale_invoice.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 703: 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 500 192063
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 24575
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 16402
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 20534
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /user/property-sale/11/invoice/ HTTP/1.1" 200 20534
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 404 1904
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 1952
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 404 1892
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /home/ HTTP/1.1" 200 60230
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /ishiagu/ HTTP/1.1" 200 18890
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
+"GET /ishiagu/ HTTP/1.1" 200 19161
+"GET /static/estate/images/anew/shop1.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/anew/shop2.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/anew/shop3.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /ishiagu/ HTTP/1.1" 200 19162
+"GET /static/estate/images/anew/shop2.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/shops/shop2.jpg HTTP/1.1" 200 531304
+"GET /static/estate/images/anew/shop3.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /ishiagu/ HTTP/1.1" 200 19163
+"GET /static/estate/images/anew/shop3.jpg HTTP/1.1" 404 1898
+"GET /static/estate/images/shops/shop3.jpg HTTP/1.1" 200 504031
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /ishiagu/ HTTP/1.1" 200 19421
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/images/shops/shopvideo.np4 HTTP/1.1" 404 1892
+"GET /ishiagu/ HTTP/1.1" 200 19314
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /ishiagu/ HTTP/1.1" 200 19292
+- Broken pipe from ('127.0.0.1', 61700)
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/aerial.jpg HTTP/1.1" 200 10313865
+- Broken pipe from ('127.0.0.1', 61752)

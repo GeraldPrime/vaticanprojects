@@ -71,6 +71,9 @@ def estates(request):
 def buildingprojects(request):
     return render(request, 'estate/buildingprojects.html')
 
+def ishiagu(request):
+    return render(request, 'estate/ishiagu.html')
+
 def downloadables(request):
     """View to display all uploaded forms"""
     forms = FormUpload.objects.all().order_by('created_at')
@@ -1156,6 +1159,13 @@ def commissions_list(request):
     property_ref = request.GET.get('property_ref', '')
     date_from = request.GET.get('date_from', '')
     date_to = request.GET.get('date_to', '')
+    # In your view function
+    realtor_status = request.GET.get('realtor_status', '')
+
+# Apply the filter if realtor_status is provided
+
+
+
     
     # Apply filters
     if search_query:
@@ -1183,6 +1193,9 @@ def commissions_list(request):
     if date_to:
         commissions = commissions.filter(created_at__lte=date_to)
     
+    if realtor_status:
+        commissions = commissions.filter(realtor__status=realtor_status)
+    
     # Calculate summary statistics
     total_commissions = commissions.aggregate(Sum('amount'))['amount__sum'] or 0
     paid_commissions = commissions.filter(is_paid=True).aggregate(Sum('amount'))['amount__sum'] or 0
@@ -1208,6 +1221,8 @@ def commissions_list(request):
         'realtor_id': int(realtor_id) if realtor_id and realtor_id.isdigit() else None,
         'date_from': date_from,
         'date_to': date_to,
+        # Pass it to the template context
+        'realtor_status' : realtor_status
     }
     
     return render(request, 'user/commissions_list.html', context)
