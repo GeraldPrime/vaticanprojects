@@ -42,8 +42,7 @@ from datetime import datetime
 import json
 
 from django.views.decorators.http import require_http_methods
-from io import BytesIO
-from xhtml2pdf import pisa
+
     
 
 # User = get_user_model()
