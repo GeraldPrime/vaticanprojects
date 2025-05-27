@@ -88,8 +88,19 @@
                                 {% for realtor in realtors %}
                                     <option value="{{ realtor.id }}" {% if realtor_id == realtor.id %}selected{% endif %}>
                                         {{ realtor.full_name }}
+                                        {% if realtor.is_executive %}
+                                            (Executive)
+                                        {% endif %}
                                     </option>
                                 {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="realtor_status" class="form-label">Realtor Status</label>
+                            <select class="form-select" id="realtor_status" name="realtor_status">
+                                <option value="" {% if realtor_status == '' %}selected{% endif %}>All Types</option>
+                                <option value="executive" {% if realtor_status == 'executive' %}selected{% endif %}>Executive</option>
+                                <option value="regular" {% if realtor_status == 'regular' %}selected{% endif %}>Regular</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -125,10 +136,11 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Realtor</th>
+                                    <th>Status</th>
                                     <th>Amount</th>
                                     <th>Description</th>
                                     <th>Property Ref</th>
-                                    <th>Status</th>
+                                    <th>Payment Status</th>
                                     <th>Created Date</th>
                                     <th>Payment Date</th>
                                     <th>Actions</th>
@@ -145,6 +157,13 @@
                                                 <i class="ri-vip-crown-fill executive-crown ms-1"></i>
                                             {% endif %}
                                         </a>
+                                    </td>
+                                    <td>
+                                        {% if commission.realtor.is_executive %}
+                                        <span class="badge bg-primary">Executive</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">Regular</span>
+                                        {% endif %}
                                     </td>
                                     <td>₦{{ commission.amount|floatformat:2|intcomma }}</td>
                                     <td>{{ commission.description }}</td>
@@ -181,7 +200,7 @@
                                 </tr>
                                 {% empty %}
                                 <tr>
-                                    <td colspan="9" class="text-center">No commissions found.</td>
+                                    <td colspan="10" class="text-center">No commissions found.</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -220,6 +239,7 @@
                                 <a class="page-link" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
+            
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" aria-label="Last">

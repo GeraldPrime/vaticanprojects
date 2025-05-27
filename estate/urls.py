@@ -16,6 +16,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('realtors-check/', views.realtors_check, name='realtors_check'),
     path('gallery/', views.gallery_view, name='gallery'),
+    path('ishiagu/', views.ishiagu, name='ishiagu'),
 
     
     

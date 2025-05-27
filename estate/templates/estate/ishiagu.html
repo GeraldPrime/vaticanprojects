@@ -1,0 +1,141 @@
+{% extends 'estate/base.html' %}
+
+{% block body %}
+
+<!-- Banner Section -->
+<section class="banner-area pt-220 pb-250 rpt-150 rpb-100 corner-shapes-wrap" style="background-image: url(/static/estate/images/anew/aerial.jpg); background-size: cover; background-position: center;">
+    <div class="corner-shapes"></div>
+    <div class="container container-1170 pb-200 rpb-0">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-xl-7 col-lg-8">
+                <div class="banner-content rmb-65 wow fadeInUp delay-0-2s text-white">
+                    <nav aria-label="breadcrumb" class="mb-35 rmb-20">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Extras</li>
+                        </ol>
+                    </nav>
+                    <h1>Own a Shop @ Ishiagu Modern Market</h1>
+                    <p class="lead">Discover modern shops available at Isiagu Modern Market, a prime location for your business endeavors.</p>
+                    <h2 class="mt-4">Starting From <span style="color: #FFD700;">₦1.5M</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Details -->
+<section class="project-details-area pt-120 pb-90 rpt-100 rpb-70">
+    <div class="container">
+        <div class="row gap-90">
+            <div class="col-lg-8">
+                <div class="project-details-content">
+                    <h3 class="title mb-30">About Isiagu Modern Market Shops</h3>
+                    <p>Vatican Garden Projects, in partnership with I.C.D.U Federated, presents an exclusive opportunity to own a shop in the thriving Isiagu Modern Market. This market is strategically located in Amaeze Isiagu Ivo L.G.A., Ebonyi State, offering a vibrant environment for commerce and growth.</p>
+                    <p>The shops are designed to meet modern standards, providing a conducive space for various businesses. With flexible payment plans, owning a shop at this prime location has never been easier.</p>
+
+                    <h3 class="title mt-50 mb-30">Payment Plan</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center payment-plan-table">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>MONTHS</th>
+                                    <th>OUTRIGHT PAYMENT</th>
+                                    <th>INITIAL PAYMENT</th>
+                                    <th>MONTHLY PAYMENT</th>
+                                    <th>REMAINING MONTHS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0-3</td>
+                                    <td>₦7M</td>
+                                    <td>₦3M</td>
+                                    <td>₦2M</td>
+                                    <td>2 MONTHS</td>
+                                </tr>
+                                <tr>
+                                    <td>0-6</td>
+                                    <td>₦7.5M</td>
+                                    <td>₦1.5M</td>
+                                    <td>₦1M</td>
+                                    <td>6 MONTHS</td>
+                                </tr>
+                                <tr>
+                                    <td>0-12</td>
+                                    <td>₦8M</td>
+                                    <td>₦2M</td>
+                                    <td>₦500,000</td>
+                                    <td>12 MONTHS</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-4 text-center text-dark"><strong>All payments should be in favour of <span class="text-primary">VATICAN GARDEN PROJECTS</span><br> Account Number: <strong class="text-danger">1548984155</strong> (Access Bank)</strong></p>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="project-info-wrap bg-light p-4 rounded shadow">
+                    <h4 class="mb-4">Project Information</h4>
+                    <ul class="list-unstyled project-info-list">
+                        <li class="d-flex justify-content-between mb-3"><strong>Project Name:</strong><span>Ishiagu Modern Market</span></li>
+                        <li class="d-flex justify-content-between mb-3"><strong>Location:</strong><span>Amaeze Isiagu, Ebonyi State</span></li>
+                        <li class="d-flex justify-content-between mb-3"><strong>Developer:</strong><span>Vatican Garden Projects</span></li>
+                        <li class="d-flex justify-content-between mb-3"><strong>Partnership:</strong><span>I.C.D.U Federated</span></li>
+                        <li class="d-flex justify-content-between mb-3"><strong>Starting Price:</strong><span class="text-primary">₦1.5M</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery -->
+<section class="image-gallery py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center mb-4">Gallery</h3>
+        <div class="row g-3">
+            <div class="col-md-4 col-sm-6">
+                <img src="/static/estate/images/shops/shop2.jpg" class="img-fluid rounded shadow-sm" alt="Shop Image 1">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="/static/estate/images/shops/shop3.jpg" class="img-fluid rounded shadow-sm" alt="Shop Image 2">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <video width="100%" height="auto" controls class="rounded shadow-sm">
+                    <source src="/static/estate/images/shops/shopvideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <!-- Add more image blocks as needed -->
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .payment-plan-table thead th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+    .payment-plan-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .payment-plan-table tbody tr:hover {
+        background-color: #eef1f5;
+    }
+    .project-info-wrap {
+        border-left: 5px solid #007bff;
+    }
+    .image-gallery img {
+        transition: transform 0.3s ease-in-out;
+    }
+    .image-gallery img:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+{% endblock body %}
