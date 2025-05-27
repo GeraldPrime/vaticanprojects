@@ -551,3 +551,6 @@ Watching for file changes with StatReloader
 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"GET /user/ HTTP/1.1" 200 69939
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
