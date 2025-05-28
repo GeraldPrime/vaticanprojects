@@ -1140,3 +1140,27 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'realtor_register_with_referr
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
 "GET /realtors-check/?referral_code=30044499 HTTP/1.1" 200 45080
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/estate/realtor/ HTTP/1.1" 200 18876
+"GET /media/realtors/formpic2.jpg HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/realtors/guymoney.jpg HTTP/1.1" 304 0
+"GET /admin/estate/gallery/ HTTP/1.1" 200 19685
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/gallery/IMG-20250524-WA0002.jpg HTTP/1.1" 200 378636
+"GET /media/gallery/IMG-20250524-WA0009.jpg HTTP/1.1" 200 264413
+"GET /media/gallery/IMG-20250524-WA0001.jpg HTTP/1.1" 200 358459
+"GET /media/gallery/IMG-20250524-WA0007.jpg HTTP/1.1" 200 400093
+"GET /media/gallery/IMG-20250524-WA0006.jpg HTTP/1.1" 200 399184
+"GET /media/gallery/IMG-20250524-WA0004.jpg HTTP/1.1" 200 420830
+"GET /media/gallery/house3.jpg HTTP/1.1" 200 61011
+"GET /media/gallery/IMG-20250524-WA0003.jpg HTTP/1.1" 200 348409
+"GET /media/gallery/IMG-20250524-WA0005.jpg HTTP/1.1" 200 429546
+"GET /media/gallery/IMG-20250524-WA0008.jpg HTTP/1.1" 200 407320
+"GET /media/gallery/manonlaptop.jpg HTTP/1.1" 200 2700895
+"GET /media/gallery/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
+"GET /admin/estate/general/ HTTP/1.1" 200 13642
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
