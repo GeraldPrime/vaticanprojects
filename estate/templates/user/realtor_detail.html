@@ -1,5 +1,3 @@
-
-
 {% extends 'user/base.html' %}
 {% load humanize %}
 
@@ -65,6 +63,67 @@
         .regular-badge {
             background: linear-gradient(45deg, #6c757d, #495057);
             color: white;
+        }
+
+        /* Referral Link Styles */
+        .referral-link-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .executive .referral-link-section {
+            border: 2px dashed #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+        }
+        
+        .copy-link-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .copy-link-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            color: white;
+        }
+        
+        .executive .copy-link-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .referral-code-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            margin: 10px 0;
+        }
+        
+        .executive .referral-code-display {
+            color: #B8860B;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .copy-success {
+            color: #27ae60;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .copy-success.show {
+            opacity: 1;
         }
     </style>
 
@@ -243,23 +302,56 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- Referral Code Section -->
-                                                <div class="alert alert-info {% if realtor.is_executive %}executive-card{% endif %}">
-                                                    <h5 class="mt-0">
-                                                        <i class="ri-share-forward-line me-1"></i> 
-                                                        Referral Code
-                                                        {% if realtor.is_executive %}
-                                                            <i class="ri-vip-crown-fill executive-crown ms-2"></i>
-                                                        {% endif %}
-                                                    </h5>
-                                                    <h3 class="mb-1">{{ realtor.referral_code }}</h3>
-                                                    <p class="mb-0">
-                                                        {% if realtor.is_executive %}
-                                                            Share this premium executive code with potential realtors to earn enhanced commission on their sales.
-                                                        {% else %}
-                                                            Share this code with potential realtors to earn commission on their sales.
-                                                        {% endif %}
-                                                    </p>
+                                                <!-- Enhanced Referral Code Section with Copyable Link -->
+                                                <div class="alert alert-info {% if realtor.is_executive %}executive-card executive{% endif %}">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-8">
+                                                            <h5 class="mt-0">
+                                                                <i class="ri-share-forward-line me-1"></i> 
+                                                                Referral Code
+                                                                {% if realtor.is_executive %}
+                                                                    <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                                                {% endif %}
+                                                            </h5>
+                                                            <div class="referral-code-display">{{ realtor.referral_code }}</div>
+                                                            <p class="mb-0">
+                                                                {% if realtor.is_executive %}
+                                                                    Share this premium executive code with potential realtors to earn enhanced commission on their sales.
+                                                                {% else %}
+                                                                    Share this code with potential realtors to earn commission on their sales.
+                                                                {% endif %}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-4 text-end">
+                                                            <button class="copy-link-button" onclick="copyReferralCode()">
+                                                                <i class="ri-file-copy-line me-1"></i>Copy Code
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Copyable Referral Link Section -->
+                                                    <div class="referral-link-section mt-3">
+                                                        <h6 class="mb-2">
+                                                            <i class="ri-links-line me-1"></i>
+                                                            {% if realtor.is_executive %}Premium {% endif %}Registration Link
+                                                        </h6>
+                                                        <div class="input-group">
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="referralLink" 
+                                                                   value="{{ request.scheme }}://{{ request.get_host }}{% url 'realtor_register_with_referral' realtor.referral_code %}"
+                                                                   readonly>
+                                                            <button class="btn copy-link-button" onclick="copyReferralLink()">
+                                                                <i class="ri-file-copy-line"></i>
+                                                            </button>
+                                                        </div>
+                                                        <small class="text-muted mt-2 d-block">
+                                                            Share this link for direct registration with your referral code
+                                                        </small>
+                                                        <div class="copy-success mt-2" id="copySuccess">
+                                                            <i class="ri-check-line me-1"></i>Link copied successfully!
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 {% if realtor.sponsor %}
@@ -485,4 +577,49 @@
             <!-- container -->
         </div>
     </div>
+
+    <!-- JavaScript for Copy Functionality -->
+    <script>
+        function copyReferralCode() {
+            const codeText = "{{ realtor.referral_code }}";
+            
+            navigator.clipboard.writeText(codeText).then(function() {
+                showCopySuccess('Referral code copied to clipboard!');
+            }).catch(function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = codeText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopySuccess('Referral code copied to clipboard!');
+            });
+        }
+        
+        function copyReferralLink() {
+            const linkElement = document.getElementById('referralLink');
+            linkElement.select();
+            linkElement.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(linkElement.value).then(function() {
+                showCopySuccess('Referral link copied to clipboard!');
+            }).catch(function() {
+                document.execCommand('copy');
+                showCopySuccess('Referral link copied to clipboard!');
+            });
+        }
+        
+        function showCopySuccess(message) {
+            // Show success message
+            const successElement = document.getElementById('copySuccess');
+            successElement.textContent = message;
+            successElement.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(function() {
+                successElement.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 {% endblock body %}

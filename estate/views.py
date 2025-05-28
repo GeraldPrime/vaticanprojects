@@ -1827,3 +1827,83 @@ def delete_gallery_image(request):
     
     return redirect('gallery_management')
 
+
+def realtor_register(request, referral_code=None):
+    # Determine sponsor code
+    sponsor_code = referral_code if referral_code else '44709285'  # Default sponsor code
+    
+    # Verify if referral code exists (optional validation)
+    sponsor_exists = False
+    if referral_code:
+        sponsor_exists = Realtor.objects.filter(referral_code=referral_code).exists()
+        if not sponsor_exists:
+            sponsor_code = '44709285'  # Fall back to default if invalid
+    
+    if request.method == 'POST':
+        try:
+            # Get form data
+            first_name = request.POST.get('first_name', '').strip()
+            last_name = request.POST.get('last_name', '').strip()
+            email = request.POST.get('email', '').strip()
+            phone = request.POST.get('phone', '').strip()
+            address = request.POST.get('address', '').strip()
+            country = request.POST.get('country', '').strip()
+            bank_name = request.POST.get('bank_name', '').strip()
+            account_number = request.POST.get('account_number', '').strip()
+            sponsor_code_form = request.POST.get('sponsor_code', '').strip()
+            
+            # Basic validation
+            if not all([first_name, last_name, email, phone, address, country, bank_name, account_number]):
+                messages.error(request, 'All fields are required.')
+                return render(request, 'realtor_register.html', {
+                    'sponsor_code': sponsor_code,
+                    'form_data': request.POST
+                })
+            
+            # Check if email already exists
+            if Realtor.objects.filter(email=email).exists():
+                messages.error(request, 'A realtor with this email already exists.')
+                return render(request, 'realtor_register.html', {
+                    'sponsor_code': sponsor_code,
+                    'form_data': request.POST
+                })
+            
+            # Handle image upload
+            image = request.FILES.get('image')
+            
+            # Create new realtor
+            realtor = Realtor(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                phone=phone,
+                address=address,
+                country=country,
+                bank_name=bank_name,
+                account_number=account_number,
+                sponsor_code=sponsor_code_form,
+                image=image
+            )
+            
+            realtor.save()  # This will trigger the save method and generate referral_code
+            
+            messages.success(request, 'Registration successful! Your referral code has been generated.')
+            
+            # Redirect to success page or show success message with referral code
+            return render(request, 'estate/realtor_register_success.html', {
+                'realtor': realtor,
+                'referral_code': realtor.referral_code
+            })
+            
+        except Exception as e:
+            messages.error(request, f'Registration failed: {str(e)}')
+            return render(request, 'estate/realtor_register.html', {
+                'sponsor_code': sponsor_code,
+                'form_data': request.POST
+            })
+    
+    # GET request - show form
+    return render(request, 'estate/realtor_register.html', {
+        'sponsor_code': sponsor_code,
+        'referral_code': referral_code
+    })

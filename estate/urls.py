@@ -113,6 +113,14 @@ urlpatterns = [
     path('delete-gallery-image/', views.delete_gallery_image, name='delete_gallery_image'),
     
     
+     #     refferal
+    path('realtor/register/', views.realtor_register, name='realtor_register'),
+    path('realtor/register/<str:referral_code>/', views.realtor_register, name='realtor_register_with_referral'),
+    
+
+
+    
+    
 ]
 if settings.DEBUG:  # Only serve media files during development
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

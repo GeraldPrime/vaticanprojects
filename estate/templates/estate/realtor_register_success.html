@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    {% load static %}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Title -->
+    <title>Vatican Gardens Projects || Registration Success</title>
+    <!-- Favicon Icon -->
+    <link
+      rel="shortcut icon"
+      href="/static/estate/images/logos/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/estate/vendor/fontawesome-5.14.0.min.css" />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="/static/estate/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/static/estate/css/style.css" />
+
+    <style>
+        .success-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 50px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        
+        .referral-code-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .referral-code {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            letter-spacing: 3px;
+            margin: 10px 0;
+        }
+        
+        .copy-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-home {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check fa-3x text-white"></i>
+            </div>
+            <h2 class="text-success mb-3">Registration Successful!</h2>
+            <p class="text-muted mb-4">Welcome to Vatican Gardens, {{ realtor.full_name }}!</p>
+            
+            <div class="referral-code-box">
+                <h4 class="text-primary">Your Referral Code</h4>
+                <div class="referral-code" id="referralCode">{{ referral_code }}</div>
+                <button class="copy-button" onclick="copyReferralCode()">
+                    <i class="fas fa-copy me-2"></i>Copy Code
+                </button>
+                <p class="text-muted mt-3 mb-0">
+                    Share this code with others to earn referral commissions!
+                </p>
+            </div>
+            
+            <div class="mt-4">
+                <p class="text-muted">
+                    Your registration link to share:
+                </p>
+                <div class="input-group">
+                    <input type="text" 
+                           class="form-control" 
+                           id="referralLink" 
+                           value="{{ request.scheme }}://{{ request.get_host }}{% url 'realtor_register_with_referral' referral_code %}"
+                           readonly>
+                    <button class="btn btn-outline-primary" onclick="copyReferralLink()">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <a href="/" class="btn-home">
+                <i class="fas fa-home me-2"></i>Go to Homepage
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/estate/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/static/estate/vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script>
+        function copyReferralCode() {
+            const codeElement = document.getElementById('referralCode');
+            const code = codeElement.textContent;
+            
+            navigator.clipboard.writeText(code).then(function() {
+                alert('Referral code copied to clipboard!');
+            }).catch(function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Referral code copied to clipboard!');
+            });
+        }
+        
+        function copyReferralLink() {
+            const linkElement = document.getElementById('referralLink');
+            linkElement.select();
+            linkElement.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(linkElement.value).then(function() {
+                alert('Referral link copied to clipboard!');
+            }).catch(function() {
+                document.execCommand('copy');
+                alert('Referral link copied to clipboard!');
+            });
+        }
+    </script>
+  </body>
+</html>

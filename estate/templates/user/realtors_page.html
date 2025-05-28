@@ -175,6 +175,12 @@
                                                         <p class="text-muted mb-0 fs-14">
                                                             Total Commission: <strong>₦{{ realtor.total_commission|floatformat:2 }}</strong>
                                                         </p>
+                                                    {% else %}
+                                                        <p class="text-muted mb-0 fs-14">
+                                                            Total Commission: <strong>₦ 0</strong>
+                                                        </p>
+
+
                                                     {% endif %}
                                                 </div>
                                                 {% if realtor.is_executive %}
