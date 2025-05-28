@@ -69,6 +69,64 @@
             background-clip: text;
             font-weight: bold;
         }
+        
+        /* Referral sharing styles */
+        .referral-share-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .executive-referral-share-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.1));
+            border: 2px dashed #FFD700;
+        }
+        
+        .referral-code-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .executive-referral-code-display {
+            color: #b8860b;
+            border: 2px solid #FFD700;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 220, 0.8));
+        }
+        
+        .copy-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .executive-copy-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .executive-copy-button:hover {
+            color: #000;
+        }
     </style>
 
     <!-- Banner Section Start -->
@@ -226,31 +284,70 @@
                                 </div>
                             </div>
 
-                            <!-- Referral Code Section -->
+                            <!-- Referral Code & Sharing Section -->
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="card border-0 {% if realtor.is_executive %}executive-referral-card bg-light{% else %}bg-light{% endif %}">
-                                        <div class="card-body p-4">
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <i class="ri-share-forward-line {% if realtor.is_executive %}executive-crown{% else %}text-primary{% endif %}" style="font-size: 24px;"></i>
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-1">
-                                                        Your Referral Code
-                                                        {% if realtor.is_executive %}
-                                                            <i class="ri-vip-crown-fill executive-crown ms-2"></i>
-                                                        {% endif %}
-                                                    </h5>
-                                                    <h3 class="mb-1 {% if realtor.is_executive %}executive-title{% else %}text-primary{% endif %} fw-bold">{{ realtor.referral_code }}</h3>
-                                                    <p class="mb-0 text-muted">
-                                                        {% if realtor.is_executive %}
-                                                            Share this premium executive code with potential realtors to earn enhanced commission on their sales.
-                                                        {% else %}
-                                                            Share this code with potential realtors to earn commission on their sales.
-                                                        {% endif %}
-                                                    </p>
-                                                </div>
+                                    <div class="referral-share-section {% if realtor.is_executive %}executive-referral-share-section{% endif %}">
+                                        <div class="text-center mb-4">
+                                            <h4 class="{% if realtor.is_executive %}executive-title{% else %}text-primary{% endif %}">
+                                                <i class="ri-share-forward-line me-2"></i>
+                                                Share Your Referral Code
+                                                {% if realtor.is_executive %}
+                                                    <i class="ri-vip-crown-fill executive-crown ms-2"></i>
+                                                {% endif %}
+                                            </h4>
+                                            <p class="text-muted">
+                                                {% if realtor.is_executive %}
+                                                    Share this premium executive code with potential realtors to earn enhanced commission on their sales.
+                                                {% else %}
+                                                    Share this code with potential realtors to earn commission on their sales.
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- Referral Code Display -->
+                                        <div class="text-center mb-4">
+                                            <label class="form-label fw-bold">Your Referral Code:</label>
+                                            <div class="referral-code-display {% if realtor.is_executive %}executive-referral-code-display{% endif %}" id="referralCode">
+                                                {{ realtor.referral_code }}
+                                            </div>
+                                            <button class="copy-button {% if realtor.is_executive %}executive-copy-button{% endif %}" onclick="copyReferralCode()">
+                                                <i class="ri-file-copy-line me-2"></i>Copy Code
+                                            </button>
+                                        </div>
+
+                                        <!-- Referral Link Display -->
+                                        <div class="mt-4">
+                                            <label class="form-label fw-bold">Your Registration Link to Share:</label>
+                                            <div class="input-group">
+                                                <input type="text" 
+                                                       class="form-control" 
+                                                       id="referralLink" 
+                                                       value="{{ request.scheme }}://{{ request.get_host }}{% url 'realtor_register_with_referral' realtor.referral_code %}"
+                                                       readonly>
+                                                <button class="btn btn-outline-primary" onclick="copyReferralLink()">
+                                                    <i class="ri-file-copy-line me-1"></i>Copy Link
+                                                </button>
+                                            </div>
+                                            <small class="text-muted">Share this link for direct registration with your referral code.</small>
+                                        </div>
+
+                                        <!-- Social Share Buttons -->
+                                        <div class="mt-4 text-center">
+                                            <h6 class="mb-3">Share via:</h6>
+                                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                                <button class="btn btn-success btn-sm" onclick="shareWhatsApp()">
+                                                    <i class="ri-whatsapp-line me-1"></i>WhatsApp
+                                                </button>
+                                                <button class="btn btn-primary btn-sm" onclick="shareTwitter()">
+                                                    <i class="ri-twitter-line me-1"></i>Twitter
+                                                </button>
+                                                <button class="btn btn-info btn-sm" onclick="shareTelegram()">
+                                                    <i class="ri-telegram-line me-1"></i>Telegram
+                                                </button>
+                                                <button class="btn btn-secondary btn-sm" onclick="shareEmail()">
+                                                    <i class="ri-mail-line me-1"></i>Email
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -381,7 +478,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -389,5 +486,83 @@
             {% endif %}
         </div>
     </section>
+
+    <script>
+        function copyReferralCode() {
+            const codeElement = document.getElementById('referralCode');
+            const code = codeElement.textContent.trim();
+            
+            navigator.clipboard.writeText(code).then(function() {
+                showAlert('Referral code copied to clipboard!', 'success');
+            }).catch(function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showAlert('Referral code copied to clipboard!', 'success');
+            });
+        }
+        
+        function copyReferralLink() {
+            const linkElement = document.getElementById('referralLink');
+            linkElement.select();
+            linkElement.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(linkElement.value).then(function() {
+                showAlert('Referral link copied to clipboard!', 'success');
+            }).catch(function() {
+                document.execCommand('copy');
+                showAlert('Referral link copied to clipboard!', 'success');
+            });
+        }
+
+        function shareWhatsApp() {
+            const message = `Join Vatican Gardens as a realtor with my referral code: ${document.getElementById('referralCode').textContent.trim()}\n\nRegister here: ${document.getElementById('referralLink').value}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareTwitter() {
+            const message = `Join Vatican Gardens as a realtor with my referral code: ${document.getElementById('referralCode').textContent.trim()}`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(document.getElementById('referralLink').value)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareTelegram() {
+            const message = `Join Vatican Gardens as a realtor with my referral code: ${document.getElementById('referralCode').textContent.trim()}\n\nRegister here: ${document.getElementById('referralLink').value}`;
+            const url = `https://t.me/share/url?url=${encodeURIComponent(document.getElementById('referralLink').value)}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareEmail() {
+            const subject = 'Join Vatican Gardens - Real Estate Opportunity';
+            const body = `Hi,\n\nI'd like to invite you to join Vatican Gardens as a realtor.\n\nUse my referral code: ${document.getElementById('referralCode').textContent.trim()}\n\nRegister directly here: ${document.getElementById('referralLink').value}\n\nBest regards`;
+            const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = url;
+        }
+
+        function showAlert(message, type) {
+            // Create a temporary alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.parentNode.removeChild(alertDiv);
+                }
+            }, 3000);
+        }
+    </script>
     <!-- container -->
 {% endblock body %}

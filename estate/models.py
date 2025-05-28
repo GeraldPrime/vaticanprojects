@@ -191,6 +191,8 @@ class Realtor(models.Model):
         return f"{self.full_name} ({self.status_display})"
 
 
+
+
 class Commission(models.Model):
     """Model to track individual commission transactions"""
     realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE, related_name='commissions')
