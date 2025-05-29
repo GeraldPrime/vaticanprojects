@@ -1328,3 +1328,13 @@ Forbidden (CSRF token from POST incorrect.): /admin/login/
 "GET /static/estate/images/anew/4.webp HTTP/1.1" 200 928832
 "GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 304 0
 "GET /static/estate/images/anew/3.webp HTTP/1.1" 200 1512872
+Watching for file changes with StatReloader
+"GET /home/ HTTP/1.1" 200 38339
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 304 0
+"GET /home/ HTTP/1.1" 200 38339
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
