@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     '.onrender.com', 
     'localhost',                  # Keep localhost for local dev
     '127.0.0.1',                  # Loopback address
+    'vaticanprojects.com',
 ]
 
 
@@ -99,6 +100,8 @@ DATABASES = {
         # 'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
         # 'HOST':'shinkansen.proxy.rlwy.net',
         # 'PORT':'26164',
+        # # Ceeplatv-vges@100
+        # # vatican
     }
 }
 
