@@ -42,6 +42,7 @@ from datetime import datetime
 import json
 
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.cache import cache_control
 
     
 
@@ -50,11 +51,14 @@ from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 
+@cache_control(max_age=2592000, public=True)  # 30 days
 def home(request):
     return render(request, 'estate/index.html')
 
+
 def about(request):
     return render(request, 'estate/about.html')
+
 
 def estates(request):
     redan_city_images = EstateImage.objects.filter(estate='redan_city')
