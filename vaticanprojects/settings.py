@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
+from pathlib import Path
+
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -89,27 +92,30 @@ WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER':'postgres',
+#         'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
+#         'HOST':'shinkansen.proxy.rlwy.net',
+#         'PORT':'26164',
+#         # Ceeplatv-vges@100
+#         # vatican
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER':'postgres',
-        # 'PASSWORD':'ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa',
-        'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
-        'HOST':'shinkansen.proxy.rlwy.net',
-        'PORT':'26164',
-        # Ceeplatv-vges@100
-        # vatican
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True # Important for cloud PostgreSQL
+    )
 }
 
-
-
-# POSTGRES_LOCALLY = True
-# if ENVIRONMENT == 'production' or POSTGRES_LOCALLY ==True:
-#     DATABASES['default']= dj_database_url.parse('postgresql://postgres:ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa@postgres-38ls.railway.internal:5432/railway')
 
 
 
