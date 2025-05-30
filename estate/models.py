@@ -94,13 +94,13 @@ class Realtor(models.Model):
     ]
     
     # Profile Information
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100,blank=True, null=True)
+    last_name = models.CharField(max_length=100,blank=True, null=True)
     email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(max_length=20,blank=True, null=True)
     image = models.ImageField(upload_to='realtors/', blank=True, null=True)
-    address = models.CharField(max_length=255)
-    country = models.CharField(max_length=100)
+    address = models.CharField(max_length=255,blank=True, null=True)
+    country = models.CharField(max_length=100,blank=True, null=True)
     
     # Status field - can be changed by admin
     status = models.CharField(
@@ -111,8 +111,8 @@ class Realtor(models.Model):
     )
     
     # Banking Details
-    account_number = models.CharField(max_length=50)
-    bank_name = models.CharField(max_length=100)
+    account_number = models.CharField(max_length=50,blank=True, null=True)
+    bank_name = models.CharField(max_length=100,blank=True, null=True)
     
     # Referral System
     referral_code = models.CharField(max_length=8, unique=True)
