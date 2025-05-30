@@ -1393,3 +1393,29 @@ C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
 Watching for file changes with StatReloader
 C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
 Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/estate/user/ HTTP/1.1" 200 16311
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /user/realtors_page HTTP/1.1" 200 48552
+"GET /user/signout/ HTTP/1.1" 302 0
+"GET /user/signin/ HTTP/1.1" 200 7306
+"POST /user/signin/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 69964
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/realtors_page HTTP/1.1" 200 48552
+"GET /user/property-sales/ HTTP/1.1" 200 48072
+"GET /user/commissions/ HTTP/1.1" 200 50497
+"GET /user/settings/general/ HTTP/1.1" 200 49279
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+"GET /user/commissions/ HTTP/1.1" 200 50497
