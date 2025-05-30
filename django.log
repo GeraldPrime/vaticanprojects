@@ -1419,3 +1419,24 @@ Watching for file changes with StatReloader
 "GET /user/settings/general/ HTTP/1.1" 200 49279
 "GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
 "GET /user/commissions/ HTTP/1.1" 200 50497
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /estates/ HTTP/1.1" 200 44347
+"GET /static/estate/images/anew/canaanestate2.jpg HTTP/1.1" 200 70949
+"GET /static/estate/images/anew/house23.jpg HTTP/1.1" 200 42608
+"GET /static/estate/images/anew/canaanestate3.jpg HTTP/1.1" 200 61961
+"GET /static/estate/images/anew/4bedroomduplex.jpg HTTP/1.1" 200 37868
+"GET /static/estate/images/anew/4bedroombungalow.jpg HTTP/1.1" 200 41283
+"GET /static/estate/images/anew/house24.jpg HTTP/1.1" 200 50581
+"GET /static/estate/images/anew/house19.jpg HTTP/1.1" 200 68169
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
