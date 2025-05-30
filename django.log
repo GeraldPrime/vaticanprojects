@@ -1440,3 +1440,14 @@ Watching for file changes with StatReloader
 "GET /static/estate/images/anew/house19.jpg HTTP/1.1" 200 68169
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
 "GET /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
+Watching for file changes with StatReloader
+"GET /user/commissions/ HTTP/1.1" 200 50736
+Not Found: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 404 17712
+"GET /user/signout/ HTTP/1.1" 302 0
+"GET /user/signin/ HTTP/1.1" 200 7820
+- Broken pipe from ('127.0.0.1', 61257)
+"POST /user/signin/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 69969
+Not Found: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 404 17712
