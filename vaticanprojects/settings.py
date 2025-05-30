@@ -91,17 +91,17 @@ WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
-        # 'USER':'postgres',
-        # # 'PASSWORD':'ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa',
-        # 'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
-        # 'HOST':'shinkansen.proxy.rlwy.net',
-        # 'PORT':'26164',
-        # # Ceeplatv-vges@100
-        # # vatican
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER':'postgres',
+        # 'PASSWORD':'ClIyhNFKlLDvbkpxAqxqiCXUlkyhNBxa',
+        'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
+        'HOST':'shinkansen.proxy.rlwy.net',
+        'PORT':'26164',
+        # Ceeplatv-vges@100
+        # vatican
     }
 }
 
