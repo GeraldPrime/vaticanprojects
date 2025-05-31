@@ -14,14 +14,15 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-from pathlib import Path
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -30,8 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n*u$))^+fr-s64f&&^lq$4&s6pp7_x2obf&*a@k*ry!7zz71mo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '.onrender.com', 
@@ -40,9 +40,7 @@ ALLOWED_HOSTS = [
     'vaticanprojects.com',
 ]
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',  # Must come before django.contrib.staticfiles
+    'cloudinary',
     'estate',
     'django.contrib.humanize',
-    'storages'
+    # Remove 'storages' - not needed with cloudinary_storage
 ]
 
 AUTH_USER_MODEL = 'estate.User'
@@ -60,7 +60,7 @@ AUTH_USER_MODEL = 'estate.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # directly after SecurityMiddleware
-    'django.middleware.security.SecurityMiddleware',
+    # Remove duplicate SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -89,54 +89,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER':'postgres',
         'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
         'HOST':'shinkansen.proxy.rlwy.net',
         'PORT':'26164',
-        # Ceeplatv-vges@100
-        # vatican
     }
 }
-
-
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.environ.get('DATABASE_URL'),
-#         conn_max_age=600,
-#         ssl_require=True # Important for cloud PostgreSQL
-#     )
-# }
-
-# if 'CLOUD_DATABASE_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default=os.environ.get('CLOUD_DATABASE_URL'),
-#             conn_max_age=600,
-#             ssl_require=True # Keep this for security
-#         )
-#     }
-#     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-        
-#     }
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -156,23 +121,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Directory where all static files will be collected during `collectstatic`
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -183,50 +143,51 @@ STATICFILES_DIRS = [
     BASE_DIR / 'estate' / 'static',  # Add this if you have app-specific static files
 ]
 
+# CLOUDINARY CONFIGURATION - FIXED
+# Configure Cloudinary first
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUD_NAME'),
+    api_key=os.environ.get('CLOUD_API_KEY'),
+    api_secret=os.environ.get('CLOUD_API_SECRET'),
+    secure=True  # Use HTTPS URLs
+)
 
-MEDIA_URL = '/media/'  # URL to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media', )  # Directory to store media files
+# Cloudinary Storage Settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUD_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
+    'SECURE': True  # Use HTTPS URLs
+}
+
+# Media files configuration for Cloudinary
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Keep these for fallback/local development
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Authentication settings
 LOGIN_URL = 'signin'  # URL name for the login page
-# LOGIN_REDIRECT_URL = 'home'  # URL name for the redirect after login
 LOGOUT_REDIRECT_URL = 'signin'  # URL name for the redirect after logout
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
-EMAIL_HOST = 'smtp.gmail.com'            # or smtp.gmail.com, smtp.sendgrid.net, etc.  
-EMAIL_HOST_USER = 'machovector3@gmail.com'           
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                      
-EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'            
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-EMAIL_PORT = 465  
-
-# # Email Configuration - Updated and Improved
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'machovector3@gmail.com'
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'  # Consider using environment variable for security
-# EMAIL_USE_TLS = True  # Changed from False to True
-# EMAIL_USE_SSL = False  # Changed from True to False (TLS and SSL shouldn't both be True)
-# EMAIL_PORT = 587  # Changed from 465 to 587 for TLS
-
-# # Alternative SSL configuration (uncomment if TLS doesn't work):
-# # EMAIL_USE_TLS = False
-# # EMAIL_USE_SSL = True
-# # EMAIL_PORT = 465
-
-# Timeout settings
+# Email Configuration - Improved
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'machovector3@gmail.com'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ltks mykk ndie reoh')  # Use env variable
+EMAIL_USE_TLS = True  # Use TLS
+EMAIL_USE_SSL = False  # Don't use SSL when using TLS
+EMAIL_PORT = 587  # TLS port
 EMAIL_TIMEOUT = 30
 
-# Logging configuration to help debug email issues
+# Logging configuration to help debug issues
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -247,13 +208,15 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        '__main__': {  # For your custom logger
+        'cloudinary': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        '__main__': {
             'handlers': ['file', 'console'],
             'level': 'INFO',
             'propagate': True,
         },
     },
 }
-
-# Security recommendation: Use environment variables for sensitive data
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ltks mykk ndie reoh')

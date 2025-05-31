@@ -1838,3 +1838,718 @@ C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloa
 Watching for file changes with StatReloader
 C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
 Watching for file changes with StatReloader
+Internal Server Error: /user/frontend-extras/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 57, in _view_wrapper
+    test_pass = test_func(request.user)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 80, in <lambda>
+    lambda u: u.is_authenticated,
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 37, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 17, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 209, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 62, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 1561, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 747, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 84, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 73, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 296, in get_select
+    sql, params = self.compile(col)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 557, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\expressions.py", line 1309, in as_sql
+    sql = ".".join(map(compiler.quote_name_unless_alias, identifiers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 548, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+"GET /user/frontend-extras/ HTTP/1.1" 500 180582
+"GET /ishiagu/ HTTP/1.1" 200 20057
+"GET /static/estate/images/shops/ishiagunew.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+Internal Server Error: /gallery/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 139, in gallery_view
+    page_obj = paginator.get_page(page_number)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\paginator.py", line 85, in get_page
+    return self.page(number)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\paginator.py", line 89, in page
+    number = self.validate_number(number)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\paginator.py", line 70, in validate_number
+    if number > self.num_pages:
+                ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\paginator.py", line 116, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+       ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 620, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\query.py", line 630, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\query.py", line 616, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 1561, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 772, in as_sql
+    from_, f_params = self.get_from_clause()
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 1141, in get_from_clause
+    clause_sql, clause_params = self.compile(from_clause)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 557, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\datastructures.py", line 220, in as_sql
+    base_sql = compiler.quote_name_unless_alias(self.table_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 548, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+"GET /gallery/ HTTP/1.1" 500 145816
+- Broken pipe from ('127.0.0.1', 64393)
+- Broken pipe from ('127.0.0.1', 64395)
+Internal Server Error: /user/frontend-extras/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 57, in _view_wrapper
+    test_pass = test_func(request.user)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 80, in <lambda>
+    lambda u: u.is_authenticated,
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 37, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 17, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 209, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 62, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 1561, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 747, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 84, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 73, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 296, in get_select
+    sql, params = self.compile(col)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 557, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\expressions.py", line 1309, in as_sql
+    sql = ".".join(map(compiler.quote_name_unless_alias, identifiers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 548, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+"GET /user/frontend-extras/ HTTP/1.1" 500 180719
+Internal Server Error: /user/frontend-extras/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 57, in _view_wrapper
+    test_pass = test_func(request.user)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 80, in <lambda>
+    lambda u: u.is_authenticated,
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 37, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\middleware.py", line 17, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 209, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\__init__.py", line 62, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 1561, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 747, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 84, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 73, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 296, in get_select
+    sql, params = self.compile(col)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 557, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\expressions.py", line 1309, in as_sql
+    sql = ".".join(map(compiler.quote_name_unless_alias, identifiers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\sql\compiler.py", line 548, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+"GET /user/frontend-extras/ HTTP/1.1" 500 180719
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/ HTTP/1.1" 200 53812
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ishiagu/ HTTP/1.1" 200 20057
+"GET /static/estate/images/shops/ishiagunew.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /gallery/ HTTP/1.1" 200 30759
+Not Found: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Not Found: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Not Found: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Not Found: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0008_arfgilG.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /media/gallery/IMG-20250524-WA0008_arfgilG.jpg HTTP/1.1" 404 17780
+- Broken pipe from ('127.0.0.1', 64505)
+"GET /gallery/ HTTP/1.1" 200 30759
+Not Found: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Not Found: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Not Found: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Not Found: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Not Found: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0008_arfgilG.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0008_arfgilG.jpg HTTP/1.1" 404 17780
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /gallery/ HTTP/1.1" 200 30759
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_arfgilG.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0008_arfgilG.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"POST /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70225
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 200 53812
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_arfgilG.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0008_arfgilG.jpg HTTP/1.1" 500 145
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106453
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg HTTP/1.1" 500 145
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/gallery-management/ HTTP/1.1" 200 7838
+"POST /user/signin/?next=/gallery-management/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70225
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/commissions/ HTTP/1.1" 200 50736
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 200 53812
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 46825
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/forms/upload/ HTTP/1.1" 200 49121
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"POST /user/frontend-extras/forms/upload/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48767
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/settings/general/ HTTP/1.1" 200 49318
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 200 53812
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0002_DfWrifL.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106453
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg
+"GET /media/gallery/IMG-20250524-WA0008_K7vM7iL.jpg HTTP/1.1" 500 145
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106453
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /gallery/ HTTP/1.1" 200 30759
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
