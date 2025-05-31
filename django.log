@@ -1451,3 +1451,61 @@ Not Found: /media/users/dicksonimage.jpg
 "GET /user/ HTTP/1.1" 200 69969
 Not Found: /media/users/dicksonimage.jpg
 "GET /media/users/dicksonimage.jpg HTTP/1.1" 404 17712
+- Broken pipe from ('127.0.0.1', 61304)
+"GET /user/ HTTP/1.1" 200 69726
+Not Found: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 404 17712
+"GET /user/profile/ HTTP/1.1" 200 47287
+Not Found: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 404 17712
+"POST /user/profile/ HTTP/1.1" 302 0
+"GET /user/profile/ HTTP/1.1" 200 47543
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 200 48117
+"GET /user/ HTTP/1.1" 200 69726
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+- Broken pipe from ('127.0.0.1', 61381)
+"GET /user/ HTTP/1.1" 200 69726
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 200 69726
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 200 69726
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 200 69726
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 200 69726
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 200 69726
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
