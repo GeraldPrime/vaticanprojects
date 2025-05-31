@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estate',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'storages'
 ]
 
 AUTH_USER_MODEL = 'estate.User'
@@ -92,31 +93,47 @@ WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': BASE_DIR / 'db.sqlite3',
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER':'postgres',
-#         'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
-#         'HOST':'shinkansen.proxy.rlwy.net',
-#         'PORT':'26164',
-#         # Ceeplatv-vges@100
-#         # vatican
-#     }
-# }
-
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True # Important for cloud PostgreSQL
-    )
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER':'postgres',
+        'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
+        'HOST':'shinkansen.proxy.rlwy.net',
+        'PORT':'26164',
+        # Ceeplatv-vges@100
+        # vatican
+    }
 }
 
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL'),
+#         conn_max_age=600,
+#         ssl_require=True # Important for cloud PostgreSQL
+#     )
+# }
+
+# if 'CLOUD_DATABASE_URL' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=os.environ.get('CLOUD_DATABASE_URL'),
+#             conn_max_age=600,
+#             ssl_require=True # Keep this for security
+#         )
+#     }
+#     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+        
+#     }
 
 
 
