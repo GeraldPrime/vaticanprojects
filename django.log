@@ -3041,3 +3041,4 @@ Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
 Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Watching for file changes with StatReloader
