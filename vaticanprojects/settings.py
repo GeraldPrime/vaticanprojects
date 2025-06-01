@@ -96,6 +96,9 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')  # Default to us-east-1
+AWS_S3_OBJECT_PARAMETERS = {
+    'ContentDisposition': 'attachment',
+}
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -222,15 +225,3 @@ LOGGING = {
     },
 }
 
-# Debug prints (remove these in production)
-print(f"=== MEDIA STORAGE DEBUG ===")
-if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
-    print(f"Storage Backend: AWS S3")
-    print(f"Bucket: {AWS_STORAGE_BUCKET_NAME}")
-    print(f"Region: {AWS_S3_REGION_NAME}")
-    print(f"MEDIA_URL: {MEDIA_URL}")
-else:
-    print(f"Storage Backend: Local FileSystem")
-    print(f"MEDIA_URL: {MEDIA_URL}")
-    print(f"MEDIA_ROOT: {globals().get('MEDIA_ROOT', 'Not set')}")
-print("============================")

@@ -3042,3 +3042,189 @@ Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
 Watching for file changes with StatReloader
+"GET /ishiagu/ HTTP/1.1" 200 20057
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/shops/shop2.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/shops/shop3.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/shops/ishiagunew.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/aerial.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/shops/shopvideo.mp4 HTTP/1.1" 304 0
+"GET /user/profile/ HTTP/1.1" 200 47377
+"POST /user/profile/ HTTP/1.1" 302 0
+"GET /user/profile/ HTTP/1.1" 200 47633
+"GET /user/ HTTP/1.1" 200 69771
+"GET /downloadables/ HTTP/1.1" 200 15538
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 15538
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /user/ HTTP/1.1" 200 69771
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48508
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48508
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 15745
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /gallery/ HTTP/1.1" 200 24251
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /ishiagu/ HTTP/1.1" 200 20057
+"GET /static/estate/images/shops/shop2.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/shops/shop3.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/shops/ishiagunew.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/aerial.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/shops/shopvideo.mp4 HTTP/1.1" 304 0
+"GET /downloadables/ HTTP/1.1" 200 15745
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15943
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /gallery/ HTTP/1.1" 200 24251
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15943
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /download-form/1/ HTTP/1.1" 200 1130025
+"GET /download-form/1/ HTTP/1.1" 200 1130025
+"GET /download-form/1/ HTTP/1.1" 200 1130025
+- Broken pipe from ('127.0.0.1', 56847)
+"GET /download-form/1/ HTTP/1.1" 200 1130025
+"GET /downloadables/ HTTP/1.1" 200 16871
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15915
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15915
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/forms/1/edit/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/frontend-extras/forms/1/edit/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 200 312626
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 200 761529
+"POST /user/signin/?next=/user/frontend-extras/forms/1/edit/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70270
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48508
+"GET /user/frontend-extras/forms/1/edit/ HTTP/1.1" 200 49528
+"POST /user/frontend-extras/forms/1/edit/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48790
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48510
+"GET /downloadables/ HTTP/1.1" 200 15919
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48510
+"GET /user/frontend-extras/forms/1/edit/ HTTP/1.1" 200 49532
+"POST /user/frontend-extras/forms/1/edit/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48798
+"GET /downloadables/ HTTP/1.1" 200 15746
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15746
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /gallery/ HTTP/1.1" 200 24251
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15746
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /download-form/1/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48518
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48449
+"GET /download-form/1/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/1/edit/ HTTP/1.1" 200 49479
+"GET /download-form/1/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/upload/ HTTP/1.1" 200 50755
+"POST /user/frontend-extras/forms/upload/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 50574
+"GET /download-form/4/ HTTP/1.1" 302 0
+"POST /user/frontend-extras/forms/4/delete/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48720
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader

@@ -53,7 +53,7 @@
                                                 <td>{{ form.file_type }}</td>
                                                 <td>{{ form.created_at|date:"M d, Y" }}</td>
                                                 <td>
-                                                    <a href="{{ form.form_file.url }}" class="btn btn-sm btn-primary" download>
+                                                    <a href="{% url 'download_form' form.id %}" class="btn btn-sm btn-primary" download>
                                                         <i class="ri-download-line"></i> Download
                                                     </a>
                                                     <a href="{% url 'edit_form' form.id %}" class="btn btn-sm btn-info">
