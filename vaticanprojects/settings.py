@@ -15,10 +15,6 @@ import os
 from dotenv import load_dotenv
 import dj_database_url
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n*u$))^+fr-s64f&&^lq$4&s6pp7_x2obf&*a@k*ry!7zz71mo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = [
     '.onrender.com', 
@@ -48,11 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',  # Must come before django.contrib.staticfiles
-    'cloudinary',
+    'storages',  # Keep this for AWS S3 storage
     'estate',
-    'django.contrib.humanize',
-    # Remove 'storages' - not needed with cloudinary_storage
+    'django.contrib.humanize'
 ]
 
 AUTH_USER_MODEL = 'estate.User'
@@ -60,7 +54,6 @@ AUTH_USER_MODEL = 'estate.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # directly after SecurityMiddleware
-    # Remove duplicate SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,22 +83,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER':'postgres',
-        'PASSWORD':os.environ.get('DB_PASSWORD_PG'),
-        'HOST':'shinkansen.proxy.rlwy.net',
-        'PORT':'26164',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True 
+    )
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+# AWS S3 Configuration
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')  # Default to us-east-1
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -122,72 +114,82 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+# Static Files Configuration
 STATIC_URL = '/static/'
-
-# Directory where all static files will be collected during `collectstatic`
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 STATICFILES_DIRS = [
-    BASE_DIR / 'estate' / 'static',  # Add this if you have app-specific static files
+    BASE_DIR / 'estate' / 'static',
 ]
 
-# CLOUDINARY CONFIGURATION - FIXED
-# Configure Cloudinary first
-cloudinary.config(
-    cloud_name=os.environ.get('CLOUD_NAME'),
-    api_key=os.environ.get('CLOUD_API_KEY'),
-    api_secret=os.environ.get('CLOUD_API_SECRET'),
-    secure=True  # Use HTTPS URLs
-)
+# Storage Configuration - Django 4.2+ way
+if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+    # Use AWS S3 for media files with Django 4.2+ STORAGES setting
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "access_key": AWS_ACCESS_KEY_ID,
+                "secret_key": AWS_SECRET_ACCESS_KEY,
+                "bucket_name": AWS_STORAGE_BUCKET_NAME,
+                "region_name": AWS_S3_REGION_NAME,
+                # REMOVED: "default_acl": "public-read",  # This causes the ACL error
+                "file_overwrite": False,
+                "querystring_auth": False,
+                "object_parameters": {
+                    "CacheControl": "max-age=86400",
+                },
+                "custom_domain": f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com',
+            },
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",  # Changed from WhiteNoise
+        },
+    }
+    
+    MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+    print(f"✅ Using AWS S3 Storage: {AWS_STORAGE_BUCKET_NAME} in region {AWS_S3_REGION_NAME}")
+else:
+    # Fallback to local storage if S3 not configured
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    print("⚠️ Warning: AWS S3 not configured, using local media storage")
 
-# Cloudinary Storage Settings
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUD_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
-    'SECURE': True  # Use HTTPS URLs
-}
-
-# Media files configuration for Cloudinary
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Keep these for fallback/local development
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# WhiteNoise configuration (for production deployment)
+if not DEBUG:
+    STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication settings
-LOGIN_URL = 'signin'  # URL name for the login page
-LOGOUT_REDIRECT_URL = 'signin'  # URL name for the redirect after logout
+LOGIN_URL = 'signin'
+LOGOUT_REDIRECT_URL = 'signin'
 
-# Email Configuration - Improved
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'machovector3@gmail.com'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ltks mykk ndie reoh')  # Use env variable
-EMAIL_USE_TLS = True  # Use TLS
-EMAIL_USE_SSL = False  # Don't use SSL when using TLS
-EMAIL_PORT = 587  # TLS port
+EMAIL_HOST_USER = 'machovector3@gmail.com'           
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                      
+EMAIL_HOST_PASSWORD = 'ltks mykk ndie reoh'            
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
 EMAIL_TIMEOUT = 30
 
-# Logging configuration to help debug issues
+# Logging configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -206,11 +208,6 @@ LOGGING = {
         'django': {
             'handlers': ['file', 'console'],
             'level': 'INFO',
-            'propagate': True,
-        },
-        'cloudinary': {
-            'handlers': ['file', 'console'],
-            'level': 'DEBUG',
             'propagate': True,
         },
         '__main__': {

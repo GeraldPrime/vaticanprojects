@@ -2553,3 +2553,392 @@ Internal Server Error: /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg
 Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /media/gallery/IMG-20250524-WA0008_jPp7jkT.jpg HTTP/1.1" 500 145
 "GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+- Broken pipe from ('127.0.0.1', 65527)
+"GET /gallery-management/ HTTP/1.1" 200 106191
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_NDV3614.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0008_NDV3614.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 112292
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/aerial.jpg
+"GET /media/gallery/aerial.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_NDV3614.jpg
+"GET /media/gallery/IMG-20250524-WA0008_NDV3614.jpg HTTP/1.1" 500 145
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 112032
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/aerial.jpg
+"GET /media/gallery/aerial.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0008_NDV3614.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0008_NDV3614.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 112296
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/aerial.jpg
+"GET /media/gallery/aerial.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+Internal Server Error: /media/gallery/building-with-colorful-walls.jpg
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/building-with-colorful-walls.jpg HTTP/1.1" 500 145
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106455
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0002_gUzd2UD.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/building-with-colorful-walls.jpg
+"GET /media/gallery/building-with-colorful-walls.jpg HTTP/1.1" 500 145
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 100534
+Internal Server Error: /media/users/dicksonimage.jpg
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Internal Server Error: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 500 145
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 500 145
+Internal Server Error: /media/gallery/building-with-colorful-walls.jpg
+"GET /media/gallery/building-with-colorful-walls.jpg HTTP/1.1" 500 145
+"GET /downloadables/ HTTP/1.1" 200 15552
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 200 9641385
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 15552
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+"GET /downloadables/ HTTP/1.1" 200 15552
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 404 1928
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 200 69726
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /media/users/dicksonimage.jpg HTTP/1.1" 200 48117
+"GET /user/frontend-extras/ HTTP/1.1" 200 53812
+"GET /gallery-management/ HTTP/1.1" 200 100272
+Not Found: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+Not Found: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Not Found: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+Not Found: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Not Found: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 100550
+Not Found: /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg
+Not Found: /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg
+"GET /media/gallery/IMG-20250524-WA0001_mRNfdjq.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg
+Not Found: /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg
+Not Found: /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg
+Not Found: /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg
+"GET /media/gallery/IMG-20250524-WA0005_4OVvjne.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0006_30Ic8oU.jpg HTTP/1.1" 404 17780
+Not Found: /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg
+"GET /media/gallery/IMG-20250524-WA0003_2GTAWOJ.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0004_wLVFzAw.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0007_tUdrpAl.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/IMG-20250524-WA0009_RrOSwhg.jpg HTTP/1.1" 404 17780
+"GET /media/gallery/square-front-modern-office-buildings.jpg HTTP/1.1" 200 16727703
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 101172
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 101434
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 101172
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 101418
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 107437
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 107177
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 113458
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 107433
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 101408
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 101437
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 95387
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 89362
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 83337
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 77312
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 83263
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 83003
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 89232
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 88894
+"GET /gallery-management/ HTTP/1.1" 200 88894
+- Broken pipe from ('127.0.0.1', 51107)
+"GET /user/ HTTP/1.1" 200 69772
+"GET /user/frontend-extras/ HTTP/1.1" 200 53858
+- Broken pipe from ('127.0.0.1', 51108)
+"GET /gallery-management/ HTTP/1.1" 200 88894
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 95111
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 101046
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 82751
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 88968
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 83013
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 77056
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+- Broken pipe from ('127.0.0.1', 51282)
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 65358
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 71099
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 70755
+"GET /gallery-management/ HTTP/1.1" 200 70755
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 76928
+Watching for file changes with StatReloader
+Internal Server Error: /admin/estate/realtor/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\templatetags\static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\templatetags\static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\templatetags\static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\staticfiles\storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\staticfiles\storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\staticfiles\storage.py", line 516, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for 'admin/css/base.css'
+"GET /admin/estate/realtor/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 200 76767
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 77139
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 82736
+"GET /gallery-management/ HTTP/1.1" 200 82736
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 88927
+"GET /gallery-management/ HTTP/1.1" 200 106700
+- Broken pipe from ('127.0.0.1', 55771)
+- Broken pipe from ('127.0.0.1', 55841)
+- Broken pipe from ('127.0.0.1', 55848)
+- Broken pipe from ('127.0.0.1', 55846)
+- Broken pipe from ('127.0.0.1', 55850)
+- Broken pipe from ('127.0.0.1', 55852)
+- Broken pipe from ('127.0.0.1', 55857)
+"POST /delete-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 59182
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 65137
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 71094
+"POST /edit-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 71080
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
