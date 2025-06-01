@@ -48,9 +48,12 @@
                             <h5 class="mb-1">{{ form.name }}</h5>
                             <p class="text-muted mb-0">{{ form.description }}</p>
                         </div>
-                        <a href="{{ form.form_file.url }}" class="btn btn-outline-danger ms-3" download>
+                        <a href="{% url 'download_form' form.id %}" class="btn btn-outline-danger ms-3">
                             <i class="fa fa-cloud-download fa-2x"></i>
                         </a>
+                        <!-- <a href="{{ form.form_file.url }}" class="btn btn-outline-danger ms-3" download>
+                            <i class="fa fa-cloud-download fa-2x"></i>
+                        </a> -->
                     </div>
                 </div>
                 {%endfor%}

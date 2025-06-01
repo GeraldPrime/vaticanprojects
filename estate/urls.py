@@ -17,6 +17,8 @@ urlpatterns = [
     path('realtors-check/', views.realtors_check, name='realtors_check'),
     path('gallery/', views.gallery_view, name='gallery'),
     path('ishiagu/', views.ishiagu, name='ishiagu'),
+    
+    path('download-form/<int:form_id>/', views.download_form, name='download_form'),
 
     
     
