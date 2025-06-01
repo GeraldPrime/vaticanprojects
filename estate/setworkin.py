@@ -171,10 +171,6 @@ else:
 if not DEBUG:
     STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# WhiteNoise settings to handle missing source maps
-WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'map']
-WHITENOISE_MANIFEST_STRICT = False
-
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -221,16 +217,3 @@ LOGGING = {
         },
     },
 }
-
-# Debug prints (remove these in production)
-print(f"=== MEDIA STORAGE DEBUG ===")
-if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
-    print(f"Storage Backend: AWS S3")
-    print(f"Bucket: {AWS_STORAGE_BUCKET_NAME}")
-    print(f"Region: {AWS_S3_REGION_NAME}")
-    print(f"MEDIA_URL: {MEDIA_URL}")
-else:
-    print(f"Storage Backend: Local FileSystem")
-    print(f"MEDIA_URL: {MEDIA_URL}")
-    print(f"MEDIA_ROOT: {globals().get('MEDIA_ROOT', 'Not set')}")
-print("============================")
