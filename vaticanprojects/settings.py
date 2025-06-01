@@ -147,7 +147,7 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
             },
         },
         "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",  # Changed from WhiteNoise
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Use simpler storage
         },
     }
     
@@ -168,8 +168,8 @@ else:
     print("⚠️ Warning: AWS S3 not configured, using local media storage")
 
 # WhiteNoise configuration (for production deployment)
-if not DEBUG:
-    STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# Temporarily use simple storage to avoid source map issues
+STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # WhiteNoise settings to handle missing source maps
 WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'map']
