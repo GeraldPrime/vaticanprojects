@@ -96,9 +96,6 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')  # Default to us-east-1
-AWS_S3_OBJECT_PARAMETERS = {
-    'ContentDisposition': 'attachment',
-}
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -150,7 +147,7 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
             },
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Use simpler storage
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",  # Changed from WhiteNoise
         },
     }
     
@@ -171,12 +168,8 @@ else:
     print("⚠️ Warning: AWS S3 not configured, using local media storage")
 
 # WhiteNoise configuration (for production deployment)
-# Temporarily use simple storage to avoid source map issues
-STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedStaticFilesStorage"
-
-# WhiteNoise settings to handle missing source maps
-WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'map']
-WHITENOISE_MANIFEST_STRICT = False
+if not DEBUG:
+    STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

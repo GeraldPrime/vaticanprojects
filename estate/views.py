@@ -93,6 +93,50 @@ def downloadables(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        # Get form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        
+        # Validate form data
+        if name and email and message:
+            try:
+                # Compose email
+                subject = f'New Contact Form Submission from {name}'
+                email_message = f"""
+                New contact form submission from Vatican Gardens Projects website:
+                
+                Name: {name}
+                Email: {email}
+                
+                Message:
+                {message}
+                
+                ---
+                This message was sent from the Vatican Gardens Projects contact form.
+                """
+                
+                # Send email
+                send_mail(
+                    subject=subject,
+                    message=email_message,
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=['info@vaticanprojects.com'],  # Your business email
+                    fail_silently=False,
+                )
+                
+                # Success message
+                messages.success(request, 'Thank you for your message! We will get back to you soon.')
+                return redirect('contact')
+                
+            except Exception as e:
+                # Error message
+                messages.error(request, 'Sorry, there was an error sending your message. Please try again or contact us directly.')
+        else:
+            # Validation error
+            messages.error(request, 'Please fill in all required fields.')
+    
     return render(request, 'estate/contact.html')
 
 def realtors_check(request):
