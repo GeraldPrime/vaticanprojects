@@ -3534,3 +3534,26 @@ Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
 Watching for file changes with StatReloader
 C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /contact/ HTTP/1.1" 200 7032
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /contact/ HTTP/1.1" 200 7032
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /contact/ HTTP/1.1" 200 25590
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/womanmakingcallss.jpg HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+Internal Server Error: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 500 145
+Internal Server Error: /static/estate/vendor/bootstrap/js/popper.min.js.map
+Internal Server Error: /static/estate/vendor/bootstrap/js/bootstrap.min.js.map
+"GET /static/estate/vendor/bootstrap/js/popper.min.js.map HTTP/1.1" 500 145
+"GET /static/estate/vendor/bootstrap/js/bootstrap.min.js.map HTTP/1.1" 500 145
+Internal Server Error: /static/estate/vendor/bootstrap/css/bootstrap.min.css.map
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 500 145
