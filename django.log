@@ -3531,3 +3531,6 @@ Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /download-form/5/ HTTP/1.1" 302 0
 "POST /user/frontend-extras/forms/5/delete/ HTTP/1.1" 302 0
 "GET /user/frontend-extras/forms/ HTTP/1.1" 200 48715
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
