@@ -34,6 +34,8 @@ ALLOWED_HOSTS = [
     'localhost',                  # Keep localhost for local dev
     '127.0.0.1',                  # Loopback address
     'vaticanprojects.com',
+    '.elasticbeanstalk.com',
+    'vaticanprojects-prod.eba-nrpx5tuh.eu-north-1.elasticbeanstalk.com',  # A
 ]
 
 # Application definition
@@ -83,12 +85,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 
 # Database
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL'),
+#         conn_max_age=600,
+#         ssl_require=True 
+#     )
+# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True 
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'vaticanprojectsdb',
+        'USER':'mysuperuser',
+        'PASSWORD':'mysuperuser',
+        'HOST':'vaticanprojectsdb.cb460486cpfr.eu-north-1.rds.amazonaws.com',
+        'PORT':'5432',
+    }
 }
 
 # AWS S3 Configuration
@@ -224,3 +236,4 @@ LOGGING = {
         },
     },
 }
+

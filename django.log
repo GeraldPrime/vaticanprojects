@@ -3228,3 +3228,306 @@ Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
 "GET /user/frontend-extras/forms/ HTTP/1.1" 200 48720
 C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+- Broken pipe from ('127.0.0.1', 57264)
+"GET /gallery-management/ HTTP/1.1" 200 70818
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 77035
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 82992
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 88949
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 94906
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 100863
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 106820
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 112789
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 14839
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+Internal Server Error: /user/signin/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 360, in signin
+    user = authenticate(request, username=User.objects.filter(email=username).first().username, password=password)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+"POST /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 8094
+Internal Server Error: /user/user
+"GET /user/user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Watching for file changes with StatReloader
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user/user
+"GET /user/user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"POST /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70220
+"GET /static/user/images/profile-default.png HTTP/1.1" 200 3332893
+"GET /user/ HTTP/1.1" 200 69721
+"GET /user/frontend-extras/ HTTP/1.1" 200 53807
+"GET /gallery-management/ HTTP/1.1" 200 53028
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 59128
+"GET /static/user/images/profile-default.png HTTP/1.1" 304 0
+C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\exceptions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /gallery-management/ HTTP/1.1" 200 58846
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+- Broken pipe from ('127.0.0.1', 60145)
+"POST /add-gallery-image/ HTTP/1.1" 302 0
+"GET /gallery-management/ HTTP/1.1" 200 71306
+"GET /static/user/images/profile-default.png HTTP/1.1" 200 3332893
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 15746
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /gallery-management/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/gallery-management/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"POST /user/signin/?next=/gallery-management/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70270
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /downloadables/ HTTP/1.1" 200 15746
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 200 180845
+"GET /static/estate/images/anew/formpic1.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/js/script.js HTTP/1.1" 200 17416
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /download-form/1/ HTTP/1.1" 302 0
+"GET /home/ HTTP/1.1" 200 38336
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 200 78407
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 200 334612
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 200 375558
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 200 555344
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 200 725014
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 200 928832
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 200 1512872
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 200 40385
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 200 44983
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /home/ HTTP/1.1" 200 42985
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 200 555344
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 200 928832
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 200 1512872
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 200 375558
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 200 725014
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 304 0
+"GET /buildingprojects/ HTTP/1.1" 200 109086
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/carcass1.jpg HTTP/1.1" 200 38440
+"GET /static/estate/images/anew/5bedroomduplex.jpg HTTP/1.1" 200 43965
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/carcass5.jpg HTTP/1.1" 200 59723
+"GET /static/estate/images/anew/BUNGALOW%20COLOUR%20PLAN_page-0001.jpg HTTP/1.1" 200 506766
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/apartment-building-city-with-copy-space.jpg HTTP/1.1" 200 592044
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house8.jpg HTTP/1.1" 200 60494
+"GET /static/estate/images/anew/bungalow%20(3).png HTTP/1.1" 200 9977248
+"GET /static/estate/images/anew/bungalow%20(1).png HTTP/1.1" 200 10800988
+"GET /static/estate/images/anew/duplex3.png HTTP/1.1" 200 12781330
+"GET /static/estate/images/anew/duplex2.png HTTP/1.1" 200 16001282
+"GET /static/estate/images/anew/DUPLEX%20EDITED_page-0001.jpg HTTP/1.1" 200 591611
+"GET /static/estate/images/anew/bungalow%20(4).png HTTP/1.1" 200 15718884
+"GET /static/estate/images/anew/duplex1.png HTTP/1.1" 200 19020069
+"GET /static/estate/images/anew/duplex4.png HTTP/1.1" 200 17276394
+"GET /static/estate/images/anew/duplex5.png HTTP/1.1" 200 19218725
+"GET /static/estate/images/anew/carcass3.jpg HTTP/1.1" 200 45704
+"GET /static/estate/images/anew/carcass8.jpg HTTP/1.1" 200 52216
+"GET /static/estate/images/anew/bungalow%20(9).png HTTP/1.1" 200 2668065
+"GET /static/estate/images/anew/4bedroomduplexside.jpg HTTP/1.1" 200 55034
+"GET /static/estate/images/anew/5bedroomduplexplan.jpg HTTP/1.1" 200 96070
+"GET /static/estate/images/anew/4bedroomduplex.jpg HTTP/1.1" 200 37868
+"GET /static/estate/images/anew/4bedroomduplexplan.jpg HTTP/1.1" 200 99885
+Internal Server Error: /static/estate/images/anew/4bedroomgbungalow.jpg
+"GET /static/estate/images/anew/4bedroomgbungalow.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4bedroombungalowside.jpg HTTP/1.1" 200 38053
+"GET /static/estate/images/anew/bungalowpln4.jpg HTTP/1.1" 200 43474
+"GET /static/estate/images/anew/3bedroombungalow.jpg HTTP/1.1" 200 39903
+"GET /static/estate/images/anew/3bedroombungalowplan.jpg HTTP/1.1" 200 46383
+"GET /static/estate/images/anew/2bedroombungalow.jpg HTTP/1.1" 200 35600
+"GET /static/estate/images/anew/2bedroombungalowplan.jpg HTTP/1.1" 200 76193
+"GET /static/estate/images/anew/redanadvancedcarcass.jpg HTTP/1.1" 200 36221
+"GET /static/estate/images/anew/redancarcass.jpg HTTP/1.1" 200 37612
+"GET /static/estate/images/anew/house9.jpg HTTP/1.1" 200 46986
+"GET /gallery/ HTTP/1.1" 200 35971
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /realtors-check/ HTTP/1.1" 200 28397
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/manonlaptop.jpg HTTP/1.1" 200 2700895
+"GET /contact/ HTTP/1.1" 200 24944
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/womanmakingcallss.jpg HTTP/1.1" 200 2039797
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /contact/ HTTP/1.1" 200 24568
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/womanmakingcallss.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /contact/ HTTP/1.1" 302 0
+"GET /contact/ HTTP/1.1" 200 25109
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /contact/ HTTP/1.1" 200 24576
+"GET /static/estate/css/style.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 304 0
+"GET /static/estate/js/script.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/womanmakingcallss.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 304 0
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 200 5639876
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 304 0
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 200 725014
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 200 928832
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 200 555344
+"GET /home/ HTTP/1.1" 200 42993
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /home/ HTTP/1.1" 200 42993
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /contact/ HTTP/1.1" 200 24576
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /about/ HTTP/1.1" 200 43425
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/modern-building-seen-from.jpg HTTP/1.1" 200 1490733
+"GET /contact/ HTTP/1.1" 200 24576
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48449
+"GET /user/frontend-extras/forms/upload/ HTTP/1.1" 200 50755
+"POST /user/frontend-extras/forms/upload/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 50564
+"GET /download-form/5/ HTTP/1.1" 302 0
+"POST /user/frontend-extras/forms/5/delete/ HTTP/1.1" 302 0
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48715

@@ -34,7 +34,36 @@ ALLOWED_HOSTS = [
     'localhost',                  # Keep localhost for local dev
     '127.0.0.1',                  # Loopback address
     'vaticanprojects.com',
+    '.elasticbeanstalk.com',
+    'vaticanprojects-prod.eba-nrpx5tuh.eu-north-1.elasticbeanstalk.com',  # A
+    
 ]
+if not DEBUG:
+    ALLOWED_HOSTS.extend([
+        '10.*',      # Private IP ranges
+        '172.*',     # Private IP ranges  
+        '192.168.*', # Private IP ranges
+        '172.31.33.52',  # Add the specific IP from the error
+    '172.31.*',      # Or allow the entire private subnet
+    # Better approach - allow all private IPs used by AWS
+    '10.*',          # AWS private IP range
+    '172.16.*',      # AWS private IP range  
+    '172.17.*',      # AWS private IP range
+    '172.18.*',      # AWS private IP range
+    '172.19.*',      # AWS private IP range
+    '172.20.*',      # AWS private IP range
+    '172.21.*',      # AWS private IP range
+    '172.22.*',      # AWS private IP range
+    '172.23.*',      # AWS private IP range
+    '172.24.*',      # AWS private IP range
+    '172.25.*',      # AWS private IP range
+    '172.26.*',      # AWS private IP range
+    '172.27.*',      # AWS private IP range
+    '172.28.*',      # AWS private IP range
+    '172.29.*',      # AWS private IP range
+    '172.30.*',      # AWS private IP range
+    '172.31.*',      # AWS private IP range (this is what you need)
+    ])
 
 # Application definition
 INSTALLED_APPS = [
@@ -83,12 +112,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vaticanprojects.wsgi.application'
 
 # Database
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL'),
+#         conn_max_age=600,
+#         ssl_require=True 
+#     )
+# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True 
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'vaticanprojectsdb',
+        'USER':'mysuperuser',
+        'PASSWORD':'mysuperuser',
+        'HOST':'vaticanprojectsdb.cb460486cpfr.eu-north-1.rds.amazonaws.com',
+        'PORT':'5432',
+    }
 }
 
 # AWS S3 Configuration
@@ -123,15 +162,16 @@ USE_I18N = True
 USE_TZ = True
 
 # Static Files Configuration
+# Static Files Configuration (Use WhiteNoise for both static and media in production)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Change from 'static' to 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'estate' / 'static',
 ]
 
-# Storage Configuration - Django 4.2+ way
+# Simplified Storage Configuration
 if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
-    # Use AWS S3 for media files with Django 4.2+ STORAGES setting
+    # Use AWS S3 ONLY for media files (user uploads)
     STORAGES = {
         "default": {
             "BACKEND": "storages.backends.s3.S3Storage",
@@ -140,35 +180,27 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
                 "secret_key": AWS_SECRET_ACCESS_KEY,
                 "bucket_name": AWS_STORAGE_BUCKET_NAME,
                 "region_name": AWS_S3_REGION_NAME,
-                # REMOVED: "default_acl": "public-read",  # This causes the ACL error
                 "file_overwrite": False,
                 "querystring_auth": False,
-                "object_parameters": {
-                    "CacheControl": "max-age=86400",
-                },
-                "custom_domain": f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com',
             },
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Use simpler storage
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
-    
     MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
-    print(f"✅ Using AWS S3 Storage: {AWS_STORAGE_BUCKET_NAME} in region {AWS_S3_REGION_NAME}")
 else:
-    # Fallback to local storage if S3 not configured
+    # Local storage fallback
     STORAGES = {
         "default": {
             "BACKEND": "django.core.files.storage.FileSystemStorage",
         },
         "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    print("⚠️ Warning: AWS S3 not configured, using local media storage")
 
 # WhiteNoise configuration (for production deployment)
 # Temporarily use simple storage to avoid source map issues
@@ -224,3 +256,4 @@ LOGGING = {
         },
     },
 }
+

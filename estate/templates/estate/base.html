@@ -2,7 +2,6 @@
 <html lang="zxx">
     {% load static %}
 
-
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -61,6 +60,154 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
     />
 
+    <!-- Custom Floating Social Media Styles -->
+    <style>
+      .floating-social {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 0 15px 15px 0;
+        padding: 15px 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .floating-social:hover {
+        transform: translateY(-50%) translateX(5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .floating-social .social-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .floating-social .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .floating-social .social-icons a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        transform: scale(0);
+        z-index: -1;
+      }
+
+      .floating-social .social-icons a:hover::before {
+        transform: scale(1);
+      }
+
+      .floating-social .social-icons a i {
+        font-size: 20px;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      /* Facebook */
+      .floating-social .social-icons a[href*="facebook"] {
+        background: #e3f2fd;
+        color: #1877f2;
+      }
+
+      .floating-social .social-icons a[href*="facebook"]::before {
+        background: #1877f2;
+      }
+
+      .floating-social .social-icons a[href*="facebook"]:hover {
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* YouTube */
+      .floating-social .social-icons a[href*="youtube"] {
+        background: #ffebee;
+        color: #ff0000;
+      }
+
+      .floating-social .social-icons a[href*="youtube"]::before {
+        background: #ff0000;
+      }
+
+      .floating-social .social-icons a[href*="youtube"]:hover {
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* TikTok */
+      .floating-social .social-icons a[href*="tiktok"] {
+        background: #fce4ec;
+        color: #ff0050;
+      }
+
+      .floating-social .social-icons a[href*="tiktok"]::before {
+        background: linear-gradient(45deg, #ff0050, #00f2ea);
+      }
+
+      .floating-social .social-icons a[href*="tiktok"]:hover {
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* WhatsApp */
+      .floating-social .social-icons a[href*="wa.me"] {
+        background: #e8f5e8;
+        color: #25d366;
+      }
+
+      .floating-social .social-icons a[href*="wa.me"]::before {
+        background: #25d366;
+      }
+
+      .floating-social .social-icons a[href*="wa.me"]:hover {
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .floating-social {
+          left: -5px;
+          padding: 12px 6px;
+        }
+
+        .floating-social .social-icons a {
+          width: 40px;
+          height: 40px;
+        }
+
+        .floating-social .social-icons a i {
+          font-size: 18px;
+        }
+      }
+
+      /* Hide on very small screens */
+      @media (max-width: 480px) {
+        .floating-social {
+          display: none;
+        }
+      }
+    </style>
+
     <!-- jQuery (required for Magnific Popup) -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
@@ -77,6 +224,40 @@
     <div class="page-wrapper">
       <!-- Preloader -->
       <div class="preloader"><div class="custom-loader"></div></div>
+
+      <!-- Floating Social Media Icons -->
+      <div class="floating-social">
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/share/1BX61CGSGs/?mibextid=wwXIfr"
+            target="_blank"
+            title="Follow us on Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://youtube.com/@vaticantv244?si=5MaLBS78_IR_n_aY"
+            target="_blank"
+            title="Subscribe to our YouTube channel"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@vaticangardenprojects?_t=ZM-8vAqIRJLJ0H&_r=1"
+            target="_blank"
+            title="Follow us on TikTok"
+          >
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a 
+            href="https://wa.me/2348091647093" 
+            target="_blank"
+            title="Chat with us on WhatsApp"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
 
       <!-- main header -->
       <header class="main-header">
@@ -182,20 +363,11 @@
         <!--End Header Upper-->
       </header>
 
-
-
       
       {% block body %}
         
       {% endblock body %}
         
-
-
-
-
-
-
-      
       <!-- footer area start -->
       <footer class="main-footer rel z-1">
         <div
@@ -226,7 +398,7 @@
                   <a href="mailto:info@vaticanprojects.com"
                     >info@vaticanprojects.com</a
                   ><br />
-                  <a href="#" class="theme-btn style-two mt-35"
+                  <a href="{% url 'contact' %}" class="theme-btn style-two mt-35"
                     ><i class="fal fa-envelope"></i> Send a Message</a
                   >
                 </div>

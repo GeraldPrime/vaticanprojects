@@ -1,0 +1,30 @@
+.git/
+.gitignore
+.env
+*.pyc
+*.sqlite3
+__pycache__/
+.pytest_cache/
+.DS_Store
+
+# Virtual Environment
+venv/
+env/
+
+# Node.js dependencies (if you have them)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Media files (if you store them locally for development)
+media/
+
+forms/
+gallery/
+realtors/
+# Collected static files (if you collect them locally, though often in .gitignore)
+static/
+
+# Other common development artifacts
+.vscode/
+.idea/
