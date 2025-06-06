@@ -5,6 +5,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -23,6 +25,8 @@ urlpatterns = [
     
     
     # ======================ADMIN URLS=================================
+    # Fix the /user redirect issue permanently
+    path('user', RedirectView.as_view(url='/user/', permanent=True)),
     
     path('user/', views.userhome, name='user'),
     path('user/signin/', views.signin, name='signin'),

@@ -3557,3 +3557,100 @@ Internal Server Error: /static/estate/vendor/bootstrap/js/bootstrap.min.js.map
 "GET /static/estate/vendor/bootstrap/js/bootstrap.min.js.map HTTP/1.1" 500 145
 Internal Server Error: /static/estate/vendor/bootstrap/css/bootstrap.min.css.map
 "GET /static/estate/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 500 145
+"GET /user/ HTTP/1.1" 200 69771
+"GET /user/signout/ HTTP/1.1" 302 0
+"GET /user/signin/ HTTP/1.1" 200 7820
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /user
+- Broken pipe from ('127.0.0.1', 51879)
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+Internal Server Error: /user/signin/
+"GET /user/signin/?next=/user/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user/signin/
+"GET /user/signin/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/frontend-extras/forms/ HTTP/1.1" 302 0
+"GET /signin/?next=/user/frontend-extras/forms/ HTTP/1.1" 200 7838
+"GET /signin/?next=/user/frontend-extras/forms/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /signin/?next=/user/ HTTP/1.1" 200 7838
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /signin/?next=/user/ HTTP/1.1" 302 0
+Forbidden (CSRF token from POST incorrect.): /signin/
+"POST /signin/?next=/user/ HTTP/1.1" 403 1004
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+- Broken pipe from ('127.0.0.1', 51908)
+"GET /signin/?next=/user/ HTTP/1.1" 200 8075
+"POST /signin/?next=/user/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70004
+"GET /user/frontend-extras/ HTTP/1.1" 200 53847
+"GET /user/frontend-extras/forms/ HTTP/1.1" 200 48439
+"GET /user/ HTTP/1.1" 200 69761
+"GET /user/ HTTP/1.1" 200 69761
+"GET /signout/ HTTP/1.1" 302 0
+"GET /signin/ HTTP/1.1" 200 7820
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /signin/?next=/user/ HTTP/1.1" 200 7838
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /user
+"GET /user HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/ HTTP/1.1" 302 0
+"GET /signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user HTTP/1.1" 301 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /signin/?next=/user/ HTTP/1.1" 200 7838
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /user/signin/?next=/user/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70270
+"GET /user/properties/ HTTP/1.1" 200 53516
+"GET /user/property-sales/ HTTP/1.1" 200 48122
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+"GET /user/commissions/ HTTP/1.1" 200 51007
+"GET /user/settings/general/ HTTP/1.1" 200 49363
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+"GET /user/signout/ HTTP/1.1" 302 0
+"GET /user/signin/ HTTP/1.1" 200 7820
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
