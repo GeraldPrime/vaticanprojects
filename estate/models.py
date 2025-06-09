@@ -96,7 +96,7 @@ class Realtor(models.Model):
     # Profile Information
     first_name = models.CharField(max_length=100,blank=True, null=True)
     last_name = models.CharField(max_length=100,blank=True, null=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
     phone = models.CharField(max_length=20,blank=True, null=True)
     image = models.ImageField(upload_to='realtors/', blank=True, null=True)
     address = models.CharField(max_length=255,blank=True, null=True)
@@ -142,11 +142,25 @@ class Realtor(models.Model):
         """Check if realtor is an executive"""
         return self.status == 'executive'
     
+    # @property
+    # def status_display(self):
+    #     """Return human-readable status"""
+    #     return dict(self.STATUS_CHOICES)[self.status]
     @property
     def status_display(self):
         """Return human-readable status"""
-        return dict(self.STATUS_CHOICES)[self.status]
+        status_dict = dict(self.STATUS_CHOICES)
+        return status_dict.get(self.status, self.status.title())
     
+    @property
+    def image_url(self):
+        """Return image URL or default image URL"""
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            from django.conf import settings
+            return f"{settings.STATIC_URL}user/images/default_profile.jpg"
+        
     def promote_to_executive(self):
         """Promote realtor to executive status"""
         self.status = 'executive'
