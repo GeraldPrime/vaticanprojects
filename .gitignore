@@ -9,3 +9,4 @@ gcs-service-account.json
 !.elasticbeanstalk/*.global.yml
 staticfiles/
 django.log
+static/

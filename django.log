@@ -3961,3 +3961,417 @@ Watching for file changes with StatReloader
 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Watching for file changes with StatReloader
+Internal Server Error: /admin_dashboard/
+"GET /admin_dashboard/ HTTP/1.1" 500 145
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+Internal Server Error: /static/admin/css/login.css
+"GET /static/admin/css/login.css HTTP/1.1" 500 145
+Internal Server Error: /static/admin/css/login.css
+"GET /static/admin/css/login.css HTTP/1.1" 500 145
+Internal Server Error: /profile/
+"GET /profile/ HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/house16.jpg
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house16.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house18.jpg
+Internal Server Error: /static/estate/images/anew/house20.jpg
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+"GET /static/estate/images/anew/house18.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house20.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house30.jpg
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+Internal Server Error: /static/estate/images/anew/house30.jpg
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/3.webp
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+Internal Server Error: /static/estate/images/anew/house30.jpg
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/images/anew/house30.jpg
+Internal Server Error: /static/estate/js/script.js
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/4.webp
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+Internal Server Error: /static/estate/images/anew/house30.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+Internal Server Error: /static/estate/images/anew/house30.jpg
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/house21.jpg
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+Internal Server Error: /static/estate/js/script.js
+Internal Server Error: /static/estate/images/anew/house30.jpg
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/house21.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET / HTTP/1.1" 200 44007
+Internal Server Error: /static/estate/css/style.css
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/fromhim4.jpg
+Internal Server Error: /static/estate/images/anew/house30.jpg
+"GET /static/estate/images/anew/fromhim4.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house30.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/bungalow (7).webp
+Internal Server Error: /static/estate/images/anew/house21.jpg
+Internal Server Error: /static/estate/images/anew/4.webp
+Internal Server Error: /static/estate/images/anew/3.webp
+Internal Server Error: /static/estate/images/anew/bungalow (8).webp
+Internal Server Error: /static/estate/images/anew/bungalow (2).webp
+"GET /static/estate/images/anew/bungalow%20(7).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house21.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/4.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/3.webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(8).webp HTTP/1.1" 500 145
+"GET /static/estate/images/anew/bungalow%20(2).webp HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+"GET /estates/ HTTP/1.1" 200 50018
+Internal Server Error: /static/estate/css/style.css
+"GET /static/estate/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/vatican_logo.png
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/vatican_logo_square.png
+Internal Server Error: /static/estate/js/script.js
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 500 145
+"GET /static/estate/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg
+"GET /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house23.jpg
+"GET /static/estate/images/anew/house23.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/logos/favicon.png
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/house24.jpg
+"GET /static/estate/images/anew/house24.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/estate/images/anew/4bedroomduplex.jpg
+Internal Server Error: /static/estate/images/anew/house19.jpg
+"GET /static/estate/images/anew/4bedroomduplex.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house19.jpg HTTP/1.1" 500 145
+Watching for file changes with StatReloader
+"GET /estates/ HTTP/1.1" 200 50018
+"GET /static/estate/css/style.css HTTP/1.1" 200 12779
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 200 239583
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 200 180845
+"GET /static/estate/js/script.js HTTP/1.1" 200 2762
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/images/anew/house23.jpg HTTP/1.1" 200 42608
+"GET /static/estate/images/anew/luxury-apartment-building-with-glass-facade-reflects-sunset-generated-by-ai.jpg HTTP/1.1" 200 7346231
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /static/estate/images/anew/4bedroomduplex.jpg HTTP/1.1" 200 37868
+"GET /gallery/ HTTP/1.1" 200 37603
+"GET /static/estate/images/anew/building-with-colorful-walls.jpg HTTP/1.1" 200 8855734
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /pagead2.googlesyndication.com/pagead/js/f2738.txt
+"GET /pagead2.googlesyndication.com/pagead/js/f2738.txt?client=ca-pub-7237454582257940 HTTP/1.1" 500 145
+Internal Server Error: /pagead2.googlesyndication.com/pagead/js/fcf28.txt
+Internal Server Error: /static/landing/assets/css/vendor.bundle.css
+"GET /static/landing/assets/css/vendor.bundle.css HTTP/1.1" 500 145
+Internal Server Error: /telenary.com//static/landing/assets/css/LineIcons.css
+"GET /pagead2.googlesyndication.com/pagead/js/fcf28.txt?client=ca-pub-3877294907806879 HTTP/1.1" 500 145
+Internal Server Error: /telenary.com//static/landing/assets/css/swiper.min.css
+Internal Server Error: /telenary.com//static/landing/assets/css/magnific-popup.css
+Internal Server Error: /translate.google.com/translate_a/elementa0d8.js
+"GET /telenary.com//static/landing/assets/css/LineIcons.css HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/css/style.css
+"GET /telenary.com//static/landing/assets/css/swiper.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/css/main.css
+"GET /telenary.com//static/landing/assets/css/magnific-popup.css HTTP/1.1" 500 145
+"GET /translate.google.com/translate_a/elementa0d8.js?cb=googleTranslateElementInit HTTP/1.1" 500 145
+"GET /static/landing/assets/css/style.css HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/css/theme.css
+Internal Server Error: /s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js
+"GET /static/landing/assets/css/main.css HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/js/script.js
+"GET /static/landing/assets/css/theme.css HTTP/1.1" 500 145
+Internal Server Error: /www.smartsuppchat.com/loaderd41d.js
+Internal Server Error: /static/landing/assets/images/team-thumb-b.jpg
+"GET /static/landing/assets/js/script.js HTTP/1.1" 500 145
+"GET /s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/CEO.jpg
+"GET /www.smartsuppchat.com/loaderd41d.js? HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/Capture.png
+"GET /static/landing/assets/images/team-thumb-b.jpg HTTP/1.1" 500 145
+"GET /static/landing/assets/images/CEO.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/calc-bg.jpg
+Internal Server Error: /static/landing/assets/images/staff.jpg
+"GET /static/landing/assets/images/Capture.png HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/securitization.jpg
+Internal Server Error: /static/landing/assets/images/footer-bg.png
+"GET /static/landing/assets/images/calc-bg.jpg HTTP/1.1" 500 145
+Internal Server Error: /telenary.com//static/landing/assets/css/magnific-popup.css
+"GET /static/landing/assets/images/staff.jpg HTTP/1.1" 500 145
+"GET /static/landing/assets/images/footer-bg.png HTTP/1.1" 500 145
+"GET /static/landing/assets/images/securitization.jpg HTTP/1.1" 500 145
+"GET /telenary.com//static/landing/assets/css/magnific-popup.css HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/team-thumb-a.jpg
+"GET /static/landing/assets/images/team-thumb-a.jpg HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/images/header-bg-b.jpg
+Internal Server Error: /static/landing/assets/images/header-bg-a.jpg
+"GET /static/landing/assets/images/header-bg-b.jpg HTTP/1.1" 500 145
+"GET /static/landing/assets/images/header-bg-a.jpg HTTP/1.1" 500 145
+Internal Server Error: /vide.mp4
+"GET /vide.mp4 HTTP/1.1" 500 145
+Internal Server Error: /static/landing/assets/js/script.js
+"GET /static/landing/assets/js/script.js HTTP/1.1" 500 145
+Internal Server Error: /widgets.bitcoin.com/widget.html
+"GET /widgets.bitcoin.com/widget.html HTTP/1.1" 500 145
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"GET /static/admin/css/login.css HTTP/1.1" 200 308
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 200 312626
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 200 761529
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+Internal Server Error: /register
+"GET /register HTTP/1.1" 500 145
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/signin/?next=/user/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70345
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 200 1320
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 200 229
+"GET /user/frontend-extras/ HTTP/1.1" 200 53857
+"GET /user/signout/ HTTP/1.1" 302 0
+"GET /user/signin/ HTTP/1.1" 200 7820
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+"GET /user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+Internal Server Error: /user/frontend-extras
+"GET //user/frontend-extras HTTP/1.1" 500 145
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"GET /static/admin/css/login.css HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+Internal Server Error: /user/frontend-extras
+"GET /user/frontend-extras HTTP/1.1" 500 145
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/frontend-extras/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/frontend-extras/ HTTP/1.1" 200 7838

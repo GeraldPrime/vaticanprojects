@@ -36,6 +36,8 @@ ALLOWED_HOSTS = [
     'vaticanprojects.com',
 ]
 
+APPEND_SLASH = True
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
