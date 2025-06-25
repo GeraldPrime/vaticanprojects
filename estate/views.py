@@ -55,6 +55,8 @@ import decimal
 
 
 # Create your views here.
+def robots_txt(request):
+    return HttpResponse("User-agent: *\nDisallow:", content_type="text/plain")
 
 @cache_control(max_age=2592000, public=True)  # 30 days
 def home(request):
