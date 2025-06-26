@@ -113,6 +113,8 @@ class Realtor(models.Model):
     # Banking Details
     account_number = models.CharField(max_length=50,blank=True, null=True)
     bank_name = models.CharField(max_length=100,blank=True, null=True)
+    account_name = models.CharField(max_length=100,blank=True, null=True)
+    
     
     # Referral System
     referral_code = models.CharField(max_length=8, unique=True)
@@ -330,6 +332,10 @@ class PropertySale(models.Model):
     client_address = models.TextField( blank=True, null=True)
     client_phone = models.CharField(max_length=20, blank=True, null=True)
     client_email = models.EmailField(max_length=255, blank=True, null=True)
+    # Add to client information section
+    client_picture = models.ImageField(upload_to='client_pictures/', blank=True, null=True, )
+
+    
     
     # Client additional information
     marital_status = models.CharField(max_length=10, choices=MARITAL_STATUS_CHOICES, default='single')
@@ -359,6 +365,7 @@ class PropertySale(models.Model):
     original_price = models.DecimalField(max_digits=12, decimal_places=2)
     selling_price = models.DecimalField(max_digits=12, decimal_places=2)
     amount_paid = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    discount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     
     # Payment plan
     payment_plan = models.CharField(max_length=10, choices=PAYMENT_PLAN_CHOICES, default='outright')
@@ -467,7 +474,7 @@ class PropertySale(models.Model):
 class Payment(models.Model):
     property_sale = models.ForeignKey(PropertySale, on_delete=models.CASCADE, related_name='payments')
     amount = models.DecimalField(max_digits=12, decimal_places=2)
-    payment_date = models.DateTimeField(default=timezone.now)
+    payment_date = models.DateTimeField(blank=True,null=True)
     payment_method = models.CharField(max_length=50, default='Cash')
     reference = models.CharField(max_length=255, blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
