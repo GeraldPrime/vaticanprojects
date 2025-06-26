@@ -19300,3 +19300,941 @@ Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
 "GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
 Internal Server Error: /static/user/libs/jquery/jquery.min.js
 "GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /user/property-sales/ HTTP/1.1" 200 49934
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/profile-default.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 123623
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/property-sales/register/ HTTP/1.1" 200 7838
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/signin/?next=/user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70592
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/realtors_page HTTP/1.1" 200 111361
+"GET /static/user/images/users/avatar-1.jpg HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 62533
+"GET /user/property-sales/15/ HTTP/1.1" 200 93419
+"GET /user/property-sales/15/ HTTP/1.1" 200 93419
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/property-sales/15/ HTTP/1.1" 200 93419
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/property-sales/15/ HTTP/1.1" 302 0
+"GET /user/property-sales/15/ HTTP/1.1" 200 95546
+"GET /user/ HTTP/1.1" 200 70093
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 62533
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 90: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/property-sales/ HTTP/1.1" 200 62533
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 90: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 90: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 90: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/property-sales/15/ HTTP/1.1" 200 95259
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/15/ HTTP/1.1" 200 95259
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 105: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/property-sales/register/ HTTP/1.1" 200 98951
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 98951
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+Internal Server Error: /user/property-sales/register/
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 1099, in register_property_sale
+    return render(request, 'user/register_property_sale.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 106: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /user/property-sales/register/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"POST /user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/property-sales/16/ HTTP/1.1" 200 93718
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /user/property-sales/ HTTP/1.1" 200 63562
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/16/ HTTP/1.1" 200 93425
+"GET /user/property-sales/register/ HTTP/1.1" 200 108649
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109306
+"GET /user/property-sales/register/ HTTP/1.1" 200 109306
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109304
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109317
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109455
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/property-sales/register/ HTTP/1.1" 200 109455
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109455
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/property-sales/17/ HTTP/1.1" 200 93884
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /user/property-sales/ HTTP/1.1" 200 64652
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader
