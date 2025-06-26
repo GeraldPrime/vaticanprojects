@@ -55,7 +55,6 @@ import requests
 
 from django.urls import reverse
 import logging
-import pytz
 
 logger = logging.getLogger(__name__)
 
