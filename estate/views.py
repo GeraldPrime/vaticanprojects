@@ -49,6 +49,16 @@ from botocore.exceptions import ClientError
 
 import decimal
 
+# views.py
+from django.http import HttpResponse, Http404
+import requests
+
+from django.urls import reverse
+import logging
+import pytz
+
+logger = logging.getLogger(__name__)
+
     
 
 # User = get_user_model()
@@ -200,52 +210,6 @@ def gallery_view(request):
 
 # ====================================ADMIN INTERFACE================================================================================
 # ===================================                =================================================================================
-# @login_required
-# def userhome(request):
-#    # Calculate total sales amount (in Naira)
-#     total_sales_amount = PropertySale.objects.aggregate(Sum('selling_price'))['selling_price__sum'] or Decimal('0')
-    
-#     # Count number of property sales transactions
-#     total_sales_count = PropertySale.objects.count()
-    
-#     # Count total realtors
-#     total_realtors = Realtor.objects.count()
-    
-#     # Count paid commissions
-#     paid_commissions_count = Commission.objects.filter(is_paid=True).count()
-    
-#     # Count unpaid commissions
-#     unpaid_commissions_count = Commission.objects.filter(is_paid=False).count()
-    
-#     # Calculate total paid commissions amount
-#     total_paid_commissions = Commission.objects.filter(is_paid=True).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
-    
-#     # Calculate total unpaid commissions amount
-#     total_unpaid_commissions = Commission.objects.filter(is_paid=False).aggregate(Sum('amount'))['amount__sum'] or Decimal('0')
-    
-#     # Format the numbers with appropriate suffixes
-#     def format_number(number):
-#         if number >= 1_000_000_000:  # Billions
-#             return f"₦{number / 1_000_000_000:.1f}B"
-#         elif number >= 1_000_000:  # Millions
-#             return f"₦{number / 1_000_000:.1f}M"
-#         elif number >= 1_000:  # Thousands
-#             return f"₦{number / 1_000:.1f}K"
-#         else:
-#             return f"₦{number:.0f}"
-    
-#     context = {
-#         'total_sales_amount': format_number(total_sales_amount),
-#         'total_sales_count': total_sales_count,
-#         'total_realtors': total_realtors,
-#         'paid_commissions_count': paid_commissions_count,
-#         'unpaid_commissions_count': unpaid_commissions_count,
-#         'total_paid_commissions': format_number(total_paid_commissions),
-#         'total_unpaid_commissions': format_number(total_unpaid_commissions),
-#     }
-    
-    
-#     return render(request, "user/home.html", context)
 
 
 @login_required
@@ -469,6 +433,15 @@ def realtors_page(request):
     
     return render(request, "user/realtors_page.html", context )
 
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import render, redirect
+import logging
+
+logger = logging.getLogger(__name__)
+
 @login_required
 def create_realtor(request):
     """View for creating a new realtor profile"""
@@ -480,10 +453,11 @@ def create_realtor(request):
         phone = request.POST.get('phone')
         account_number = request.POST.get('accnumber')
         bank_name = request.POST.get('bankname')
+        account_name = request.POST.get('accountname')
         address = request.POST.get('address')
         country = request.POST.get('country')
         sponsor_code = request.POST.get('sponsorcode')
-        
+       
         # Create new realtor instance
         realtor = Realtor(
             first_name=first_name,
@@ -492,27 +466,93 @@ def create_realtor(request):
             phone=phone,
             account_number=account_number,
             bank_name=bank_name,
+            account_name=account_name,
             address=address,
             country=country,
             sponsor_code=sponsor_code
         )
-        
+       
         # Handle image upload
         if 'image' in request.FILES:
             realtor.image = request.FILES['image']
-            
+           
         # Save the realtor (this will also generate the referral code)
         try:
             realtor.save()
-            messages.success(request, f"Realtor profile created successfully! Referral code: {realtor.referral_code}")
-            # return redirect('create_realtor', pk=realtor.pk)  # Redirect to detail view or appropriate page
-            return redirect('realtor_detail',id=realtor.id)  # Redirect to detail view or appropriate page
+            
+            # Send welcome email immediately after successful creation
+            try:
+                # Construct referral link
+                referral_link = f"{request.build_absolute_uri('/').rstrip('/')}/realtor/register/{realtor.referral_code}/"
+                
+                # Email subject
+                subject = "Welcome to Vatican Garden Projects - Your Registration is Complete!"
+                
+                # Email message
+                message = f"""
+Dear {first_name} {last_name},
 
+🎉 Welcome to Vatican Garden Projects! 🎉
+
+Congratulations! Your registration as a Professional Realtor has been successfully completed.
+
+Here are your important details:
+
+📋 ACCOUNT INFORMATION:
+• Name: {first_name} {last_name}
+• Email: {email}
+• Phone: {phone}
+• Country: {country}
+
+🔗 YOUR REFERRAL DETAILS:
+• Your Referral Code: {realtor.referral_code}
+• Your Referral Link: {referral_link}
+
+💡 HOW TO USE YOUR REFERRAL:
+Share your referral link with potential realtors to earn commissions when they register and make sales. Your unique referral code ({realtor.referral_code}) will automatically be applied when someone uses your link.
+
+🚀 NEXT STEPS:
+1. Save your referral code and link in a safe place
+2. Start sharing your referral link to grow your network
+3. Contact our support team if you have any questions
+
+Thank you for joining Vatican Garden Projects. We're excited to have you as part of our professional realtor community!
+
+Best regards,
+The Vatican Garden Projects Team
+
+---
+This is an automated message. Please do not reply to this email.
+For support, contact us through our official channels.
+                """.strip()
+                
+                # Send the email
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+                
+                logger.info(f"Welcome email sent successfully to {email}")
+                messages.success(request, f"Realtor profile created successfully! Referral code: {realtor.referral_code}. A welcome email has been sent to {email}.")
+                
+            except Exception as email_error:
+                logger.error(f"Failed to send welcome email to {email}: {str(email_error)}")
+                messages.success(request, f"Realtor profile created successfully! Referral code: {realtor.referral_code}")
+                messages.warning(request, "However, there was an issue sending the welcome email. Please contact support for referral details.")
+            
+            return redirect('realtor_detail', id=realtor.id)  # Redirect to detail view or appropriate page
+            
         except Exception as e:
+            logger.error(f"Error creating realtor profile for {email}: {str(e)}")
             messages.error(request, f"Error creating realtor profile: {str(e)}")
-    
+   
     # For GET requests, just render the form
-    return render(request, "user/create_realtor.html")  # Replace with your actual template path
+    return render(request, "user/create_realtor.html")  
+
+
 
 @login_required
 def realtor_detail(request,id):
@@ -549,7 +589,7 @@ def edit_realtor(request, id):
     """View for editing an existing realtor profile"""
     realtor = get_object_or_404(Realtor, id=id)
     
-    if request.method == 'POST':
+    if request.method == 'POST':####2218159080
         # Extract form data
         realtor.first_name = request.POST.get('firstname')
         realtor.last_name = request.POST.get('lastname')
@@ -557,6 +597,7 @@ def edit_realtor(request, id):
         realtor.phone = request.POST.get('phone')
         realtor.account_number = request.POST.get('accnumber')
         realtor.bank_name = request.POST.get('bankname')
+        realtor.account_name = request.POST.get('accname')
         realtor.address = request.POST.get('address')
         realtor.country = request.POST.get('country')
         
@@ -761,85 +802,6 @@ def delete_property(request, property_id):
 #     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
     
 #     if request.method == 'POST':
-#         # Extract form data
-#         property_id = request.POST.get('property')
-#         description = request.POST.get('description')
-#         property_type = request.POST.get('property_type')
-#         quantity = request.POST.get('quantity')
-        
-#         client_name = request.POST.get('client_name')
-#         client_address = request.POST.get('client_address')
-#         client_phone = request.POST.get('client_phone')
-        
-#         next_of_kin_name = request.POST.get('next_of_kin_name')
-#         next_of_kin_address = request.POST.get('next_of_kin_address')
-#         next_of_kin_phone = request.POST.get('next_of_kin_phone')
-        
-#         original_price = request.POST.get('original_price')
-#         selling_price = request.POST.get('selling_price')
-#         initial_payment = request.POST.get('initial_payment')
-#         payment_plan = request.POST.get('payment_plan')
-        
-#         realtor_id = request.POST.get('realtor')
-#         realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
-#         sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
-#         upline_commission_percentage = request.POST.get('upline_commission_percentage')
-        
-#         # Get related objects
-#         property_obj = get_object_or_404(Property, id=property_id)
-#         realtor = get_object_or_404(Realtor, id=realtor_id)
-        
-       
-#         property_sale = PropertySale.objects.create(
-#             description=description,
-#             property_type=property_type,
-#             property_item=property_obj,
-#             quantity=int(quantity),
-            
-#             client_name=client_name,
-#             client_address=client_address,
-#             client_phone=client_phone,
-            
-#             next_of_kin_name=next_of_kin_name,
-#             next_of_kin_address=next_of_kin_address,
-#             next_of_kin_phone=next_of_kin_phone,
-            
-#             original_price=Decimal(original_price),
-#             selling_price=Decimal(selling_price),
-#             payment_plan=payment_plan,
-            
-#             realtor=realtor,
-#             realtor_commission_percentage=Decimal(realtor_commission_percentage),
-#             sponsor_commission_percentage=Decimal(sponsor_commission_percentage),
-#             upline_commission_percentage=Decimal(upline_commission_percentage)
-#         )
-   
-#         if float(initial_payment) > 0:
-#             Payment.objects.create(
-#                 property_sale=property_sale,
-#                 amount=Decimal(initial_payment),
-#                 payment_method='Cash',
-#                 notes='Initial payment at registration'
-#             )
-        
-#         messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
-#         return redirect('property_sale_detail', id=property_sale.id)
-#         # return redirect('property_sale_detail', sale_id=property_sale.id)
-    
-#     return render(request, 'user/register_property_sale.html', {
-#         'properties': properties,
-#         'realtors': realtors
-#     })
-
-
-
-# @login_required
-# def register_property_sale(request):
-#     """View to register a new property sale"""
-#     properties = Property.objects.all().order_by('name')
-#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
-    
-#     if request.method == 'POST':
 #         # Extract basic property information
 #         property_id = request.POST.get('property')
 #         description = request.POST.get('description')
@@ -974,7 +936,11 @@ def register_property_sale(request):
             marital_status = request.POST.get('marital_status')
             spouse_name = request.POST.get('spouse_name', '')
             spouse_phone = request.POST.get('spouse_phone', '')
-            
+            # Add after client_email extraction
+            client_picture = request.FILES.get('client_picture')
+
+           
+                        
             # Extract client identification
             id_type = request.POST.get('id_type')
             id_number = request.POST.get('id_number')
@@ -999,6 +965,8 @@ def register_property_sale(request):
             selling_price = request.POST.get('selling_price')
             initial_payment = request.POST.get('initial_payment')
             payment_plan = request.POST.get('payment_plan')
+            # Add after selling_price extraction  
+            discount = request.POST.get('discount')
             
             # Extract realtor and commission information
             realtor_id = request.POST.get('realtor')
@@ -1022,6 +990,8 @@ def register_property_sale(request):
                 original_price_decimal = safe_decimal_conversion(original_price, 'original price')
                 selling_price_decimal = safe_decimal_conversion(selling_price, 'selling price')
                 initial_payment_decimal = safe_decimal_conversion(initial_payment, 'initial payment', '0.00')
+                # Add after initial_payment_decimal conversion
+                discount_decimal = safe_decimal_conversion(discount, 'discount', '0.00')
                 realtor_commission_decimal = safe_decimal_conversion(realtor_commission_percentage, 'realtor commission percentage', '0.00')
                 sponsor_commission_decimal = safe_decimal_conversion(sponsor_commission_percentage, 'sponsor commission percentage', '0.00')
                 upline_commission_decimal = safe_decimal_conversion(upline_commission_percentage, 'upline commission percentage', '0.00')
@@ -1066,6 +1036,10 @@ def register_property_sale(request):
                 marital_status=marital_status,
                 spouse_name=spouse_name,
                 spouse_phone=spouse_phone,
+                # Add to client information section
+                client_picture=client_picture,
+
+                
                 
                 id_type=id_type,
                 id_number=id_number,
@@ -1085,6 +1059,8 @@ def register_property_sale(request):
                 original_price=original_price_decimal,
                 selling_price=selling_price_decimal,
                 payment_plan=payment_plan,
+                # Add to pricing section
+                discount=discount_decimal,
                 
                 realtor=realtor,
                 realtor_commission_percentage=realtor_commission_decimal,
@@ -1126,6 +1102,7 @@ def register_property_sale(request):
         'realtors': realtors
     })
 
+
 @login_required
 def property_sales_list(request):
     """View to display all property sales"""
@@ -1138,6 +1115,114 @@ def property_sales_list(request):
     return render(request, 'user/property_sales_list.html', {
         'sales': sales
     })
+
+
+# @login_required
+# def property_sale_detail(request, id):
+#     """View details of a property sale and handle new payments"""
+#     sale = get_object_or_404(PropertySale, pk=id)
+#     payments = Payment.objects.filter(property_sale=sale).order_by('-payment_date')
+    
+#     # Get balance due directly from the model property
+#     balance_due = sale.balance_due
+    
+#     # Calculate commissions based on current amount paid
+#     realtor_commission = (sale.amount_paid * Decimal(sale.realtor_commission_percentage)) / Decimal('100')
+    
+#     sponsor_commission = Decimal('0')
+#     if sale.realtor.sponsor:
+#         sponsor_commission = (sale.amount_paid * Decimal(sale.sponsor_commission_percentage)) / Decimal('100')
+    
+#     upline_commission = Decimal('0')
+#     if sale.realtor.sponsor and sale.realtor.sponsor.sponsor:
+#         upline_commission = (sale.amount_paid * Decimal(sale.upline_commission_percentage)) / Decimal('100')
+    
+#     # Calculate payment progress percentage using Decimal
+#     payment_progress_percent = Decimal('0')
+#     if sale.selling_price > 0:
+#         payment_progress_percent = (sale.amount_paid * Decimal('100')) / sale.selling_price
+#         # Round to 2 decimal places for display
+#         payment_progress_percent = payment_progress_percent.quantize(Decimal('0.01'))
+    
+#     # Handle new payment submission
+#     if request.method == 'POST':
+#         # Only process if there's still a balance due
+#         if balance_due > 0:
+#             try:
+#                 # Ensure we're working with Decimal from the start
+#                 amount = Decimal(request.POST.get('amount', '0'))
+#                 payment_method = request.POST.get('payment_method', 'Cash')
+#                 reference = request.POST.get('reference', '')
+#                 notes = request.POST.get('notes', '')
+                
+#                 # Validate amount is positive
+#                 if amount <= 0:
+#                     messages.error(request, "Payment amount must be greater than zero.")
+#                     return redirect('property_sale_detail', id=sale.id)
+                
+#                 # Ensure amount doesn't exceed balance due
+#                 if amount > balance_due:
+#                     amount = balance_due
+#                     # Format amount for display
+#                     messages.info(request, f"Payment amount adjusted to ₦{amount.quantize(Decimal('0.01'))} to match remaining balance.")
+                
+#                 # Create new payment - this will automatically update the sale's amount_paid in the Payment.save() method
+#                 payment = Payment(
+#                     property_sale=sale,
+#                     amount=amount,
+#                     payment_method=payment_method,
+#                     reference=reference,
+#                     notes=notes,
+#                     payment_date=timezone.now()
+#                 )
+#                 payment.save()
+                
+#                 # Refresh the sale object to get updated values after payment
+#                 sale.refresh_from_db()
+                
+#                 # Recalculate balance due
+#                 balance_due = sale.balance_due
+                
+#                 # Recalculate commissions
+#                 realtor_commission = (sale.amount_paid * Decimal(sale.realtor_commission_percentage)) / Decimal('100')
+                
+#                 sponsor_commission = Decimal('0')
+#                 if sale.realtor.sponsor:
+#                     sponsor_commission = (sale.amount_paid * Decimal(sale.sponsor_commission_percentage)) / Decimal('100')
+                
+#                 upline_commission = Decimal('0')
+#                 if sale.realtor.sponsor and sale.realtor.sponsor.sponsor:
+#                     upline_commission = (sale.amount_paid * Decimal(sale.upline_commission_percentage)) / Decimal('100')
+                
+#                 # Recalculate payment progress
+#                 if sale.selling_price > 0:
+#                     payment_progress_percent = (sale.amount_paid * Decimal('100')) / sale.selling_price
+#                     payment_progress_percent = payment_progress_percent.quantize(Decimal('0.01'))
+                
+#                 messages.success(request, f"Payment of ₦{amount.quantize(Decimal('0.01'))} successfully recorded!")
+                
+#                 # Check if payment is now complete
+#                 if balance_due <= 0:
+#                     messages.success(request, "Congratulations! This property has been fully paid for.")
+#             except (ValueError, InvalidOperation):
+#                 messages.error(request, "Invalid payment amount. Please enter a valid number.")
+#         else:
+#             messages.info(request, "This property has already been fully paid for.")
+        
+#         # Redirect to avoid form resubmission
+#         return redirect('property_sale_detail', id=sale.id)
+    
+#     context = {
+#         'sale': sale,
+#         'payments': payments,
+#         'realtor_commission': realtor_commission.quantize(Decimal('0.01')),
+#         'sponsor_commission': sponsor_commission.quantize(Decimal('0.01')),
+#         'upline_commission': upline_commission.quantize(Decimal('0.01')),
+#         'payment_progress_percent': payment_progress_percent,
+#         'balance_due': balance_due.quantize(Decimal('0.01'))
+#     }
+    
+#     return render(request, 'user/property_sale_detail.html', context)
 
 
 @login_required
@@ -1177,6 +1262,7 @@ def property_sale_detail(request, id):
                 payment_method = request.POST.get('payment_method', 'Cash')
                 reference = request.POST.get('reference', '')
                 notes = request.POST.get('notes', '')
+                payment_date_str = request.POST.get('payment_date', '')
                 
                 # Validate amount is positive
                 if amount <= 0:
@@ -1189,6 +1275,33 @@ def property_sale_detail(request, id):
                     # Format amount for display
                     messages.info(request, f"Payment amount adjusted to ₦{amount.quantize(Decimal('0.01'))} to match remaining balance.")
                 
+                # Parse and validate payment date
+                payment_date = None
+                if payment_date_str:
+                    try:
+                        # Parse the date string from the form (YYYY-MM-DD format)
+                        naive_date = datetime.strptime(payment_date_str, '%Y-%m-%d').date()
+                        
+                        # Convert to datetime and make it timezone aware
+                        # Set time to current time for the date, or you can set a specific time
+                        current_time = timezone.now().time()
+                        naive_datetime = datetime.combine(naive_date, current_time)
+                        
+                        # Make it timezone aware using the current timezone
+                        payment_date = timezone.make_aware(naive_datetime)
+                        
+                        # Validate that the payment date is not in the future
+                        if payment_date > timezone.now():
+                            messages.error(request, "Payment date cannot be in the future.")
+                            return redirect('property_sale_detail', id=sale.id)
+                            
+                    except ValueError:
+                        messages.error(request, "Invalid payment date format. Please select a valid date.")
+                        return redirect('property_sale_detail', id=sale.id)
+                else:
+                    messages.error(request, "Payment date is required.")
+                    return redirect('property_sale_detail', id=sale.id)
+                
                 # Create new payment - this will automatically update the sale's amount_paid in the Payment.save() method
                 payment = Payment(
                     property_sale=sale,
@@ -1196,7 +1309,7 @@ def property_sale_detail(request, id):
                     payment_method=payment_method,
                     reference=reference,
                     notes=notes,
-                    payment_date=timezone.now()
+                    payment_date=payment_date
                 )
                 payment.save()
                 
@@ -1222,13 +1335,16 @@ def property_sale_detail(request, id):
                     payment_progress_percent = (sale.amount_paid * Decimal('100')) / sale.selling_price
                     payment_progress_percent = payment_progress_percent.quantize(Decimal('0.01'))
                 
-                messages.success(request, f"Payment of ₦{amount.quantize(Decimal('0.01'))} successfully recorded!")
+                # Format the payment date for display in the success message
+                formatted_date = payment_date.strftime('%B %d, %Y')
+                messages.success(request, f"Payment of ₦{amount.quantize(Decimal('0.01'))} for {formatted_date} successfully recorded!")
                 
                 # Check if payment is now complete
                 if balance_due <= 0:
                     messages.success(request, "Congratulations! This property has been fully paid for.")
-            except (ValueError, InvalidOperation):
-                messages.error(request, "Invalid payment amount. Please enter a valid number.")
+                    
+            except (ValueError, InvalidOperation) as e:
+                messages.error(request, "Invalid payment information. Please check your inputs and try again.")
         else:
             messages.info(request, "This property has already been fully paid for.")
         
@@ -1242,7 +1358,8 @@ def property_sale_detail(request, id):
         'sponsor_commission': sponsor_commission.quantize(Decimal('0.01')),
         'upline_commission': upline_commission.quantize(Decimal('0.01')),
         'payment_progress_percent': payment_progress_percent,
-        'balance_due': balance_due.quantize(Decimal('0.01'))
+        'balance_due': balance_due.quantize(Decimal('0.01')),
+        'today': timezone.now().date().isoformat(),  # For setting max date in template
     }
     
     return render(request, 'user/property_sale_detail.html', context)
@@ -2059,14 +2176,14 @@ def delete_gallery_image(request):
 def realtor_register(request, referral_code=None):
     # Determine sponsor code
     sponsor_code = referral_code if referral_code else '44709285'  # Default sponsor code
-    
+   
     # Verify if referral code exists (optional validation)
     sponsor_exists = False
     if referral_code:
         sponsor_exists = Realtor.objects.filter(referral_code=referral_code).exists()
         if not sponsor_exists:
             sponsor_code = '44709285'  # Fall back to default if invalid
-    
+   
     if request.method == 'POST':
         try:
             # Get form data
@@ -2078,16 +2195,17 @@ def realtor_register(request, referral_code=None):
             country = request.POST.get('country', '').strip()
             bank_name = request.POST.get('bank_name', '').strip()
             account_number = request.POST.get('account_number', '').strip()
+            account_name = request.POST.get('account_name', '').strip()
             sponsor_code_form = request.POST.get('sponsor_code', '').strip()
-            
+           
             # Basic validation
-            if not all([first_name, last_name, email, phone, address, country, bank_name, account_number]):
+            if not all([first_name, last_name, email, phone, address, country, bank_name, account_number, account_name]):
                 messages.error(request, 'All fields are required.')
                 return render(request, 'realtor_register.html', {
                     'sponsor_code': sponsor_code,
                     'form_data': request.POST
                 })
-            
+           
             # Check if email already exists
             if Realtor.objects.filter(email=email).exists():
                 messages.error(request, 'A realtor with this email already exists.')
@@ -2095,10 +2213,10 @@ def realtor_register(request, referral_code=None):
                     'sponsor_code': sponsor_code,
                     'form_data': request.POST
                 })
-            
+           
             # Handle image upload
             image = request.FILES.get('image')
-            
+           
             # Create new realtor
             realtor = Realtor(
                 first_name=first_name,
@@ -2109,40 +2227,105 @@ def realtor_register(request, referral_code=None):
                 country=country,
                 bank_name=bank_name,
                 account_number=account_number,
+                account_name=account_name,
                 sponsor_code=sponsor_code_form,
                 image=image
             )
-            
+           
             realtor.save()  # This will trigger the save method and generate referral_code
-            
-            messages.success(request, 'Registration successful! Your referral code has been generated.')
-            
+           
+            # Send welcome email immediately after successful registration
+            try:
+                # Construct referral link
+                referral_link = f"{request.build_absolute_uri('/').rstrip('/')}/realtor/register/{realtor.referral_code}/"
+                
+                # Email subject
+                subject = "Welcome to Vatican Garden Projects - Your Registration is Complete!"
+                
+                # Email message
+                message = f"""
+Dear {first_name} {last_name},
+
+🎉 Welcome to Vatican Garden Projects! 🎉
+
+Congratulations! Your registration as a Professional Realtor has been successfully completed.
+
+Here are your important details:
+
+📋 ACCOUNT INFORMATION:
+• Name: {first_name} {last_name}
+• Email: {email}
+• Phone: {phone}
+• Country: {country}
+
+🔗 YOUR REFERRAL DETAILS:
+• Your Referral Code: {realtor.referral_code}
+• Your Referral Link: {referral_link}
+
+💡 HOW TO USE YOUR REFERRAL:
+Share your referral link with potential realtors to earn commissions when they register and make sales. Your unique referral code ({realtor.referral_code}) will automatically be applied when someone uses your link.
+
+🚀 NEXT STEPS:
+1. Save your referral code and link in a safe place
+2. Start sharing your referral link to grow your network
+3. Contact our support team if you have any questions
+
+Thank you for joining Vatican Garden Projects. We're excited to have you as part of our professional realtor community!
+
+Best regards,
+The Vatican Garden Projects Team
+
+---
+This is an automated message. Please do not reply to this email.
+For support, contact us through our official channels.
+                """.strip()
+                
+                # Send the email
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+                
+                logger.info(f"Welcome email sent successfully to {email}")
+                messages.success(request, 'Registration successful! A welcome email with your referral details has been sent to your email address.')
+                
+            except Exception as email_error:
+                logger.error(f"Failed to send welcome email to {email}: {str(email_error)}")
+                messages.warning(request, 'Registration successful! However, there was an issue sending the welcome email. Please contact support for your referral details.')
+           
             # Redirect to success page or show success message with referral code
             return render(request, 'estate/realtor_register_success.html', {
                 'realtor': realtor,
                 'referral_code': realtor.referral_code
             })
-            
+           
         except Exception as e:
+            logger.error(f"Registration failed for {email}: {str(e)}")
             messages.error(request, f'Registration failed: {str(e)}')
             return render(request, 'estate/realtor_register.html', {
                 'sponsor_code': sponsor_code,
                 'form_data': request.POST
             })
-    
+   
     # GET request - show form
     return render(request, 'estate/realtor_register.html', {
         'sponsor_code': sponsor_code,
         'referral_code': referral_code
-    })
+    })   
+    
+    
+    
+    
+    
+    
     
 '''nice work here'''
 
 
-# views.py
-from django.http import HttpResponse, Http404
-from django.shortcuts import get_object_or_404
-import requests
+
 
     
  

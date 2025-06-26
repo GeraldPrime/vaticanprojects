@@ -75,6 +75,20 @@
         border: 2px solid #FFD700;
     }
     
+    /* Client Image Styling */
+    .client-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #3498db;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .premium-invoice .client-image {
+        border: 3px solid #FFD700;
+    }
+    
     .invoice-details-card {
         background: rgba(52, 152, 219, 0.1);
         border: 2px solid #3498db;
@@ -138,6 +152,17 @@
         font-weight: bold;
         margin-bottom: 10px;
         font-size: 14px;
+    }
+    
+    /* Client Card with Image */
+    .client-card-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .client-info {
+        flex: 1;
     }
     
     /* Table */
@@ -214,6 +239,12 @@
     
     .premium-invoice .payment-totals-table tr:last-child td {
         border-bottom: 2px solid #FFD700;
+    }
+    
+    /* Discount highlight */
+    .discount-row {
+        color: #27ae60;
+        font-weight: 600;
     }
     
     /* Alerts */
@@ -396,6 +427,16 @@
         .container {
             margin: 10px;
         }
+        
+        .client-card-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .client-image {
+            margin-bottom: 10px;
+        }
     }
 </style>
 {% endblock %}
@@ -467,6 +508,9 @@
             <div class="col-md-4 text-md-end">
                 <h5 class="text-primary">Total Amount</h5>
                 <h2 class="text-primary mb-0">₦{{ sale.selling_price|floatformat:2|intcomma }}</h2>
+                {% if sale.discount > 0 %}
+                    <p class="text-success mb-0"><small>💰 Discount Applied: ₦{{ sale.discount|floatformat:2|intcomma }}</small></p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -484,9 +528,20 @@
         
         <div class="address-card">
             <h5>👤 To:</h5>
-            <p class="mb-1"><strong>{{ sale.client_name }}</strong></p>
-            <p class="mb-1">{{ sale.client_address }}</p>
-            <p class="mb-0">📞 {{ sale.client_phone }}</p>
+            <div class="client-card-content">
+                <div class="client-info">
+                    <p class="mb-1"><strong>{{ sale.client_name }}</strong></p>
+                    <p class="mb-1">{{ sale.client_address }}</p>
+                    <p class="mb-0">📞 {{ sale.client_phone }}</p>
+                </div>
+                <div class="client-image-container">
+                    {% if sale.client_picture %}
+                        <img src="{{ sale.client_picture.url }}" alt="{{ sale.client_name }}" class="client-image">
+                    {% else %}
+                        <img src="{% static 'user/images/pph.jpeg' %}" alt="Default Client" class="client-image">
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
     
@@ -560,6 +615,12 @@
                     <td>Original Price:</td>
                     <td class="text-end">₦{{ sale.original_price|floatformat:2|intcomma }}</td>
                 </tr>
+                {% if sale.discount > 0 %}
+                <tr class="discount-row">
+                    <td>Discount Applied:</td>
+                    <td class="text-end">-₦{{ sale.discount|floatformat:2|intcomma }}</td>
+                </tr>
+                {% endif %}
                 <tr>
                     <td>Selling Price:</td>
                     <td class="text-end">₦{{ sale.selling_price|floatformat:2|intcomma }}</td>
@@ -615,6 +676,9 @@
             </div>
             <div class="col-md-6">
                 <p class="small mb-2">3. All payments are non-refundable unless stated in writing.</p>
+                {% if sale.discount > 0 %}
+                <p class="small mb-2">4. Discount of ₦{{ sale.discount|floatformat:2|intcomma }} has been applied to this invoice.</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -628,7 +692,7 @@
     <!-- Footer -->
     <div class="invoice-footer">
         <p class="mb-1">This invoice was generated on {{ now|date:"F d, Y" }} at {{ now|time:"H:i" }}</p>
-        <p class="mb-0">Powered by Real Estate Management System | Confidential Document</p>
+        <p class="mb-0">Powered by Vatican Garden Projects Management System | Confidential Document</p>
     </div>
 </div>
 

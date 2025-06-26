@@ -23,7 +23,7 @@ class RealtorAdmin(admin.ModelAdmin):
             'fields': [('first_name', 'last_name'), 'email', 'phone', 'image', 'address', 'country']
         }),
         ('Banking Details', {
-            'fields': ['account_number', 'bank_name']
+            'fields': ['account_number', 'bank_name','account_name']
         }),
         ('Referral System', {   
             'fields': ['referral_code', 'sponsor_code', 'sponsor']
@@ -127,7 +127,7 @@ class PropertySaleAdmin(admin.ModelAdmin):
         ('Client Information', {
             'fields': [
                 'client_name', 'client_address', 'client_phone', 'client_email',
-                'marital_status', 'spouse_name', 'spouse_phone'
+                'marital_status', 'spouse_name', 'spouse_phone','client_picture'
             ]
         }),
         ('Client Identification', {

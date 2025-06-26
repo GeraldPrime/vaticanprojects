@@ -10,3 +10,12 @@ gcs-service-account.json
 staticfiles/
 django.log
 static/
+
+estate/fromgit.py
+estate/set3.py
+estate/set.py
+estate/set2.py
+estate/setworkin.py
+estate/setworkind22.py
+estate/setworking233.py
+estate/justsave.py

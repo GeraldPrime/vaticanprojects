@@ -280,6 +280,7 @@
   </head>
   
   <body>
+    {% include 'user/_alerts.html' %}
     <div class="page-wrapper">
       <!-- Preloader -->
       <div class="preloader"><div class="custom-loader"></div></div>
@@ -309,14 +310,7 @@
                 <!-- Form Body -->
                 <div class="card-body">
                     <!-- Display Messages -->
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+                   
                     
                     <form method="post" enctype="multipart/form-data" id="realtorRegistrationForm">
                         {% csrf_token %}
@@ -425,6 +419,16 @@
                                            class="form-control" 
                                            name="account_number" 
                                            value="{{ form_data.account_number|default:'' }}"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label required-field">Account Name</label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           name="account_name" 
+                                           value="{{ form_data.account_name|default:'' }}"
                                            required>
                                 </div>
                             </div>
