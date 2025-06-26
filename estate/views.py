@@ -913,6 +913,213 @@ def delete_property(request, property_id):
 #         'realtors': realtors
 #     })
 
+
+@login_required
+def property_sales_list(request):
+    """View to display all property sales"""
+    all_sales = PropertySale.objects.all().order_by('-created_at')
+    paginator = Paginator(all_sales, 20)            # 20 sales per page
+    page_number = request.GET.get('page', 1)        # get ?page= from URL, default to 1
+    sales = paginator.get_page(page_number) 
+    # sales = PropertySale.objects.all().order_by('-created_at')
+    
+    return render(request, 'user/property_sales_list.html', {
+        'sales': sales
+    })
+
+
+
+# @login_required
+# def register_property_sale(request):
+#     """View to register a new property sale"""
+#     properties = Property.objects.all().order_by('name')
+#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
+    
+#     if request.method == 'POST':
+#         try:
+#             # Extract basic property information
+#             property_id = request.POST.get('property')
+#             description = request.POST.get('description')
+#             property_type = request.POST.get('property_type')
+#             quantity = request.POST.get('quantity')
+            
+#             # Extract client information
+#             client_name = request.POST.get('client_name')
+#             client_address = request.POST.get('client_address')
+#             client_phone = request.POST.get('client_phone')
+#             client_email = request.POST.get('client_email')
+#             marital_status = request.POST.get('marital_status')
+#             spouse_name = request.POST.get('spouse_name', '')
+#             spouse_phone = request.POST.get('spouse_phone', '')
+#             # Add after client_email extraction
+#             client_picture = request.FILES.get('client_picture')
+
+           
+                        
+#             # Extract client identification
+#             id_type = request.POST.get('id_type')
+#             id_number = request.POST.get('id_number')
+            
+#             # Extract client origin
+#             lga_of_origin = request.POST.get('lga_of_origin')
+#             town_of_origin = request.POST.get('town_of_origin')
+#             state_of_origin = request.POST.get('state_of_origin')
+            
+#             # Extract client bank details
+#             bank_name = request.POST.get('bank_name')
+#             account_number = request.POST.get('account_number')
+#             account_name = request.POST.get('account_name')
+            
+#             # Extract next of kin information
+#             next_of_kin_name = request.POST.get('next_of_kin_name')
+#             next_of_kin_address = request.POST.get('next_of_kin_address')
+#             next_of_kin_phone = request.POST.get('next_of_kin_phone')
+            
+#             # Extract financial information
+#             original_price = request.POST.get('original_price')
+#             selling_price = request.POST.get('selling_price')
+#             initial_payment = request.POST.get('initial_payment')
+#             payment_plan = request.POST.get('payment_plan')
+#             # Add after selling_price extraction  
+#             discount = request.POST.get('discount')
+#             payment_date= request.POST.get("payment_date")
+            
+#             # Extract realtor and commission information
+#             realtor_id = request.POST.get('realtor')
+#             realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
+#             sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
+#             upline_commission_percentage = request.POST.get('upline_commission_percentage')
+            
+#             # Helper function to safely convert to Decimal
+#             def safe_decimal_conversion(value, field_name, default='0.00'):
+#                 if value is None or str(value).strip() == '':
+#                     return Decimal(default)
+#                 try:
+#                     cleaned_value = str(value).strip()
+#                     return Decimal(cleaned_value)
+#                 except (ValueError, decimal.InvalidOperation) as e:
+#                     messages.error(request, f'Invalid value for {field_name}: "{value}". Please enter a valid number.')
+#                     raise ValueError(f'Invalid {field_name} value')
+            
+#             # Validate and convert decimal fields
+#             try:
+#                 original_price_decimal = safe_decimal_conversion(original_price, 'original price')
+#                 selling_price_decimal = safe_decimal_conversion(selling_price, 'selling price')
+#                 initial_payment_decimal = safe_decimal_conversion(initial_payment, 'initial payment', '0.00')
+#                 # Add after initial_payment_decimal conversion
+#                 discount_decimal = safe_decimal_conversion(discount, 'discount', '0.00')
+#                 realtor_commission_decimal = safe_decimal_conversion(realtor_commission_percentage, 'realtor commission percentage', '0.00')
+#                 sponsor_commission_decimal = safe_decimal_conversion(sponsor_commission_percentage, 'sponsor commission percentage', '0.00')
+#                 upline_commission_decimal = safe_decimal_conversion(upline_commission_percentage, 'upline commission percentage', '0.00')
+#             except ValueError:
+#                 # Error message already added by safe_decimal_conversion
+#                 return render(request, 'user/register_property_sale.html', {
+#                     'properties': properties,
+#                     'realtors': realtors
+#                 })
+            
+#             # Validate quantity
+#             try:
+#                 quantity_int = int(quantity) if quantity else 1
+#                 if quantity_int <= 0:
+#                     messages.error(request, 'Quantity must be a positive number.')
+#                     return render(request, 'user/register_property_sale.html', {
+#                         'properties': properties,
+#                         'realtors': realtors
+#                     })
+#             except (ValueError, TypeError):
+#                 messages.error(request, 'Invalid quantity value. Please enter a valid number.')
+#                 return render(request, 'user/register_property_sale.html', {
+#                     'properties': properties,
+#                     'realtors': realtors
+#                 })
+            
+#             # Get related objects
+#             property_obj = get_object_or_404(Property, id=property_id)
+#             realtor = get_object_or_404(Realtor, id=realtor_id)
+            
+#             # Create the property sale object with all fields
+#             property_sale = PropertySale.objects.create(
+#                 description=description,
+#                 property_type=property_type,
+#                 property_item=property_obj,
+#                 quantity=quantity_int,
+                
+#                 client_name=client_name,
+#                 client_address=client_address,
+#                 client_phone=client_phone,
+#                 client_email=client_email,
+#                 marital_status=marital_status,
+#                 spouse_name=spouse_name,
+#                 spouse_phone=spouse_phone,
+#                 # Add to client information section
+#                 client_picture=client_picture,
+
+                
+                
+#                 id_type=id_type,
+#                 id_number=id_number,
+                
+#                 lga_of_origin=lga_of_origin,
+#                 town_of_origin=town_of_origin,
+#                 state_of_origin=state_of_origin,
+                
+#                 bank_name=bank_name,
+#                 account_number=account_number,
+#                 account_name=account_name,
+                
+#                 next_of_kin_name=next_of_kin_name,
+#                 next_of_kin_address=next_of_kin_address,
+#                 next_of_kin_phone=next_of_kin_phone,
+                
+#                 original_price=original_price_decimal,
+#                 selling_price=selling_price_decimal,
+#                 payment_plan=payment_plan,
+#                 # Add to pricing section
+#                 discount=discount_decimal,
+                
+#                 realtor=realtor,
+#                 realtor_commission_percentage=realtor_commission_decimal,
+#                 sponsor_commission_percentage=sponsor_commission_decimal,
+#                 upline_commission_percentage=upline_commission_decimal
+#             )
+            
+#             # Create initial payment if provided
+#             if initial_payment_decimal > 0:
+#                 # Update the amount_paid field first
+#                 property_sale.amount_paid = initial_payment_decimal
+#                 property_sale.save()
+                
+#                 # Create the payment record
+#                 Payment.objects.create(
+#                     property_sale=property_sale,
+#                     amount=initial_payment_decimal,
+#                     payment_method='Cash',
+#                     notes='Initial payment at registration',
+#                     payment_date=payment_date
+#                 )
+            
+#             messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
+#             return redirect('property_sale_detail', id=property_sale.id)
+            
+#         except Exception as e:
+#             # Log the error for debugging
+#             import logging
+#             logger = logging.getLogger(__name__)
+#             logger.error(f'Error in register_property_sale: {str(e)}')
+            
+#             messages.error(request, 'An error occurred while registering the property sale. Please check your input and try again.')
+#             return render(request, 'user/register_property_sale.html', {
+#                 'properties': properties,
+#                 'realtors': realtors
+#             })
+    
+#     return render(request, 'user/register_property_sale.html', {
+#         'properties': properties,
+#         'realtors': realtors
+#     })
+
+
 @login_required
 def register_property_sale(request):
     """View to register a new property sale"""
@@ -966,6 +1173,7 @@ def register_property_sale(request):
             payment_plan = request.POST.get('payment_plan')
             # Add after selling_price extraction  
             discount = request.POST.get('discount')
+            payment_date_str = request.POST.get("payment_date")
             
             # Extract realtor and commission information
             realtor_id = request.POST.get('realtor')
@@ -1016,6 +1224,43 @@ def register_property_sale(request):
                     'properties': properties,
                     'realtors': realtors
                 })
+            
+            # Parse and validate payment date (only if initial payment is provided)
+            payment_date = None
+            if initial_payment_decimal > 0:
+                if payment_date_str:
+                    try:
+                        # Parse the date string from the form (YYYY-MM-DD format)
+                        naive_date = datetime.strptime(payment_date_str, '%Y-%m-%d').date()
+                        
+                        # Convert to datetime and make it timezone aware
+                        # Set time to current time for the date, or you can set a specific time
+                        current_time = timezone.now().time()
+                        naive_datetime = datetime.combine(naive_date, current_time)
+                        
+                        # Make it timezone aware using the current timezone
+                        payment_date = timezone.make_aware(naive_datetime)
+                        
+                        # Validate that the payment date is not in the future
+                        if payment_date > timezone.now():
+                            messages.error(request, "Payment date cannot be in the future.")
+                            return render(request, 'user/register_property_sale.html', {
+                                'properties': properties,
+                                'realtors': realtors
+                            })
+                            
+                    except ValueError:
+                        messages.error(request, "Invalid payment date format. Please select a valid date.")
+                        return render(request, 'user/register_property_sale.html', {
+                            'properties': properties,
+                            'realtors': realtors
+                        })
+                else:
+                    messages.error(request, "Payment date is required when making an initial payment.")
+                    return render(request, 'user/register_property_sale.html', {
+                        'properties': properties,
+                        'realtors': realtors
+                    })
             
             # Get related objects
             property_obj = get_object_or_404(Property, id=property_id)
@@ -1073,12 +1318,13 @@ def register_property_sale(request):
                 property_sale.amount_paid = initial_payment_decimal
                 property_sale.save()
                 
-                # Create the payment record
+                # Create the payment record with the validated payment_date
                 Payment.objects.create(
                     property_sale=property_sale,
                     amount=initial_payment_decimal,
                     payment_method='Cash',
-                    notes='Initial payment at registration'
+                    notes='Initial payment at registration',
+                    payment_date=payment_date
                 )
             
             messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
@@ -1096,133 +1342,14 @@ def register_property_sale(request):
                 'realtors': realtors
             })
     
-    return render(request, 'user/register_property_sale.html', {
+    # Add today's date for template context
+    context = {
         'properties': properties,
-        'realtors': realtors
-    })
-
-
-@login_required
-def property_sales_list(request):
-    """View to display all property sales"""
-    all_sales = PropertySale.objects.all().order_by('-created_at')
-    paginator = Paginator(all_sales, 20)            # 20 sales per page
-    page_number = request.GET.get('page', 1)        # get ?page= from URL, default to 1
-    sales = paginator.get_page(page_number) 
-    # sales = PropertySale.objects.all().order_by('-created_at')
+        'realtors': realtors,
+        'today': timezone.now().date().isoformat(),  # For setting max date in template
+    }
     
-    return render(request, 'user/property_sales_list.html', {
-        'sales': sales
-    })
-
-
-# @login_required
-# def property_sale_detail(request, id):
-#     """View details of a property sale and handle new payments"""
-#     sale = get_object_or_404(PropertySale, pk=id)
-#     payments = Payment.objects.filter(property_sale=sale).order_by('-payment_date')
-    
-#     # Get balance due directly from the model property
-#     balance_due = sale.balance_due
-    
-#     # Calculate commissions based on current amount paid
-#     realtor_commission = (sale.amount_paid * Decimal(sale.realtor_commission_percentage)) / Decimal('100')
-    
-#     sponsor_commission = Decimal('0')
-#     if sale.realtor.sponsor:
-#         sponsor_commission = (sale.amount_paid * Decimal(sale.sponsor_commission_percentage)) / Decimal('100')
-    
-#     upline_commission = Decimal('0')
-#     if sale.realtor.sponsor and sale.realtor.sponsor.sponsor:
-#         upline_commission = (sale.amount_paid * Decimal(sale.upline_commission_percentage)) / Decimal('100')
-    
-#     # Calculate payment progress percentage using Decimal
-#     payment_progress_percent = Decimal('0')
-#     if sale.selling_price > 0:
-#         payment_progress_percent = (sale.amount_paid * Decimal('100')) / sale.selling_price
-#         # Round to 2 decimal places for display
-#         payment_progress_percent = payment_progress_percent.quantize(Decimal('0.01'))
-    
-#     # Handle new payment submission
-#     if request.method == 'POST':
-#         # Only process if there's still a balance due
-#         if balance_due > 0:
-#             try:
-#                 # Ensure we're working with Decimal from the start
-#                 amount = Decimal(request.POST.get('amount', '0'))
-#                 payment_method = request.POST.get('payment_method', 'Cash')
-#                 reference = request.POST.get('reference', '')
-#                 notes = request.POST.get('notes', '')
-                
-#                 # Validate amount is positive
-#                 if amount <= 0:
-#                     messages.error(request, "Payment amount must be greater than zero.")
-#                     return redirect('property_sale_detail', id=sale.id)
-                
-#                 # Ensure amount doesn't exceed balance due
-#                 if amount > balance_due:
-#                     amount = balance_due
-#                     # Format amount for display
-#                     messages.info(request, f"Payment amount adjusted to ₦{amount.quantize(Decimal('0.01'))} to match remaining balance.")
-                
-#                 # Create new payment - this will automatically update the sale's amount_paid in the Payment.save() method
-#                 payment = Payment(
-#                     property_sale=sale,
-#                     amount=amount,
-#                     payment_method=payment_method,
-#                     reference=reference,
-#                     notes=notes,
-#                     payment_date=timezone.now()
-#                 )
-#                 payment.save()
-                
-#                 # Refresh the sale object to get updated values after payment
-#                 sale.refresh_from_db()
-                
-#                 # Recalculate balance due
-#                 balance_due = sale.balance_due
-                
-#                 # Recalculate commissions
-#                 realtor_commission = (sale.amount_paid * Decimal(sale.realtor_commission_percentage)) / Decimal('100')
-                
-#                 sponsor_commission = Decimal('0')
-#                 if sale.realtor.sponsor:
-#                     sponsor_commission = (sale.amount_paid * Decimal(sale.sponsor_commission_percentage)) / Decimal('100')
-                
-#                 upline_commission = Decimal('0')
-#                 if sale.realtor.sponsor and sale.realtor.sponsor.sponsor:
-#                     upline_commission = (sale.amount_paid * Decimal(sale.upline_commission_percentage)) / Decimal('100')
-                
-#                 # Recalculate payment progress
-#                 if sale.selling_price > 0:
-#                     payment_progress_percent = (sale.amount_paid * Decimal('100')) / sale.selling_price
-#                     payment_progress_percent = payment_progress_percent.quantize(Decimal('0.01'))
-                
-#                 messages.success(request, f"Payment of ₦{amount.quantize(Decimal('0.01'))} successfully recorded!")
-                
-#                 # Check if payment is now complete
-#                 if balance_due <= 0:
-#                     messages.success(request, "Congratulations! This property has been fully paid for.")
-#             except (ValueError, InvalidOperation):
-#                 messages.error(request, "Invalid payment amount. Please enter a valid number.")
-#         else:
-#             messages.info(request, "This property has already been fully paid for.")
-        
-#         # Redirect to avoid form resubmission
-#         return redirect('property_sale_detail', id=sale.id)
-    
-#     context = {
-#         'sale': sale,
-#         'payments': payments,
-#         'realtor_commission': realtor_commission.quantize(Decimal('0.01')),
-#         'sponsor_commission': sponsor_commission.quantize(Decimal('0.01')),
-#         'upline_commission': upline_commission.quantize(Decimal('0.01')),
-#         'payment_progress_percent': payment_progress_percent,
-#         'balance_due': balance_due.quantize(Decimal('0.01'))
-#     }
-    
-#     return render(request, 'user/property_sale_detail.html', context)
-
+    return render(request, 'user/register_property_sale.html', context)
 
 @login_required
 def property_sale_detail(request, id):
@@ -1362,6 +1489,9 @@ def property_sale_detail(request, id):
     }
     
     return render(request, 'user/property_sale_detail.html', context)
+
+
+
 
 @login_required
 def pay_commission(request, commission_id):
