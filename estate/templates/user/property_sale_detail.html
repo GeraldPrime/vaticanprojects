@@ -14,7 +14,8 @@
                     <div class="d-flex align-items-center">
                         <h2 class="mb-0">Sale {{ sale.reference_number }}</h2>
                         <span class="ms-3 badge {% if balance_due <= 0 %}bg-success{% else %}bg-warning{% endif %}">
-                            {% if balance_due <= 0 %}Fully Paid{% else %}Partially Paid{% endif %} </span>
+                            {% if balance_due <= 0 %}Fully Paid{% else %}Partially Paid{% endif %}
+                        </span>
                     </div>
                     <p class="text-muted mt-1 mb-0">
                         <i class="ri-calendar-line me-1"></i> Created on {{ sale.created_at|date:"M d, Y" }}
@@ -28,241 +29,251 @@
                         <i class="ri-file-list-3-line me-1"></i>Print Invoice
                     </a>
                     <div>
-                        {% if balance_due <= 0 %} <div class="alert alert-success mb-0">
+                        {% if balance_due <= 0 %}
+                        <div class="alert alert-success mb-0">
                             <i class="ri-checkbox-circle-line me-1"></i> This property has been completely paid for.
-                    </div>
-                    {% else %}
-                    <div class="alert alert-warning mb-0">
-                        <i class="ri-error-warning-line me-1"></i> Remaining Balance: ₦{{
-                        balance_due|floatformat:2|intcomma }}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <!-- Financial Overview Cards -->
-        <div class="row mb-4">
-            <div class="col-xl-3 col-md-6">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium mb-2">Original Price</p>
-                                <h4 class="mb-0">₦{{ sale.original_price|floatformat:2|intcomma }}</h4>
-                            </div>
-                            <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                <span class="avatar-title rounded-circle bg-primary">
-                                    <i class="ri-price-tag-3-line font-size-24"></i>
-                                </span>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium mb-2">Selling Price</p>
-                                <h4 class="mb-0">₦{{ sale.selling_price|floatformat:2|intcomma }}</h4>
-                            </div>
-                            <div class="avatar-sm rounded-circle bg-success align-self-center mini-stat-icon">
-                                <span class="avatar-title rounded-circle bg-success">
-                                    <i class="ri-money-dollar-circle-line font-size-24"></i>
-                                </span>
-                            </div>
+                        {% else %}
+                        <div class="alert alert-warning mb-0">
+                            <i class="ri-error-warning-line me-1"></i> Remaining Balance: ₦{{ balance_due|floatformat:2|intcomma }}
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium mb-2">Amount Paid</p>
-                                <h4 class="mb-0">₦{{ sale.amount_paid|floatformat:2|intcomma }}</h4>
-                            </div>
-                            <div class="avatar-sm rounded-circle bg-info align-self-center mini-stat-icon">
-                                <span class="avatar-title rounded-circle bg-info">
-                                    <i class="ri-secure-payment-line font-size-24"></i>
-                                </span>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-3 col-md-6">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium mb-2">Discount</p>
-                                <h4 class="mb-0">₦{{ sale.discount|default:0|floatformat:2|intcomma }}</h4>
+            <!-- Financial Overview Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted fw-medium mb-2">Original Price</p>
+                                    <h4 class="mb-0">₦{{ sale.original_price|floatformat:2|intcomma }}</h4>
+                                </div>
+                                <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-primary">
+                                        <i class="ri-price-tag-3-line font-size-24"></i>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="avatar-sm rounded-circle bg-warning align-self-center mini-stat-icon">
-                                <span class="avatar-title rounded-circle bg-warning">
-                                    <i class="ri-percent-line font-size-24"></i>
-                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted fw-medium mb-2">Selling Price</p>
+                                    <h4 class="mb-0">₦{{ sale.selling_price|floatformat:2|intcomma }}</h4>
+                                </div>
+                                <div class="avatar-sm rounded-circle bg-success align-self-center mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-success">
+                                        <i class="ri-money-dollar-circle-line font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted fw-medium mb-2">Amount Paid</p>
+                                    <h4 class="mb-0">₦{{ sale.amount_paid|floatformat:2|intcomma }}</h4>
+                                </div>
+                                <div class="avatar-sm rounded-circle bg-info align-self-center mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-info">
+                                        <i class="ri-secure-payment-line font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted fw-medium mb-2">Discount</p>
+                                    <h4 class="mb-0">₦{{ sale.discount|default:0|floatformat:2|intcomma }}</h4>
+                                </div>
+                                <div class="avatar-sm rounded-circle bg-warning align-self-center mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-warning">
+                                        <i class="ri-percent-line font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted fw-medium mb-2">Balance Due</p>
+                                    <h4 class="mb-0 {% if sale.balance_due > 0 %}text-danger{% else %}text-success{% endif %}">
+                                        ₦{{ sale.balance_due|floatformat:2|intcomma }}
+                                    </h4>
+                                </div>
+                                <div class="avatar-sm rounded-circle {% if sale.balance_due > 0 %}bg-danger{% else %}bg-success{% endif %} align-self-center mini-stat-icon">
+                                    <span class="avatar-title rounded-circle {% if sale.balance_due > 0 %}bg-danger{% else %}bg-success{% endif %}">
+                                        <i class="ri-wallet-3-line font-size-24"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-3 col-md-6">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium mb-2">Balance Due</p>
-                                <h4
-                                    class="mb-0 {% if sale.balance_due > 0 %}text-danger{% else %}text-success{% endif %}">
-                                    ₦{{ sale.balance_due|floatformat:2|intcomma }}
-                                </h4>
-                            </div>
-                            <div
-                                class="avatar-sm rounded-circle {% if sale.balance_due > 0 %}bg-danger{% else %}bg-success{% endif %} align-self-center mini-stat-icon">
-                                <span
-                                    class="avatar-title rounded-circle {% if sale.balance_due > 0 %}bg-danger{% else %}bg-success{% endif %}">
-                                    <i class="ri-wallet-3-line font-size-24"></i>
-                                </span>
+            <!-- Payment Progress Bar -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Payment Progress</h5>
+                            <div class="progress" style="height: 24px;">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                    style="width: {{ payment_progress_percent|floatformat:0 }}%;"
+                                    aria-valuenow="{{ payment_progress_percent|floatformat:0 }}" aria-valuemin="0"
+                                    aria-valuemax="100">
+                                    {{ payment_progress_percent|floatformat:0 }}% Complete
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Payment Progress Bar -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Payment Progress</h5>
-                        <div class="progress" style="height: 24px;">
-                            <div class="progress-bar bg-success" role="progressbar"
-                                style="width: {{ payment_progress_percent|floatformat:0 }}%;"
-                                aria-valuenow="{{ payment_progress_percent|floatformat:0 }}" aria-valuemin="0"
-                                aria-valuemax="100">
-                                {{ payment_progress_percent|floatformat:0 }}% Complete
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Property & Client Info Tabs -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#property-info" role="tab">
-                                    <span><i class="ri-home-4-line me-1"></i> Property</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#client-info" role="tab">
-                                    <span><i class="ri-user-line me-1"></i> Client</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#realtor-info" role="tab">
-                                    <span><i class="ri-team-line me-1"></i> Realtor</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#commission-info" role="tab">
-                                    <span><i class="ri-percent-line me-1"></i> Commission</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#account-info" role="tab">
-                                    <span><i class="ri-profile-line me-1"></i> Account Info</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content p-3">
-                            <!-- Property Info Tab -->
-                            <div class="tab-pane active" id="property-info" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="d-flex mb-3">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                        <i class="ri-building-line font-size-24"></i>
-                                                    </span>
+            <!-- Property & Client Info Tabs -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#property-info" role="tab">
+                                        <span><i class="ri-home-4-line me-1"></i> Property</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#client-info" role="tab">
+                                        <span><i class="ri-user-line me-1"></i> Client</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#realtor-info" role="tab">
+                                        <span><i class="ri-team-line me-1"></i> Realtor</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#commission-info" role="tab">
+                                        <span><i class="ri-percent-line me-1"></i> Commission</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#account-info" role="tab">
+                                        <span><i class="ri-profile-line me-1"></i> Account Info</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3">
+                                <!-- Property Info Tab -->
+                                <div class="tab-pane active" id="property-info" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-sm">
+                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                                            <i class="ri-building-line font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="font-size-16 mb-1">{{ sale.property_item.name }}</h5>
+                                                    <p class="text-muted mb-0">Estate Name</p>
                                                 </div>
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <h5 class="font-size-16 mb-1">{{ sale.property_item.name }}</h5>
-                                                <p class="text-muted mb-0">Estate Name</p>
+
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-sm">
+                                                        <span class="avatar-title rounded-circle bg-soft-success text-success">
+                                                            <i class="ri-home-8-line font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="font-size-16 mb-1">{{ sale.get_property_type_display }}</h5>
+                                                    <p class="text-muted mb-0">Property Type</p>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-6">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-sm">
+                                                        <span class="avatar-title rounded-circle bg-soft-info text-info">
+                                                            <i class="ri-numbers-line font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="font-size-16 mb-1">{{ sale.quantity }}</h5>
+                                                    <p class="text-muted mb-0">Quantity</p>
+                                                </div>
+                                            </div>
 
-                                        <div class="d-flex mb-3">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-success text-success">
-                                                        <i class="ri-home-8-line font-size-24"></i>
-                                                    </span>
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-sm">
+                                                        <span class="avatar-title rounded-circle bg-soft-warning text-warning">
+                                                            <i class="ri-calendar-check-line font-size-24"></i>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h5 class="font-size-16 mb-1">{{ sale.get_property_type_display }}</h5>
-                                                <p class="text-muted mb-0">Property Type</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="d-flex mb-3">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm">
-                                                    <span class="avatar-title rounded-circle bg-soft-info text-info">
-                                                        <i class="ri-numbers-line font-size-24"></i>
-                                                    </span>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="font-size-16 mb-1">{{ sale.get_payment_plan_display }}</h5>
+                                                    <p class="text-muted mb-0">Payment Plan</p>
                                                 </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h5 class="font-size-16 mb-1">{{ sale.quantity }}</h5>
-                                                <p class="text-muted mb-0">Quantity</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex mb-3">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-warning text-warning">
-                                                        <i class="ri-calendar-check-line font-size-24"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h5 class="font-size-16 mb-1">{{ sale.get_payment_plan_display }}</h5>
-                                                <p class="text-muted mb-0">Payment Plan</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Client Info Tab
+                                <!-- Client Info Tab -->
                                 <div class="tab-pane" id="client-info" role="tabpanel">
                                     <div class="row">
+                                        <!-- Basic Client Details -->
                                         <div class="col-lg-6">
-                                            <div class="card bg-light mb-0">
+                                            <div class="card bg-light mb-3">
                                                 <div class="card-body">
-                                                    <h5 class="card-title mb-3">Client Details</h5>
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div class="me-3">
+                                                            {% if sale.client_picture.name %}
+                                                            <img src="{{ sale.client_picture.url }}" alt="Client Photo"
+                                                                class="rounded-circle" width="60" height="60"
+                                                                style="object-fit: cover;">
+                                                            {% else %}
+                                                            <img src="{% static 'user/images/pph.jpeg' %}"
+                                                                alt="Default Profile" class="rounded-circle" width="60"
+                                                                height="60" style="object-fit: cover;">
+                                                            {% endif %}
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="card-title mb-0">Client Details</h5>
+                                                        </div>
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table class="table table-borderless mb-0">
                                                             <tbody>
@@ -282,14 +293,20 @@
                                                                     <th scope="row"><i class="ri-mail-line me-2"></i>Email</th>
                                                                     <td>{{ sale.client_email }}</td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-heart-line me-2"></i>Marital Status</th>
+                                                                    <td>{{ sale.get_marital_status_display }}</td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Next of Kin Information -->
                                         <div class="col-lg-6">
-                                            <div class="card bg-light mb-0">
+                                            <div class="card bg-light mb-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3">Next of Kin</h5>
                                                     <div class="table-responsive">
@@ -313,391 +330,258 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Spouse Information -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Spouse Information</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-user-line me-2"></i>Name</th>
+                                                                    <td>{{ sale.spouse_name|default:"N/A" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-phone-line me-2"></i>Phone</th>
+                                                                    <td>{{ sale.spouse_phone|default:"N/A" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Client Identification -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Client Identification</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-id-card-line me-2"></i>ID Type</th>
+                                                                    <td>{{ sale.get_id_type_display|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-hashtag me-2"></i>ID Number</th>
+                                                                    <td>{{ sale.id_number|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Client Origin -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Client Origin</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-map-pin-line me-2"></i>Town</th>
+                                                                    <td>{{ sale.town_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-government-line me-2"></i>LGA</th>
+                                                                    <td>{{ sale.lga_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-map-2-line me-2"></i>State</th>
+                                                                    <td>{{ sale.state_of_origin|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Client Bank Details -->
+                                        <div class="col-lg-6">
+                                            <div class="card bg-light mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-3">Bank Details</h5>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row" width="30%"><i class="ri-bank-line me-2"></i>Bank Name</th>
+                                                                    <td>{{ sale.bank_name|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-user-line me-2"></i>Account Name</th>
+                                                                    <td>{{ sale.account_name|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><i class="ri-bank-card-line me-2"></i>Account Number</th>
+                                                                    <td>{{ sale.account_number|default:"Not Provided" }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div> -->
+                                </div>
 
-
-
-                            <!-- Client Info Tab -->
-                            <div class="tab-pane" id="client-info" role="tabpanel">
-                                <div class="row">
-                                    <!-- Basic Client Details -->
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <!-- Debug version - to see what's actually in the field -->
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <div class="me-3">
-
-
-                                                        {% if sale.client_picture.name %}
-                                                        <img src="{{ sale.client_picture.url }}" alt="Client Photo"
-                                                            class="rounded-circle" width="60" height="60"
-                                                            style="object-fit: cover;">
-                                                        {% else %}
-                                                        <img src="{% static 'user/images/pph.jpeg' %}"
-                                                            alt="Default Profile" class="rounded-circle" width="60"
-                                                            height="60" style="object-fit: cover;">
+                                <!-- Realtor Info Tab -->
+                                <div class="tab-pane" id="realtor-info" role="tabpanel">
+                                    <div class="card bg-light mb-0">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-4">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-md">
+                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                                            <i class="ri-user-star-line font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="font-size-18 mb-1">{{ sale.realtor.full_name }}
+                                                        {% if sale.realtor.is_executive %}
+                                                        <i class="ri-vip-crown-fill executive-crown ms-1"></i>
                                                         {% endif %}
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="card-title mb-0">Client Details</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-user-line me-2"></i>Name</th>
-                                                                <td>{{ sale.client_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i
-                                                                        class="ri-map-pin-line me-2"></i>Address</th>
-                                                                <td>{{ sale.client_address }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-phone-line me-2"></i>Phone
-                                                                </th>
-                                                                <td>{{ sale.client_phone }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-mail-line me-2"></i>Email
-                                                                </th>
-                                                                <td>{{ sale.client_email }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i
-                                                                        class="ri-heart-line me-2"></i>Marital Status
-                                                                </th>
-                                                                <td>{{ sale.get_marital_status_display }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    </h5>
+                                                    <p class="text-muted">Primary Realtor</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <!-- Next of Kin Information -->
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">Next of Kin</h5>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-user-line me-2"></i>Name</th>
-                                                                <td>{{ sale.next_of_kin_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i
-                                                                        class="ri-map-pin-line me-2"></i>Address</th>
-                                                                <td>{{ sale.next_of_kin_address }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-phone-line me-2"></i>Phone
-                                                                </th>
-                                                                <td>{{ sale.next_of_kin_phone }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Spouse Information (if married) -->
-
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">Spouse Information</h5>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-user-line me-2"></i>Name</th>
-                                                                <td>{{ sale.spouse_name|default:"N/A" }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-phone-line me-2"></i>Phone
-                                                                </th>
-                                                                <td>{{ sale.spouse_phone|default:"N/A" }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Client Identification -->
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">Client Identification</h5>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-id-card-line me-2"></i>ID Type</th>
-                                                                <td>{{ sale.get_id_type_display|default:"Not Provided"
-                                                                    }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-hashtag me-2"></i>ID Number
-                                                                </th>
-                                                                <td>{{ sale.id_number|default:"Not Provided" }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Client Origin -->
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">Client Origin</h5>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-map-pin-line me-2"></i>Town</th>
-                                                                <td>{{ sale.town_of_origin|default:"Not Provided" }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i
-                                                                        class="ri-government-line me-2"></i>LGA</th>
-                                                                <td>{{ sale.lga_of_origin|default:"Not Provided" }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-map-2-line me-2"></i>State
-                                                                </th>
-                                                                <td>{{ sale.state_of_origin|default:"Not Provided" }}
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Client Bank Details -->
-                                    <div class="col-lg-6">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">Bank Details</h5>
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row" width="30%"><i
-                                                                        class="ri-bank-line me-2"></i>Bank Name</th>
-                                                                <td>{{ sale.bank_name|default:"Not Provided" }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i class="ri-user-line me-2"></i>Account
-                                                                    Name</th>
-                                                                <td>{{ sale.account_name|default:"Not Provided" }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row"><i
-                                                                        class="ri-bank-card-line me-2"></i>Account
-                                                                    Number</th>
-                                                                <td>{{ sale.account_number|default:"Not Provided" }}
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row" width="30%"><i class="ri-qr-code-line me-2"></i>Referral Code</th>
+                                                            <td><span class="badge bg-primary">{{ sale.realtor.referral_code }}</span></td>
+                                                        </tr>
+                                                        {% if sale.realtor.sponsor %}
+                                                        <tr>
+                                                            <th scope="row"><i class="ri-team-line me-2"></i>Sponsor</th>
+                                                            <td>{{ sale.realtor.sponsor.full_name }}
+                                                                {% if sale.realtor.sponsor.is_executive %}
+                                                                <i class="ri-vip-crown-fill executive-crown ms-1"></i>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><i class="ri-qr-code-line me-2"></i>Sponsor's Code</th>
+                                                            <td><span class="badge bg-info">{{ sale.realtor.sponsor.referral_code }}</span></td>
+                                                        </tr>
+                                                        {% endif %}
+                                                        {% if sale.realtor.sponsor.sponsor %}
+                                                        <tr>
+                                                            <th scope="row"><i class="ri-team-line me-2"></i>Upline</th>
+                                                            <td>{{ sale.realtor.sponsor.sponsor.full_name }}
+                                                                {% if sale.realtor.sponsor.sponsor.is_executive %}
+                                                                <i class="ri-vip-crown-fill executive-crown ms-1"></i>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><i class="ri-qr-code-line me-2"></i>Upline's Code</th>
+                                                            <td><span class="badge bg-info">{{ sale.realtor.sponsor.sponsor.referral_code }}</span></td>
+                                                        </tr>
+                                                        {% endif %}
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Realtor Info Tab -->
-                            <div class="tab-pane" id="realtor-info" role="tabpanel">
-                                <div class="card bg-light mb-0">
-                                    <div class="card-body">
-                                        <div class="d-flex mb-4">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-md">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                        <i class="ri-user-star-line font-size-24"></i>
-                                                    </span>
+                                <!-- Commission Info Tab -->
+                                <div class="tab-pane" id="commission-info" role="tabpanel">
+                                    <div class="card bg-light mb-0">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Commission Breakdown</h5>
+
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card bg-primary text-white">
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title text-white">Realtor's Commission</h5>
+                                                            <h3 class="mb-2">₦{{ realtor_commission|floatformat:2|intcomma }}</h3>
+                                                            <p class="mb-0">{{ sale.realtor_commission_percentage }}% of ₦{{ sale.amount_paid|floatformat:2|intcomma }}</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h5 class="font-size-18 mb-1">{{ sale.realtor.full_name }}
-                                                    {% if sale.realtor.is_executive %}
-                                                    <i class="ri-vip-crown-fill executive-crown ms-1"></i>
-                                                    {% endif %}
-                                                </h5>
-                                                <p class="text-muted">Primary Realtor</p>
-                                            </div>
-                                        </div>
 
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row" width="30%"><i
-                                                                class="ri-qr-code-line me-2"></i>Referral Code</th>
-                                                        <td><span class="badge bg-primary">{{ sale.realtor.referral_code
-                                                                }}</span></td>
-                                                    </tr>
-                                                    {% if sale.realtor.sponsor %}
-                                                    <tr>
-                                                        <th scope="row"><i class="ri-team-line me-2"></i>Sponsor</th>
-                                                        <td>{{ sale.realtor.sponsor.full_name }}
-                                                            {% if sale.realtor.sponsor.is_executive %}
-                                                            <i class="ri-vip-crown-fill executive-crown ms-1"></i>
-                                                            {% endif %}
-                                                        </td>
+                                                {% if sale.realtor.sponsor %}
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card bg-info text-white">
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title text-white">Sponsor's Commission</h5>
+                                                            <h3 class="mb-2">₦{{ sponsor_commission|floatformat:2|intcomma }}</h3>
+                                                            <p class="mb-0">{{ sale.sponsor_commission_percentage }}% of ₦{{ sale.amount_paid|floatformat:2|intcomma }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><i class="ri-qr-code-line me-2"></i>Sponsor's
-                                                            Code</th>
-                                                        <td><span class="badge bg-info">{{
-                                                                sale.realtor.sponsor.referral_code }}</span></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if sale.realtor.sponsor.sponsor %}
-                                                    <tr>
-                                                        <th scope="row"><i class="ri-team-line me-2"></i>Upline</th>
-                                                        <td>{{ sale.realtor.sponsor.sponsor.full_name }}
-                                                            {% if sale.realtor.sponsor.sponsor.is_executive %}
-                                                            <i class="ri-vip-crown-fill executive-crown ms-1"></i>
-                                                            {% endif %}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><i class="ri-qr-code-line me-2"></i>Upline's
-                                                            Code</th>
-                                                        <td><span class="badge bg-info">{{
-                                                                sale.realtor.sponsor.sponsor.referral_code }}</span>
-                                                        </td>
-                                                    </tr>
-                                                    {% endif %}
-                                                </tbody>
-                                            </table>
+                                                {% if sale.realtor.sponsor and sale.realtor.sponsor.sponsor %}
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card bg-success text-white">
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title text-white">Upline's Commission</h5>
+                                                            <h3 class="mb-2">₦{{ upline_commission|floatformat:2|intcomma }}</h3>
+                                                            <p class="mb-0">{{ sale.upline_commission_percentage }}% of ₦{{ sale.amount_paid|floatformat:2|intcomma }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Commission Info Tab -->
-                            <div class="tab-pane" id="commission-info" role="tabpanel">
-                                <div class="card bg-light mb-0">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">Commission Breakdown</h5>
+                                <!-- Account Info Tab -->
+                                <div class="tab-pane" id="account-info" role="tabpanel">
+                                    <div class="card bg-light mb-0">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Account Information</h5>
 
-                                        <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-primary text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Realtor's Commission</h5>
-                                                        <h3 class="mb-2">₦{{ realtor_commission|floatformat:2|intcomma
-                                                            }}</h3>
-                                                        <p class="mb-0">{{ sale.realtor_commission_percentage }}% of ₦{{
-                                                            sale.amount_paid|floatformat:2|intcomma }}</p>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card bg-primary text-white">
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title text-white">Realtor's Account Details</h5>
+                                                            <h6 class="mb-2">Bank Name: {{ sale.realtor.bank_name }}</h6>
+                                                            <h6 class="mb-0">Account Number: {{ sale.realtor.account_number }}</h6>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            {% if sale.realtor.sponsor %}
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-info text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Sponsor's Commission</h5>
-                                                        <h3 class="mb-2">₦{{ sponsor_commission|floatformat:2|intcomma
-                                                            }}</h3>
-                                                        <p class="mb-0">{{ sale.sponsor_commission_percentage }}% of ₦{{
-                                                            sale.amount_paid|floatformat:2|intcomma }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {% endif %}
+                                                {% if sale.realtor.sponsor %}
+<div class="col-md-4 mb-3">
+    <div class="card bg-info text-white">
+        <div class="card-body text-center">
+            <h5 class="card-title text-white">Sponsor's Account Details</h5>
+            <h3 class="mb-2">Bank Name: {{ sale.realtor.sponsor.bank_name }}</h3>
+            <h3 class="mb-0">Account number: {{ sale.realtor.sponsor.account_number }}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
 
-                                            {% if sale.realtor.sponsor and sale.realtor.sponsor.sponsor %}
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-success text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Upline's Commission</h5>
-                                                        <h3 class="mb-2">₦{{ upline_commission|floatformat:2|intcomma }}
-                                                        </h3>
-                                                        <p class="mb-0">{{ sale.upline_commission_percentage }}% of ₦{{
-                                                            sale.amount_paid|floatformat:2|intcomma }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- account info -->
-                            <div class="tab-pane" id="account-info" role="tabpanel">
-                                <div class="card bg-light mb-0">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">Commission Breakdown</h5>
-
-                                        <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-primary text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Realtor's Account Details</h5>
-                                                        <h3 class="mb-0">Bank Name: {{ sale.realtor.bank_name}}</h3>
-                                                        <h3 class="mb-2">Account number : {{ sale.realtor.account_number
-                                                            }}</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {% if sale.realtor.sponsor %}
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-info text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Sponsor's Account Details</h5>
-                                                        <h3 class="mb-2">Bank Name: {{ sale.realtor.sponsor.bank_name}}
-                                                        </h3>
-                                                        <h3 class="mb-0">Account number : {{
-                                                            sale.realtor.sponsor.account_number }}</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {% endif %}
-
-                                            {% if sale.realtor.sponsor and sale.realtor.sponsor.sponsor %}
-                                            <div class="col-md-4 mb-3">
-                                                <div class="card bg-info text-white">
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title text-white">Upline's Account Details</h5>
-                                                        <h3 class="mb-2">Bank Name: {{
-                                                            sale.realtor.sponsor.sponsor.bank_name}}</h3>
-                                                        <h3 class="mb-0">Account number : {{
-                                                            sale.realtor.sponsor.sponsor.account_number }}</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {% endif %}
+{% if sale.realtor.sponsor and sale.realtor.sponsor.sponsor %}
+<div class="col-md-4 mb-3">
+    <div class="card bg-info text-white">
+        <div class="card-body text-center">
+            <h5 class="card-title text-white">Upline's Account Details</h5>
+            <h3 class="mb-2">Bank Name: {{ sale.realtor.sponsor.sponsor.bank_name }}</h3>
+            <h3 class="mb-0">Account number: {{ sale.realtor.sponsor.sponsor.account_number }}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -824,12 +708,11 @@
                                         <input type="number" step="0.01" min="0" max="{{ sale.balance_due }}"
                                             class="form-control" name="amount" id="id_amount" required>
                                     </div>
-                                    <small class="form-text text-muted">Maximum: ₦{{
-                                        sale.balance_due|floatformat:2|intcomma }}</small>
+                                    <small class="form-text text-muted">Maximum: ₦{{ sale.balance_due|floatformat:2|intcomma }}</small>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="id_payment_date" class="form-label">Payment Date</label>
-                                    <input type="date" class="form-control" name="payment_date" id="id_payment_date" max="{{today}}
+                                    <input type="date" class="form-control" name="payment_date" id="id_payment_date" max="{{today}}"
                                         required>
                                     <small class="form-text text-muted">Select the actual date when payment was
                                         made</small>
