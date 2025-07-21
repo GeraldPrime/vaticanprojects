@@ -55,6 +55,9 @@ import requests
 
 from django.urls import reverse
 import logging
+from django.views.decorators.csrf import csrf_protect
+from django.utils.html import strip_tags
+
 
 logger = logging.getLogger(__name__)
 
@@ -928,6 +931,119 @@ def property_sales_list(request):
     })
 
 
+# Your existing view stays the same
+@login_required
+def property_sales_list(request):
+    """View to display all property sales"""
+    all_sales = PropertySale.objects.all().order_by('-created_at')
+    paginator = Paginator(all_sales, 20)            # 20 sales per page
+    page_number = request.GET.get('page', 1)        # get ?page= from URL, default to 1
+    sales = paginator.get_page(page_number) 
+    
+    return render(request, 'user/property_sales_list.html', {
+        'sales': sales
+    })
+
+
+@login_required
+def send_client_email(request, sale_id):
+    """Send email to client based on development status"""
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'message': 'Invalid request method'})
+    
+    try:
+        sale = get_object_or_404(PropertySale, id=sale_id)
+        email_type = request.POST.get('email_type')  # 'reminder' or 'revocation'
+        
+        if not sale.client_email:
+            return JsonResponse({
+                'success': False, 
+                'message': 'Client email not available'
+            })
+        
+        # Determine email content based on type and status
+        if email_type == 'reminder':
+            subject = "Reminder on Plot Development Timeline and Consequences of Non-Compliance"
+            template_name = 'emails/development_reminder.html'
+        elif email_type == 'revocation':
+            subject = "NOTICE OF PLOT REVOCATION FOR NON-DEVELOPMENT"
+            template_name = 'emails/plot_revocation.html'
+        else:
+            return JsonResponse({
+                'success': False, 
+                'message': 'Invalid email type'
+            })
+        
+        # Calculate development duration (you may need to adjust this based on your business logic)
+        development_duration = "3 years"  # Default, you can make this dynamic
+        
+        # Prepare context for email template
+        context = {
+            'client_name': sale.client_name,
+            'property_name': sale.property_item.name,
+            'expiry_date': sale.plot_development_expiry_date.strftime('%B %d, %Y') if sale.plot_development_expiry_date else 'Not Set',
+            'development_duration': development_duration,
+            'reference_number': sale.reference_number,
+            'current_date': datetime.now().strftime('%B %d, %Y'),
+        }
+        
+        # Render email content
+        html_message = render_to_string(template_name, context)
+        plain_message = strip_tags(html_message)
+        
+        # Send email
+        send_mail(
+            subject=subject,
+            message=plain_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[sale.client_email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        
+        # Log the email sent
+        logger.info(f"Email sent to {sale.client_email} for sale {sale.reference_number}")
+        
+        return JsonResponse({
+            'success': True, 
+            'message': f'{email_type.capitalize()} email sent successfully to {sale.client_name}'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error sending email: {str(e)}")
+        return JsonResponse({
+            'success': False, 
+            'message': f'Error sending email: {str(e)}'
+        })
+
+
+# ADD THIS NEW VIEW
+@login_required
+def mark_property_developed(request, sale_id):
+    """Mark a property sale as developed"""
+    sale = get_object_or_404(PropertySale, id=sale_id)
+    
+    if request.method == 'POST':
+        # Toggle the development status
+        sale.is_developed = not sale.is_developed
+        sale.save()
+        
+        status = "developed" if sale.is_developed else "not developed"
+        messages.success(request, f'Property {sale.reference_number} marked as {status}.')
+        
+        # If it's an AJAX request, return JSON response
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({
+                'success': True,
+                'is_developed': sale.is_developed,
+                'status': sale.development_status_display,
+                'status_class': sale.development_status_class
+            })
+        
+        return redirect('property_sale_detail', id=sale_id)
+    
+    return redirect('property_sale_detail', id=sale_id)
+
 
 # @login_required
 # def register_property_sale(request):
@@ -1120,8 +1236,240 @@ def property_sales_list(request):
 #     })
 
 
+# @login_required
+# def register_property_sale(request):
+#     """View to register a new property sale"""
+#     properties = Property.objects.all().order_by('name')
+#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
+    
+#     if request.method == 'POST':
+#         try:
+#             # Extract basic property information
+#             property_id = request.POST.get('property')
+#             description = request.POST.get('description')
+#             property_type = request.POST.get('property_type')
+#             quantity = request.POST.get('quantity')
+            
+#             # Extract client information
+#             client_name = request.POST.get('client_name')
+#             client_address = request.POST.get('client_address')
+#             client_phone = request.POST.get('client_phone')
+#             client_email = request.POST.get('client_email')
+#             marital_status = request.POST.get('marital_status')
+#             spouse_name = request.POST.get('spouse_name', '')
+#             spouse_phone = request.POST.get('spouse_phone', '')
+#             # Add after client_email extraction
+#             client_picture = request.FILES.get('client_picture')
+
+           
+                        
+#             # Extract client identification
+#             id_type = request.POST.get('id_type')
+#             id_number = request.POST.get('id_number')
+            
+#             # Extract client origin
+#             lga_of_origin = request.POST.get('lga_of_origin')
+#             town_of_origin = request.POST.get('town_of_origin')
+#             state_of_origin = request.POST.get('state_of_origin')
+            
+#             # Extract client bank details
+#             bank_name = request.POST.get('bank_name')
+#             account_number = request.POST.get('account_number')
+#             account_name = request.POST.get('account_name')
+            
+#             # Extract next of kin information
+#             next_of_kin_name = request.POST.get('next_of_kin_name')
+#             next_of_kin_address = request.POST.get('next_of_kin_address')
+#             next_of_kin_phone = request.POST.get('next_of_kin_phone')
+            
+#             # Extract financial information
+#             original_price = request.POST.get('original_price')
+#             selling_price = request.POST.get('selling_price')
+#             initial_payment = request.POST.get('initial_payment')
+#             payment_plan = request.POST.get('payment_plan')
+#             # Add after selling_price extraction  
+#             discount = request.POST.get('discount')
+#             payment_date_str = request.POST.get("payment_date")
+            
+#             # Extract realtor and commission information
+#             realtor_id = request.POST.get('realtor')
+#             realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
+#             sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
+#             upline_commission_percentage = request.POST.get('upline_commission_percentage')
+            
+#             # Helper function to safely convert to Decimal
+#             def safe_decimal_conversion(value, field_name, default='0.00'):
+#                 if value is None or str(value).strip() == '':
+#                     return Decimal(default)
+#                 try:
+#                     cleaned_value = str(value).strip()
+#                     return Decimal(cleaned_value)
+#                 except (ValueError, decimal.InvalidOperation) as e:
+#                     messages.error(request, f'Invalid value for {field_name}: "{value}". Please enter a valid number.')
+#                     raise ValueError(f'Invalid {field_name} value')
+            
+#             # Validate and convert decimal fields
+#             try:
+#                 original_price_decimal = safe_decimal_conversion(original_price, 'original price')
+#                 selling_price_decimal = safe_decimal_conversion(selling_price, 'selling price')
+#                 initial_payment_decimal = safe_decimal_conversion(initial_payment, 'initial payment', '0.00')
+#                 # Add after initial_payment_decimal conversion
+#                 discount_decimal = safe_decimal_conversion(discount, 'discount', '0.00')
+#                 realtor_commission_decimal = safe_decimal_conversion(realtor_commission_percentage, 'realtor commission percentage', '0.00')
+#                 sponsor_commission_decimal = safe_decimal_conversion(sponsor_commission_percentage, 'sponsor commission percentage', '0.00')
+#                 upline_commission_decimal = safe_decimal_conversion(upline_commission_percentage, 'upline commission percentage', '0.00')
+#             except ValueError:
+#                 # Error message already added by safe_decimal_conversion
+#                 return render(request, 'user/register_property_sale.html', {
+#                     'properties': properties,
+#                     'realtors': realtors
+#                 })
+            
+#             # Validate quantity
+#             try:
+#                 quantity_int = int(quantity) if quantity else 1
+#                 if quantity_int <= 0:
+#                     messages.error(request, 'Quantity must be a positive number.')
+#                     return render(request, 'user/register_property_sale.html', {
+#                         'properties': properties,
+#                         'realtors': realtors
+#                     })
+#             except (ValueError, TypeError):
+#                 messages.error(request, 'Invalid quantity value. Please enter a valid number.')
+#                 return render(request, 'user/register_property_sale.html', {
+#                     'properties': properties,
+#                     'realtors': realtors
+#                 })
+            
+#             # Parse and validate payment date (only if initial payment is provided)
+#             payment_date = None
+#             if initial_payment_decimal > 0:
+#                 if payment_date_str:
+#                     try:
+#                         # Parse the date string from the form (YYYY-MM-DD format)
+#                         naive_date = datetime.strptime(payment_date_str, '%Y-%m-%d').date()
+                        
+#                         # Convert to datetime and make it timezone aware
+#                         # Set time to current time for the date, or you can set a specific time
+#                         current_time = timezone.now().time()
+#                         naive_datetime = datetime.combine(naive_date, current_time)
+                        
+#                         # Make it timezone aware using the current timezone
+#                         payment_date = timezone.make_aware(naive_datetime)
+                        
+#                         # Validate that the payment date is not in the future
+#                         if payment_date > timezone.now():
+#                             messages.error(request, "Payment date cannot be in the future.")
+#                             return render(request, 'user/register_property_sale.html', {
+#                                 'properties': properties,
+#                                 'realtors': realtors
+#                             })
+                            
+#                     except ValueError:
+#                         messages.error(request, "Invalid payment date format. Please select a valid date.")
+#                         return render(request, 'user/register_property_sale.html', {
+#                             'properties': properties,
+#                             'realtors': realtors
+#                         })
+#                 else:
+#                     messages.error(request, "Payment date is required when making an initial payment.")
+#                     return render(request, 'user/register_property_sale.html', {
+#                         'properties': properties,
+#                         'realtors': realtors
+#                     })
+            
+#             # Get related objects
+#             property_obj = get_object_or_404(Property, id=property_id)
+#             realtor = get_object_or_404(Realtor, id=realtor_id)
+            
+#             # Create the property sale object with all fields
+#             property_sale = PropertySale.objects.create(
+#                 description=description,
+#                 property_type=property_type,
+#                 property_item=property_obj,
+#                 quantity=quantity_int,
+                
+#                 client_name=client_name,
+#                 client_address=client_address,
+#                 client_phone=client_phone,
+#                 client_email=client_email,
+#                 marital_status=marital_status,
+#                 spouse_name=spouse_name,
+#                 spouse_phone=spouse_phone,
+#                 # Add to client information section
+#                 client_picture=client_picture,
+
+                
+                
+#                 id_type=id_type,
+#                 id_number=id_number,
+                
+#                 lga_of_origin=lga_of_origin,
+#                 town_of_origin=town_of_origin,
+#                 state_of_origin=state_of_origin,
+                
+#                 bank_name=bank_name,
+#                 account_number=account_number,
+#                 account_name=account_name,
+                
+#                 next_of_kin_name=next_of_kin_name,
+#                 next_of_kin_address=next_of_kin_address,
+#                 next_of_kin_phone=next_of_kin_phone,
+                
+#                 original_price=original_price_decimal,
+#                 selling_price=selling_price_decimal,
+#                 payment_plan=payment_plan,
+#                 # Add to pricing section
+#                 discount=discount_decimal,
+                
+#                 realtor=realtor,
+#                 realtor_commission_percentage=realtor_commission_decimal,
+#                 sponsor_commission_percentage=sponsor_commission_decimal,
+#                 upline_commission_percentage=upline_commission_decimal
+#             )
+            
+#             # Create initial payment if provided
+#             if initial_payment_decimal > 0:
+#                 # Update the amount_paid field first
+#                 property_sale.amount_paid = initial_payment_decimal
+#                 property_sale.save()
+                
+#                 # Create the payment record with the validated payment_date
+#                 Payment.objects.create(
+#                     property_sale=property_sale,
+#                     amount=initial_payment_decimal,
+#                     payment_method='Cash',
+#                     notes='Initial payment at registration',
+#                     payment_date=payment_date
+#                 )
+            
+#             messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
+#             return redirect('property_sale_detail', id=property_sale.id)
+            
+#         except Exception as e:
+#             # Log the error for debugging
+#             import logging
+#             logger = logging.getLogger(__name__)
+#             logger.error(f'Error in register_property_sale: {str(e)}')
+            
+#             messages.error(request, 'An error occurred while registering the property sale. Please check your input and try again.')
+#             return render(request, 'user/register_property_sale.html', {
+#                 'properties': properties,
+#                 'realtors': realtors
+#             })
+    
+#     # Add today's date for template context
+#     context = {
+#         'properties': properties,
+#         'realtors': realtors,
+#         'today': timezone.now().date().isoformat(),  # For setting max date in template
+#     }
+    
+#     return render(request, 'user/register_property_sale.html', context)
+
+
 @login_required
-def register_property_sale(request):
+def register_property_sale(request):#with expiry date
     """View to register a new property sale"""
     properties = Property.objects.all().order_by('name')
     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
@@ -1150,6 +1498,10 @@ def register_property_sale(request):
             # Extract client identification
             id_type = request.POST.get('id_type')
             id_number = request.POST.get('id_number')
+            
+            # Extract plot development timeline (NEW FIELDS)
+            plot_development_start_date_str = request.POST.get('plot_development_start_date')
+            plot_development_expiry_date_str = request.POST.get('plot_development_expiry_date')
             
             # Extract client origin
             lga_of_origin = request.POST.get('lga_of_origin')
@@ -1225,6 +1577,42 @@ def register_property_sale(request):
                     'realtors': realtors
                 })
             
+            # Parse and validate plot development dates (NEW VALIDATION LOGIC)
+            plot_development_start_date = None
+            plot_development_expiry_date = None
+            
+            if plot_development_start_date_str:
+                try:
+                    plot_development_start_date = datetime.strptime(plot_development_start_date_str, '%Y-%m-%d').date()
+                except ValueError:
+                    messages.error(request, "Invalid plot development start date format. Please select a valid date.")
+                    return render(request, 'user/register_property_sale.html', {
+                        'properties': properties,
+                        'realtors': realtors
+                    })
+            
+            if plot_development_expiry_date_str:
+                try:
+                    plot_development_expiry_date = datetime.strptime(plot_development_expiry_date_str, '%Y-%m-%d').date()
+                except ValueError:
+                    messages.error(request, "Invalid plot development expiry date format. Please select a valid date.")
+                    return render(request, 'user/register_property_sale.html', {
+                        'properties': properties,
+                        'realtors': realtors
+                    })
+            
+            # Validate that expiry date is after start date (if both are provided)
+            if plot_development_start_date and plot_development_expiry_date:
+                if plot_development_expiry_date <= plot_development_start_date:
+                    messages.error(request, "Plot development expiry date must be after the start date.")
+                    return render(request, 'user/register_property_sale.html', {
+                        'properties': properties,
+                        'realtors': realtors
+                    })
+            
+            # Parse and validate payment date (only if initial payment is provided)
+           # Replace your payment date validation section with this fixed version:
+
             # Parse and validate payment date (only if initial payment is provided)
             payment_date = None
             if initial_payment_decimal > 0:
@@ -1240,15 +1628,7 @@ def register_property_sale(request):
                         
                         # Make it timezone aware using the current timezone
                         payment_date = timezone.make_aware(naive_datetime)
-                        
-                        # Validate that the payment date is not in the future
-                        if payment_date > timezone.now():
-                            messages.error(request, "Payment date cannot be in the future.")
-                            return render(request, 'user/register_property_sale.html', {
-                                'properties': properties,
-                                'realtors': realtors
-                            })
-                            
+                                    
                     except ValueError:
                         messages.error(request, "Invalid payment date format. Please select a valid date.")
                         return render(request, 'user/register_property_sale.html', {
@@ -1261,7 +1641,6 @@ def register_property_sale(request):
                         'properties': properties,
                         'realtors': realtors
                     })
-            
             # Get related objects
             property_obj = get_object_or_404(Property, id=property_id)
             realtor = get_object_or_404(Realtor, id=realtor_id)
@@ -1287,6 +1666,10 @@ def register_property_sale(request):
                 
                 id_type=id_type,
                 id_number=id_number,
+                
+                # Add the new plot development timeline fields
+                plot_development_start_date=plot_development_start_date,
+                plot_development_expiry_date=plot_development_expiry_date,
                 
                 lga_of_origin=lga_of_origin,
                 town_of_origin=town_of_origin,
@@ -1350,6 +1733,8 @@ def register_property_sale(request):
     }
     
     return render(request, 'user/register_property_sale.html', context)
+
+
 
 @login_required
 def property_sale_detail(request, id):

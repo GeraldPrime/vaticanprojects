@@ -78,6 +78,9 @@ urlpatterns = [
     path('user/property-sales/register/', views.register_property_sale, name='register_property_sale'),
     path('user/property-sales/<int:id>/', views.property_sale_detail, name='property_sale_detail'),
     path('user/property-sale/<int:sale_id>/invoice/', views.property_sale_invoice, name='property_sale_invoice'),
+#     property sale email
+    path('send-client-email/<int:sale_id>/', views.send_client_email, name='send_client_email'),
+
     
     
     # Frontend Extras URLs
@@ -124,6 +127,9 @@ urlpatterns = [
     path('realtor/register/', views.realtor_register, name='realtor_register'),
     path('realtor/register/<str:referral_code>/', views.realtor_register, name='realtor_register_with_referral'),
     
+
+     # toggle developement status 
+     path('user/property-sale/<int:sale_id>/mark-developed/', views.mark_property_developed, name='mark_property_developed'),
 
 
     

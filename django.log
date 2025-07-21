@@ -21806,3 +21806,1819 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 360: 'else', expected 'endblock'. Did you forget to register or load this tag?
 "GET /user/property-sales/2/ HTTP/1.1" 500 145
 "GET /user/property-sales/2/ HTTP/1.1" 200 87025
+Watching for file changes with StatReloader
+"GET /admin/auth/user/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4180
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 650
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 626
+"GET /static/admin/css/base.css HTTP/1.1" 200 4220
+"GET /static/admin/css/login.css HTTP/1.1" 200 308
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 2946
+"GET /static/admin/js/theme.js HTTP/1.1" 200 458
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 690
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /members/
+"GET /members/ HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"GET /about/ HTTP/1.1" 200 44439
+"GET /static/estate/vendor/fontawesome-5.14.0.min.css HTTP/1.1" 200 25551
+"GET /static/estate/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 16860
+"GET /static/estate/vendor/nice-select/css/nice-select.min.css HTTP/1.1" 200 717
+"GET /static/estate/vendor/animate.min.css HTTP/1.1" 200 3411
+"GET /static/estate/vendor/slick/css/slick.min.css HTTP/1.1" 200 374
+"GET /static/estate/vendor/magnific-popup/css/magnific-popup.min.css HTTP/1.1" 200 1309
+"GET /static/estate/css/style.css HTTP/1.1" 200 12779
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 200 239583
+"GET /static/estate/images/anew/vatican_logo_square.png HTTP/1.1" 200 180845
+"GET /static/estate/vendor/bootstrap/js/popper.min.js HTTP/1.1" 200 6002
+"GET /static/estate/vendor/jquery-3.6.0.min.js HTTP/1.1" 200 27944
+"GET /static/estate/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 14207
+"GET /static/estate/vendor/appear.min.js HTTP/1.1" 200 664
+"GET /static/estate/vendor/slick/js/slick.min.js HTTP/1.1" 200 9285
+"GET /static/estate/vendor/magnific-popup/js/jquery.magnific-popup.min.js HTTP/1.1" 200 6546
+"GET /static/estate/vendor/nice-select/js/jquery.nice-select.min.js HTTP/1.1" 200 893
+"GET /static/estate/vendor/imagesloaded.pkgd.min.js HTTP/1.1" 200 1559
+"GET /static/estate/vendor/circle-progress.min.js HTTP/1.1" 200 1654
+"GET /static/estate/vendor/isotope.pkgd.min.js HTTP/1.1" 200 8843
+"GET /static/estate/vendor/wow.min.js HTTP/1.1" 200 1905
+"GET /static/estate/js/script.js HTTP/1.1" 200 2762
+Internal Server Error: /static/estate/images/footer/footer-top-bg.jpg
+"GET /static/estate/images/footer/footer-top-bg.jpg HTTP/1.1" 500 145
+"GET /static/estate/fonts/fa-brands-400.woff2 HTTP/1.1" 200 77376
+"GET /static/estate/images/anew/modern-building-seen-from.jpg HTTP/1.1" 200 1490733
+"GET /static/estate/fonts/fa-light-300.woff2 HTTP/1.1" 200 189452
+"GET /static/estate/fonts/fa-solid-900.woff2 HTTP/1.1" 200 140704
+"GET /static/estate/fonts/fa-regular-400.woff2 HTTP/1.1" 200 173220
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /user/ HTTP/1.1" 302 0
+"GET /user/signin/?next=/user/ HTTP/1.1" 200 7838
+"GET /static/user/js/config.js HTTP/1.1" 200 533
+"GET /static/user/css/app.min.css HTTP/1.1" 200 41145
+"GET /static/user/css/icons.min.css HTTP/1.1" 200 62592
+"GET /static/user/images/auth-img.jpg HTTP/1.1" 200 312626
+"GET /static/user/js/vendor.min.js HTTP/1.1" 200 66464
+"GET /static/user/js/app.min.js HTTP/1.1" 200 3570
+"GET /static/user/images/auth-bg.jpg HTTP/1.1" 200 761529
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 200 139320
+"POST /user/signin/?next=/user/ HTTP/1.1" 302 0
+"GET /user/ HTTP/1.1" 200 70597
+"GET /static/user/images/logo-sm.png HTTP/1.1" 200 826
+"GET /static/user/images/logo.png HTTP/1.1" 200 1836
+"GET /static/user/images/logo-dark.png HTTP/1.1" 200 1706
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 200 229
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 200 1320
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 200 15536
+"GET /static/user/images/layouts/light.png HTTP/1.1" 200 32884
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 200 9725
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 200 7929
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 200 804
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 200 104996
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 200 43405
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 200 29518
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 200 32784
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 200 32061
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 200 32705
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 200 33358
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 200 30516
+"GET /static/user/images/layouts/full.png HTTP/1.1" 200 30426
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 200 396732
+"GET /user/commissions/ HTTP/1.1" 200 104672
+"GET /user/frontend-extras/ HTTP/1.1" 200 53851
+"GET /gallery-management/ HTTP/1.1" 200 124811
+"GET /user/ HTTP/1.1" 200 70098
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 64652
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109472
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+"GET /user/profile/ HTTP/1.1" 200 47364
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"POST /user/profile/ HTTP/1.1" 302 0
+"GET /user/profile/ HTTP/1.1" 200 47644
+"GET /user/property-sales/ HTTP/1.1" 200 64664
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109484
+- Broken pipe from ('127.0.0.1', 50261)
+"GET /user/property-sales/17/ HTTP/1.1" 200 87205
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"POST /user/property-sales/17/ HTTP/1.1" 302 0
+"GET /user/property-sales/17/ HTTP/1.1" 200 89323
+"GET /user/commissions/ HTTP/1.1" 200 104676
+"GET /user/ HTTP/1.1" 200 70117
+Watching for file changes with StatReloader
+"GET /user/property-sales/ HTTP/1.1" 200 64662
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sales/17/ HTTP/1.1" 200 89032
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/properties/ HTTP/1.1" 200 53586
+"GET /user/property-sales/ HTTP/1.1" 200 64662
+"GET /user/property-sales/17/ HTTP/1.1" 200 89032
+"GET /user/property-sales/ HTTP/1.1" 200 64662
+"GET /user/property-sales/17/ HTTP/1.1" 200 89032
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /user/property-sale/17/invoice/ HTTP/1.1" 200 22332
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /user/property-sale/17/invoice/ HTTP/1.1" 200 22332
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /user/property-sale/17/invoice/ HTTP/1.1" 200 22332
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /user/property-sales/17/ HTTP/1.1" 200 89032
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sale/17/invoice/ HTTP/1.1" 200 22332
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /user/property-sales/16/ HTTP/1.1" 200 87029
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /user/property-sale/16/invoice/ HTTP/1.1" 200 21956
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /user/property-sales/16/ HTTP/1.1" 200 87029
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /user/property-sale/16/invoice/ HTTP/1.1" 200 21956
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"GET /user/realtors_page HTTP/1.1" 200 111377
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/users/avatar-1.jpg HTTP/1.1" 200 22292
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /user/edit_realtor/5 HTTP/1.1" 200 56739
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 200 640400
+Internal Server Error: /user/edit_realtor/5
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\util\connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 964, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\httpsession.py", line 464, in send
+    urllib_response = conn.urlopen(
+                      ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 527, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 1061, in _validate_conn
+    conn.connect()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <botocore.awsrequest.AWSHTTPSConnection object at 0x000001C5A4673E90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 619, in edit_realtor
+    realtor.save()
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\models.py", line 188, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 1125, in _save_table
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\storages\backends\s3.py", line 707, in get_available_name
+    return super().get_available_name(name, max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 93, in get_available_name
+    while not self.is_name_available(name, max_length=max_length):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 56, in is_name_available
+    return not self.exists(name) and not exceeds_max_length
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\storages\backends\s3.py", line 586, in exists
+    self.connection.meta.client.head_object(
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 595, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1040, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1064, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 200, in _send_request
+    while self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 360, in _needs_retry
+    responses = self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 207, in __call__
+    if self._checker(**checker_kwargs):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 284, in __call__
+    should_retry = self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 320, in _should_retry
+    return self._checker(attempt_number, response, caught_exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 363, in __call__
+    checker_response = checker(
+                       ^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 279, in _do_get_response
+    http_response = self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 383, in _send
+    return self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\httpsession.py", line 493, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "https://vaticanprojects.s3.eu-north-1.amazonaws.com/realtors/man-city.jpg"
+"POST /user/edit_realtor/5 HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+Internal Server Error: /user/edit_realtor/5
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\util\connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 964, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\httpsession.py", line 464, in send
+    urllib_response = conn.urlopen(
+                      ^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 527, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 1061, in _validate_conn
+    conn.connect()
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <botocore.awsrequest.AWSHTTPSConnection object at 0x000001C5A469EA20>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\views.py", line 619, in edit_realtor
+    realtor.save()
+  File "C:\Users\USER\Desktop\vaticanprojects\estate\models.py", line 188, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\base.py", line 1125, in _save_table
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\storages\backends\s3.py", line 707, in get_available_name
+    return super().get_available_name(name, max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 93, in get_available_name
+    while not self.is_name_available(name, max_length=max_length):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\django\core\files\storage\base.py", line 56, in is_name_available
+    return not self.exists(name) and not exceeds_max_length
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\storages\backends\s3.py", line 586, in exists
+    self.connection.meta.client.head_object(
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 595, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1040, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1064, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 200, in _send_request
+    while self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 360, in _needs_retry
+    responses = self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 207, in __call__
+    if self._checker(**checker_kwargs):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 284, in __call__
+    should_retry = self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 320, in _should_retry
+    return self._checker(attempt_number, response, caught_exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 363, in __call__
+    checker_response = checker(
+                       ^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 279, in _do_get_response
+    http_response = self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 383, in _send
+    return self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python312\site-packages\botocore\httpsession.py", line 493, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "https://vaticanprojects.s3.eu-north-1.amazonaws.com/realtors/man-city.jpg"
+"POST /user/edit_realtor/5 HTTP/1.1" 500 145
+Internal Server Error: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 500 145
+"POST /user/edit_realtor/5 HTTP/1.1" 302 0
+"GET /user/realtor_detail/5 HTTP/1.1" 200 119285
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 200 1983
+"GET /user/ HTTP/1.1" 200 70117
+"GET /user/property-sales/ HTTP/1.1" 200 64608
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 109354
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/property-sales/register/ HTTP/1.1" 200 110530
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 111316
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/register/ HTTP/1.1" 200 110572
+"GET /user/property-sales/register/ HTTP/1.1" 200 111446
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/property-sales/register/ HTTP/1.1" 200 111446
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112261
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112261
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"POST /user/property-sales/register/ HTTP/1.1" 200 112219
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/property-sales/18/ HTTP/1.1" 200 87124
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user/property-sales/ HTTP/1.1" 200 71255
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sales/18/ HTTP/1.1" 200 91481
+"GET /user/property-sale/18/invoice/ HTTP/1.1" 200 21488
+Internal Server Error: /static/user/css/bootstrap.min.css
+"GET /static/user/css/bootstrap.min.css HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/jquery/jquery.min.js
+"GET /static/user/libs/jquery/jquery.min.js HTTP/1.1" 500 145
+Internal Server Error: /static/user/libs/bootstrap/js/bootstrap.bundle.min.js
+"GET /static/user/libs/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 500 145
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"GET /user/property-sales/ HTTP/1.1" 200 72952
+"GET /user/property-sales/ HTTP/1.1" 200 72827
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/18/ HTTP/1.1" 200 91161
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"GET /user/property-sales/18/ HTTP/1.1" 200 91754
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 72938
+"GET /user/property-sales/18/ HTTP/1.1" 200 91481
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/property-sales/18/ HTTP/1.1" 200 93493
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"GET /user/property-sales/18/ HTTP/1.1" 200 95664
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"GET /user/property-sales/18/ HTTP/1.1" 200 94604
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/18/ HTTP/1.1" 200 93538
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"GET /user/property-sales/18/ HTTP/1.1" 200 93487
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 95
+"GET /user/property-sales/18/ HTTP/1.1" 200 94284
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\vaticanprojects\estate\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /user/property-sales/ HTTP/1.1" 200 79108
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 79107
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 79107
+"GET /user/property-sales/ HTTP/1.1" 200 79107
+"GET /user/property-sales/ HTTP/1.1" 200 79107
+"GET /user/property-sales/ HTTP/1.1" 200 79107
+"GET /user/property-sales/18/ HTTP/1.1" 200 93218
+"POST /user/property-sale/18/mark-developed/ HTTP/1.1" 200 102
+"GET /user/property-sales/ HTTP/1.1" 200 80672
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /user/property-sales/18/ HTTP/1.1" 200 93538
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/properties/ HTTP/1.1" 200 53586
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/fonts/materialdesignicons-webfont.woff2?v=7.2.96 HTTP/1.1" 304 0
+"GET /static/user/fonts/remixicon.woff2?t=1681573354175 HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /user/property-sales/ HTTP/1.1" 200 80048
+"GET /user/property-sales/ HTTP/1.1" 200 80524
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 80473
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"POST /send-client-email/18/ HTTP/1.1" 200 81
+"POST /send-client-email/14/ HTTP/1.1" 200 81
+"POST /send-client-email/18/ HTTP/1.1" 200 81
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 85202
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/ HTTP/1.1" 200 85196
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/ HTTP/1.1" 200 87320
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"POST /send-client-email/18/ HTTP/1.1" 200 75
+"GET /user/property-sales/register/ HTTP/1.1" 200 111446
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/bg-profile.jpg HTTP/1.1" 304 0
+"POST /user/property-sales/register/ HTTP/1.1" 302 0
+"GET /user/property-sales/19/ HTTP/1.1" 200 96086
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /user/ HTTP/1.1" 200 70132
+"GET /user/property-sales/ HTTP/1.1" 200 89011
+"POST /send-client-email/19/ HTTP/1.1" 200 51
+"POST /send-client-email/19/ HTTP/1.1" 200 88
+"POST /send-client-email/19/ HTTP/1.1" 200 88
+"GET /user/property-sales/ HTTP/1.1" 200 89015
+"GET /static/user/vendor/daterangepicker/daterangepicker.css HTTP/1.1" 304 0
+"GET /static/user/js/config.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css HTTP/1.1" 304 0
+"GET /static/user/css/icons.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo.png HTTP/1.1" 304 0
+"GET /static/user/css/app.min.css HTTP/1.1" 304 0
+"GET /static/user/images/logo-sm.png HTTP/1.1" 304 0
+"GET /static/user/images/logo-dark.png HTTP/1.1" 304 0
+"GET /static/user/js/vendor.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/daterangepicker.js HTTP/1.1" 304 0
+"GET /static/user/vendor/apexcharts/apexcharts.min.js HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 0
+"GET /static/estate/images/anew/vatican_logo.png HTTP/1.1" 304 0
+"GET /static/user/vendor/daterangepicker/moment.min.js HTTP/1.1" 304 0
+"GET /static/user/js/app.min.js HTTP/1.1" 304 0
+"GET /static/user/js/pages/dashboard.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/boxed.png HTTP/1.1" 304 0
+"GET /static/user/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 0
+"GET /static/user/images/layouts/dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/light.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sm.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/compact.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/topbar-dark.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/full.png HTTP/1.1" 304 0
+"GET /static/user/images/layouts/sidebar-light.png HTTP/1.1" 304 0
+"GET /static/estate/images/logos/favicon.png HTTP/1.1" 304 0
+"GET /user/property-sales/ HTTP/1.1" 200 89015
+C:\Users\USER\Desktop\vaticanprojects\vaticanprojects\settings.py changed, reloading.
+Watching for file changes with StatReloader

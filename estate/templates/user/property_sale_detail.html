@@ -42,6 +42,97 @@
                 </div>
             </div>
 
+            
+<!-- Development Timeline Status Section -->
+<div class="card mt-4">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-calendar-alt me-2"></i>Development Timeline Status
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Development Start Date:</label>
+                    <div class="form-control-plaintext">
+                        {% if sale.plot_development_start_date %}
+                            {{ sale.plot_development_start_date|date:"F d, Y" }}
+                        {% else %}
+                            <span class="text-muted">Not set</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Development Expiry Date:</label>
+                    <div class="form-control-plaintext">
+                        {% if sale.plot_development_expiry_date %}
+                            {{ sale.plot_development_expiry_date|date:"F d, Y" }}
+                        {% else %}
+                            <span class="text-muted">Not set</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Current Status:</label>
+                    <div>
+                        <span  id="development-status-badge" class="badge {{ sale.development_status_class }} badge-lg">
+                            {{ sale.development_status_display }}
+                        </span>
+                    </div>
+                </div>
+                
+                {% if not sale.is_developed %}
+                <div class="mb-3">
+                    <label class="form-label">Action:</label>
+                    <div>
+                        <form id="developmentForm" method="post" action="{% url 'mark_property_developed' sale.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success" id="markDevelopedBtn">
+                                <i class="fas fa-check-circle me-1"></i>Mark as Developed
+                            </button>
+                        </form>
+                    </div>
+                    <small class="text-muted">
+                        Click this button once the client has completed property development.
+                    </small>
+                </div>
+                {% else %}
+                <div class="mb-3">
+                    <label class="form-label">Action:</label>
+                    <div>
+                        <form id="developmentForm" method="post" action="{% url 'mark_property_developed' sale.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning" id="markUndevelopedBtn">
+                                <i class="fas fa-undo me-1"></i>Mark as Not Developed
+                            </button>
+                        </form>
+                    </div>
+                    <small class="text-muted">
+                        Click to revert development status if marked by mistake.
+                    </small>
+                </div>
+                {% endif %}
+                
+                {% if sale.development_status == 'expiring' or sale.development_status == 'expired' %}
+                <div class="alert alert-{% if sale.development_status == 'expired' %}danger{% else %}warning{% endif %} mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    {% if sale.development_status == 'expired' %}
+                        <strong>Timeline Expired!</strong> The development period has passed.
+                    {% else %}
+                        <strong>Timeline Expiring Soon!</strong> Development period expires in 30 days or less.
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
             <!-- Financial Overview Cards -->
             <div class="row mb-4">
                 <div class="col-xl-3 col-md-6">
@@ -761,4 +852,101 @@
 </div>
 </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const developmentForms = document.querySelectorAll('form[action*="mark-developed"]');
+    
+    developmentForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update button text based on new status
+                    if (data.is_developed) {
+                        submitBtn.textContent = 'Mark as Not Developed';
+                        submitBtn.className = 'btn btn-outline-warning btn-sm';
+                    } else {
+                        submitBtn.textContent = 'Mark as Developed';
+                        submitBtn.className = 'btn btn-outline-success btn-sm';
+                    }
+                    
+                    // Update status display
+                    const statusElement = document.querySelector('.development-status-display');
+                    if (statusElement) {
+                        statusElement.textContent = data.status;
+                        statusElement.className = `badge ${data.status_class}`;
+                    }
+                    
+                    // Update or hide/show warning message
+                    updateWarningMessage(data.status);
+                    
+                    // Show success message (optional)
+                    showMessage('Status updated successfully!', 'success');
+                } else {
+                    showMessage('Error updating status. Please try again.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Network error. Please try again.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+            });
+        });
+    });
+    
+    function updateWarningMessage(status) {
+        const warningContainer = document.querySelector('.development-warning');
+        
+        if (status === 'expired') {
+            if (warningContainer) {
+                warningContainer.innerHTML = '<div class="alert alert-danger"><strong>Timeline Expired!</strong> The development period has passed.</div>';
+                warningContainer.style.display = 'block';
+            }
+        } else if (status === 'expiring') {
+            if (warningContainer) {
+                warningContainer.innerHTML = '<div class="alert alert-warning"><strong>Timeline Expiring Soon!</strong> Development period expires in 30 days or less.</div>';
+                warningContainer.style.display = 'block';
+            }
+        } else {
+            if (warningContainer) {
+                warningContainer.style.display = 'none';
+            }
+        }
+    }
+    
+    function showMessage(message, type) {
+        // Simple toast notification
+        const toast = document.createElement('div');
+        toast.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+        toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 300px;';
+        toast.textContent = message;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+});
+</script>
 {% endblock %}
