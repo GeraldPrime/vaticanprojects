@@ -717,6 +717,8 @@ class PropertySale(models.Model):
         if is_new or old_amount_paid != self.amount_paid:
             self.calculate_commission()
 
+
+
 class Payment(models.Model):
     property_sale = models.ForeignKey(PropertySale, on_delete=models.CASCADE, related_name='payments')
     amount = models.DecimalField(max_digits=12, decimal_places=2)

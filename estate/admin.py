@@ -1,3 +1,5 @@
+# from pyexpat.errors import messages
+from django.contrib import messages
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
@@ -67,21 +69,37 @@ class PropertyAdmin(admin.ModelAdmin):
 # class PropertySaleAdmin(admin.ModelAdmin):
 #     list_display = ('reference_number_display', 'property_display', 'client_name_display', 
 #                    'selling_price_display', 'amount_paid_display', 'balance_due_display')
-#     # Remove list_filter completely since created_at isn't accessible
-#     search_fields = ('client_name', 'property__name')
+#     # list_filter is removed as created_at isn't accessible
+#     search_fields = ('client_name', 'property_item__name')
     
 #     fieldsets = [
 #         ('Property Information', {
-#             'fields': ['property_item','description', 'quantity']
+#             'fields': ['property_type', 'property_item', 'description', 'quantity']
 #         }),
 #         ('Client Information', {
-#             'fields': ['client_name', 'client_address', 'client_phone']
+#             'fields': [
+#                 'client_name', 'client_address', 'client_phone', 'client_email',
+#                 'marital_status', 'spouse_name', 'spouse_phone','client_picture'
+#             ]
+#         }),
+#         ('Client Identification', {
+#             'fields': [
+#                 'id_type', 'id_number',
+#                 'lga_of_origin', 'town_of_origin', 'state_of_origin'
+#             ]
+#         }),
+#         ('Client Bank Details', {
+#             'fields': [
+#                 'bank_name', 'account_number', 'account_name'
+#             ]
 #         }),
 #         ('Next of Kin', {
 #             'fields': ['next_of_kin_name', 'next_of_kin_address', 'next_of_kin_phone']
 #         }),
-#         ('Pricing', {
-#             'fields': ['original_price', 'selling_price', 'amount_paid']
+#         ('Pricing & Payment', {
+#             'fields': [
+#                 'original_price', 'selling_price', 'amount_paid', 'payment_plan'
+#             ]
 #         }),
 #         ('Realtor & Commission', {
 #             'fields': ['realtor', 'realtor_commission_percentage', 'sponsor_commission_percentage', 'upline_commission_percentage']
@@ -116,9 +134,12 @@ class PropertyAdmin(admin.ModelAdmin):
 @admin.register(PropertySale)
 class PropertySaleAdmin(admin.ModelAdmin):
     list_display = ('reference_number_display', 'property_display', 'client_name_display', 
-                   'selling_price_display', 'amount_paid_display', 'balance_due_display')
-    # list_filter is removed as created_at isn't accessible
-    search_fields = ('client_name', 'property_item__name')
+                   'selling_price_display', 'amount_paid_display', 'balance_due_display',
+                   'development_status_display_admin', 'is_developed')
+    
+    list_filter = ('is_developed', 'property_type', 'payment_plan', 'marital_status')
+    
+    search_fields = ('client_name', 'property_item__name', 'reference_number')
     
     fieldsets = [
         ('Property Information', {
@@ -127,7 +148,7 @@ class PropertySaleAdmin(admin.ModelAdmin):
         ('Client Information', {
             'fields': [
                 'client_name', 'client_address', 'client_phone', 'client_email',
-                'marital_status', 'spouse_name', 'spouse_phone','client_picture'
+                'marital_status', 'spouse_name', 'spouse_phone', 'client_picture'
             ]
         }),
         ('Client Identification', {
@@ -144,6 +165,13 @@ class PropertySaleAdmin(admin.ModelAdmin):
         ('Next of Kin', {
             'fields': ['next_of_kin_name', 'next_of_kin_address', 'next_of_kin_phone']
         }),
+        ('Plot Development Timeline', {
+            'fields': [
+                'plot_development_start_date', 'plot_development_expiry_date', 
+                'is_developed'
+            ],
+            'description': 'Set development timeline and track completion status'
+        }),
         ('Pricing & Payment', {
             'fields': [
                 'original_price', 'selling_price', 'amount_paid', 'payment_plan'
@@ -153,6 +181,8 @@ class PropertySaleAdmin(admin.ModelAdmin):
             'fields': ['realtor', 'realtor_commission_percentage', 'sponsor_commission_percentage', 'upline_commission_percentage']
         }),
     ]
+    
+    readonly_fields = ('reference_number', 'created_at', 'updated_at')
     
     def reference_number_display(self, obj):
         return obj.reference_number
@@ -177,6 +207,56 @@ class PropertySaleAdmin(admin.ModelAdmin):
     def balance_due_display(self, obj):
         return f"₦{obj.balance_due.quantize(Decimal('0.01'))}"
     balance_due_display.short_description = 'Balance Due'
+    
+    def development_status_display_admin(self, obj):
+        """Display development status with color coding for admin list"""
+        status = obj.development_status_display
+        css_class = obj.development_status_class
+        
+        # Map badge classes to admin-friendly colors
+        color_map = {
+            'badge-success': '#28a745',  # Green for developed
+            'badge-danger': '#dc3545',   # Red for expired
+            'badge-warning': '#ffc107',  # Yellow for expiring
+            'badge-info': '#17a2b8',     # Blue for valid
+            'badge-secondary': '#6c757d' # Gray for no timeline
+        }
+        
+        color = color_map.get(css_class, '#6c757d')
+        
+        return format_html(
+            '<span style="color: {}; font-weight: bold;">{}</span>',
+            color, status
+        )
+    development_status_display_admin.short_description = 'Development Status'
+    
+    def get_queryset(self, request):
+        """Optimize queryset to reduce database queries"""
+        return super().get_queryset(request).select_related('property_item', 'realtor')
+    
+    # Add custom actions for bulk operations
+    actions = ['mark_as_developed', 'mark_as_not_developed']
+    
+    def mark_as_developed(self, request, queryset):
+        """Mark selected properties as developed"""
+        updated = queryset.update(is_developed=True)
+        self.message_user(
+            request,
+            f'{updated} property(ies) marked as developed.',
+            messages.SUCCESS
+        )
+    mark_as_developed.short_description = "Mark selected properties as developed"
+    
+    def mark_as_not_developed(self, request, queryset):
+        """Mark selected properties as not developed"""
+        updated = queryset.update(is_developed=False)
+        self.message_user(
+            request,
+            f'{updated} property(ies) marked as not developed.',
+            messages.SUCCESS
+        )
+    mark_as_not_developed.short_description = "Mark selected properties as not developed"
+
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
