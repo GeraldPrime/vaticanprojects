@@ -1,3 +1,4 @@
+
 <!-- templates/emails/plot_revocation.html -->
 <!DOCTYPE html>
 <html>
@@ -59,6 +60,14 @@
             border-radius: 5px;
             margin: 20px 0;
         }
+        .refund-notice {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
         .footer {
             margin-top: 40px;
             border-top: 1px solid #eee;
@@ -69,16 +78,13 @@
 <body>
     <div class="header">
         <div class="logo-placeholder">
-            <img  style=" height: 85px;
-                        background-color: white;
-                        border-radius: 50%;" src="https://vaticanprojects.com/static/estate/images/anew/vatican_logo.png" alt="Vatican Logo">
-
+            <img style="height: 85px; background-color: white; border-radius: 50%;" src="https://vaticanprojects.com/static/estate/images/anew/vatican_logo.png" alt="Vatican Logo">
         </div>
         <div class="company-name">VATICAN GARDENS PROJECTS</div>
         <div class="company-details">
             23 Liberty Estate Phase 2, Independence Layout, Enugu<br>
-            Email: info@vaticanprojects.com<br>
-            Phone: +234-7083600327<br>
+            Email: admin@vaticanprojects.com<br>
+            Phone: +234-9045714496<br>
             www.vaticanprojects.com
         </div>
     </div>
@@ -90,26 +96,30 @@
             <strong>Date:</strong> {{ current_date }}
         </div>
 
-        <div class="subject">
-            Subject: NOTICE OF PLOT REVOCATION FOR NON-DEVELOPMENT
-        </div>
-
         <p>Dear {{ client_name }},</p>
 
-        <p>We write to formally notify you that the development period granted to you for your allocated plot(s) at <strong>Vatican Gardens Estate</strong> has elapsed.</p>
+        <div class="subject">
+            NOTICE OF PLOT REVOCATION FOR NON-DEVELOPMENT
+        </div>
 
-        <p>Despite our previous reminders and in line with the terms and conditions stated in your <strong>Deed of Agreement, Contract of Sale, and Allocation Letter</strong>, there has been no satisfactory commencement or completion of development on your plot(s).</p>
+        <p>We write to formally inform you that the development period granted to you for your allocated plot(s) at <strong>Vatican Gardens Estate Phase 2 Enugu</strong> has elapsed.</p>
+
+        <p>Despite our previous reminders and in line with the estate development policy, terms and conditions stated in your <strong>Deed of Agreement, Contract of Sale, and Allocation Letter</strong>, there has been no satisfactory response, commencement of work or completion of development on your plot(s).</p>
 
         <div class="critical">
-            <p>Please be informed that your failure to develop within the stipulated period constitutes a breach of the estate's development policy. Consequently, <strong>your allocation stands revoked with immediate effect</strong>.</p>
+            <p>Please be informed that your failure to develop within the stipulated period constitutes a breach of the estate's development policy. Consequently, <strong>your allocation stands revoked with immediate effect.</strong></p>
+        </div>
+
+        <div class="refund-notice">
+            <p>On this note, please expect a refund of your purchase payment in due time.</p>
         </div>
 
         <p>This action is taken to ensure the orderly and timely development of the estate in the collective interest of all stakeholders.</p>
 
-        <p>Should you have any questions or require clarification, you may contact our office within <strong>7 days</strong> of this notice.</p>
+        <p>Should you have any questions or require clarification, you can contact our office within <strong>7 days</strong> of this notice.</p>
 
         <p>
-            <strong>Email:</strong> info@vaticanprojects.com<br>
+            <strong>Email:</strong> admin@vaticanprojects.com<br>
             <strong>Phone:</strong> +234-9045714496
         </p>
 

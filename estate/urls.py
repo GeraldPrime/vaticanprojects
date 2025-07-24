@@ -80,6 +80,11 @@ urlpatterns = [
     path('user/property-sale/<int:sale_id>/invoice/', views.property_sale_invoice, name='property_sale_invoice'),
 #     property sale email
     path('send-client-email/<int:sale_id>/', views.send_client_email, name='send_client_email'),
+    
+    path('property-sale/<int:sale_id>/send-email/', views.send_private_email, name='send_private_email'),
+    
+    path('bulk-email/', views.bulk_email, name='bulk_email'),
+    path('send-bulk-email/', views.send_bulk_email, name='send_bulk_email'),
 
     
     

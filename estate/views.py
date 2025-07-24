@@ -9,7 +9,7 @@ from .models import User, Realtor, Commission
 from django.contrib.auth.forms import PasswordChangeForm                                   # :contentReference[oaicite:0]{index=0}
 from django.contrib.auth import update_session_auth_hash 
 
-from django.db.models import Q 
+from django.db.models import Q , F
 
 
 
@@ -31,6 +31,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mass_mail
 from django.http import HttpResponse
 # from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -917,20 +918,6 @@ def delete_property(request, property_id):
 #     })
 
 
-@login_required
-def property_sales_list(request):
-    """View to display all property sales"""
-    all_sales = PropertySale.objects.all().order_by('-created_at')
-    paginator = Paginator(all_sales, 20)            # 20 sales per page
-    page_number = request.GET.get('page', 1)        # get ?page= from URL, default to 1
-    sales = paginator.get_page(page_number) 
-    # sales = PropertySale.objects.all().order_by('-created_at')
-    
-    return render(request, 'user/property_sales_list.html', {
-        'sales': sales
-    })
-
-
 # Your existing view stays the same
 @login_required
 def property_sales_list(request):
@@ -1044,6 +1031,200 @@ def mark_property_developed(request, sale_id):
     
     return redirect('property_sale_detail', id=sale_id)
 
+
+@login_required
+@require_http_methods(["POST"])
+def send_private_email(request, sale_id):
+    try:
+        # Get the property sale
+        sale = PropertySale.objects.get(id=sale_id)
+        
+        # Check if client has email
+        if not sale.client_email:
+            return JsonResponse({
+                'success': False, 
+                'error': 'Client email address not found.'
+            })
+        
+        # Get form data
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
+        
+        if not subject or not message:
+            return JsonResponse({
+                'success': False, 
+                'error': 'Subject and message are required.'
+            })
+        
+        # Prepare email content
+        email_message = f"""
+Dear {sale.client_name},
+
+{message}
+
+Best regards,
+VATICAN GARDEN PROJECTS ADMIN
+{settings.DEFAULT_FROM_EMAIL}
+
+---
+This email is regarding your property purchase:
+Reference: {sale.reference_number}
+Property: {sale.property_item.name}
+        """
+        
+        # Send email
+        send_mail(
+            subject=subject,
+            message=email_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[sale.client_email],
+            fail_silently=False,
+        )
+        
+        logger.info(f"Private email sent to {sale.client_email} for sale {sale.reference_number}")
+        
+        return JsonResponse({
+            'success': True, 
+            'message': 'Email sent successfully!'
+        })
+        
+    except PropertySale.DoesNotExist:
+        return JsonResponse({
+            'success': False, 
+            'error': 'Property sale not found.'
+        })
+    except Exception as e:
+        logger.error(f"Error sending email: {str(e)}")
+        return JsonResponse({
+            'success': False, 
+            'error': 'Failed to send email. Please try again.'
+        })
+
+
+
+@login_required
+def bulk_email(request):
+    """Display bulk email page with all sales records"""
+    
+    # Get all sales records - no filtering or pagination
+    sales = PropertySale.objects.select_related('property_item', 'realtor').order_by('-created_at')
+    
+    # Get all properties for the estate filter dropdown
+    properties = Property.objects.all().order_by('name')
+    
+    context = {
+        'sales': sales,
+        'properties': properties,
+    }
+    
+    return render(request, 'user/bulk_email.html', context)
+
+
+@login_required
+@require_http_methods(["POST"])
+def send_bulk_email(request):
+    """Send bulk emails to selected clients"""
+    try:
+        # Get form data
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
+        client_ids_json = request.POST.get('client_ids', '[]')
+        
+        if not subject or not message:
+            return JsonResponse({
+                'success': False,
+                'error': 'Subject and message are required.'
+            })
+        
+        # Parse client IDs
+        try:
+            client_ids = json.loads(client_ids_json)
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid client selection.'
+            })
+        
+        if not client_ids:
+            return JsonResponse({
+                'success': False,
+                'error': 'Please select at least one client.'
+            })
+        
+        # Get selected sales - only those with valid emails
+        sales = PropertySale.objects.filter(
+            id__in=client_ids,
+            client_email__isnull=False,
+            client_email__gt=''
+        ).select_related('property_item')
+        
+        if not sales.exists():
+            return JsonResponse({
+                'success': False,
+                'error': 'No valid email addresses found for selected clients.'
+            })
+        
+        sent_count = 0
+        failed_emails = []
+        
+        # Send emails
+        for sale in sales:
+            try:
+                # Personalize the message
+                personalized_message = f"""Dear {sale.client_name},
+
+{message}
+
+Best regards,
+VATICAN GARDEN PROJECTS ADMIN
+
+---
+Property Details:
+Reference: {sale.reference_number}
+Estate: {sale.property_item.name}
+Property Type: {sale.get_property_type_display()}
+                """
+                
+                # Send email
+                send_mail(
+                    subject=subject,
+                    message=personalized_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[sale.client_email],
+                    fail_silently=False,
+                )
+                
+                sent_count += 1
+                
+            except Exception as e:
+                failed_emails.append(sale.client_email)
+                # Log the error if you have logging configured
+                print(f"Failed to send email to {sale.client_email}: {str(e)}")
+        
+        # Prepare response
+        if sent_count > 0:
+            response_data = {
+                'success': True,
+                'sent_count': sent_count,
+                'message': f'Successfully sent {sent_count} emails.'
+            }
+            
+            if failed_emails:
+                response_data['warning'] = f'Failed to send to: {", ".join(failed_emails)}'
+                
+            return JsonResponse(response_data)
+        else:
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to send any emails. Please check the email configuration.'
+            })
+            
+    except Exception as e:
+        print(f"Error in bulk email sending: {str(e)}")
+        return JsonResponse({
+            'success': False,
+            'error': 'An error occurred while sending emails. Please try again.'
+        })
 
 # @login_required
 # def register_property_sale(request):

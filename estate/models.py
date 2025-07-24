@@ -610,7 +610,7 @@ class PropertySale(models.Model):
         
         # If expiring within 30 days
         days_to_expiry = (expiry_date - today).days
-        if days_to_expiry <= 30:
+        if days_to_expiry <= 180:
             return 'expiring'
         
         # If still valid

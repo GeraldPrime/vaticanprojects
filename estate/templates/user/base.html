@@ -128,10 +128,10 @@
                         <!-- Logo Dark -->
                         <a href="index.html" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="/static/user/images/logo-dark.png" alt="dark logo">
+                                <img src="/static/user/images/logo.png" alt="dark logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="/static/user/images/logo-sm.png" alt="small logo">
+                                <img src="/static/user/images/logo.png" alt="small logo">
                             </span>
                         </a>
                     </div>
@@ -494,6 +494,13 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
+                        <a href="{% url 'bulk_email' %}" class="side-nav-link">
+                            <i class="ri-mail-send-line fs-18 align-middle me-1"></i>
+                            <!-- <span class="badge bg-warning float-end">New</span> -->
+                            <span> Send Bulk Email</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
                         <a href="{% url 'general_settings' %}" class="side-nav-link">
                             <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
                             <!-- <span class="badge bg-warning float-end">New</span> -->
@@ -818,10 +825,7 @@
                 <div class="col-6">
                     <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
                 </div>
-                <div class="col-6">
-                    <a href="https://1.envato.market/velonic" target="_blank" role="button"
-                        class="btn btn-primary w-100">Buy Now</a>
-                </div>
+                
             </div>
         </div>
     </div>
