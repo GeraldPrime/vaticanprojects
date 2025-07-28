@@ -134,7 +134,17 @@ urlpatterns = [
     
 
      # toggle developement status 
-     path('user/property-sale/<int:sale_id>/mark-developed/', views.mark_property_developed, name='mark_property_developed'),
+    path('user/property-sale/<int:sale_id>/mark-developed/', views.mark_property_developed, name='mark_property_developed'),
+     
+     
+     # Secretary Admin URLs
+    path('secretary-admins/', views.secretary_list, name='secretary_list'),
+    path('secretary-admins/create/', views.create_secretary, name='create_secretary'),
+    path('secretary-admins/edit/<int:secretary_id>/', views.edit_secretary, name='edit_secretary'),
+    path('secretary-admins/delete/<int:secretary_id>/', views.delete_secretary, name='delete_secretary'),
+    path('secretary-admins/toggle-status/<int:secretary_id>/', views.toggle_secretary_status, name='toggle_secretary_status'),
+    path('secretary-admins/reset-password/<int:secretary_id>/', views.reset_secretary_password, name='reset_secretary_password'),
+    path('secretary-dashboard/', views.secretary_dashboard, name='secretary_dashboard'),
 
 
     

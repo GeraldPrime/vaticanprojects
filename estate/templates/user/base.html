@@ -403,221 +403,144 @@
         <!-- ========== Topbar End ========== -->
 
 
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="leftside-menu">
+       <!-- ========== Left Sidebar Start ========== -->
+<div class="leftside-menu">
 
-            <!-- Brand Logo Light -->
-            <a href="" class="logo logo-light">
-                <span class="logo-lg">
-                    <img style="
-                    height: 85px;
-                    background-color: white;
-                    border-radius: 50%;
-                    margin-top:20px;
-                  " src="/static/estate/images/anew/vatican_logo.png" alt="logo">
-                </span>
-                <span class="logo-sm">
-                    <img src="/static/estate/images/anew/vatican_logo.png" alt="small logo">
-                </span>
-            </a>
+    <!-- Brand Logo Light -->
+    <a href="" class="logo logo-light">
+        <span class="logo-lg">
+            <img style="
+            height: 85px;
+            background-color: white;
+            border-radius: 50%;
+            margin-top:20px;
+          " src="/static/estate/images/anew/vatican_logo.png" alt="logo">
+        </span>
+        <span class="logo-sm">
+            <img src="/static/estate/images/anew/vatican_logo.png" alt="small logo">
+        </span>
+    </a>
 
-            <!-- Brand Logo Dark -->
-            <!-- <a href="" class="logo logo-dark">
-                <span class="logo-lg">
-                    <img src="/static/user/images/logo-dark.png" alt="dark logo">
-                </span>
-                <span class="logo-sm">
-                    <img src="/static/user/images/logo-sm.png" alt="small logo">
-                </span>
-            </a> -->
+    <!-- Sidebar -left -->
+    <div class="h-100" id="leftside-menu-container" data-simplebar>
+        <!--- Sidemenu -->
+        <ul class="side-nav">
 
-            <!-- Sidebar -left -->
-            <div class="h-100" id="leftside-menu-container" data-simplebar>
-                <!--- Sidemenu -->
-                <ul class="side-nav">
+            <li class="side-nav-title">Main</li>
 
-                    <li class="side-nav-title">Main</li>
+            {% if request.is_secretary %}
+                <!-- Secretary Dashboard -->
+                <li class="side-nav-item">
+                    <a href="{% url 'secretary_dashboard' %}" class="side-nav-link">
+                        <i class="ri-dashboard-3-line"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
 
-                    <li class="side-nav-item">
-                        <a href="{% url 'user' %}" class="side-nav-link">
-                            <i class="ri-dashboard-3-line"></i>
-                            <!-- <span class="badge bg-success float-end">9+</span> -->
-                            <span> Dashboard </span>
-                        </a>
-                    </li>
+                <!-- Realtors (View and Add only) -->
+                <li class="side-nav-item">
+                    <a href="{% url 'realtors_page' %}"  class="side-nav-link">
+                        <i class="ri-group-line"></i>
+                        <span> Realtors </span>
+                    </a>
+                </li>
 
-                    <li class="side-nav-item">
-                        <a href="{% url 'realtors_page' %}"  class="side-nav-link">
-                            <i class="ri-group-line"></i>
-                            <span> Realtors </span>
-                        </a>
-                    </li>
+                <!-- Property Sales (View and Add only) -->
+                <li class="side-nav-item">
+                    <a href="{% url 'property_sales_list' %}" class="side-nav-link">
+                        <i class="ri-line-chart-line"></i>
+                        <span> Property Sales </span>
+                    </a>
+                </li>
 
-                    <!-- <li class="side-nav-item">
-                        <a class="side-nav-link">
-                            <i class="ri-user-follow-line"></i>
-                            <span> Clients </span>
-                        </a>
-                       
-                    </li> -->
+                <!-- Logout -->
+                <li class="side-nav-item">
+                    <a href="{% url 'signout' %}" class="side-nav-link">
+                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                        <span> Log out</span>
+                    </a>
+                </li>
 
-                    <li class="side-nav-item">
-                        <a href="{% url 'property_list' %}" class="side-nav-link">
-                            <i class="ri-building-line"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Properties </span>
-                        </a>
-                    </li>
+            {% else %}
+                <!-- Full Admin Menu -->
+                <li class="side-nav-item">
+                    <a href="{% url 'user' %}" class="side-nav-link">
+                        <i class="ri-dashboard-3-line"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
 
-                    <!-- <li class="side-nav-title">Components</li> -->
+                <li class="side-nav-item">
+                    <a href="{% url 'realtors_page' %}"  class="side-nav-link">
+                        <i class="ri-group-line"></i>
+                        <span> Realtors </span>
+                    </a>
+                </li>
 
-                    <li class="side-nav-item">
-                        <a href="{% url 'property_sales_list' %}" class="side-nav-link">
-                            <i class="ri-line-chart-line"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Property Sales </span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a href="{% url 'frontend_extras' %}" class="side-nav-link">
-                            <i class="ri-magic-fill"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Frontend Extras</span>
-                        </a>
-                    </li>
-                    
-                    <li class="side-nav-item">
-                        <a href="{% url 'commissions_list' %}" class="side-nav-link">
-                            <i class="ri-hand-coin-line fs-18 align-middle me-1"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Commissions</span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a href="{% url 'bulk_email' %}" class="side-nav-link">
-                            <i class="ri-mail-send-line fs-18 align-middle me-1"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Send Bulk Email</span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a href="{% url 'general_settings' %}" class="side-nav-link">
-                            <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> General Settings</span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a href="{% url 'signout' %}" class="side-nav-link">
-                            <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-                            <!-- <span class="badge bg-warning float-end">New</span> -->
-                            <span> Log out</span>
-                        </a>
-                    </li>
+                <li class="side-nav-item">
+                    <a href="{% url 'property_list' %}" class="side-nav-link">
+                        <i class="ri-building-line"></i>
+                        <span> Properties </span>
+                    </a>
+                </li>
 
-                    
+                <li class="side-nav-item">
+                    <a href="{% url 'property_sales_list' %}" class="side-nav-link">
+                        <i class="ri-line-chart-line"></i>
+                        <span> Property Sales </span>
+                    </a>
+                </li>
 
-                    <!-- <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false"
-                            aria-controls="sidebarBaseUI" class="side-nav-link">
-                            <i class="ri-briefcase-line"></i>
-                            <span> Base UI </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarBaseUI">
-                            <ul class="side-nav-second-level">
-                                <li>
-                                    <a href="ui-accordions.html">Accordions</a>
-                                </li>
-                                <li>
-                                    <a href="ui-alerts.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="ui-avatars.html">Avatars</a>
-                                </li>
-                                <li>
-                                    <a href="ui-buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="ui-badges.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="ui-breadcrumb.html">Breadcrumb</a>
-                                </li>
-                                <li>
-                                    <a href="ui-cards.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="ui-carousel.html">Carousel</a>
-                                </li>
-                                <li>
-                                    <a href="ui-collapse.html">Collapse</a>
-                                </li>
-                                <li>
-                                    <a href="ui-dropdowns.html">Dropdowns</a>
-                                </li>
-                                <li>
-                                    <a href="ui-embed-video.html">Embed Video</a>
-                                </li>
-                                <li>
-                                    <a href="ui-grid.html">Grid</a>
-                                </li>
-                                <li>
-                                    <a href="ui-links.html">Links</a>
-                                </li>
-                                <li>
-                                    <a href="ui-list-group.html">List Group</a>
-                                </li>
-                                <li>
-                                    <a href="ui-modals.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="ui-notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="ui-offcanvas.html">Offcanvas</a>
-                                </li>
-                                <li>
-                                    <a href="ui-placeholders.html">Placeholders</a>
-                                </li>
-                                <li>
-                                    <a href="ui-pagination.html">Pagination</a>
-                                </li>
-                                <li>
-                                    <a href="ui-popovers.html">Popovers</a>
-                                </li>
-                                <li>
-                                    <a href="ui-progress.html">Progress</a>
-                                </li>
-                                <li>
-                                    <a href="ui-spinners.html">Spinners</a>
-                                </li>
-                                <li>
-                                    <a href="ui-tabs.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="ui-tooltips.html">Tooltips</a>
-                                </li>
-                                <li>
-                                    <a href="ui-typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="ui-utilities.html">Utilities</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li> -->
+                <li class="side-nav-item">
+                    <a href="{% url 'secretary_list' %}" class="side-nav-link">
+                        <i class="ri-file-text-line"></i>
+                        <span>Manage Secretaries</span>
+                    </a>
+                </li>
 
-                    
+                <li class="side-nav-item">
+                    <a href="{% url 'frontend_extras' %}" class="side-nav-link">
+                        <i class="ri-magic-fill"></i>
+                        <span> Frontend Extras</span>
+                    </a>
+                </li>
+                
+                <li class="side-nav-item">
+                    <a href="{% url 'commissions_list' %}" class="side-nav-link">
+                        <i class="ri-hand-coin-line fs-18 align-middle me-1"></i>
+                        <span> Commissions</span>
+                    </a>
+                </li>
 
+                <li class="side-nav-item">
+                    <a href="{% url 'bulk_email' %}" class="side-nav-link">
+                        <i class="ri-mail-send-line fs-18 align-middle me-1"></i>
+                        <span> Send Bulk Email</span>
+                    </a>
+                </li>
 
-                </ul>
-                <!--- End Sidemenu -->
+                <li class="side-nav-item">
+                    <a href="{% url 'general_settings' %}" class="side-nav-link">
+                        <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
+                        <span> General Settings</span>
+                    </a>
+                </li>
 
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <!-- ========== Left Sidebar End ========== -->
+                <li class="side-nav-item">
+                    <a href="{% url 'signout' %}" class="side-nav-link">
+                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                        <span> Log out</span>
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+        <!--- End Sidemenu -->
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- ========== Left Sidebar End -->
 
 
         

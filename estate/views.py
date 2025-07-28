@@ -13,7 +13,7 @@ from django.db.models import Q , F
 
 
 
-from .models import Property, PropertySale, Payment, FormUpload, General, EstateImage, Gallery
+from .models import Property, PropertySale, Payment, FormUpload, General, EstateImage, Gallery, SecretaryAdmin
 from django.http import JsonResponse
 from decimal import Decimal,InvalidOperation
 from django.utils import timezone
@@ -58,6 +58,12 @@ from django.urls import reverse
 import logging
 from django.views.decorators.csrf import csrf_protect
 from django.utils.html import strip_tags
+
+from .helper import admin_required, admin_or_secretary_required, secretary_required
+from django.db import transaction
+import string
+import random
+
 
 
 logger = logging.getLogger(__name__)
@@ -216,6 +222,7 @@ def gallery_view(request):
 
 
 @login_required
+@admin_required
 def userhome(request):
     # Calculate total sales amount (in Naira)
     total_sales_amount = PropertySale.objects.aggregate(Sum('selling_price'))['selling_price__sum'] or Decimal('0')
@@ -324,6 +331,7 @@ def userhome(request):
 
 
 @login_required
+@admin_required
 def profile(request):
     user = request.user
     password_form = PasswordChangeForm(user=user)
@@ -376,12 +384,20 @@ def signin(request):
             user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            
             login(request, user)
+            messages.success(request, 'Login Successful!')
             
-        
-            messages.success(request, "login successful")
-            return redirect('user')
+            # Check if user is a secretary admin
+            try:
+                secretary = SecretaryAdmin.objects.get(user=user)
+                if secretary.is_active:
+                    return redirect('secretary_dashboard')
+                else:
+                    messages.error(request, 'Your secretary account is currently inactive.')
+                    return redirect('signin')
+            except SecretaryAdmin.DoesNotExist:
+                # Regular admin user
+                return redirect('user')
         else:
             messages.error(request, "Invalid username or password")
     return render(request, "user/signin.html")
@@ -436,14 +452,7 @@ def realtors_page(request):
     
     return render(request, "user/realtors_page.html", context )
 
-from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
-from django.conf import settings
-from django.contrib import messages
-from django.shortcuts import render, redirect
-import logging
 
-logger = logging.getLogger(__name__)
 
 @login_required
 def create_realtor(request):
@@ -588,6 +597,7 @@ def realtor_detail(request,id):
 
 
 @login_required
+@admin_required
 def edit_realtor(request, id):
     """View for editing an existing realtor profile"""
     realtor = get_object_or_404(Realtor, id=id)
@@ -628,6 +638,7 @@ def edit_realtor(request, id):
 
 
 @login_required
+@admin_required
 def delete_realtor(request, id):
     """
     View to delete a realtor after confirmation
@@ -658,6 +669,7 @@ def delete_realtor(request, id):
 
 # @permission_required('realtors.can_pay_commission', raise_exception=True)
 @login_required
+@admin_required
 def pay_all_commissions(request, realtor_id):
     """Mark all unpaid commissions for a realtor as paid"""
     if request.method == 'POST':
@@ -679,6 +691,7 @@ def pay_all_commissions(request, realtor_id):
             
             
 @login_required
+@admin_required
 def register_property(request):
     """View to register a new property"""
     # Get all states from Property model choices
@@ -706,6 +719,7 @@ def register_property(request):
     })
 
 @login_required
+@admin_required
 def property_list(request):
     """View to display all properties"""
     properties = Property.objects.all().order_by('-created_at')
@@ -716,6 +730,7 @@ def property_list(request):
 
     
 @login_required
+@admin_required
 def property_detail(request, property_id):
     """View to display property details with a more comprehensive interface"""
     property = get_object_or_404(Property, id=property_id)
@@ -732,6 +747,7 @@ def property_detail(request, property_id):
 
 
 @login_required
+@admin_required
 def edit_property(request, property_id):
     """View for editing an existing property"""
     property = get_object_or_404(Property, id=property_id)
@@ -770,6 +786,7 @@ def edit_property(request, property_id):
     
     
 @login_required
+@admin_required
 def delete_property(request, property_id):
     """
     View to delete a property after confirmation
@@ -798,124 +815,7 @@ def delete_property(request, property_id):
     return redirect('property_list')
     
 
-# @login_required
-# def register_property_sale(request):
-#     """View to register a new property sale"""
-#     properties = Property.objects.all().order_by('name')
-#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
-    
-#     if request.method == 'POST':
-#         # Extract basic property information
-#         property_id = request.POST.get('property')
-#         description = request.POST.get('description')
-#         property_type = request.POST.get('property_type')
-#         quantity = request.POST.get('quantity')
-        
-#         # Extract client information
-#         client_name = request.POST.get('client_name')
-#         client_address = request.POST.get('client_address')
-#         client_phone = request.POST.get('client_phone')
-#         client_email = request.POST.get('client_email')
-#         marital_status = request.POST.get('marital_status')
-#         spouse_name = request.POST.get('spouse_name', '')
-#         spouse_phone = request.POST.get('spouse_phone', '')
-        
-#         # Extract client identification
-#         id_type = request.POST.get('id_type')
-#         id_number = request.POST.get('id_number')
-        
-#         # Extract client origin
-#         lga_of_origin = request.POST.get('lga_of_origin')
-#         town_of_origin = request.POST.get('town_of_origin')
-#         state_of_origin = request.POST.get('state_of_origin')
-        
-#         # Extract client bank details
-#         bank_name = request.POST.get('bank_name')
-#         account_number = request.POST.get('account_number')
-#         account_name = request.POST.get('account_name')
-        
-#         # Extract next of kin information
-#         next_of_kin_name = request.POST.get('next_of_kin_name')
-#         next_of_kin_address = request.POST.get('next_of_kin_address')
-#         next_of_kin_phone = request.POST.get('next_of_kin_phone')
-        
-#         # Extract financial information
-#         original_price = request.POST.get('original_price')
-#         selling_price = request.POST.get('selling_price')
-#         initial_payment = request.POST.get('initial_payment')
-#         payment_plan = request.POST.get('payment_plan')
-        
-#         # Extract realtor and commission information
-#         realtor_id = request.POST.get('realtor')
-#         realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
-#         sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
-#         upline_commission_percentage = request.POST.get('upline_commission_percentage')
-        
-#         # Get related objects
-#         property_obj = get_object_or_404(Property, id=property_id)
-#         realtor = get_object_or_404(Realtor, id=realtor_id)
-        
-#         # Create the property sale object with all fields
-#         property_sale = PropertySale.objects.create(
-#             description=description,
-#             property_type=property_type,
-#             property_item=property_obj,
-#             quantity=int(quantity),
-            
-#             client_name=client_name,
-#             client_address=client_address,
-#             client_phone=client_phone,
-#             client_email=client_email,
-#             marital_status=marital_status,
-#             spouse_name=spouse_name,
-#             spouse_phone=spouse_phone,
-            
-#             id_type=id_type,
-#             id_number=id_number,
-            
-#             lga_of_origin=lga_of_origin,
-#             town_of_origin=town_of_origin,
-#             state_of_origin=state_of_origin,
-            
-#             bank_name=bank_name,
-#             account_number=account_number,
-#             account_name=account_name,
-            
-#             next_of_kin_name=next_of_kin_name,
-#             next_of_kin_address=next_of_kin_address,
-#             next_of_kin_phone=next_of_kin_phone,
-            
-#             original_price=Decimal(original_price),
-#             selling_price=Decimal(selling_price),
-#             payment_plan=payment_plan,
-            
-#             realtor=realtor,
-#             realtor_commission_percentage=Decimal(realtor_commission_percentage),
-#             sponsor_commission_percentage=Decimal(sponsor_commission_percentage),
-#             upline_commission_percentage=Decimal(upline_commission_percentage)
-#         )
-        
-#         # Create initial payment if provided
-#         if float(initial_payment) > 0:
-#             # Update the amount_paid field first
-#             property_sale.amount_paid = Decimal(initial_payment)
-#             property_sale.save()
-            
-#             # Create the payment record
-#             Payment.objects.create(
-#                 property_sale=property_sale,
-#                 amount=Decimal(initial_payment),
-#                 payment_method='Cash',
-#                 notes='Initial payment at registration'
-#             )
-        
-#         messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
-#         return redirect('property_sale_detail', id=property_sale.id)
-    
-#     return render(request, 'user/register_property_sale.html', {
-#         'properties': properties,
-#         'realtors': realtors
-#     })
+
 
 
 # Your existing view stays the same
@@ -933,6 +833,7 @@ def property_sales_list(request):
 
 
 @login_required
+@admin_required
 def send_client_email(request, sale_id):
     """Send email to client based on development status"""
     if request.method != 'POST':
@@ -1006,6 +907,7 @@ def send_client_email(request, sale_id):
 
 # ADD THIS NEW VIEW
 @login_required
+@admin_required
 def mark_property_developed(request, sale_id):
     """Mark a property sale as developed"""
     sale = get_object_or_404(PropertySale, id=sale_id)
@@ -1033,6 +935,7 @@ def mark_property_developed(request, sale_id):
 
 
 @login_required
+@admin_required
 @require_http_methods(["POST"])
 def send_private_email(request, sale_id):
     try:
@@ -1103,6 +1006,7 @@ Property: {sale.property_item.name}
 
 
 @login_required
+@admin_required
 def bulk_email(request):
     """Display bulk email page with all sales records"""
     
@@ -1121,6 +1025,7 @@ def bulk_email(request):
 
 
 @login_required
+@admin_required
 @require_http_methods(["POST"])
 def send_bulk_email(request):
     """Send bulk emails to selected clients"""
@@ -1226,427 +1131,6 @@ Property Type: {sale.get_property_type_display()}
             'error': 'An error occurred while sending emails. Please try again.'
         })
 
-# @login_required
-# def register_property_sale(request):
-#     """View to register a new property sale"""
-#     properties = Property.objects.all().order_by('name')
-#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
-    
-#     if request.method == 'POST':
-#         try:
-#             # Extract basic property information
-#             property_id = request.POST.get('property')
-#             description = request.POST.get('description')
-#             property_type = request.POST.get('property_type')
-#             quantity = request.POST.get('quantity')
-            
-#             # Extract client information
-#             client_name = request.POST.get('client_name')
-#             client_address = request.POST.get('client_address')
-#             client_phone = request.POST.get('client_phone')
-#             client_email = request.POST.get('client_email')
-#             marital_status = request.POST.get('marital_status')
-#             spouse_name = request.POST.get('spouse_name', '')
-#             spouse_phone = request.POST.get('spouse_phone', '')
-#             # Add after client_email extraction
-#             client_picture = request.FILES.get('client_picture')
-
-           
-                        
-#             # Extract client identification
-#             id_type = request.POST.get('id_type')
-#             id_number = request.POST.get('id_number')
-            
-#             # Extract client origin
-#             lga_of_origin = request.POST.get('lga_of_origin')
-#             town_of_origin = request.POST.get('town_of_origin')
-#             state_of_origin = request.POST.get('state_of_origin')
-            
-#             # Extract client bank details
-#             bank_name = request.POST.get('bank_name')
-#             account_number = request.POST.get('account_number')
-#             account_name = request.POST.get('account_name')
-            
-#             # Extract next of kin information
-#             next_of_kin_name = request.POST.get('next_of_kin_name')
-#             next_of_kin_address = request.POST.get('next_of_kin_address')
-#             next_of_kin_phone = request.POST.get('next_of_kin_phone')
-            
-#             # Extract financial information
-#             original_price = request.POST.get('original_price')
-#             selling_price = request.POST.get('selling_price')
-#             initial_payment = request.POST.get('initial_payment')
-#             payment_plan = request.POST.get('payment_plan')
-#             # Add after selling_price extraction  
-#             discount = request.POST.get('discount')
-#             payment_date= request.POST.get("payment_date")
-            
-#             # Extract realtor and commission information
-#             realtor_id = request.POST.get('realtor')
-#             realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
-#             sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
-#             upline_commission_percentage = request.POST.get('upline_commission_percentage')
-            
-#             # Helper function to safely convert to Decimal
-#             def safe_decimal_conversion(value, field_name, default='0.00'):
-#                 if value is None or str(value).strip() == '':
-#                     return Decimal(default)
-#                 try:
-#                     cleaned_value = str(value).strip()
-#                     return Decimal(cleaned_value)
-#                 except (ValueError, decimal.InvalidOperation) as e:
-#                     messages.error(request, f'Invalid value for {field_name}: "{value}". Please enter a valid number.')
-#                     raise ValueError(f'Invalid {field_name} value')
-            
-#             # Validate and convert decimal fields
-#             try:
-#                 original_price_decimal = safe_decimal_conversion(original_price, 'original price')
-#                 selling_price_decimal = safe_decimal_conversion(selling_price, 'selling price')
-#                 initial_payment_decimal = safe_decimal_conversion(initial_payment, 'initial payment', '0.00')
-#                 # Add after initial_payment_decimal conversion
-#                 discount_decimal = safe_decimal_conversion(discount, 'discount', '0.00')
-#                 realtor_commission_decimal = safe_decimal_conversion(realtor_commission_percentage, 'realtor commission percentage', '0.00')
-#                 sponsor_commission_decimal = safe_decimal_conversion(sponsor_commission_percentage, 'sponsor commission percentage', '0.00')
-#                 upline_commission_decimal = safe_decimal_conversion(upline_commission_percentage, 'upline commission percentage', '0.00')
-#             except ValueError:
-#                 # Error message already added by safe_decimal_conversion
-#                 return render(request, 'user/register_property_sale.html', {
-#                     'properties': properties,
-#                     'realtors': realtors
-#                 })
-            
-#             # Validate quantity
-#             try:
-#                 quantity_int = int(quantity) if quantity else 1
-#                 if quantity_int <= 0:
-#                     messages.error(request, 'Quantity must be a positive number.')
-#                     return render(request, 'user/register_property_sale.html', {
-#                         'properties': properties,
-#                         'realtors': realtors
-#                     })
-#             except (ValueError, TypeError):
-#                 messages.error(request, 'Invalid quantity value. Please enter a valid number.')
-#                 return render(request, 'user/register_property_sale.html', {
-#                     'properties': properties,
-#                     'realtors': realtors
-#                 })
-            
-#             # Get related objects
-#             property_obj = get_object_or_404(Property, id=property_id)
-#             realtor = get_object_or_404(Realtor, id=realtor_id)
-            
-#             # Create the property sale object with all fields
-#             property_sale = PropertySale.objects.create(
-#                 description=description,
-#                 property_type=property_type,
-#                 property_item=property_obj,
-#                 quantity=quantity_int,
-                
-#                 client_name=client_name,
-#                 client_address=client_address,
-#                 client_phone=client_phone,
-#                 client_email=client_email,
-#                 marital_status=marital_status,
-#                 spouse_name=spouse_name,
-#                 spouse_phone=spouse_phone,
-#                 # Add to client information section
-#                 client_picture=client_picture,
-
-                
-                
-#                 id_type=id_type,
-#                 id_number=id_number,
-                
-#                 lga_of_origin=lga_of_origin,
-#                 town_of_origin=town_of_origin,
-#                 state_of_origin=state_of_origin,
-                
-#                 bank_name=bank_name,
-#                 account_number=account_number,
-#                 account_name=account_name,
-                
-#                 next_of_kin_name=next_of_kin_name,
-#                 next_of_kin_address=next_of_kin_address,
-#                 next_of_kin_phone=next_of_kin_phone,
-                
-#                 original_price=original_price_decimal,
-#                 selling_price=selling_price_decimal,
-#                 payment_plan=payment_plan,
-#                 # Add to pricing section
-#                 discount=discount_decimal,
-                
-#                 realtor=realtor,
-#                 realtor_commission_percentage=realtor_commission_decimal,
-#                 sponsor_commission_percentage=sponsor_commission_decimal,
-#                 upline_commission_percentage=upline_commission_decimal
-#             )
-            
-#             # Create initial payment if provided
-#             if initial_payment_decimal > 0:
-#                 # Update the amount_paid field first
-#                 property_sale.amount_paid = initial_payment_decimal
-#                 property_sale.save()
-                
-#                 # Create the payment record
-#                 Payment.objects.create(
-#                     property_sale=property_sale,
-#                     amount=initial_payment_decimal,
-#                     payment_method='Cash',
-#                     notes='Initial payment at registration',
-#                     payment_date=payment_date
-#                 )
-            
-#             messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
-#             return redirect('property_sale_detail', id=property_sale.id)
-            
-#         except Exception as e:
-#             # Log the error for debugging
-#             import logging
-#             logger = logging.getLogger(__name__)
-#             logger.error(f'Error in register_property_sale: {str(e)}')
-            
-#             messages.error(request, 'An error occurred while registering the property sale. Please check your input and try again.')
-#             return render(request, 'user/register_property_sale.html', {
-#                 'properties': properties,
-#                 'realtors': realtors
-#             })
-    
-#     return render(request, 'user/register_property_sale.html', {
-#         'properties': properties,
-#         'realtors': realtors
-#     })
-
-
-# @login_required
-# def register_property_sale(request):
-#     """View to register a new property sale"""
-#     properties = Property.objects.all().order_by('name')
-#     realtors = Realtor.objects.all().order_by('first_name', 'last_name')
-    
-#     if request.method == 'POST':
-#         try:
-#             # Extract basic property information
-#             property_id = request.POST.get('property')
-#             description = request.POST.get('description')
-#             property_type = request.POST.get('property_type')
-#             quantity = request.POST.get('quantity')
-            
-#             # Extract client information
-#             client_name = request.POST.get('client_name')
-#             client_address = request.POST.get('client_address')
-#             client_phone = request.POST.get('client_phone')
-#             client_email = request.POST.get('client_email')
-#             marital_status = request.POST.get('marital_status')
-#             spouse_name = request.POST.get('spouse_name', '')
-#             spouse_phone = request.POST.get('spouse_phone', '')
-#             # Add after client_email extraction
-#             client_picture = request.FILES.get('client_picture')
-
-           
-                        
-#             # Extract client identification
-#             id_type = request.POST.get('id_type')
-#             id_number = request.POST.get('id_number')
-            
-#             # Extract client origin
-#             lga_of_origin = request.POST.get('lga_of_origin')
-#             town_of_origin = request.POST.get('town_of_origin')
-#             state_of_origin = request.POST.get('state_of_origin')
-            
-#             # Extract client bank details
-#             bank_name = request.POST.get('bank_name')
-#             account_number = request.POST.get('account_number')
-#             account_name = request.POST.get('account_name')
-            
-#             # Extract next of kin information
-#             next_of_kin_name = request.POST.get('next_of_kin_name')
-#             next_of_kin_address = request.POST.get('next_of_kin_address')
-#             next_of_kin_phone = request.POST.get('next_of_kin_phone')
-            
-#             # Extract financial information
-#             original_price = request.POST.get('original_price')
-#             selling_price = request.POST.get('selling_price')
-#             initial_payment = request.POST.get('initial_payment')
-#             payment_plan = request.POST.get('payment_plan')
-#             # Add after selling_price extraction  
-#             discount = request.POST.get('discount')
-#             payment_date_str = request.POST.get("payment_date")
-            
-#             # Extract realtor and commission information
-#             realtor_id = request.POST.get('realtor')
-#             realtor_commission_percentage = request.POST.get('realtor_commission_percentage')
-#             sponsor_commission_percentage = request.POST.get('sponsor_commission_percentage')
-#             upline_commission_percentage = request.POST.get('upline_commission_percentage')
-            
-#             # Helper function to safely convert to Decimal
-#             def safe_decimal_conversion(value, field_name, default='0.00'):
-#                 if value is None or str(value).strip() == '':
-#                     return Decimal(default)
-#                 try:
-#                     cleaned_value = str(value).strip()
-#                     return Decimal(cleaned_value)
-#                 except (ValueError, decimal.InvalidOperation) as e:
-#                     messages.error(request, f'Invalid value for {field_name}: "{value}". Please enter a valid number.')
-#                     raise ValueError(f'Invalid {field_name} value')
-            
-#             # Validate and convert decimal fields
-#             try:
-#                 original_price_decimal = safe_decimal_conversion(original_price, 'original price')
-#                 selling_price_decimal = safe_decimal_conversion(selling_price, 'selling price')
-#                 initial_payment_decimal = safe_decimal_conversion(initial_payment, 'initial payment', '0.00')
-#                 # Add after initial_payment_decimal conversion
-#                 discount_decimal = safe_decimal_conversion(discount, 'discount', '0.00')
-#                 realtor_commission_decimal = safe_decimal_conversion(realtor_commission_percentage, 'realtor commission percentage', '0.00')
-#                 sponsor_commission_decimal = safe_decimal_conversion(sponsor_commission_percentage, 'sponsor commission percentage', '0.00')
-#                 upline_commission_decimal = safe_decimal_conversion(upline_commission_percentage, 'upline commission percentage', '0.00')
-#             except ValueError:
-#                 # Error message already added by safe_decimal_conversion
-#                 return render(request, 'user/register_property_sale.html', {
-#                     'properties': properties,
-#                     'realtors': realtors
-#                 })
-            
-#             # Validate quantity
-#             try:
-#                 quantity_int = int(quantity) if quantity else 1
-#                 if quantity_int <= 0:
-#                     messages.error(request, 'Quantity must be a positive number.')
-#                     return render(request, 'user/register_property_sale.html', {
-#                         'properties': properties,
-#                         'realtors': realtors
-#                     })
-#             except (ValueError, TypeError):
-#                 messages.error(request, 'Invalid quantity value. Please enter a valid number.')
-#                 return render(request, 'user/register_property_sale.html', {
-#                     'properties': properties,
-#                     'realtors': realtors
-#                 })
-            
-#             # Parse and validate payment date (only if initial payment is provided)
-#             payment_date = None
-#             if initial_payment_decimal > 0:
-#                 if payment_date_str:
-#                     try:
-#                         # Parse the date string from the form (YYYY-MM-DD format)
-#                         naive_date = datetime.strptime(payment_date_str, '%Y-%m-%d').date()
-                        
-#                         # Convert to datetime and make it timezone aware
-#                         # Set time to current time for the date, or you can set a specific time
-#                         current_time = timezone.now().time()
-#                         naive_datetime = datetime.combine(naive_date, current_time)
-                        
-#                         # Make it timezone aware using the current timezone
-#                         payment_date = timezone.make_aware(naive_datetime)
-                        
-#                         # Validate that the payment date is not in the future
-#                         if payment_date > timezone.now():
-#                             messages.error(request, "Payment date cannot be in the future.")
-#                             return render(request, 'user/register_property_sale.html', {
-#                                 'properties': properties,
-#                                 'realtors': realtors
-#                             })
-                            
-#                     except ValueError:
-#                         messages.error(request, "Invalid payment date format. Please select a valid date.")
-#                         return render(request, 'user/register_property_sale.html', {
-#                             'properties': properties,
-#                             'realtors': realtors
-#                         })
-#                 else:
-#                     messages.error(request, "Payment date is required when making an initial payment.")
-#                     return render(request, 'user/register_property_sale.html', {
-#                         'properties': properties,
-#                         'realtors': realtors
-#                     })
-            
-#             # Get related objects
-#             property_obj = get_object_or_404(Property, id=property_id)
-#             realtor = get_object_or_404(Realtor, id=realtor_id)
-            
-#             # Create the property sale object with all fields
-#             property_sale = PropertySale.objects.create(
-#                 description=description,
-#                 property_type=property_type,
-#                 property_item=property_obj,
-#                 quantity=quantity_int,
-                
-#                 client_name=client_name,
-#                 client_address=client_address,
-#                 client_phone=client_phone,
-#                 client_email=client_email,
-#                 marital_status=marital_status,
-#                 spouse_name=spouse_name,
-#                 spouse_phone=spouse_phone,
-#                 # Add to client information section
-#                 client_picture=client_picture,
-
-                
-                
-#                 id_type=id_type,
-#                 id_number=id_number,
-                
-#                 lga_of_origin=lga_of_origin,
-#                 town_of_origin=town_of_origin,
-#                 state_of_origin=state_of_origin,
-                
-#                 bank_name=bank_name,
-#                 account_number=account_number,
-#                 account_name=account_name,
-                
-#                 next_of_kin_name=next_of_kin_name,
-#                 next_of_kin_address=next_of_kin_address,
-#                 next_of_kin_phone=next_of_kin_phone,
-                
-#                 original_price=original_price_decimal,
-#                 selling_price=selling_price_decimal,
-#                 payment_plan=payment_plan,
-#                 # Add to pricing section
-#                 discount=discount_decimal,
-                
-#                 realtor=realtor,
-#                 realtor_commission_percentage=realtor_commission_decimal,
-#                 sponsor_commission_percentage=sponsor_commission_decimal,
-#                 upline_commission_percentage=upline_commission_decimal
-#             )
-            
-#             # Create initial payment if provided
-#             if initial_payment_decimal > 0:
-#                 # Update the amount_paid field first
-#                 property_sale.amount_paid = initial_payment_decimal
-#                 property_sale.save()
-                
-#                 # Create the payment record with the validated payment_date
-#                 Payment.objects.create(
-#                     property_sale=property_sale,
-#                     amount=initial_payment_decimal,
-#                     payment_method='Cash',
-#                     notes='Initial payment at registration',
-#                     payment_date=payment_date
-#                 )
-            
-#             messages.success(request, f'Property sale registered successfully with reference #{property_sale.reference_number}')
-#             return redirect('property_sale_detail', id=property_sale.id)
-            
-#         except Exception as e:
-#             # Log the error for debugging
-#             import logging
-#             logger = logging.getLogger(__name__)
-#             logger.error(f'Error in register_property_sale: {str(e)}')
-            
-#             messages.error(request, 'An error occurred while registering the property sale. Please check your input and try again.')
-#             return render(request, 'user/register_property_sale.html', {
-#                 'properties': properties,
-#                 'realtors': realtors
-#             })
-    
-#     # Add today's date for template context
-#     context = {
-#         'properties': properties,
-#         'realtors': realtors,
-#         'today': timezone.now().date().isoformat(),  # For setting max date in template
-#     }
-    
-#     return render(request, 'user/register_property_sale.html', context)
 
 
 @login_required
@@ -2060,6 +1544,7 @@ def property_sale_detail(request, id):
 
 
 @login_required
+@admin_required
 def pay_commission(request, commission_id):
     """Mark a single commission as paid"""
     if request.method == 'POST' and request.user.is_staff:
@@ -2079,11 +1564,13 @@ def pay_commission(request, commission_id):
 
 
 @login_required
+@admin_required
 def frontend_extras(request):
     """Main view for Frontend Extras dashboard"""
     return render(request, "user/frontend_extras.html")
 
 @login_required
+@admin_required
 def upload_form(request):
     """View for uploading a new form"""
     # Get 5 most recent forms for display
@@ -2114,6 +1601,7 @@ def upload_form(request):
     })
 
 @login_required
+@admin_required
 def forms_list(request):
     """View to display all uploaded forms"""
     forms = FormUpload.objects.all().order_by('-created_at')
@@ -2123,6 +1611,7 @@ def forms_list(request):
     })
 
 @login_required
+@admin_required
 def edit_form(request, form_id):
     """View for editing an existing form"""
     form = get_object_or_404(FormUpload, id=form_id)
@@ -2143,6 +1632,7 @@ def edit_form(request, form_id):
     return render(request, 'user/edit_form.html', {'form': form})
 
 @login_required
+@admin_required
 def delete_form(request, form_id):
     """View for deleting a form"""
     if request.method == 'POST':
@@ -2185,8 +1675,8 @@ def property_sale_invoice(request, sale_id):
 
 
 
-
 @login_required
+@admin_required
 def commissions_list(request):
     """View to display all commissions with search and filtering"""
     # Initialize query
@@ -2268,63 +1758,9 @@ def commissions_list(request):
     return render(request, 'user/commissions_list.html', context)
 
 
-# @login_required
-# def unpaid_commissions_print(request):
-#     """View to display unpaid commissions in a printable format"""
-#     # Get all unpaid commissions with related data
-#     unpaid_commissions = Commission.objects.filter(
-#         is_paid=False
-#     ).select_related(
-#         'realtor'
-#     ).order_by('realtor__last_name', 'realtor__first_name', '-created_at')
-    
-#     # Get property sales data for property names
-#     property_sales = {}
-#     for commission in unpaid_commissions:
-#         if commission.property_reference:
-#             try:
-#                 sale = PropertySale.objects.select_related('property_item').get(
-#                     reference_number=commission.property_reference
-#                 )
-#                 property_sales[commission.property_reference] = sale
-#             except PropertySale.DoesNotExist:
-#                 property_sales[commission.property_reference] = None
-    
-#     from django.db import models
-
-#     # Calculate totals
-#     total_unpaid_amount = unpaid_commissions.aggregate(
-#         total=models.Sum('amount')
-#     )['total'] or 0
-    
-#     # Group commissions by realtor for better organization
-#     commissions_by_realtor = {}
-#     for commission in unpaid_commissions:
-#         realtor_id = commission.realtor.id
-#         if realtor_id not in commissions_by_realtor:
-#             commissions_by_realtor[realtor_id] = {
-#                 'realtor': commission.realtor,
-#                 'commissions': [],
-#                 'total': 0
-#             }
-#         commissions_by_realtor[realtor_id]['commissions'].append(commission)
-#         commissions_by_realtor[realtor_id]['total'] += commission.amount
-    
-#     context = {
-#         'unpaid_commissions': unpaid_commissions,
-#         'commissions_by_realtor': commissions_by_realtor,
-#         'property_sales': property_sales,
-#         'total_unpaid_amount': total_unpaid_amount,
-#         'total_realtors': len(commissions_by_realtor),
-#         'total_commissions_count': unpaid_commissions.count(),
-#         'print_date': timezone.now(),
-#     }
-    
-#     return render(request, 'user/unpaid_commissions_print.html', context)
-
-
 
 @login_required
+@admin_required
 def unpaid_commissions_print(request):
     """View to display unpaid commissions in a printable format"""
     # Get all unpaid commissions with related data
@@ -2379,6 +1815,7 @@ def unpaid_commissions_print(request):
     return render(request, 'user/unpaid_commissions_print.html', context)
 
 @login_required
+@admin_required
 def realtor_unpaid_commissions_print(request, realtor_id):
     """View to display unpaid commissions for a specific realtor in a printable format"""
     # Get the specific realtor
@@ -2500,6 +1937,7 @@ def password_reset_complete(request):
 
 
 @login_required
+@admin_required
 def general_settings(request):
     """
     View to handle displaying and updating general settings
@@ -2546,6 +1984,7 @@ def custom_404_view(request, exception):
 
 
 @login_required
+@admin_required
 def estate_images_list(request):
     """Display all estate images organized by estate type"""
     redan_city_images = EstateImage.objects.filter(estate='redan_city')
@@ -2562,6 +2001,7 @@ def estate_images_list(request):
 
 
 @login_required
+@admin_required
 def add_estate_image(request):
     """Add a new estate image"""
     if request.method == 'POST':
@@ -2601,6 +2041,7 @@ def add_estate_image(request):
 
 
 @login_required
+@admin_required
 def edit_estate_image(request):
     """Edit an existing estate image"""
     if request.method == 'POST':
@@ -2627,6 +2068,7 @@ def edit_estate_image(request):
 
 
 @login_required
+@admin_required
 def delete_estate_image(request):
     """Delete an estate image"""
     if request.method == 'POST':
@@ -2645,6 +2087,7 @@ def delete_estate_image(request):
 # ----------------==================================-----------------------------------
 
 @login_required
+@admin_required
 @require_http_methods(["POST"])
 def toggle_realtor_status(request, realtor_id):
     """
@@ -2685,6 +2128,7 @@ def toggle_realtor_status(request, realtor_id):
 
 
 @login_required
+@admin_required
 @require_http_methods(["POST"])
 def bulk_update_realtor_status(request):
     """
@@ -2769,6 +2213,7 @@ def realtor_status_api(request, realtor_id):
         
 # /=====================================================
 @login_required
+@admin_required
 def gallery_management(request):
     """View to display all gallery images for management"""
     gallery_images = Gallery.objects.all().order_by('order', '-created_at')
@@ -2778,7 +2223,9 @@ def gallery_management(request):
     }
     return render(request, 'user/gallery_management.html', context)
 
+
 @login_required
+@admin_required
 def add_gallery_image(request):
     """View to add a new gallery image"""
     if request.method == 'POST':
@@ -2811,6 +2258,7 @@ def add_gallery_image(request):
     return redirect('gallery_management')
 
 @login_required
+@admin_required
 def edit_gallery_image(request):
     """View to edit an existing gallery image"""
     if request.method == 'POST':
@@ -2845,6 +2293,7 @@ def edit_gallery_image(request):
     return redirect('gallery_management')
 
 @login_required
+@admin_required
 def delete_gallery_image(request):
     """View to delete a gallery image"""
     if request.method == 'POST':
@@ -3058,3 +2507,226 @@ def download_form(request, form_id):
         raise Http404("File not found")
     except Exception:
         raise Http404("Error generating download link")
+    
+    
+    
+
+# ========================SECRETARY ADMIN VIEWS=================================
+
+@login_required
+@admin_required
+def secretary_list(request):
+    """List all secretary admins"""
+    secretaries = SecretaryAdmin.objects.all().order_by('-created_at')
+    return render(request, 'user/secretary_list.html', {'secretaries': secretaries})
+
+@login_required
+@admin_required
+def create_secretary(request):
+    """Create a new secretary admin"""
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        # Validate required fields
+        if not all([full_name, email, username, password]):
+            messages.error(request, 'All required fields must be filled.')
+            return render(request, 'user/create_secretary.html')
+        
+        # Check if username or email already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already exists.')
+            return render(request, 'user/create_secretary.html')
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already exists.')
+            return render(request, 'user/create_secretary.html')
+        
+        try:
+            with transaction.atomic():
+                # Create user account
+                user = User.objects.create_user(
+                    username=username,
+                    email=email,
+                    password=password,
+                    first_name=full_name.split()[0],
+                    last_name=' '.join(full_name.split()[1:]) if len(full_name.split()) > 1 else ''
+                )
+                
+                # Create secretary admin profile
+                secretary = SecretaryAdmin.objects.create(
+                    user=user,
+                    full_name=full_name,
+                    email=email,
+                    phone_number=phone_number,
+                    created_by=request.user
+                )
+                
+                messages.success(request, f'Secretary admin "{full_name}" created successfully!')
+                return redirect('secretary_list')
+                
+        except Exception as e:
+            messages.error(request, f'Error creating secretary admin: {str(e)}')
+    
+    return render(request, 'user/create_secretary.html')
+
+@login_required
+@admin_required
+def edit_secretary(request, secretary_id):
+    """Edit secretary admin details"""
+    secretary = get_object_or_404(SecretaryAdmin, id=secretary_id)
+    
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        username = request.POST.get('username')
+        is_active = request.POST.get('is_active') == 'on'
+        
+        # Validate required fields
+        if not all([full_name, email, username]):
+            messages.error(request, 'All required fields must be filled.')
+            return render(request, 'user/edit_secretary.html', {'secretary': secretary})
+        
+        # Check if username or email already exists (excluding current user)
+        if User.objects.filter(username=username).exclude(id=secretary.user.id).exists():
+            messages.error(request, 'Username already exists.')
+            return render(request, 'user/edit_secretary.html', {'secretary': secretary})
+        
+        if User.objects.filter(email=email).exclude(id=secretary.user.id).exists():
+            messages.error(request, 'Email already exists.')
+            return render(request, 'user/edit_secretary.html', {'secretary': secretary})
+        
+        try:
+            with transaction.atomic():
+                # Update user account
+                secretary.user.username = username
+                secretary.user.email = email
+                secretary.user.first_name = full_name.split()[0]
+                secretary.user.last_name = ' '.join(full_name.split()[1:]) if len(full_name.split()) > 1 else ''
+                secretary.user.is_active = is_active
+                secretary.user.save()
+                
+                # Update secretary profile
+                secretary.full_name = full_name
+                secretary.email = email
+                secretary.phone_number = phone_number
+                secretary.is_active = is_active
+                secretary.save()
+                
+                messages.success(request, f'Secretary admin "{full_name}" updated successfully!')
+                return redirect('secretary_list')
+                
+        except Exception as e:
+            messages.error(request, f'Error updating secretary admin: {str(e)}')
+    
+    return render(request, 'user/edit_secretary.html', {'secretary': secretary})
+
+@login_required
+@admin_required
+def delete_secretary(request, secretary_id):
+    """Delete secretary admin"""
+    secretary = get_object_or_404(SecretaryAdmin, id=secretary_id)
+    
+    if request.method == 'POST':
+        try:
+            with transaction.atomic():
+                secretary_name = secretary.full_name
+                secretary.user.delete()  # This will also delete the secretary profile
+                messages.success(request, f'Secretary admin "{secretary_name}" deleted successfully!')
+        except Exception as e:
+            messages.error(request, f'Error deleting secretary admin: {str(e)}')
+    
+    return redirect('secretary_list')
+
+@login_required
+@admin_required
+def toggle_secretary_status(request, secretary_id):
+    """Toggle secretary admin active status"""
+    secretary = get_object_or_404(SecretaryAdmin, id=secretary_id)
+    
+    try:
+        secretary.is_active = not secretary.is_active
+        secretary.user.is_active = secretary.is_active
+        secretary.save()
+        secretary.user.save()
+        
+        status = "activated" if secretary.is_active else "deactivated"
+        messages.success(request, f'Secretary admin "{secretary.full_name}" {status} successfully!')
+    except Exception as e:
+        messages.error(request, f'Error updating secretary status: {str(e)}')
+    
+    return redirect('secretary_list')
+
+def generate_random_password(length=8):
+    """Generate a random password"""
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
+
+@login_required
+@admin_required
+def reset_secretary_password(request, secretary_id):
+    """Reset secretary admin password"""
+    secretary = get_object_or_404(SecretaryAdmin, id=secretary_id)
+    
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        
+        if not new_password:
+            messages.error(request, 'New password is required.')
+            return redirect('secretary_list')
+        
+        try:
+            secretary.user.set_password(new_password)
+            secretary.user.save()
+            messages.success(request, f'Password reset for "{secretary.full_name}" successfully!')
+        except Exception as e:
+            messages.error(request, f'Error resetting password: {str(e)}')
+    
+    return redirect('secretary_list')
+
+# ===========================SECRETARY DASHBOARD================================
+
+@login_required
+def secretary_dashboard(request):
+    """
+    Secretary dashboard view with limited statistics and recent data
+    """
+    # Check if user is a secretary (optional additional check)
+    if not hasattr(request, 'is_secretary') or not request.is_secretary:
+        # You can redirect non-secretary users or handle differently
+        pass
+   
+    # Get realtor statistics
+    total_realtors = Realtor.objects.count()
+    # Count executive realtors instead of active realtors
+    executive_realtors = Realtor.objects.filter(status='executive').count()
+   
+    # Get recent realtors (last 5) - ordered by created_at
+    recent_realtors = Realtor.objects.order_by('-created_at')[:5]
+   
+    # Get sales statistics using correct field names from PropertySale model
+    total_sales = PropertySale.objects.count()
+   
+    # Use selling_price for total sales value
+    total_sales_value = PropertySale.objects.aggregate(
+        total=Sum('selling_price')
+    )['total'] or 0
+   
+    # Get recent sales (last 5) with related property data
+    recent_sales = PropertySale.objects.select_related('property_item').order_by('-created_at')[:5]
+   
+    context = {
+        'total_realtors': total_realtors,
+        'executive_realtors': executive_realtors,  # Changed from active_realtors
+        'recent_realtors': recent_realtors,
+        'total_sales': total_sales,
+        'total_sales_value': total_sales_value,
+        'recent_sales': recent_sales,
+    }
+   
+    return render(request, 'user/secretary_dashboard.html', context)
+
