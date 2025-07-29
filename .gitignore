@@ -19,3 +19,8 @@ estate/setworkin.py
 estate/setworkind22.py
 estate/setworking233.py
 estate/justsave.py
+
+__pycache__/
+*.py[cod]
+*$py.class
+
