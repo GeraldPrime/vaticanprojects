@@ -503,7 +503,7 @@
                                     <!-- Right Column -->
 
                                     
-                                    <!-- Replace the problematic section in your template with this: -->
+                                    <!-- Even safer template version -->
                                     <div class="col-md">
                                         <div class="card">
                                             <div class="card-header bg-danger text-white">
@@ -520,8 +520,8 @@
                                                             <option value="">-- Select Realtor --</option>
                                                             {% for realtor in realtors %}
                                                             <option value="{{ realtor.id }}"
-                                                                data-sponsor="{% if realtor.sponsor %}{{ realtor.sponsor.id }}{% endif %}"
-                                                                data-upline="{% if realtor.sponsor and realtor.sponsor.sponsor %}{{ realtor.sponsor.sponsor.id }}{% endif %}"
+                                                                data-sponsor="{% firstof realtor.sponsor.id '' %}"
+                                                                data-upline="{% if realtor.sponsor %}{% firstof realtor.sponsor.sponsor.id '' %}{% else %}{% endif %}"
                                                                 data-name="{{ realtor.full_name|lower }}"
                                                                 data-code="{{ realtor.referral_code|lower }}">
                                                                 {{ realtor.full_name }}
