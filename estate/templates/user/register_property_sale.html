@@ -502,27 +502,26 @@
 
                                     <!-- Right Column -->
 
+                                    
+                                    <!-- Replace the problematic section in your template with this: -->
                                     <div class="col-md">
                                         <div class="card">
                                             <div class="card-header bg-danger text-white">
-                                                <h5 class="mb-0"><i class="ri-team-line me-1"></i> Realtor Information
-                                                </h5>
+                                                <h5 class="mb-0"><i class="ri-team-line me-1"></i> Realtor Information</h5>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row mb-3">
-                                                    <label for="realtor" class="col-sm-4 col-form-label">Selling
-                                                        Realtor</label>
+                                                    <label for="realtor" class="col-sm-4 col-form-label">Selling Realtor</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control mb-2" id="realtor-search"
                                                             placeholder="Search by name or referral code..."
                                                             autocomplete="off">
-                                                        <select class="form-control" id="realtor" name="realtor"
-                                                            required>
+                                                        <select class="form-control" id="realtor" name="realtor" required>
                                                             <option value="">-- Select Realtor --</option>
                                                             {% for realtor in realtors %}
                                                             <option value="{{ realtor.id }}"
-                                                                data-sponsor="{{ realtor.sponsor.id|default:'' }}"
-                                                                data-upline="{{ realtor.sponsor.sponsor.id|default:'' }}"
+                                                                data-sponsor="{% if realtor.sponsor %}{{ realtor.sponsor.id }}{% endif %}"
+                                                                data-upline="{% if realtor.sponsor and realtor.sponsor.sponsor %}{{ realtor.sponsor.sponsor.id }}{% endif %}"
                                                                 data-name="{{ realtor.full_name|lower }}"
                                                                 data-code="{{ realtor.referral_code|lower }}">
                                                                 {{ realtor.full_name }}
@@ -539,32 +538,6 @@
                                     </div>
 
 
-
-                                    <!-- <div class="col-md">
-                                        
-                                        <div class="card ">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5 class="mb-0"><i class="ri-team-line me-1"></i> Realtor Information</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="form-group row mb-3">
-                                                    <label for="realtor" class="col-sm-4 col-form-label">Selling Realtor</label>
-                                                    <div class="col-sm-8">
-                                                        <select class="form-control" id="realtor" name="realtor" required>
-                                                            <option value="">-- Select Realtor --</option>
-                                                            {% for realtor in realtors %}
-                                                                <option value="{{ realtor.id }}" data-sponsor="{{ realtor.sponsor.id|default:'' }}" data-upline="{{ realtor.sponsor.sponsor.id|default:'' }}">{{ realtor.full_name }} 
-                                                            {% if realtor.is_executive %}
-                                                            👑
-                                                            {% endif %} , Reffereal code: {{realtor.referral_code}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                    <p></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
 
                                 <!-- Commission Section (For admin purposes) -->
