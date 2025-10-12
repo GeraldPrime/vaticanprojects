@@ -24,3 +24,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+db.sqlite3
+django.log
+**/__pycache__/
+*.pyc
+db.sqlite3
+django.log
+__pycache__/
+*.pyc
+*.log
