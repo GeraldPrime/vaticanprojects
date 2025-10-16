@@ -249,6 +249,41 @@
           font-size: 14px;
         }
       }
+
+      /* Mobile navigation registration button styles */
+      @media (max-width: 991px) {
+        /* Show mobile registration button */
+        .mobile-register-btn {
+          display: block !important;
+          margin-top: 15px;
+          padding: 0 15px;
+        }
+        
+        .mobile-register-btn .theme-btn {
+          width: 100%;
+          text-align: center;
+          padding: 12px 20px;
+          font-size: 14px;
+        }
+        
+        /* Hide desktop registration button on mobile */
+        .menu-btns {
+          display: none !important;
+        }
+      }
+      
+      /* Desktop styles */
+      @media (min-width: 992px) {
+        /* Hide mobile registration button on desktop */
+        .mobile-register-btn {
+          display: none !important;
+        }
+        
+        /* Show desktop registration button */
+        .menu-btns {
+          display: block !important;
+        }
+      }
     </style>
 
     <!-- jQuery (required for Magnific Popup) -->
@@ -386,13 +421,19 @@
 
                       <li><a href="{% url 'realtors_check' %}">Realtors Check</a></li>
                       <!-- https://vaticanprojects.com/realtors -->
+                      
+                      <!-- Mobile-only registration button -->
+                      <li class="mobile-register-btn" style="display: none;">
+                        <a href="{% url 'realtor_register' %}" class="theme-btn style-three">
+                          Realtors Registration <i class="far fa-user-plus"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </nav>
                 <!-- Main Menu End-->
               </div>
 
-              <!-- Menu Button -->
               <div class="menu-btns">
                 <a
                   href="{% url 'realtor_register' %}"
