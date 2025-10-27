@@ -21,39 +21,33 @@ jobs:
         script: |
           echo "Starting deployment..."
           
-          # Navigate to project directory
           cd /opt/vaticanprojects/vaticanprojects/vaticanprojects || { echo "Failed to change directory"; exit 1; }
           
-          # Pull latest changes
           echo "Fetching latest code..."
           git fetch origin || { echo "Git fetch failed"; exit 1; }
           
           echo "Resetting to origin/main..."
           git reset --hard origin/main || { echo "Git reset failed"; exit 1; }
           
-          echo "Cleaning untracked files..."
-          git clean -fd || echo "Warning: git clean had issues, continuing..."
+          echo "Cleaning untracked files (except media and db)..."
+          git clean -fd -e media -e db.sqlite3 || echo "Warning: git clean had issues, continuing..."
           
-          # Activate virtual environment and install dependencies
           echo "Installing dependencies..."
           source /opt/vaticanprojects/bin/activate
           pip install -r requirements.txt || echo "Warning: pip install had issues, continuing..."
           
-          # Run Django management commands
           echo "Running migrations..."
           python manage.py migrate --noinput || { echo "Migration failed"; exit 1; }
           
           echo "Collecting static files..."
           python manage.py collectstatic --noinput || echo "Warning: Static files collection had issues, continuing..."
           
-          # Restart services
           echo "Restarting vaticanprojects service..."
           sudo systemctl restart vaticanprojects || { echo "Failed to restart service"; exit 1; }
           
           echo "Restarting nginx..."
           sudo systemctl restart nginx || echo "Warning: Failed to restart nginx"
           
-          # Check service status
           echo "Checking service status..."
           sudo systemctl is-active vaticanprojects || echo "Warning: service may not be running properly"
           
