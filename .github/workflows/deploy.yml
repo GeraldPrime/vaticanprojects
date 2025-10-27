@@ -23,32 +23,21 @@ jobs:
           
           cd /opt/vaticanprojects/vaticanprojects/vaticanprojects || { echo "Failed to change directory"; exit 1; }
           
-          echo "Fetching latest code..."
-          git fetch origin || { echo "Git fetch failed"; exit 1; }
-          
-          echo "Resetting to origin/main..."
-          git reset --hard origin/main || { echo "Git reset failed"; exit 1; }
-          
-          echo "Cleaning untracked files (except media and db)..."
-          git clean -fd -e media -e db.sqlite3 || echo "Warning: git clean had issues, continuing..."
+          echo "Pulling latest code..."
+          git fetch origin
+          git reset --hard origin/main
           
           echo "Installing dependencies..."
           source /opt/vaticanprojects/bin/activate
-          pip install -r requirements.txt || echo "Warning: pip install had issues, continuing..."
+          pip install -r requirements.txt
           
           echo "Running migrations..."
-          python manage.py migrate --noinput || { echo "Migration failed"; exit 1; }
+          python manage.py migrate --noinput
           
           echo "Collecting static files..."
-          python manage.py collectstatic --noinput || echo "Warning: Static files collection had issues, continuing..."
+          python manage.py collectstatic --noinput
           
-          echo "Restarting vaticanprojects service..."
-          sudo systemctl restart vaticanprojects || { echo "Failed to restart service"; exit 1; }
+          echo "Restarting service..."
+          sudo systemctl restart vaticanprojects
           
-          echo "Restarting nginx..."
-          sudo systemctl restart nginx || echo "Warning: Failed to restart nginx"
-          
-          echo "Checking service status..."
-          sudo systemctl is-active vaticanprojects || echo "Warning: service may not be running properly"
-          
-          echo "✅ Deployment completed successfully!"
+          echo "✅ Deployment completed!"
