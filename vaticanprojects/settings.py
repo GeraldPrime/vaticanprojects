@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-n*u$))^+fr-s64f&&^lq$4&s6pp7_x2obf&*a@k*ry!7zz71mo
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = [
+    '72.61.167.164',  # IP address
     '.onrender.com', 
     'localhost',                  # Keep localhost for local dev
     '127.0.0.1',                  # Loopback address
