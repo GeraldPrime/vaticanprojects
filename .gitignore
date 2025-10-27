@@ -33,3 +33,5 @@ django.log
 __pycache__/
 *.pyc
 *.log
+db.sqlite3
+*.sqlite3
