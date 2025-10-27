@@ -37,6 +37,16 @@ ALLOWED_HOSTS = [
     'vaticanprojects.com',
 ]
 
+# CSRF Settings for HTTPS
+CSRF_TRUSTED_ORIGINS = [
+    'https://vaticanprojects.com',
+    'https://www.vaticanprojects.com',
+    'http://72.61.167.164',
+]
+
+# Security settings for production
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 APPEND_SLASH = True
 
 # Application definition
