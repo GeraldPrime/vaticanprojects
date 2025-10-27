@@ -102,13 +102,13 @@ DATABASES = {
 # }
 
 # AWS S3 Configuration
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')  # Default to us-east-1
-AWS_S3_OBJECT_PARAMETERS = {
-    'ContentDisposition': 'attachment',
-}
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')  # Default to us-east-1
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'ContentDisposition': 'attachment',
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -140,53 +140,81 @@ STATICFILES_DIRS = [
 ]
 
 # Storage Configuration - Django 4.2+ way
-if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
-    # Use AWS S3 for media files with Django 4.2+ STORAGES setting
-    STORAGES = {
-        "default": {
-            "BACKEND": "storages.backends.s3.S3Storage",
-            "OPTIONS": {
-                "access_key": AWS_ACCESS_KEY_ID,
-                "secret_key": AWS_SECRET_ACCESS_KEY,
-                "bucket_name": AWS_STORAGE_BUCKET_NAME,
-                "region_name": AWS_S3_REGION_NAME,
-                # REMOVED: "default_acl": "public-read",  # This causes the ACL error
-                "file_overwrite": False,
-                "querystring_auth": False,
-                "object_parameters": {
-                    "CacheControl": "max-age=86400",
-                },
-                "custom_domain": f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com',
-            },
-        },
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Use simpler storage
-        },
-    }
+# if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+#     # Use AWS S3 for media files with Django 4.2+ STORAGES setting
+#     STORAGES = {
+#         "default": {
+#             "BACKEND": "storages.backends.s3.S3Storage",
+#             "OPTIONS": {
+#                 "access_key": AWS_ACCESS_KEY_ID,
+#                 "secret_key": AWS_SECRET_ACCESS_KEY,
+#                 "bucket_name": AWS_STORAGE_BUCKET_NAME,
+#                 "region_name": AWS_S3_REGION_NAME,
+#                 # REMOVED: "default_acl": "public-read",  # This causes the ACL error
+#                 "file_overwrite": False,
+#                 "querystring_auth": False,
+#                 "object_parameters": {
+#                     "CacheControl": "max-age=86400",
+#                 },
+#                 "custom_domain": f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com',
+#             },
+#         },
+#         "staticfiles": {
+#             "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",  # Use simpler storage
+#         },
+#     }
     
-    MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
-    print(f"✅ Using AWS S3 Storage: {AWS_STORAGE_BUCKET_NAME} in region {AWS_S3_REGION_NAME}")
-else:
-    # Fallback to local storage if S3 not configured
-    STORAGES = {
-        "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
-    }
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    print("⚠️ Warning: AWS S3 not configured, using local media storage")
+#     MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+#     print(f"✅ Using AWS S3 Storage: {AWS_STORAGE_BUCKET_NAME} in region {AWS_S3_REGION_NAME}")
+# else:
+#     # Fallback to local storage if S3 not configured
+#     STORAGES = {
+#         "default": {
+#             "BACKEND": "django.core.files.storage.FileSystemStorage",
+#         },
+#         "staticfiles": {
+#             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#         },
+#     }
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#     print("⚠️ Warning: AWS S3 not configured, using local media storage")
 
-# WhiteNoise configuration (for production deployment)
-# Temporarily use simple storage to avoid source map issues
-STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedStaticFilesStorage"
+# # WhiteNoise configuration (for production deployment)
+# # Temporarily use simple storage to avoid source map issues
+# STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedStaticFilesStorage"
 
-# WhiteNoise settings to handle missing source maps
+# # WhiteNoise settings to handle missing source maps
+# WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'map']
+# WHITENOISE_MANIFEST_STRICT = False
+
+
+# Static Files Configuration
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    BASE_DIR / 'estate' / 'static',
+]
+
+# Media Files Configuration - LOCAL STORAGE
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Storage Configuration
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+
+# WhiteNoise settings
 WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'map']
 WHITENOISE_MANIFEST_STRICT = False
+
+print(f"✅ Using local media storage at: {MEDIA_ROOT}")
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
