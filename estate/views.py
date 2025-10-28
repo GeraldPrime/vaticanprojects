@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import FileResponse, Http404
+
+import os
 
 
 from django.contrib.auth import authenticate, login, logout
@@ -59,8 +62,8 @@ import json
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.cache import cache_control
 from django.conf import settings
-import boto3
-from botocore.exceptions import ClientError
+# import boto3
+# from botocore.exceptions import ClientError
 
 import decimal
 
@@ -2960,41 +2963,65 @@ For support, contact us through our official channels.
 """nice work here"""
 
 
+# def download_form(request, form_id):
+#     form = get_object_or_404(FormUpload, id=form_id)  # Replace with your model
+
+#     try:
+#         # Initialize S3 client
+#         s3_client = boto3.client(
+#             "s3",
+#             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+#             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+#             region_name=settings.AWS_S3_REGION_NAME,
+#         )
+
+#         # Get clean filename
+#         file_key = form.form_file.name
+#         filename = file_key.split("/")[-1]
+
+#         # Generate presigned URL with download headers
+#         presigned_url = s3_client.generate_presigned_url(
+#             "get_object",
+#             Params={
+#                 "Bucket": settings.AWS_STORAGE_BUCKET_NAME,
+#                 "Key": file_key,
+#                 "ResponseContentDisposition": f'attachment; filename="{filename}"',
+#                 "ResponseContentType": "application/octet-stream",
+#             },
+#             ExpiresIn=300,  # 5 minutes - short expiry for security
+#         )
+
+#         return redirect(presigned_url)
+
+#     except ClientError:
+#         raise Http404("File not found")
+#     except Exception:
+#         raise Http404("Error generating download link")
+
+
 def download_form(request, form_id):
-    form = get_object_or_404(FormUpload, id=form_id)  # Replace with your model
-
+    form = get_object_or_404(FormUpload, id=form_id)
+    
     try:
-        # Initialize S3 client
-        s3_client = boto3.client(
-            "s3",
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME,
-        )
-
-        # Get clean filename
-        file_key = form.form_file.name
-        filename = file_key.split("/")[-1]
-
-        # Generate presigned URL with download headers
-        presigned_url = s3_client.generate_presigned_url(
-            "get_object",
-            Params={
-                "Bucket": settings.AWS_STORAGE_BUCKET_NAME,
-                "Key": file_key,
-                "ResponseContentDisposition": f'attachment; filename="{filename}"',
-                "ResponseContentType": "application/octet-stream",
-            },
-            ExpiresIn=300,  # 5 minutes - short expiry for security
-        )
-
-        return redirect(presigned_url)
-
-    except ClientError:
-        raise Http404("File not found")
-    except Exception:
-        raise Http404("Error generating download link")
-
+        # Get the file path
+        file_path = form.form_file.path
+        
+        # Check if file exists
+        if not os.path.exists(file_path):
+            raise Http404("File not found")
+        
+        # Open and serve the file
+        file_handle = open(file_path, 'rb')
+        response = FileResponse(file_handle, content_type='application/pdf')
+        
+        # Set the filename for download
+        filename = os.path.basename(file_path)
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        
+        return response
+        
+    except Exception as e:
+        raise Http404("Error downloading file")
 
 # ========================SECRETARY ADMIN VIEWS=================================
 
