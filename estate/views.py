@@ -2837,6 +2837,29 @@ def realtor_register(request, referral_code=None):
                     {"sponsor_code": sponsor_code, "form_data": request.POST},
                 )
 
+            # Validate Nigerian phone number
+            import re
+            nigerian_phone_pattern = r'^(\+?234|0)[7-9][0-1]\d{8}$'
+            if not re.match(nigerian_phone_pattern, phone.replace(' ', '').replace('-', '')):
+                messages.error(
+                    request, 
+                    "Please enter a valid Nigerian phone number (e.g., +2348012345678, 08012345678, or 2348012345678)"
+                )
+                return render(
+                    request,
+                    "realtor_register.html",
+                    {"sponsor_code": sponsor_code, "form_data": request.POST},
+                )
+            
+            # Validate country is Nigeria
+            if country.lower() != 'nigeria':
+                messages.error(request, "Registration is currently only available for Nigerian realtors.")
+                return render(
+                    request,
+                    "realtor_register.html",
+                    {"sponsor_code": sponsor_code, "form_data": request.POST},
+                )
+            
             # Check if email already exists
             if Realtor.objects.filter(email=email).exists():
                 messages.error(request, "A realtor with this email already exists.")
