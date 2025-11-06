@@ -507,7 +507,7 @@ def realtors_page(request):
     realtors = realtors.order_by("first_name", "last_name")
 
     # Paginate the results
-    paginator = Paginator(realtors, 10)  # Show 10 realtors per page
+    paginator = Paginator(realtors, 20)  # Show 10 realtors per page
     page_number = request.GET.get("page", 1)
     page_obj = paginator.get_page(page_number)
 
