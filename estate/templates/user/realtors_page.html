@@ -171,17 +171,9 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
                                                     <h6 class="fs-16 mb-1">Phone: {{realtor.phone}}</h6>
-                                                    {% if realtor.total_commission %}
-                                                        <p class="text-muted mb-0 fs-14">
-                                                            Total Commission: <strong>₦{{ realtor.total_commission|floatformat:2 }}</strong>
-                                                        </p>
-                                                    {% else %}
-                                                        <p class="text-muted mb-0 fs-14">
-                                                            Total Commission: <strong>₦ 0</strong>
-                                                        </p>
-
-
-                                                    {% endif %}
+                                                    <p class="text-muted mb-0 fs-14">
+                                                        Total Commission: <strong>₦{{ realtor.total_commission|default:0|floatformat:2 }}</strong>
+                                                    </p>
                                                 </div>
                                                 {% if realtor.is_executive %}
                                                     <div class="text-end">
