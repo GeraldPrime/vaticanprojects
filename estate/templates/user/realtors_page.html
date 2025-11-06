@@ -121,6 +121,7 @@
                     <div class="row">
                         {% if realtors %}
                             {% for realtor in realtors %}
+                            {% if realtor.id %}
                             <div class="col-md-6">
                                 <div class="card {% if realtor.is_executive %}executive-card{% endif %}">
                                     <div class="card-body">
@@ -212,6 +213,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                             {% endfor %}
                         {% else %}
                             <div class="col-12">
