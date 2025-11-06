@@ -505,12 +505,16 @@
                                             {% for referral in direct_referrals %}
                                             <tr>
                                                 <td>
+                                                    {% if referral.id %}
                                                     <a href="{% url 'realtor_detail' referral.id %}">
                                                         {{ referral.full_name }}
                                                         {% if referral.is_executive %}
                                                             <i class="ri-vip-crown-fill executive-crown ms-1"></i>
                                                         {% endif %}
                                                     </a>
+                                                    {% else %}
+                                                    {{ referral.full_name }}
+                                                    {% endif %}
                                                 </td>
                                                 <td>{{ referral.referral_code }}</td>
                                                 <td>{{ referral.created_at|date:"M d, Y" }}</td>
@@ -549,21 +553,29 @@
                                             {% for referral in secondary_referrals %}
                                             <tr>
                                                 <td>
+                                                    {% if referral.id %}
                                                     <a href="{% url 'realtor_detail' referral.id %}">
                                                         {{ referral.full_name }}
                                                         {% if referral.is_executive %}
                                                             <i class="ri-vip-crown-fill executive-crown ms-1"></i>
                                                         {% endif %}
                                                     </a>
+                                                    {% else %}
+                                                    {{ referral.full_name }}
+                                                    {% endif %}
                                                 </td>
                                                 <td>{{ referral.referral_code }}</td>
                                                 <td>
+                                                    {% if referral.sponsor and referral.sponsor.id %}
                                                     <a href="{% url 'realtor_detail' referral.sponsor.id %}">
                                                         {{ referral.sponsor.full_name }}
                                                         {% if referral.sponsor.is_executive %}
                                                             <i class="ri-vip-crown-fill executive-crown ms-1"></i>
                                                         {% endif %}
                                                     </a>
+                                                    {% else %}
+                                                    <span class="text-muted">No Sponsor</span>
+                                                    {% endif %}
                                                 </td>
                                                 <td>{{ referral.created_at|date:"M d, Y" }}</td>
                                             </tr>
