@@ -333,10 +333,14 @@ class PaymentAdmin(admin.ModelAdmin):
     
     def amount_display(self, obj):
         """Display formatted amount"""
-        return format_html(
-            '<strong style="color: #28a745;">₦{:,.2f}</strong>',
-            obj.amount
-        )
+        try:
+            amount = float(obj.amount) if obj.amount else 0
+            return format_html(
+                '<strong style="color: #28a745;">₦{:,.2f}</strong>',
+                amount
+            )
+        except (ValueError, TypeError):
+            return format_html('<strong>₦{}</strong>', obj.amount)
     amount_display.short_description = 'Amount'
     
     def payment_method_display(self, obj):
@@ -379,16 +383,19 @@ class PaymentAdmin(admin.ModelAdmin):
     def sale_balance_display(self, obj):
         """Display remaining balance on the sale"""
         if obj.property_sale:
-            balance = obj.property_sale.balance_due
-            if balance > 0:
-                return format_html(
-                    '<span style="color: #dc3545;">₦{:,.2f} remaining</span>',
-                    balance
-                )
-            else:
-                return format_html(
-                    '<span style="color: #28a745;">✓ Fully Paid</span>'
-                )
+            try:
+                balance = float(obj.property_sale.balance_due) if obj.property_sale.balance_due else 0
+                if balance > 0:
+                    return format_html(
+                        '<span style="color: #dc3545;">₦{:,.2f} remaining</span>',
+                        balance
+                    )
+                else:
+                    return format_html(
+                        '<span style="color: #28a745;">✓ Fully Paid</span>'
+                    )
+            except (ValueError, TypeError, AttributeError):
+                return '-'
         return '-'
     sale_balance_display.short_description = 'Sale Balance'
     
@@ -397,20 +404,23 @@ class PaymentAdmin(admin.ModelAdmin):
         from estate.models import Commission
         
         if obj.property_sale:
-            # Find commissions related to this payment
-            # This is approximate - we look for commissions created around the same time
-            commissions = Commission.objects.filter(
-                property_reference=obj.property_sale.reference_number,
-                description__icontains='payment'
-            )
-            
-            if commissions.exists():
-                total = sum(c.amount for c in commissions)
-                return format_html(
-                    '{} commission(s) - Total: ₦{:,.2f}',
-                    commissions.count(),
-                    total
+            try:
+                # Find commissions related to this payment
+                # This is approximate - we look for commissions created around the same time
+                commissions = Commission.objects.filter(
+                    property_reference=obj.property_sale.reference_number,
+                    description__icontains='payment'
                 )
+                
+                if commissions.exists():
+                    total = float(sum(c.amount for c in commissions))
+                    return format_html(
+                        '{} commission(s) - Total: ₦{:,.2f}',
+                        commissions.count(),
+                        total
+                    )
+            except (ValueError, TypeError, AttributeError):
+                return 'Error calculating commissions'
         return 'No commissions found'
     commissions_created_display.short_description = 'Commissions Generated'
     
