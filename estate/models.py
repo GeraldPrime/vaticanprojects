@@ -726,73 +726,98 @@ class Payment(models.Model):
     payment_method = models.CharField(max_length=50, default='Cash')
     reference = models.CharField(max_length=255, blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
     
     
     
     def save(self, *args, **kwargs):
+        from django.db import transaction
+        
         is_new = self.pk is None
         super().save(*args, **kwargs)
         
         # Only update the property sale's amount_paid if this is a new payment
         if is_new:
-            # Recalculate the total from the database to ensure accuracy
-            total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
-                models.Sum('amount'))['amount__sum'] or Decimal('0')
-            
-            # Store the old amount_paid before updating
-            old_amount_paid = self.property_sale.amount_paid
-            
-            # Update the property sale with the accurate total
-            self.property_sale.amount_paid = total_payments
-            
-            # Save without triggering the calculate_commission in PropertySale.save()
-            PropertySale.objects.filter(pk=self.property_sale.pk).update(amount_paid=total_payments)
-            
-            # Calculate commissions directly based on the new payment amount only
-            new_payment_amount = self.amount
-            
-            # Calculate commission amounts based on the new payment amount only
-            realtor_commission = (new_payment_amount * self.property_sale.realtor_commission_percentage) / Decimal('100')
-            
-            # Create commission for the selling realtor
-            Commission.objects.create(
-                realtor=self.property_sale.realtor,
-                amount=realtor_commission,
-                description=f"Commission for payment on sale {self.property_sale.reference_number}",
-                property_reference=self.property_sale.reference_number
-            )
-            
-            # Add to realtor's total commission
-            self.property_sale.realtor.total_commission += realtor_commission
-            self.property_sale.realtor.save(update_fields=['total_commission'])
-            
-            # Process sponsor commission if exists
-            if self.property_sale.realtor.sponsor and self.property_sale.sponsor_commission_percentage > Decimal('0'):
-                sponsor_commission = (new_payment_amount * self.property_sale.sponsor_commission_percentage) / Decimal('100')
+            # Use transaction to ensure atomicity and prevent duplicate commission creation
+            with transaction.atomic():
+                # Recalculate the total from the database to ensure accuracy
+                total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
+                    models.Sum('amount'))['amount__sum'] or Decimal('0')
                 
-                Commission.objects.create(
-                    realtor=self.property_sale.realtor.sponsor,
-                    amount=sponsor_commission,
-                    description=f"Sponsor commission for payment on sale {self.property_sale.reference_number}",
-                    property_reference=self.property_sale.reference_number
-                )
+                # Store the old amount_paid before updating
+                old_amount_paid = self.property_sale.amount_paid
                 
-                self.property_sale.realtor.sponsor.total_commission += sponsor_commission
-                self.property_sale.realtor.sponsor.save(update_fields=['total_commission'])
+                # Update the property sale with the accurate total
+                self.property_sale.amount_paid = total_payments
                 
-                # Process upline commission if exists
-                if self.property_sale.realtor.sponsor.sponsor and self.property_sale.upline_commission_percentage > Decimal('0'):
-                    upline_commission = (new_payment_amount * self.property_sale.upline_commission_percentage) / Decimal('100')
+                # Save without triggering the calculate_commission in PropertySale.save()
+                PropertySale.objects.filter(pk=self.property_sale.pk).update(amount_paid=total_payments)
+                
+                # Calculate commissions directly based on the new payment amount only
+                new_payment_amount = self.amount
+                
+                # Calculate commission amounts based on the new payment amount only
+                realtor_commission = (new_payment_amount * self.property_sale.realtor_commission_percentage) / Decimal('100')
+                
+                # Create commission for the selling realtor only if amount > 0
+                if realtor_commission > Decimal('0'):
+                    try:
+                        Commission.objects.create(
+                            realtor=self.property_sale.realtor,
+                            amount=realtor_commission,
+                            description=f"Commission for payment on sale {self.property_sale.reference_number}",
+                            property_reference=self.property_sale.reference_number
+                        )
+                        
+                        # Add to realtor's total commission
+                        self.property_sale.realtor.total_commission += realtor_commission
+                        self.property_sale.realtor.save(update_fields=['total_commission'])
+                    except Exception as e:
+                        # Log the error but don't fail the payment
+                        import logging
+                        logger = logging.getLogger(__name__)
+                        logger.error(f"Error creating realtor commission: {e}")
+                
+                # Process sponsor commission if exists
+                if self.property_sale.realtor.sponsor and self.property_sale.sponsor_commission_percentage > Decimal('0'):
+                    sponsor_commission = (new_payment_amount * self.property_sale.sponsor_commission_percentage) / Decimal('100')
                     
-                    Commission.objects.create(
-                        realtor=self.property_sale.realtor.sponsor.sponsor,
-                        amount=upline_commission,
-                        description=f"Upline commission for payment on sale {self.property_sale.reference_number}",
-                        property_reference=self.property_sale.reference_number
-                    )
+                    if sponsor_commission > Decimal('0'):
+                        try:
+                            Commission.objects.create(
+                                realtor=self.property_sale.realtor.sponsor,
+                                amount=sponsor_commission,
+                                description=f"Sponsor commission for payment on sale {self.property_sale.reference_number}",
+                                property_reference=self.property_sale.reference_number
+                            )
+                            
+                            self.property_sale.realtor.sponsor.total_commission += sponsor_commission
+                            self.property_sale.realtor.sponsor.save(update_fields=['total_commission'])
+                        except Exception as e:
+                            import logging
+                            logger = logging.getLogger(__name__)
+                            logger.error(f"Error creating sponsor commission: {e}")
                     
-                    self.property_sale.realtor.sponsor.sponsor.total_commission += upline_commission
-                    self.property_sale.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
+                    # Process upline commission if exists
+                    if self.property_sale.realtor.sponsor.sponsor and self.property_sale.upline_commission_percentage > Decimal('0'):
+                        upline_commission = (new_payment_amount * self.property_sale.upline_commission_percentage) / Decimal('100')
+                        
+                        if upline_commission > Decimal('0'):
+                            try:
+                                Commission.objects.create(
+                                    realtor=self.property_sale.realtor.sponsor.sponsor,
+                                    amount=upline_commission,
+                                    description=f"Upline commission for payment on sale {self.property_sale.reference_number}",
+                                    property_reference=self.property_sale.reference_number
+                                )
+                                
+                                self.property_sale.realtor.sponsor.sponsor.total_commission += upline_commission
+                                self.property_sale.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
+                            except Exception as e:
+                                import logging
+                                logger = logging.getLogger(__name__)
+                                logger.error(f"Error creating upline commission: {e}")
     
     
    

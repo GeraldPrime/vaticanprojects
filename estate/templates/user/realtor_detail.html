@@ -460,11 +460,13 @@
                                                     {% endif %}
                                                 </td>
                                                 <td>
-                                                    {% if not commission.is_paid and request.user.is_staff %}
+                                                    {% if commission.id and not commission.is_paid and request.user.is_staff %}
                                                     <form method="post" action="{% url 'pay_commission' commission.id %}" class="d-inline">
                                                         {% csrf_token %}
                                                         <button type="submit" class="btn btn-sm btn-success">Mark Paid</button>
                                                     </form>
+                                                    {% elif not commission.id %}
+                                                    <span class="badge bg-warning">Invalid Record</span>
                                                     {% endif %}
                                                 </td>
                                             </tr>
