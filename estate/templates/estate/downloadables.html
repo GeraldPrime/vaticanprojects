@@ -48,12 +48,19 @@
                             <h5 class="mb-1">{{ form.name }}</h5>
                             <p class="text-muted mb-0">{{ form.description }}</p>
                         </div>
-                        <a href="{% url 'download_form' form.id %}" class="btn btn-outline-danger ms-3">
-                            <i class="fa fa-cloud-download fa-2x"></i>
-                        </a>
-                        <!-- <a href="{{ form.form_file.url }}" class="btn btn-outline-danger ms-3" download>
-                            <i class="fa fa-cloud-download fa-2x"></i>
-                        </a> -->
+                        
+
+                        {% if form.id and form.form_file %}
+                            <a href="{% url 'download_form' form.id %}" class="btn btn-outline-danger ms-3">
+                                <i class="fa fa-cloud-download fa-2x"></i>
+                            </a>
+                        {% else %}
+                            <button class="btn btn-outline-secondary ms-3" disabled>
+                                <i class="fa fa-ban fa-2x"></i>
+                            </button>
+                            <small class="text-muted">No file</small>
+                        {% endif %}
+                        
                     </div>
                 </div>
                 {%endfor%}
