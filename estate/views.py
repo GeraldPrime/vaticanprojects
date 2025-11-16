@@ -2046,7 +2046,10 @@ def upload_form(request):
 @admin_required
 def forms_list(request):
     """View to display all uploaded forms"""
-    forms = FormUpload.objects.all().order_by("-created_at")
+    # forms = FormUpload.objects.all().order_by("-created_at")
+    forms = FormUpload.objects.filter(form_file__isnull=False).exclude(form_file='').order_by("-created_at")
+    
+    # forms = FormUpload.objects.filter(form_file__isnull=False).exclude(form_file='')
 
     return render(request, "user/forms_list.html", {"forms": forms})
 
