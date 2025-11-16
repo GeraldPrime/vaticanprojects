@@ -6,6 +6,9 @@ from django.utils.html import format_html
 from decimal import Decimal
 from .models import User, Realtor, Commission, Property, PropertySale, Payment, FormUpload,Gallery, General
 
+from django.core.exceptions import ValidationError
+
+
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'last_login', "image")
     search_fields = ('username', 'email',)
@@ -520,6 +523,16 @@ class FormUploadAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+    
+    def save_model(self, request, obj, form, change):
+        # Validate file is present
+        if not obj.form_file:
+            raise ValidationError("Form file is required!")
+        super().save_model(request, obj, form, change)
+        
+        # Verify ID was assigned
+        if obj.id is None:
+            raise ValidationError("Form was not saved properly - please try again")
     
     
 @admin.register(Gallery)

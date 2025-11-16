@@ -822,17 +822,59 @@ class Payment(models.Model):
     
    
 
+# class FormUpload(models.Model):
+#     """Model for storing uploaded forms that can be downloaded from the frontend"""
+#     name = models.CharField(max_length=255)
+#     description = models.TextField(blank=True, null=True)
+#     form_file = models.FileField(upload_to='forms/')
+#     created_at = models.DateTimeField(default=timezone.now)
+#     updated_at = models.DateTimeField(auto_now=True)
+    
+#     @property
+#     def file_type(self):
+#         """Returns the file extension of the uploaded form"""
+#         _, extension = os.path.splitext(self.form_file.name)
+#         return extension.upper()[1:] if extension else 'N/A'
+    
+#     def __str__(self):
+#         return self.name
+    
+#     class Meta:
+#         ordering = ['-created_at']
+#         verbose_name = 'Form Upload'
+#         verbose_name_plural = 'Form Uploads'
+
 class FormUpload(models.Model):
     """Model for storing uploaded forms that can be downloaded from the frontend"""
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    form_file = models.FileField(upload_to='forms/')
+    form_file = models.FileField(upload_to='forms/', blank=False, null=False)  # Make required
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    def save(self, *args, **kwargs):
+        # Ensure file is present
+        if not self.form_file:
+            raise ValueError("Form file is required - cannot save FormUpload without a file")
+        
+        # Call parent save
+        super().save(*args, **kwargs)
+        
+        # Verify ID was assigned (safety check)
+        if self.id is None:
+            raise ValueError("FormUpload was not saved properly - ID is None after save")
+    
+    def clean(self):
+        """Validate before saving"""
+        from django.core.exceptions import ValidationError
+        if not self.form_file:
+            raise ValidationError("Form file is required")
     
     @property
     def file_type(self):
         """Returns the file extension of the uploaded form"""
+        if not self.form_file:
+            return 'N/A'
         _, extension = os.path.splitext(self.form_file.name)
         return extension.upper()[1:] if extension else 'N/A'
     
