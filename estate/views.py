@@ -125,7 +125,8 @@ def ishiagu(request):
 
 def downloadables(request):
     """View to display all uploaded forms"""
-    forms = FormUpload.objects.all().order_by("created_at")
+    # forms = FormUpload.objects.all().order_by("created_at")
+    forms = FormUpload.objects.filter(form_file__isnull=False).exclude(form_file='')
 
     context = {"forms": forms}
     return render(request, "estate/downloadables.html", context)
