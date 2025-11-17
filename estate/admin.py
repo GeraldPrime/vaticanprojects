@@ -325,12 +325,17 @@ class PaymentAdmin(admin.ModelAdmin):
         """Display realtor name with link"""
         if obj.property_sale and obj.property_sale.realtor:
             realtor = obj.property_sale.realtor
-            url = f'/vatican123_django_adminxyzx/estate/realtor/{realtor.id}/change/'
-            return format_html(
-                '<a href="{}" target="_blank">{}</a>',
-                url,
-                realtor.full_name
-            )
+            # Check if realtor has a valid ID
+            if realtor.id is not None:
+                url = f'/vatican123_django_adminxyzx/estate/realtor/{realtor.id}/change/'
+                return format_html(
+                    '<a href="{}" target="_blank">{}</a>',
+                    url,
+                    realtor.full_name
+                )
+            else:
+                # If no ID, just show the name without link
+                return realtor.full_name
         return '-'
     realtor_display.short_description = 'Realtor'
     
