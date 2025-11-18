@@ -598,6 +598,10 @@ function renderTopRealtorsChart() {
 
         const topRealtorsChart = new ApexCharts(document.querySelector("#top-realtors-chart"), topRealtorsOptions);
         topRealtorsChart.render();
+    } else {
+        // Show message when no realtor data is available
+        document.querySelector("#top-realtors-chart").innerHTML = 
+            '<div class="text-center py-5"><p class="text-muted">No realtor commission data available yet.</p></div>';
     }
 }
 
