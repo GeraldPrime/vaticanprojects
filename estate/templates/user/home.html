@@ -173,30 +173,34 @@
                                 <div class="card-widgets">
                                     <a href="javascript:;" data-bs-toggle="reload"><i
                                             class="ri-refresh-line"></i></a>
-                                    <a data-bs-toggle="collapse" href="#yearly-sales-collapse" role="button"
-                                        aria-expanded="false" aria-controls="yearly-sales-collapse"><i
+                                    <a data-bs-toggle="collapse" href="#quarterly-sales-collapse" role="button"
+                                        aria-expanded="false" aria-controls="quarterly-sales-collapse"><i
                                             class="ri-subtract-line"></i></a>
                                     <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a>
                                 </div>
                                 <h5 class="header-title mb-0">Quarterly Sales Report</h5>
 
-                                <div id="yearly-sales-collapse" class="collapse pt-3 show">
+                                <div id="quarterly-sales-collapse" class="collapse pt-3 show">
                                     <div dir="ltr">
-                                        <div id="yearly-sales-chart" class="apex-charts"
+                                        <div id="quarterly-sales-chart" class="apex-charts"
                                             data-colors="#3bc0c3,#1a2942,#d1d7d973"></div>
                                     </div>
-                                    <div class="row text-center">
-                                        <div class="col">
-                                            <p class="text-muted mt-3 mb-2">Quarter 1</p>
+                                    <div class="row text-center mt-3">
+                                        <div class="col-6">
+                                            <p class="text-muted mb-2">Quarter 1</p>
                                             <h4 class="mb-0" id="q1-value">₦0.00</h4>
                                         </div>
-                                        <div class="col">
-                                            <p class="text-muted mt-3 mb-2">Quarter 2</p>
+                                        <div class="col-6">
+                                            <p class="text-muted mb-2">Quarter 2</p>
                                             <h4 class="mb-0" id="q2-value">₦0.00</h4>
                                         </div>
-                                        <div class="col">
-                                            <p class="text-muted mt-3 mb-2">All Time</p>
-                                            <h4 class="mb-0">{{ total_sales_amount }}</h4>
+                                        <div class="col-6 mt-3">
+                                            <p class="text-muted mb-2">Quarter 3</p>
+                                            <h4 class="mb-0" id="q3-value">₦0.00</h4>
+                                        </div>
+                                        <div class="col-6 mt-3">
+                                            <p class="text-muted mb-2">Quarter 4</p>
+                                            <h4 class="mb-0" id="q4-value">₦0.00</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +223,33 @@
                         </div> <!-- end card-->
                     </div> <!-- end col-->
 
+                </div>
+                <!-- end row -->
+
+                <!-- Top Performing Realtors Row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-widgets">
+                                    <a href="javascript:;" data-bs-toggle="reload"><i
+                                            class="ri-refresh-line"></i></a>
+                                    <a data-bs-toggle="collapse" href="#top-realtors-collapse" role="button"
+                                        aria-expanded="false" aria-controls="top-realtors-collapse"><i
+                                            class="ri-subtract-line"></i></a>
+                                    <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a>
+                                </div>
+                                <h5 class="header-title mb-0">Top Performing Realtors</h5>
+
+                                <div id="top-realtors-collapse" class="collapse pt-3 show">
+                                    <div dir="ltr">
+                                        <div id="top-realtors-chart" class="apex-charts"></div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
                 </div>
                 <!-- end row -->
 
@@ -261,6 +292,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render the monthly sales and commission chart
     renderMonthlySalesChart();
+    
+    // Render the quarterly sales chart
+    renderQuarterlySalesChart();
     
     // Render the top realtors chart
     renderTopRealtorsChart();
@@ -412,6 +446,82 @@ function renderMonthlySalesChart() {
     monthlySalesChart.render();
 }
 
+// Render the quarterly sales chart
+function renderQuarterlySalesChart() {
+    // Update quarterly values
+    document.getElementById('q1-value').textContent = '₦' + formatNumber(chartData.quarterlySales[0]);
+    document.getElementById('q2-value').textContent = '₦' + formatNumber(chartData.quarterlySales[1]);
+    document.getElementById('q3-value').textContent = '₦' + formatNumber(chartData.quarterlySales[2]);
+    document.getElementById('q4-value').textContent = '₦' + formatNumber(chartData.quarterlySales[3]);
+    
+    const quarterlySalesOptions = {
+        series: [{
+            name: 'Sales',
+            data: chartData.quarterlySales
+        }],
+        chart: {
+            type: 'bar',
+            height: 280,
+            toolbar: {
+                show: false
+            },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 800
+            }
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                columnWidth: '60%',
+                distributed: true,
+                dataLabels: {
+                    position: 'top'
+                }
+            }
+        },
+        colors: [colors.primary, colors.success, colors.info, colors.warning],
+        dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+                return '₦' + formatYAxis(val);
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '12px',
+                colors: ['#333']
+            }
+        },
+        xaxis: {
+            categories: ['Q1', 'Q2', 'Q3', 'Q4'],
+            axisBorder: {
+                show: false
+            }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return '₦' + formatYAxis(value);
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function (value) {
+                    return '₦' + formatNumber(value);
+                }
+            }
+        },
+        legend: {
+            show: false
+        }
+    };
+
+    const quarterlySalesChart = new ApexCharts(document.querySelector("#quarterly-sales-chart"), quarterlySalesOptions);
+    quarterlySalesChart.render();
+}
+
 // Render the top realtors chart
 function renderTopRealtorsChart() {
     if (chartData.topRealtors && chartData.topRealtors.length > 0) {
@@ -422,7 +532,7 @@ function renderTopRealtorsChart() {
             }],
             chart: {
                 type: 'bar',
-                height: 280,
+                height: 350,
                 toolbar: {
                     show: false
                 },
@@ -483,18 +593,10 @@ function renderTopRealtorsChart() {
                         return '₦' + formatNumber(value);
                     }
                 }
-            },
-            title: {
-                text: 'Top Performing Realtors',
-                align: 'center',
-                style: {
-                    fontSize: '16px',
-                    fontWeight: 600
-                }
             }
         };
 
-        const topRealtorsChart = new ApexCharts(document.querySelector("#yearly-sales-chart"), topRealtorsOptions);
+        const topRealtorsChart = new ApexCharts(document.querySelector("#top-realtors-chart"), topRealtorsOptions);
         topRealtorsChart.render();
     }
 }

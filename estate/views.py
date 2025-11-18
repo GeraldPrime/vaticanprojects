@@ -368,12 +368,19 @@ def userhome(request):
             }
         )
 
+    # Calculate quarterly sales data for current year
+    quarterly_sales = [0, 0, 0, 0]  # Q1, Q2, Q3, Q4
+    for i, month_sales in enumerate(sales_data):
+        quarter = i // 3  # 0-2 = Q1, 3-5 = Q2, 6-8 = Q3, 9-11 = Q4
+        quarterly_sales[quarter] += month_sales
+
     # Format data for JavaScript
     chart_data = {
         "months": months,
         "sales": sales_data,
         "commissions": commission_data,
         "topRealtors": top_realtors_data,
+        "quarterlySales": quarterly_sales,
     }
 
     context = {
