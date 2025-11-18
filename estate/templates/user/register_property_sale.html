@@ -78,8 +78,7 @@
                                                             required>
                                                             <option value="">-- Select Property --</option>
                                                             {% for prop in properties %}
-                                                            <option value="{{ prop.id }}">{{ prop.name }} ({{
-                                                                prop.location }})</option>
+                                                            <option value="{{ prop.id }}">{{ prop.name }} ({{ prop.location }})</option>
                                                             {% endfor %}
                                                         </select>
 
