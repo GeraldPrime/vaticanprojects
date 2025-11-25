@@ -163,7 +163,9 @@
                                             </div>
                                             <div class="">
                                                 <a href="{% url 'edit_realtor' realtor.id %}" class="btn btn-success btn-sm me-1 tooltips" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit"> <i class="ri-pencil-fill"></i> </a>
-                                                <button type="button" class="btn btn-danger btn-sm tooltips" data-bs-toggle="modal" data-bs-target="#deleteModal{{realtor.id}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"> <i class="mdi mdi-delete"></i> </button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{realtor.id}}" title="Delete">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </button>
                                             </div>
                                         </div>
 

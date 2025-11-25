@@ -796,8 +796,29 @@ def register_property(request):
         location = request.POST.get("location")
         address = request.POST.get("address")
 
+        # Check for duplicate properties (same name and location) before creating
+        existing_property = Property.objects.filter(
+            name=name, 
+            location=location
+        ).first()
+        
+        if existing_property:
+            messages.warning(
+                request, 
+                f'Property "{name}" in {location} already exists. Please use the existing property or choose a different name/location.'
+            )
+            return render(request, "user/register_property.html", {"states": states})
+
         # Create new property within a transaction
         with transaction.atomic():
+            # Double-check for duplicates within the transaction (race condition protection)
+            if Property.objects.filter(name=name, location=location).exists():
+                messages.warning(
+                    request, 
+                    f'Property "{name}" in {location} was just created. Please refresh and try again if needed.'
+                )
+                return render(request, "user/register_property.html", {"states": states})
+            
             property = Property.objects.create(
                 name=name, description=description, location=location, address=address
             )
