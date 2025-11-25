@@ -231,29 +231,29 @@
                       
 
                       <td>
-  {% if sale.id %}
-  <a href="{% url 'property_sale_detail' sale.id %}" class="btn btn-sm btn-info">
-    <i class="fas fa-eye"></i> View
-  </a>
-  
-  <!-- Message icon for sending emails -->
-  {% if sale.client_email %}
-    <button type="button" class="btn btn-sm btn-primary ms-1" 
-            onclick="openEmailModal({{ sale.id }}, '{{ sale.client_name }}', '{{ sale.development_status }}')"
-            id="msgBtn-{{ sale.id }}"
-            title="Send Email to Client">
-      <i class="ri-mail-line"></i>
-    </button>
-  {% endif %}
-  {% else %}
-  <span class="text-muted">Invalid Record</span>
-  {% endif %}
-    <button type="button" class="btn btn-sm btn-secondary ms-1" disabled
-            title="No email address available">
-      <i class="ri-mail-line"></i>
-    </button>
-  {% endif %}
-</td>
+                        {% if sale.id %}
+                          <a href="{% url 'property_sale_detail' sale.id %}" class="btn btn-sm btn-info">
+                            <i class="fas fa-eye"></i> View
+                          </a>
+                          
+                          <!-- Message icon for sending emails -->
+                          {% if sale.client_email %}
+                            <button type="button" class="btn btn-sm btn-primary ms-1" 
+                                    onclick="openEmailModal({{ sale.id }}, '{{ sale.client_name }}', '{{ sale.development_status }}')"
+                                    id="msgBtn-{{ sale.id }}"
+                                    title="Send Email to Client">
+                              <i class="ri-mail-line"></i>
+                            </button>
+                          {% else %}
+                            <button type="button" class="btn btn-sm btn-secondary ms-1" disabled
+                                    title="No email address available">
+                              <i class="ri-mail-line"></i>
+                            </button>
+                          {% endif %}
+                        {% else %}
+                          <span class="text-muted">Invalid Record</span>
+                        {% endif %}
+                      </td>
                     </tr>
                   {% endfor %}
                 {% else %}
