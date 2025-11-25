@@ -449,9 +449,11 @@
     <button class="btn-enhanced btn-pdf" onclick="downloadPDF()">
         📄 PDF
     </button>
+    {% if sale.id %}
     <a href="{% url 'property_sale_detail' sale.id %}" class="btn-enhanced btn-back">
         ← Back
     </a>
+    {% endif %}
 </div>
 
 <div class="container mt-4 mb-4 {% if balance_due <= 0 %}premium-invoice{% endif %}">

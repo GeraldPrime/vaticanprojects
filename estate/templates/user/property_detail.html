@@ -124,9 +124,13 @@
                                                                                 </td>
                                                                                 <td>{{ sale.created_at|date:"M d, Y" }}</td>
                                                                                 <td>
+                                                                                    {% if sale.id %}
                                                                                     <a href="{% url 'property_sale_detail' id=sale.id %}" class="btn btn-primary btn-sm">
                                                                                         <i class="ri-eye-line"></i> View
                                                                                     </a>
+                                                                                    {% else %}
+                                                                                    <span class="text-muted">Invalid Record</span>
+                                                                                    {% endif %}
                                                                                 </td>
                                                                             </tr>
                                                                             {% empty %}

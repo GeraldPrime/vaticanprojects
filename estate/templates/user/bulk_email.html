@@ -167,10 +167,14 @@
                                                 {% endif %}
                                             </td>
                                             <td>
+                                                {% if sale.id %}
                                                 <a href="{% url 'property_sale_detail' sale.id %}" 
                                                    class="btn btn-sm btn-outline-primary" title="View Sale Details">
                                                     <i class="ri-eye-line"></i>
                                                 </a>
+                                                {% else %}
+                                                <span class="text-muted">Invalid Record</span>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         {% empty %}

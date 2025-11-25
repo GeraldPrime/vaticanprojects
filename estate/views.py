@@ -796,10 +796,18 @@ def register_property(request):
         location = request.POST.get("location")
         address = request.POST.get("address")
 
-        # Create new property
-        property = Property.objects.create(
-            name=name, description=description, location=location, address=address
-        )
+        # Create new property within a transaction
+        with transaction.atomic():
+            property = Property.objects.create(
+                name=name, description=description, location=location, address=address
+            )
+            
+            # Ensure property has a PK before proceeding
+            if not property.pk:
+                raise ValueError("Property was created without a primary key")
+            
+            # Refresh from DB to ensure we have the latest state
+            property.refresh_from_db()
 
         messages.success(
             request, f'Property "{name}" has been registered successfully!'
@@ -1725,67 +1733,94 @@ def register_property_sale(request):  # with expiry date
                         {"properties": properties, "realtors": realtors},
                     )
 
-            # Get related objects
+            # Get related objects and validate they have PKs
             property_obj = get_object_or_404(Property, id=property_id)
+            if not property_obj.pk:
+                messages.error(request, "Invalid property selected. Please try again.")
+                return render(
+                    request,
+                    "user/register_property_sale.html",
+                    {"properties": properties, "realtors": realtors},
+                )
+            
             realtor = get_object_or_404(
                 Realtor.objects.select_related("sponsor", "sponsor__sponsor"),
                 id=realtor_id,
             )
-
-            # Create the property sale object with all fields
-            property_sale = PropertySale.objects.create(
-                description=description,
-                property_type=property_type,
-                property_item=property_obj,
-                quantity=quantity_int,
-                client_name=client_name,
-                client_address=client_address,
-                client_phone=client_phone,
-                client_email=client_email,
-                marital_status=marital_status,
-                spouse_name=spouse_name,
-                spouse_phone=spouse_phone,
-                # Add to client information section
-                client_picture=client_picture,
-                id_type=id_type,
-                id_number=id_number,
-                # Add the new plot development timeline fields
-                plot_development_start_date=plot_development_start_date,
-                plot_development_expiry_date=plot_development_expiry_date,
-                lga_of_origin=lga_of_origin,
-                town_of_origin=town_of_origin,
-                state_of_origin=state_of_origin,
-                bank_name=bank_name,
-                account_number=account_number,
-                account_name=account_name,
-                next_of_kin_name=next_of_kin_name,
-                next_of_kin_address=next_of_kin_address,
-                next_of_kin_phone=next_of_kin_phone,
-                original_price=original_price_decimal,
-                selling_price=selling_price_decimal,
-                payment_plan=payment_plan,
-                # Add to pricing section
-                discount=discount_decimal,
-                realtor=realtor,
-                realtor_commission_percentage=realtor_commission_decimal,
-                sponsor_commission_percentage=sponsor_commission_decimal,
-                upline_commission_percentage=upline_commission_decimal,
-            )
-
-            # Create initial payment if provided
-            if initial_payment_decimal > 0:
-                # Update the amount_paid field first
-                property_sale.amount_paid = initial_payment_decimal
-                property_sale.save()
-
-                # Create the payment record with the validated payment_date
-                Payment.objects.create(
-                    property_sale=property_sale,
-                    amount=initial_payment_decimal,
-                    payment_method="Cash",
-                    notes="Initial payment at registration",
-                    payment_date=payment_date,
+            if not realtor.pk:
+                messages.error(request, "Invalid realtor selected. Please try again.")
+                return render(
+                    request,
+                    "user/register_property_sale.html",
+                    {"properties": properties, "realtors": realtors},
                 )
+
+            # Create the property sale object with all fields within a transaction
+            with transaction.atomic():
+                property_sale = PropertySale.objects.create(
+                    description=description,
+                    property_type=property_type,
+                    property_item=property_obj,
+                    quantity=quantity_int,
+                    client_name=client_name,
+                    client_address=client_address,
+                    client_phone=client_phone,
+                    client_email=client_email,
+                    marital_status=marital_status,
+                    spouse_name=spouse_name,
+                    spouse_phone=spouse_phone,
+                    # Add to client information section
+                    client_picture=client_picture,
+                    id_type=id_type,
+                    id_number=id_number,
+                    # Add the new plot development timeline fields
+                    plot_development_start_date=plot_development_start_date,
+                    plot_development_expiry_date=plot_development_expiry_date,
+                    lga_of_origin=lga_of_origin,
+                    town_of_origin=town_of_origin,
+                    state_of_origin=state_of_origin,
+                    bank_name=bank_name,
+                    account_number=account_number,
+                    account_name=account_name,
+                    next_of_kin_name=next_of_kin_name,
+                    next_of_kin_address=next_of_kin_address,
+                    next_of_kin_phone=next_of_kin_phone,
+                    original_price=original_price_decimal,
+                    selling_price=selling_price_decimal,
+                    payment_plan=payment_plan,
+                    # Add to pricing section
+                    discount=discount_decimal,
+                    realtor=realtor,
+                    realtor_commission_percentage=realtor_commission_decimal,
+                    sponsor_commission_percentage=sponsor_commission_decimal,
+                    upline_commission_percentage=upline_commission_decimal,
+                )
+                
+                # Ensure property_sale has an ID before proceeding
+                if not property_sale.pk:
+                    raise ValueError("PropertySale was created without a primary key")
+                
+                # Refresh from DB to ensure we have the latest state
+                property_sale.refresh_from_db()
+                
+                # Create initial payment if provided
+                if initial_payment_decimal > 0:
+                    # Update the amount_paid field first
+                    property_sale.amount_paid = initial_payment_decimal
+                    property_sale.save()
+
+                    # Create the payment record with the validated payment_date
+                    Payment.objects.create(
+                        property_sale=property_sale,
+                        amount=initial_payment_decimal,
+                        payment_method="Cash",
+                        notes="Initial payment at registration",
+                        payment_date=payment_date,
+                    )
+                
+                # Final validation: ensure property_sale still has an ID
+                if not property_sale.pk:
+                    raise ValueError("PropertySale lost its primary key during save")
 
             messages.success(
                 request,

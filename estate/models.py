@@ -642,8 +642,16 @@ class PropertySale(models.Model):
     
     def calculate_commission(self):
         """Calculate and distribute commission based on the amount paid"""
+        # Ensure we have a PK before calculating commissions
+        if not self.pk:
+            raise ValueError("PropertySale must have a primary key before calculating commissions")
+        
         if self.amount_paid <= Decimal('0'):
             return
+        
+        # Validate that realtor has a PK
+        if not self.realtor or not self.realtor.pk:
+            raise ValueError("Realtor must have a primary key before calculating commissions")
         
         # Get the previously paid amount before this update
         try:
@@ -673,7 +681,7 @@ class PropertySale(models.Model):
         self.realtor.save(update_fields=['total_commission'])
         
         # Process sponsor commission if exists
-        if self.realtor.sponsor and self.sponsor_commission_percentage > Decimal('0'):
+        if self.realtor.sponsor and self.realtor.sponsor.pk and self.sponsor_commission_percentage > Decimal('0'):
             sponsor_commission = (new_payment_amount * self.sponsor_commission_percentage) / Decimal('100')
             
             Commission.objects.create(
@@ -687,7 +695,7 @@ class PropertySale(models.Model):
             self.realtor.sponsor.save(update_fields=['total_commission'])
             
             # Process upline commission if exists
-            if self.realtor.sponsor.sponsor and self.upline_commission_percentage > Decimal('0'):
+            if self.realtor.sponsor.sponsor and self.realtor.sponsor.sponsor.pk and self.upline_commission_percentage > Decimal('0'):
                 upline_commission = (new_payment_amount * self.upline_commission_percentage) / Decimal('100')
                 
                 Commission.objects.create(
@@ -711,11 +719,32 @@ class PropertySale(models.Model):
             except PropertySale.DoesNotExist:
                 pass
         
+        # Validate that property_item has a PK before saving
+        if self.property_item and not self.property_item.pk:
+            raise ValueError("Property instance needs to have a primary key value before this relationship can be used")
+        
+        # Validate that realtor has a PK before saving
+        if self.realtor and not self.realtor.pk:
+            raise ValueError("Realtor instance needs to have a primary key value before this relationship can be used")
+        
         super().save(*args, **kwargs)
+        
+        # Ensure we have a PK after save
+        if not self.pk:
+            raise ValueError("PropertySale was saved without a primary key")
         
         # Check if amount_paid has changed
         if is_new or old_amount_paid != self.amount_paid:
-            self.calculate_commission()
+            try:
+                self.calculate_commission()
+            except Exception as e:
+                # Log the error but don't fail the save
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(f"Error calculating commission for PropertySale {self.pk}: {str(e)}")
+                # Re-raise if it's a critical error (like missing PK)
+                if "primary key" in str(e).lower() or "does not exist" in str(e).lower():
+                    raise
 
 
 
