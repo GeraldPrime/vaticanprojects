@@ -937,7 +937,7 @@ def delete_property(request, property_id):
 def property_sales_list(request):
     """View to display all property sales"""
     all_sales = PropertySale.objects.select_related(
-        'property_item', 'realtor', 'created_by'
+        'property_item', 'realtor'
     ).order_by("-created_at")
     paginator = Paginator(all_sales, 20)  # 20 sales per page
     page_number = request.GET.get("page", 1)  # get ?page= from URL, default to 1
