@@ -567,15 +567,13 @@ class PropertySale(models.Model):
     sponsor_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     upline_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     
-    # Track who created this sale
-    created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        null=True,
+    # Track who created this sale (store name only to avoid foreign key issues)
+    created_by_name = models.CharField(
+        max_length=255,
         blank=True,
-        related_name='property_sales_created',
+        null=True,
         verbose_name='Created By',
-        help_text='Admin or secretary who registered this property sale'
+        help_text='Name of the person who registered this property sale'
     )
     
     # Timestamps

@@ -1984,7 +1984,7 @@ def register_property_sale(request):  # with expiry date
                     realtor_commission_percentage=realtor_commission_decimal,
                     sponsor_commission_percentage=sponsor_commission_decimal,
                     upline_commission_percentage=upline_commission_decimal,
-                    created_by=request.user,  # Track who created this sale
+                    created_by_name=request.user.get_full_name() or request.user.username,  # Track who created this sale
                 )
                 
                 # Ensure property_sale has an ID before proceeding

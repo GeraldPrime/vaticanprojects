@@ -229,17 +229,8 @@
                       </td>
                       <td>{{ sale.realtor.full_name }} {% if sale.realtor.is_executive %}<i class="ri-vip-crown-fill executive-crown ms-1"></i>{% endif %}</td>
                       <td>
-                        {% if sale.created_by %}
-                          <span class="text-primary">
-                            {% if sale.created_by.get_full_name %}
-                              {{ sale.created_by.get_full_name }}
-                            {% else %}
-                              {{ sale.created_by.username }}
-                            {% endif %}
-                          </span>
-                          {% if sale.created_by.is_staff %}
-                            <span class="badge bg-primary ms-1" style="font-size: 0.7em;">Admin</span>
-                          {% endif %}
+                        {% if sale.created_by_name %}
+                          <span class="text-primary">{{ sale.created_by_name }}</span>
                         {% else %}
                           <span class="text-muted">Unknown</span>
                         {% endif %}

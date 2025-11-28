@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='propertysale',
-            name='created_by',
-            field=models.ForeignKey(blank=True, help_text='Admin or secretary who registered this property sale', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='property_sales_created', to=settings.AUTH_USER_MODEL, verbose_name='Created By'),
+            name='created_by_name',
+            field=models.CharField(blank=True, help_text='Name of the person who registered this property sale', max_length=255, null=True, verbose_name='Created By'),
         ),
     ]
