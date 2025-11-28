@@ -19,9 +19,15 @@
                     </div>
                     <p class="text-muted mt-1 mb-0">
                         <i class="ri-calendar-line me-1"></i> Created on {{ sale.created_at|date:"M d, Y" }}
+                        {% if sale.created_by %}
+                            by <strong>{{ sale.created_by.get_full_name|default:sale.created_by.username }}</strong>
+                            {% if sale.created_by.is_staff %}
+                                <span class="badge bg-primary ms-1">Admin</span>
+                            {% endif %}
+                        {% endif %}
                     </p>
                     <p class="text-muted mt-1 mb-0">
-                        <i class="ri-calendar-line me-1"></i> description : {{ sale.description }}
+                        <i class="ri-file-text-line me-1"></i> Description: {{ sale.description }}
                     </p>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-end align-items-center">

@@ -138,11 +138,11 @@ class PropertyAdmin(admin.ModelAdmin):
 class PropertySaleAdmin(admin.ModelAdmin):
     list_display = ('reference_number_display', 'property_display', 'client_name_display', 
                    'selling_price_display', 'amount_paid_display', 'balance_due_display',
-                   'development_status_display_admin', 'is_developed')
+                   'development_status_display_admin', 'is_developed', 'created_by_display')
     
-    list_filter = ('is_developed', 'property_type', 'payment_plan', 'marital_status')
+    list_filter = ('is_developed', 'property_type', 'payment_plan', 'marital_status', 'created_by')
     
-    search_fields = ('client_name', 'property_item__name', 'reference_number')
+    search_fields = ('client_name', 'property_item__name', 'reference_number', 'created_by__username', 'created_by__first_name', 'created_by__last_name')
     
     fieldsets = [
         ('Property Information', {
@@ -182,6 +182,10 @@ class PropertySaleAdmin(admin.ModelAdmin):
         }),
         ('Realtor & Commission', {
             'fields': ['realtor', 'realtor_commission_percentage', 'sponsor_commission_percentage', 'upline_commission_percentage']
+        }),
+        ('Audit Information', {
+            'fields': ['created_by', 'created_at', 'updated_at'],
+            'description': 'Track who created this sale and when'
         }),
     ]
     
@@ -232,6 +236,19 @@ class PropertySaleAdmin(admin.ModelAdmin):
             color, status
         )
     development_status_display_admin.short_description = 'Development Status'
+    
+    def created_by_display(self, obj):
+        """Display who created the property sale"""
+        if obj.created_by:
+            name = obj.created_by.get_full_name() or obj.created_by.username
+            if obj.created_by.is_staff:
+                return format_html(
+                    '<span style="color: #007bff; font-weight: bold;">{} <span style="background: #007bff; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px;">Admin</span></span>',
+                    name
+                )
+            return name
+        return format_html('<span style="color: #6c757d;">Unknown</span>')
+    created_by_display.short_description = 'Created By'
     
     def get_queryset(self, request):
         """Optimize queryset to reduce database queries"""

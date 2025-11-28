@@ -6,6 +6,7 @@ from django.utils import timezone
 import uuid
 from decimal import Decimal
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 import os
 
@@ -565,6 +566,17 @@ class PropertySale(models.Model):
     realtor_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     sponsor_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     upline_commission_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    
+    # Track who created this sale
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='property_sales_created',
+        verbose_name='Created By',
+        help_text='Admin or secretary who registered this property sale'
+    )
     
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)

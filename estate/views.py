@@ -936,7 +936,9 @@ def delete_property(request, property_id):
 @login_required
 def property_sales_list(request):
     """View to display all property sales"""
-    all_sales = PropertySale.objects.all().order_by("-created_at")
+    all_sales = PropertySale.objects.select_related(
+        'property_item', 'realtor', 'created_by'
+    ).order_by("-created_at")
     paginator = Paginator(all_sales, 20)  # 20 sales per page
     page_number = request.GET.get("page", 1)  # get ?page= from URL, default to 1
     sales = paginator.get_page(page_number)
@@ -1247,6 +1249,139 @@ Property Type: {sale.get_property_type_display()}
 
     except Exception as e:
         print(f"Error in bulk email sending: {str(e)}")
+        return JsonResponse(
+            {
+                "success": False,
+                "error": "An error occurred while sending emails. Please try again.",
+            }
+        )
+
+
+@login_required
+@admin_required
+def bulk_email_realtors(request):
+    """Display bulk email page for realtors"""
+    # Get all realtors
+    realtors = Realtor.objects.all().order_by("-created_at")
+
+    context = {
+        "realtors": realtors,
+    }
+
+    return render(request, "user/bulk_email_realtors.html", context)
+
+
+@login_required
+@admin_required
+@require_http_methods(["POST"])
+def send_bulk_email_realtors(request):
+    """Send bulk emails to selected realtors"""
+    try:
+        # Get form data
+        subject = request.POST.get("subject", "").strip()
+        message = request.POST.get("message", "").strip()
+        realtor_ids_json = request.POST.get("realtor_ids", "[]")
+
+        if not subject or not message:
+            return JsonResponse(
+                {"success": False, "error": "Subject and message are required."}
+            )
+
+        # Parse realtor IDs
+        try:
+            realtor_ids = json.loads(realtor_ids_json)
+        except json.JSONDecodeError:
+            return JsonResponse(
+                {"success": False, "error": "Invalid realtor selection."}
+            )
+
+        if not realtor_ids:
+            return JsonResponse(
+                {"success": False, "error": "Please select at least one realtor."}
+            )
+
+        # Get selected realtors - only those with valid emails
+        realtors = Realtor.objects.filter(
+            id__in=realtor_ids, email__isnull=False, email__gt=""
+        )
+
+        if not realtors.exists():
+            return JsonResponse(
+                {
+                    "success": False,
+                    "error": "No valid email addresses found for selected realtors.",
+                }
+            )
+
+        sent_count = 0
+        failed_emails = []
+
+        # Send emails
+        for realtor in realtors:
+            try:
+                # Personalize the message
+                personalized_message = f"""Dear {realtor.full_name},
+
+{message}
+
+Best regards,
+VATICAN GARDEN PROJECTS ADMIN
+
+23 Liberty Estate Phase 2 by library bustop
+Independence Layout, Enugu
+Phone: +2347083600327
+Email: info@vaticanprojects.com
+
+---
+Realtor Information:
+Name: {realtor.full_name}
+Referral Code: {realtor.referral_code}
+Status: {realtor.status_display}
+Total Commission: ₦{realtor.total_commission:,.2f}
+Paid Commission: ₦{realtor.paid_commission:,.2f}
+Unpaid Commission: ₦{realtor.unpaid_commission:,.2f}
+                """
+
+                # Send email
+                send_mail(
+                    subject=subject,
+                    message=personalized_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[realtor.email],
+                    fail_silently=False,
+                )
+
+                sent_count += 1
+
+            except Exception as e:
+                failed_emails.append(realtor.email)
+                # Log the error if you have logging configured
+                print(f"Failed to send email to {realtor.email}: {str(e)}")
+
+        # Prepare response
+        if sent_count > 0:
+            response_data = {
+                "success": True,
+                "sent_count": sent_count,
+                "message": f"Successfully sent {sent_count} emails.",
+            }
+
+            if failed_emails:
+                response_data["warning"] = (
+                    f"Failed to send to: {', '.join(failed_emails)}"
+                )
+
+            return JsonResponse(response_data)
+        else:
+            return JsonResponse(
+                {
+                    "success": False,
+                    "error": "Failed to send any emails. Please check the email configuration.",
+                }
+            )
+
+    except Exception as e:
+        print(f"Error in bulk email sending to realtors: {str(e)}")
         return JsonResponse(
             {
                 "success": False,
@@ -1754,6 +1889,39 @@ def register_property_sale(request):  # with expiry date
                         {"properties": properties, "realtors": realtors},
                     )
 
+            # Validate commission percentages
+            total_commission_percentage = (
+                realtor_commission_decimal
+                + sponsor_commission_decimal
+                + upline_commission_decimal
+            )
+            
+            # Check if percentages add up to 100%
+            if abs(total_commission_percentage - Decimal("100")) > Decimal("0.01"):
+                messages.error(
+                    request,
+                    f"Commission percentages must add up to exactly 100%. "
+                    f"Current total: {total_commission_percentage}% "
+                    f"(Realtor: {realtor_commission_decimal}%, "
+                    f"Sponsor: {sponsor_commission_decimal}%, "
+                    f"Upline: {upline_commission_decimal}%)",
+                )
+                return render(
+                    request,
+                    "user/register_property_sale.html",
+                    {"properties": properties, "realtors": realtors},
+                )
+            
+            # Check if total commission percentage exceeds 30%
+            if total_commission_percentage > Decimal("30"):
+                # This warning is handled on the frontend, but we log it here
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.warning(
+                    f"High commission percentage detected: {total_commission_percentage}% "
+                    f"for property sale registration"
+                )
+
             # Get related objects and validate they have PKs
             property_obj = get_object_or_404(Property, id=property_id)
             if not property_obj.pk:
@@ -1815,6 +1983,7 @@ def register_property_sale(request):  # with expiry date
                     realtor_commission_percentage=realtor_commission_decimal,
                     sponsor_commission_percentage=sponsor_commission_decimal,
                     upline_commission_percentage=upline_commission_decimal,
+                    created_by=request.user,  # Track who created this sale
                 )
                 
                 # Ensure property_sale has an ID before proceeding
@@ -1879,7 +2048,10 @@ def register_property_sale(request):  # with expiry date
 @login_required
 def property_sale_detail(request, id):
     """View details of a property sale and handle new payments"""
-    sale = get_object_or_404(PropertySale, pk=id)
+    sale = get_object_or_404(
+        PropertySale.objects.select_related('property_item', 'realtor', 'created_by'),
+        pk=id
+    )
     payments = Payment.objects.filter(property_sale=sale).order_by("-payment_date")
 
     # Get balance due directly from the model property

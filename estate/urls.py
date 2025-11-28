@@ -85,6 +85,8 @@ urlpatterns = [
     
     path('bulk-email/', views.bulk_email, name='bulk_email'),
     path('send-bulk-email/', views.send_bulk_email, name='send_bulk_email'),
+    path('bulk-email-realtors/', views.bulk_email_realtors, name='bulk_email_realtors'),
+    path('send-bulk-email-realtors/', views.send_bulk_email_realtors, name='send_bulk_email_realtors'),
 
     
     
