@@ -1126,6 +1126,7 @@ def bulk_email(request):
     """Display bulk email page with all sales records"""
 
     # Get all sales records - no filtering or pagination
+    # Note: created_by is optional, so we don't include it in select_related to avoid errors if migration not run
     sales = PropertySale.objects.select_related("property_item", "realtor").order_by(
         "-created_at"
     )
@@ -2353,8 +2354,11 @@ def property_sale_invoice(request, sale_id):
 @admin_required
 def commissions_list(request):
     """View to display all commissions with search and filtering"""
-    # Initialize query
-    commissions = Commission.objects.all().order_by("-created_at")
+    # Initialize query - optimize with select_related to prevent N+1 queries
+    # Note: We don't prefetch sales.created_by to avoid errors if migration not run
+    commissions = Commission.objects.select_related(
+        "realtor", "realtor__sponsor"
+    ).order_by("-created_at")
 
     # Search parameters
     search_query = request.GET.get("search", "")
