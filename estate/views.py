@@ -2050,7 +2050,7 @@ def register_property_sale(request):  # with expiry date
 def property_sale_detail(request, id):
     """View details of a property sale and handle new payments"""
     sale = get_object_or_404(
-        PropertySale.objects.select_related('property_item', 'realtor', 'created_by'),
+        PropertySale.objects.select_related('property_item', 'realtor'),
         pk=id
     )
     payments = Payment.objects.filter(property_sale=sale).order_by("-payment_date")
