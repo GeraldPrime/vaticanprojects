@@ -720,7 +720,9 @@ class PropertySale(models.Model):
     
     def save(self, *args, **kwargs):
         import logging
-        from django.db import connection
+        import uuid
+        from django.db import connection, transaction
+        from django.db.models import Max
         
         logger = logging.getLogger(__name__)
         is_new = self.pk is None
@@ -741,33 +743,52 @@ class PropertySale(models.Model):
         if self.realtor and not self.realtor.pk:
             raise ValueError("Realtor instance needs to have a primary key value before this relationship can be used")
         
-        # If this is a new record and we don't have a PK, manually assign one
-        if is_new and not self.pk:
-            # Get the highest existing ID and add 1
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT MAX(id) FROM estate_propertysale")
-                max_id = cursor.fetchone()[0]
+        # Ensure reference_number exists (needed for fallback)
+        if not self.reference_number:
+            self.reference_number = uuid.uuid4().hex[:12].upper()
+            logger.info(f"Generated reference_number: {self.reference_number}")
+        
+        # Wrap entire save logic in atomic transaction for race condition safety
+        with transaction.atomic():
+            # If this is a new record and we don't have a PK, manually assign one
+            if is_new and not self.pk:
+                # Use select_for_update to lock the table and prevent race conditions
+                max_id_result = PropertySale.objects.select_for_update().aggregate(Max('id'))
+                max_id = max_id_result['id__max']
                 self.pk = (max_id or 0) + 1
                 logger.info(f"Manually assigned PropertySale ID: {self.pk}")
+            
+            super().save(*args, **kwargs)
+            
+            # Fallback: If still no PK after save, try to assign one
+            if not self.pk:
+                logger.warning("PropertySale saved without PK, attempting fallback ID assignment")
+                
+                # Ensure we have a reference_number for the fallback
+                if not self.reference_number:
+                    self.reference_number = uuid.uuid4().hex[:12].upper()
+                    logger.info(f"Generated fallback reference_number: {self.reference_number}")
+                
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT MAX(id) FROM estate_propertysale")
+                    max_id = cursor.fetchone()[0]
+                    new_id = (max_id or 0) + 1
+                    # Update the record with the new ID
+                    cursor.execute(
+                        "UPDATE estate_propertysale SET id = %s WHERE reference_number = %s",
+                        [new_id, self.reference_number]
+                    )
+                    updated_count = cursor.rowcount
+                    
+                    if updated_count == 0:
+                        raise ValueError(
+                            f"Fallback ID assignment failed: No record found with reference_number {self.reference_number}"
+                        )
+                    
+                    self.pk = new_id
+                    logger.info(f"Fallback: Assigned PropertySale ID {new_id} via reference_number {self.reference_number}")
         
-        super().save(*args, **kwargs)
-        
-        # Fallback: If still no PK after save, try to assign one
-        if not self.pk:
-            logger.warning("PropertySale saved without PK, attempting fallback ID assignment")
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT MAX(id) FROM estate_propertysale")
-                max_id = cursor.fetchone()[0]
-                new_id = (max_id or 0) + 1
-                # Update the record with the new ID
-                cursor.execute(
-                    "UPDATE estate_propertysale SET id = %s WHERE reference_number = %s",
-                    [new_id, self.reference_number]
-                )
-                self.pk = new_id
-                logger.info(f"Fallback: Assigned PropertySale ID {new_id} via reference_number {self.reference_number}")
-        
-        # Check if amount_paid has changed
+        # Check if amount_paid has changed (outside atomic block to avoid long locks)
         if is_new or old_amount_paid != self.amount_paid:
             try:
                 self.calculate_commission()
