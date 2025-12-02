@@ -759,12 +759,12 @@
         feedback.id = 'commission-validation-feedback';
         feedback.className = 'col-12 mt-3';
         
-        // Check if percentages add up to 100%
-        if (Math.abs(total - 100) > 0.01) {
+        // Block only if total exceeds 100%
+        if (total > 100.01) {
             feedback.innerHTML = `
                 <div class="alert alert-danger">
                     <i class="ri-error-warning-line me-2"></i>
-                    <strong>Error:</strong> Commission percentages must add up to exactly 100%. 
+                    <strong>Error:</strong> Commission percentages must not exceed 100%. 
                     Current total: <strong>${totalDisplay}%</strong>
                     (Realtor: ${realtor.toFixed(2)}%, Sponsor: ${sponsor.toFixed(2)}%, Upline: ${upline.toFixed(2)}%)
                 </div>
@@ -858,16 +858,16 @@
             return;
         }
         
-        // Validate commission percentages add up to 100%
-        if (Math.abs(totalPercentage - 100) > 0.01) {
+        // Block only if total commission exceeds 100%
+        if (totalPercentage > 100.01) {
             event.preventDefault();
             alert(
-                `Commission percentages must add up to exactly 100%.\n\n` +
+                `Commission percentages must not exceed 100%.\n\n` +
                 `Current total: ${totalPercentage.toFixed(2)}%\n` +
                 `Realtor: ${realtorPercentage.toFixed(2)}%\n` +
                 `Sponsor: ${sponsorPercentage.toFixed(2)}%\n` +
                 `Upline: ${uplinePercentage.toFixed(2)}%\n\n` +
-                `Please adjust the percentages to total exactly 100%.`
+                `Please adjust the percentages so that the total is 100% or less.`
             );
             return;
         }

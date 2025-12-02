@@ -1896,12 +1896,12 @@ def register_property_sale(request):  # with expiry date
                 + sponsor_commission_decimal
                 + upline_commission_decimal
             )
-            
-            # Check if percentages add up to 100%
-            if abs(total_commission_percentage - Decimal("100")) > Decimal("0.01"):
+
+            # Block only if total commission exceeds 100%
+            if total_commission_percentage > Decimal("100"):
                 messages.error(
                     request,
-                    f"Commission percentages must add up to exactly 100%. "
+                    f"Commission percentages must not exceed 100%. "
                     f"Current total: {total_commission_percentage}% "
                     f"(Realtor: {realtor_commission_decimal}%, "
                     f"Sponsor: {sponsor_commission_decimal}%, "
