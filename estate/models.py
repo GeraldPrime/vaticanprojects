@@ -739,10 +739,6 @@ class PropertySale(models.Model):
         
         super().save(*args, **kwargs)
         
-        # Ensure we have a PK after save
-        if not self.pk:
-            raise ValueError("PropertySale was saved without a primary key")
-        
         # Check if amount_paid has changed
         if is_new or old_amount_paid != self.amount_paid:
             try:
@@ -752,9 +748,6 @@ class PropertySale(models.Model):
                 import logging
                 logger = logging.getLogger(__name__)
                 logger.error(f"Error calculating commission for PropertySale {self.pk}: {str(e)}")
-                # Re-raise if it's a critical error (like missing PK)
-                if "primary key" in str(e).lower() or "does not exist" in str(e).lower():
-                    raise
 
 
 
