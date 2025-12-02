@@ -719,6 +719,10 @@ class PropertySale(models.Model):
                 self.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
     
     def save(self, *args, **kwargs):
+        import logging
+        from django.db import connection
+        
+        logger = logging.getLogger(__name__)
         is_new = self.pk is None
         old_amount_paid = Decimal('0')
         
@@ -737,7 +741,31 @@ class PropertySale(models.Model):
         if self.realtor and not self.realtor.pk:
             raise ValueError("Realtor instance needs to have a primary key value before this relationship can be used")
         
+        # If this is a new record and we don't have a PK, manually assign one
+        if is_new and not self.pk:
+            # Get the highest existing ID and add 1
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT MAX(id) FROM estate_propertysale")
+                max_id = cursor.fetchone()[0]
+                self.pk = (max_id or 0) + 1
+                logger.info(f"Manually assigned PropertySale ID: {self.pk}")
+        
         super().save(*args, **kwargs)
+        
+        # Fallback: If still no PK after save, try to assign one
+        if not self.pk:
+            logger.warning("PropertySale saved without PK, attempting fallback ID assignment")
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT MAX(id) FROM estate_propertysale")
+                max_id = cursor.fetchone()[0]
+                new_id = (max_id or 0) + 1
+                # Update the record with the new ID
+                cursor.execute(
+                    "UPDATE estate_propertysale SET id = %s WHERE reference_number = %s",
+                    [new_id, self.reference_number]
+                )
+                self.pk = new_id
+                logger.info(f"Fallback: Assigned PropertySale ID {new_id} via reference_number {self.reference_number}")
         
         # Check if amount_paid has changed
         if is_new or old_amount_paid != self.amount_paid:
@@ -745,8 +773,6 @@ class PropertySale(models.Model):
                 self.calculate_commission()
             except Exception as e:
                 # Log the error but don't fail the save
-                import logging
-                logger = logging.getLogger(__name__)
                 logger.error(f"Error calculating commission for PropertySale {self.pk}: {str(e)}")
 
 
