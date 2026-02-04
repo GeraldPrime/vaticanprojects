@@ -44,6 +44,12 @@ CSRF_TRUSTED_ORIGINS = [
     'http://72.61.167.164',
 ]
 
+# Base URL Configuration for Email Links
+if DEBUG:
+    BASE_URL = 'http://127.0.0.1:8000'
+else:
+    BASE_URL = 'https://vaticanprojects.com'
+
 # Security settings for production
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

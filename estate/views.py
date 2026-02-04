@@ -570,7 +570,7 @@ def create_realtor(request):
             # Send welcome email immediately after successful creation
             try:
                 # Construct referral link
-                referral_link = f"{request.build_absolute_uri('/').rstrip('/')}/realtor/register/{realtor.referral_code}/"
+                referral_link = f"{settings.BASE_URL}/realtor/register/{realtor.referral_code}/"
 
                 # Email subject
                 subject = "Welcome to Vatican Garden Projects - Your Registration is Complete!"
@@ -3135,7 +3135,7 @@ def realtor_register(request, referral_code=None):
             # Send welcome email immediately after successful registration
             try:
                 # Construct referral link
-                referral_link = f"{request.build_absolute_uri('/').rstrip('/')}/realtor/register/{realtor.referral_code}/"
+                referral_link = f"{settings.BASE_URL}/realtor/register/{realtor.referral_code}/"
 
                 # Email subject
                 subject = "Welcome to Vatican Garden Projects - Your Registration is Complete!"
@@ -3538,3 +3538,28 @@ def secretary_dashboard(request):
     }
 
     return render(request, "user/secretary_dashboard.html", context)
+
+
+# cd /opt/vaticanprojects/vaticanprojects/vaticanprojects
+
+
+
+# Check systemd service logs (most recent errors)
+# sudo journalctl -u vaticanprojects -n 100 --no-pager
+
+# # Or with timestamp
+# sudo journalctl -u vaticanprojects --since "1 hour ago"
+
+# # Follow logs in real-time (Ctrl+C to stop)
+# sudo journalctl -u vaticanprojects -f
+
+
+# gjango logs
+# Check if there's a logs directory
+# ls -la logs/
+
+# # If it exists, view recent errors
+# tail -n 100 logs/django_error.log
+
+# # Or follow in real-time
+# tail -f logs/django_error.log
