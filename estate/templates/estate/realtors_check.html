@@ -385,7 +385,7 @@
                                                 type="text"
                                                 class="form-control"
                                                 id="referralLink"
-                                                value="{{ request.scheme }}://{{ request.get_host }}{% url 'realtor_register_with_referral' realtor.referral_code %}"
+                                                value="{{ BASE_URL }}{% url 'realtor_register_with_referral' realtor.referral_code %}"
                                                 readonly
                                             />
                                             <button class="btn btn-outline-primary" onclick="copyReferralLink()">

@@ -234,6 +234,7 @@ def realtors_check(request):
         'commissions': commissions,
         'direct_referrals': direct_referrals,
         'search_query': search_query,
+        'BASE_URL': settings.BASE_URL,
     }
 
     return render(request, 'estate/realtors_check.html', context)
@@ -678,6 +679,7 @@ def realtor_detail(request, id):
         "commissions": commissions,
         "direct_referrals": direct_referrals,
         "secondary_referrals": secondary_referrals,
+        "BASE_URL": settings.BASE_URL,
     }
 
     return render(request, "user/realtor_detail.html", context)
@@ -3206,7 +3208,7 @@ For support, contact us through our official channels.
             return render(
                 request,
                 "estate/realtor_register_success.html",
-                {"realtor": realtor, "referral_code": realtor.referral_code},
+                {"realtor": realtor, "referral_code": realtor.referral_code, "BASE_URL": settings.BASE_URL},
             )
 
         except Exception as e:
