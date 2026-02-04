@@ -45,10 +45,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Base URL Configuration for Email Links
-if DEBUG:
-    BASE_URL = 'http://127.0.0.1:8000'
-else:
-    BASE_URL = 'https://vaticanprojects.com'
+# Default to production URL, override with BASE_URL env var for local development
+BASE_URL = os.environ.get('BASE_URL', 'https://vaticanprojects.com')
 
 # Security settings for production
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
