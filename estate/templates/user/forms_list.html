@@ -53,6 +53,7 @@
                                                 <td>{{ form.file_type }}</td>
                                                 <td>{{ form.created_at|date:"M d, Y" }}</td>
                                                 <td>
+                                                    {% if form.id %}
                                                     <a href="{% url 'download_form' form.id %}" class="btn btn-sm btn-primary" download>
                                                         <i class="ri-download-line"></i> Download
                                                     </a>
@@ -65,6 +66,14 @@
                                                             <i class="ri-delete-bin-line"></i> Delete
                                                         </button>
                                                     </form>
+                                                    {% else %}
+                                                    <span class="text-danger">Invalid ID</span>
+                                                    <form method="post" action="{% url 'delete_form' 0 %}" class="d-inline">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="cleanup" value="true">
+                                                        <button type="submit" class="btn btn-sm btn-link text-danger">Cleanup</button>
+                                                    </form>
+                                                    {% endif %}
                                                 </td>
                                             </tr>
                                             {% empty %}

@@ -77,6 +77,7 @@
                                                 <h6 class="card-title">{{ image.title|default:"Untitled" }}</h6>
                                                 <p class="card-text" style="font-size: 0.85em;">{{ image.description|default:"No description"|truncatewords:10 }}</p>
                                                 <div class="d-flex justify-content-between">
+                                                    {% if image.id %}
                                                     <button type="button" class="btn btn-sm btn-warning edit-gallery-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#edit-gallery-modal"
@@ -94,6 +95,9 @@
                                                             <i class="ri-delete-bin-line"></i> Delete
                                                         </button>
                                                     </form>
+                                                    {% else %}
+                                                    <span class="text-danger">Invalid ID</span>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <div class="card-footer text-muted">
