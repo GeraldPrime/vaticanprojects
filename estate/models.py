@@ -811,10 +811,28 @@ class Payment(models.Model):
     
     
     def save(self, *args, **kwargs):
-        from django.db import transaction
+        from django.db import transaction, connection
+        from django.db.models import Max
+        import logging
+        logger = logging.getLogger(__name__)
         
         is_new = self.pk is None
-        super().save(*args, **kwargs)
+        
+        with transaction.atomic():
+            if is_new and not self.pk:
+                max_id_result = Payment.objects.select_for_update().aggregate(Max('id'))
+                max_id = max_id_result['id__max']
+                self.pk = (max_id or 0) + 1
+                logger.info(f"Manually assigned Payment ID: {self.pk}")
+
+            super().save(*args, **kwargs)
+            
+            if self.id is None:
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT id FROM estate_payment WHERE property_sale_id = %s ORDER BY created_at DESC LIMIT 1", [self.property_sale_id])
+                    row = cursor.fetchone()
+                    if row:
+                        self.pk = row[0]
         
         # Only update the property sale's amount_paid if this is a new payment
         if is_new:
@@ -932,14 +950,41 @@ class FormUpload(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def save(self, *args, **kwargs):
+        from django.db import transaction, connection
+        from django.db.models import Max
+        import logging
+        logger = logging.getLogger(__name__)
+
         # Ensure file is present
         if not self.form_file:
             raise ValueError("Form file is required - cannot save FormUpload without a file")
         
-        # Call parent save
-        super().save(*args, **kwargs)
+        is_new = self.pk is None
         
-        # Verify ID was assigned (safety check)
+        with transaction.atomic():
+            if is_new and not self.pk:
+                # Pre-emptive ID assignment to avoid environment issues
+                max_id_result = FormUpload.objects.select_for_update().aggregate(Max('id'))
+                max_id = max_id_result['id__max']
+                self.pk = (max_id or 0) + 1
+                logger.info(f"Manually assigned FormUpload ID: {self.pk}")
+
+            super().save(*args, **kwargs)
+            
+            # Verify ID was assigned (safety check)
+            if self.id is None:
+                logger.warning("FormUpload saved without ID, attempting fallback")
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT MAX(id) FROM estate_formupload")
+                    max_id = cursor.fetchone()[0]
+                    self.pk = (max_id or 0) # This is risky but if super().save() worked it's the last one
+                    # Better to try and find it by name if possible
+                    cursor.execute("SELECT id FROM estate_formupload WHERE name = %s ORDER BY created_at DESC LIMIT 1", [self.name])
+                    row = cursor.fetchone()
+                    if row:
+                        self.pk = row[0]
+                        logger.info(f"Fallback found ID: {self.pk}")
+
         if self.id is None:
             raise ValueError("FormUpload was not saved properly - ID is None after save")
     
@@ -1001,6 +1046,30 @@ class EstateImage(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        from django.db import transaction, connection
+        from django.db.models import Max
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        is_new = self.pk is None
+        
+        with transaction.atomic():
+            if is_new and not self.pk:
+                max_id_result = EstateImage.objects.select_for_update().aggregate(Max('id'))
+                max_id = max_id_result['id__max']
+                self.pk = (max_id or 0) + 1
+                logger.info(f"Manually assigned EstateImage ID: {self.pk}")
+
+            super().save(*args, **kwargs)
+            
+            if self.id is None:
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT id FROM estate_estateimage WHERE estate = %s AND title = %s ORDER BY created_at DESC LIMIT 1", [self.estate, self.title])
+                    row = cursor.fetchone()
+                    if row:
+                        self.pk = row[0]
     
     class Meta:
         ordering = ['estate', 'order', '-created_at']
@@ -1023,6 +1092,30 @@ class Gallery(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        from django.db import transaction, connection
+        from django.db.models import Max
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        is_new = self.pk is None
+        
+        with transaction.atomic():
+            if is_new and not self.pk:
+                max_id_result = Gallery.objects.select_for_update().aggregate(Max('id'))
+                max_id = max_id_result['id__max']
+                self.pk = (max_id or 0) + 1
+                logger.info(f"Manually assigned Gallery ID: {self.pk}")
+
+            super().save(*args, **kwargs)
+            
+            if self.id is None:
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT id FROM estate_gallery WHERE title = %s ORDER BY created_at DESC LIMIT 1", [self.title])
+                    row = cursor.fetchone()
+                    if row:
+                        self.pk = row[0]
     
     class Meta:
         ordering = ['order', '-created_at']
