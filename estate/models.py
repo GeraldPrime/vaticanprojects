@@ -750,43 +750,28 @@ class PropertySale(models.Model):
         
         # Wrap entire save logic in atomic transaction for race condition safety
         with transaction.atomic():
-            # If this is a new record and we don't have a PK, manually assign one
-            if is_new and not self.pk:
-                # Use select_for_update to lock the table and prevent race conditions
-                max_id_result = PropertySale.objects.select_for_update().aggregate(Max('id'))
-                max_id = max_id_result['id__max']
-                self.pk = (max_id or 0) + 1
-                logger.info(f"Manually assigned PropertySale ID: {self.pk}")
+            # DO NOT pre-assign self.pk for new records here. 
+            # Manually setting self.pk causes Django to try UPDATE instead of INSERT.
             
             super().save(*args, **kwargs)
             
-            # Fallback: If still no PK after save, try to assign one
+            # Fallback: If still no PK after save (specific to some SQLite environments),
+            # try to recover it using the unique reference_number.
             if not self.pk:
-                logger.warning("PropertySale saved without PK, attempting fallback ID assignment")
-                
-                # Ensure we have a reference_number for the fallback
-                if not self.reference_number:
-                    self.reference_number = uuid.uuid4().hex[:12].upper()
-                    logger.info(f"Generated fallback reference_number: {self.reference_number}")
-                
+                logger.warning(f"PropertySale {self.reference_number} saved without ID returning to object. Attempting recovery.")
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT MAX(id) FROM estate_propertysale")
-                    max_id = cursor.fetchone()[0]
-                    new_id = (max_id or 0) + 1
-                    # Update the record with the new ID
+                    # Query for the ID using our unique reference_number
                     cursor.execute(
-                        "UPDATE estate_propertysale SET id = %s WHERE reference_number = %s",
-                        [new_id, self.reference_number]
+                        "SELECT id FROM estate_propertysale WHERE reference_number = %s",
+                        [self.reference_number]
                     )
-                    updated_count = cursor.rowcount
-                    
-                    if updated_count == 0:
-                        raise ValueError(
-                            f"Fallback ID assignment failed: No record found with reference_number {self.reference_number}"
-                        )
-                    
-                    self.pk = new_id
-                    logger.info(f"Fallback: Assigned PropertySale ID {new_id} via reference_number {self.reference_number}")
+                    row = cursor.fetchone()
+                    if row:
+                        self.pk = row[0]
+                        logger.info(f"Recovered PropertySale ID {self.pk} via reference_number")
+                    else:
+                        # If still not found, something is seriously wrong with the DB persistence
+                        raise ValueError(f"PropertySale persistence failure: No record found with ref {self.reference_number}")
         
         # Check if amount_paid has changed (outside atomic block to avoid long locks)
         if is_new or old_amount_paid != self.amount_paid:
@@ -819,102 +804,31 @@ class Payment(models.Model):
         is_new = self.pk is None
         
         with transaction.atomic():
-            if is_new and not self.pk:
-                max_id_result = Payment.objects.select_for_update().aggregate(Max('id'))
-                max_id = max_id_result['id__max']
-                self.pk = (max_id or 0) + 1
-                logger.info(f"Manually assigned Payment ID: {self.pk}")
-
             super().save(*args, **kwargs)
             
+            # Recovery: If ID is missing after save, find it via property_sale_id
             if self.id is None:
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT id FROM estate_payment WHERE property_sale_id = %s ORDER BY created_at DESC LIMIT 1", [self.property_sale_id])
+                    cursor.execute(
+                        "SELECT id FROM estate_payment WHERE property_sale_id = %s ORDER BY created_at DESC LIMIT 1", 
+                        [self.property_sale_id]
+                    )
                     row = cursor.fetchone()
                     if row:
                         self.pk = row[0]
         
         # Only update the property sale's amount_paid if this is a new payment
         if is_new:
-            # Use transaction to ensure atomicity and prevent duplicate commission creation
+            # Use transaction to ensure atomicity
             with transaction.atomic():
                 # Recalculate the total from the database to ensure accuracy
                 total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
                     models.Sum('amount'))['amount__sum'] or Decimal('0')
                 
-                # Store the old amount_paid before updating
-                old_amount_paid = self.property_sale.amount_paid
-                
                 # Update the property sale with the accurate total
                 self.property_sale.amount_paid = total_payments
-                
-                # Save without triggering the calculate_commission in PropertySale.save()
-                PropertySale.objects.filter(pk=self.property_sale.pk).update(amount_paid=total_payments)
-                
-                # Calculate commissions directly based on the new payment amount only
-                new_payment_amount = self.amount
-                
-                # Calculate commission amounts based on the new payment amount only
-                realtor_commission = (new_payment_amount * self.property_sale.realtor_commission_percentage) / Decimal('100')
-                
-                # Create commission for the selling realtor only if amount > 0
-                if realtor_commission > Decimal('0'):
-                    try:
-                        Commission.objects.create(
-                            realtor=self.property_sale.realtor,
-                            amount=realtor_commission,
-                            description=f"Commission for payment on sale {self.property_sale.reference_number}",
-                            property_reference=self.property_sale.reference_number
-                        )
-                        
-                        # Add to realtor's total commission
-                        self.property_sale.realtor.total_commission += realtor_commission
-                        self.property_sale.realtor.save(update_fields=['total_commission'])
-                    except Exception as e:
-                        # Log the error but don't fail the payment
-                        import logging
-                        logger = logging.getLogger(__name__)
-                        logger.error(f"Error creating realtor commission: {e}")
-                
-                # Process sponsor commission if exists
-                if self.property_sale.realtor.sponsor and self.property_sale.sponsor_commission_percentage > Decimal('0'):
-                    sponsor_commission = (new_payment_amount * self.property_sale.sponsor_commission_percentage) / Decimal('100')
-                    
-                    if sponsor_commission > Decimal('0'):
-                        try:
-                            Commission.objects.create(
-                                realtor=self.property_sale.realtor.sponsor,
-                                amount=sponsor_commission,
-                                description=f"Sponsor commission for payment on sale {self.property_sale.reference_number}",
-                                property_reference=self.property_sale.reference_number
-                            )
-                            
-                            self.property_sale.realtor.sponsor.total_commission += sponsor_commission
-                            self.property_sale.realtor.sponsor.save(update_fields=['total_commission'])
-                        except Exception as e:
-                            import logging
-                            logger = logging.getLogger(__name__)
-                            logger.error(f"Error creating sponsor commission: {e}")
-                    
-                    # Process upline commission if exists
-                    if self.property_sale.realtor.sponsor.sponsor and self.property_sale.upline_commission_percentage > Decimal('0'):
-                        upline_commission = (new_payment_amount * self.property_sale.upline_commission_percentage) / Decimal('100')
-                        
-                        if upline_commission > Decimal('0'):
-                            try:
-                                Commission.objects.create(
-                                    realtor=self.property_sale.realtor.sponsor.sponsor,
-                                    amount=upline_commission,
-                                    description=f"Upline commission for payment on sale {self.property_sale.reference_number}",
-                                    property_reference=self.property_sale.reference_number
-                                )
-                                
-                                self.property_sale.realtor.sponsor.sponsor.total_commission += upline_commission
-                                self.property_sale.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
-                            except Exception as e:
-                                import logging
-                                logger = logging.getLogger(__name__)
-                                logger.error(f"Error creating upline commission: {e}")
+                # This will trigger PropertySale.save() which handles commissions
+                self.property_sale.save()
     
     
    
@@ -962,28 +876,20 @@ class FormUpload(models.Model):
         is_new = self.pk is None
         
         with transaction.atomic():
-            if is_new and not self.pk:
-                # Pre-emptive ID assignment to avoid environment issues
-                max_id_result = FormUpload.objects.select_for_update().aggregate(Max('id'))
-                max_id = max_id_result['id__max']
-                self.pk = (max_id or 0) + 1
-                logger.info(f"Manually assigned FormUpload ID: {self.pk}")
-
             super().save(*args, **kwargs)
             
-            # Verify ID was assigned (safety check)
+            # Recovery: If ID is missing after save, find it via name
             if self.id is None:
-                logger.warning("FormUpload saved without ID, attempting fallback")
+                logger.warning("FormUpload saved without ID returning to object, attempting recovery")
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT MAX(id) FROM estate_formupload")
-                    max_id = cursor.fetchone()[0]
-                    self.pk = (max_id or 0) # This is risky but if super().save() worked it's the last one
-                    # Better to try and find it by name if possible
-                    cursor.execute("SELECT id FROM estate_formupload WHERE name = %s ORDER BY created_at DESC LIMIT 1", [self.name])
+                    cursor.execute(
+                        "SELECT id FROM estate_formupload WHERE name = %s ORDER BY created_at DESC LIMIT 1", 
+                        [self.name]
+                    )
                     row = cursor.fetchone()
                     if row:
                         self.pk = row[0]
-                        logger.info(f"Fallback found ID: {self.pk}")
+                        logger.info(f"Recovered FormUpload ID: {self.pk}")
 
         if self.id is None:
             raise ValueError("FormUpload was not saved properly - ID is None after save")
@@ -1056,17 +962,15 @@ class EstateImage(models.Model):
         is_new = self.pk is None
         
         with transaction.atomic():
-            if is_new and not self.pk:
-                max_id_result = EstateImage.objects.select_for_update().aggregate(Max('id'))
-                max_id = max_id_result['id__max']
-                self.pk = (max_id or 0) + 1
-                logger.info(f"Manually assigned EstateImage ID: {self.pk}")
-
             super().save(*args, **kwargs)
             
+            # Recovery: If ID is missing after save, find it via estate and title
             if self.id is None:
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT id FROM estate_estateimage WHERE estate = %s AND title = %s ORDER BY created_at DESC LIMIT 1", [self.estate, self.title])
+                    cursor.execute(
+                        "SELECT id FROM estate_estateimage WHERE estate = %s AND title = %s ORDER BY created_at DESC LIMIT 1", 
+                        [self.estate, self.title]
+                    )
                     row = cursor.fetchone()
                     if row:
                         self.pk = row[0]
@@ -1102,17 +1006,15 @@ class Gallery(models.Model):
         is_new = self.pk is None
         
         with transaction.atomic():
-            if is_new and not self.pk:
-                max_id_result = Gallery.objects.select_for_update().aggregate(Max('id'))
-                max_id = max_id_result['id__max']
-                self.pk = (max_id or 0) + 1
-                logger.info(f"Manually assigned Gallery ID: {self.pk}")
-
             super().save(*args, **kwargs)
             
+            # Recovery: If ID is missing after save, find it via title
             if self.id is None:
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT id FROM estate_gallery WHERE title = %s ORDER BY created_at DESC LIMIT 1", [self.title])
+                    cursor.execute(
+                        "SELECT id FROM estate_gallery WHERE title = %s ORDER BY created_at DESC LIMIT 1", 
+                        [self.title]
+                    )
                     row = cursor.fetchone()
                     if row:
                         self.pk = row[0]
