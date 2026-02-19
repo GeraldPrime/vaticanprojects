@@ -719,12 +719,6 @@ class PropertySale(models.Model):
                 self.realtor.sponsor.sponsor.save(update_fields=['total_commission'])
     
     def save(self, *args, **kwargs):
-        import logging
-        import uuid
-        from django.db import connection, transaction
-        from django.db.models import Max
-        
-        logger = logging.getLogger(__name__)
         is_new = self.pk is None
         old_amount_paid = Decimal('0')
         
@@ -735,50 +729,15 @@ class PropertySale(models.Model):
             except PropertySale.DoesNotExist:
                 pass
         
-        # Validate that property_item has a PK before saving
-        if self.property_item and not self.property_item.pk:
-            raise ValueError("Property instance needs to have a primary key value before this relationship can be used")
+        super().save(*args, **kwargs)
         
-        # Validate that realtor has a PK before saving
-        if self.realtor and not self.realtor.pk:
-            raise ValueError("Realtor instance needs to have a primary key value before this relationship can be used")
-        
-        # Ensure reference_number exists (needed for fallback)
-        if not self.reference_number:
-            self.reference_number = uuid.uuid4().hex[:12].upper()
-            logger.info(f"Generated reference_number: {self.reference_number}")
-        
-        # Wrap entire save logic in atomic transaction for race condition safety
-        with transaction.atomic():
-            # DO NOT pre-assign self.pk for new records here. 
-            # Manually setting self.pk causes Django to try UPDATE instead of INSERT.
-            
-            super().save(*args, **kwargs)
-            
-            # Fallback: If still no PK after save (specific to some SQLite environments),
-            # try to recover it using the unique reference_number.
-            if not self.pk:
-                logger.warning(f"PropertySale {self.reference_number} saved without ID returning to object. Attempting recovery.")
-                with connection.cursor() as cursor:
-                    # Query for the ID using our unique reference_number
-                    cursor.execute(
-                        "SELECT id FROM estate_propertysale WHERE reference_number = %s",
-                        [self.reference_number]
-                    )
-                    row = cursor.fetchone()
-                    if row:
-                        self.pk = row[0]
-                        logger.info(f"Recovered PropertySale ID {self.pk} via reference_number")
-                    else:
-                        # If still not found, something is seriously wrong with the DB persistence
-                        raise ValueError(f"PropertySale persistence failure: No record found with ref {self.reference_number}")
-        
-        # Check if amount_paid has changed (outside atomic block to avoid long locks)
+        # Check if amount_paid has changed and calculate commission
         if is_new or old_amount_paid != self.amount_paid:
             try:
                 self.calculate_commission()
             except Exception as e:
-                # Log the error but don't fail the save
+                import logging
+                logger = logging.getLogger(__name__)
                 logger.error(f"Error calculating commission for PropertySale {self.pk}: {str(e)}")
 
 
@@ -796,30 +755,12 @@ class Payment(models.Model):
     
     
     def save(self, *args, **kwargs):
-        from django.db import transaction, connection
-        from django.db.models import Max
-        import logging
-        logger = logging.getLogger(__name__)
-        
         is_new = self.pk is None
-        
-        with transaction.atomic():
-            super().save(*args, **kwargs)
-            
-            # Recovery: If ID is missing after save, find it via property_sale_id
-            if self.id is None:
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT id FROM estate_payment WHERE property_sale_id = %s ORDER BY created_at DESC LIMIT 1", 
-                        [self.property_sale_id]
-                    )
-                    row = cursor.fetchone()
-                    if row:
-                        self.pk = row[0]
+        super().save(*args, **kwargs)
         
         # Only update the property sale's amount_paid if this is a new payment
         if is_new:
-            # Use transaction to ensure atomicity
+            from django.db import transaction
             with transaction.atomic():
                 # Recalculate the total from the database to ensure accuracy
                 total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
@@ -864,35 +805,9 @@ class FormUpload(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def save(self, *args, **kwargs):
-        from django.db import transaction, connection
-        from django.db.models import Max
-        import logging
-        logger = logging.getLogger(__name__)
-
-        # Ensure file is present
         if not self.form_file:
-            raise ValueError("Form file is required - cannot save FormUpload without a file")
-        
-        is_new = self.pk is None
-        
-        with transaction.atomic():
-            super().save(*args, **kwargs)
-            
-            # Recovery: If ID is missing after save, find it via name
-            if self.id is None:
-                logger.warning("FormUpload saved without ID returning to object, attempting recovery")
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT id FROM estate_formupload WHERE name = %s ORDER BY created_at DESC LIMIT 1", 
-                        [self.name]
-                    )
-                    row = cursor.fetchone()
-                    if row:
-                        self.pk = row[0]
-                        logger.info(f"Recovered FormUpload ID: {self.pk}")
-
-        if self.id is None:
-            raise ValueError("FormUpload was not saved properly - ID is None after save")
+            raise ValueError("Form file is required")
+        super().save(*args, **kwargs)
     
     def clean(self):
         """Validate before saving"""
@@ -954,26 +869,7 @@ class EstateImage(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        from django.db import transaction, connection
-        from django.db.models import Max
-        import logging
-        logger = logging.getLogger(__name__)
-        
-        is_new = self.pk is None
-        
-        with transaction.atomic():
-            super().save(*args, **kwargs)
-            
-            # Recovery: If ID is missing after save, find it via estate and title
-            if self.id is None:
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT id FROM estate_estateimage WHERE estate = %s AND title = %s ORDER BY created_at DESC LIMIT 1", 
-                        [self.estate, self.title]
-                    )
-                    row = cursor.fetchone()
-                    if row:
-                        self.pk = row[0]
+        super().save(*args, **kwargs)
     
     class Meta:
         ordering = ['estate', 'order', '-created_at']
@@ -998,26 +894,7 @@ class Gallery(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        from django.db import transaction, connection
-        from django.db.models import Max
-        import logging
-        logger = logging.getLogger(__name__)
-        
-        is_new = self.pk is None
-        
-        with transaction.atomic():
-            super().save(*args, **kwargs)
-            
-            # Recovery: If ID is missing after save, find it via title
-            if self.id is None:
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT id FROM estate_gallery WHERE title = %s ORDER BY created_at DESC LIMIT 1", 
-                        [self.title]
-                    )
-                    row = cursor.fetchone()
-                    if row:
-                        self.pk = row[0]
+        super().save(*args, **kwargs)
     
     class Meta:
         ordering = ['order', '-created_at']
