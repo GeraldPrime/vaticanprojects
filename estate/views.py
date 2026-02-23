@@ -936,12 +936,13 @@ def delete_property(request, property_id):
 
 # Your existing view stays the same
 @login_required
+@admin_required
 def property_sales_list(request):
-    """View to display all property sales"""
-    all_sales = PropertySale.objects.select_related(
+    """View to list all property sales"""
+    sales = PropertySale.objects.exclude(id__isnull=True).select_related(
         'property_item', 'realtor'
     ).order_by("-created_at")
-    paginator = Paginator(all_sales, 20)  # 20 sales per page
+    paginator = Paginator(sales, 20)  # 20 sales per page
     page_number = request.GET.get("page", 1)  # get ?page= from URL, default to 1
     sales = paginator.get_page(page_number)
 
@@ -2248,8 +2249,8 @@ def frontend_extras(request):
 @admin_required
 def upload_form(request):
     """View for uploading a new form"""
-    # Get 5 most recent forms for display
-    recent_forms = FormUpload.objects.all().order_by("-created_at")[:5]
+    # Get 5 most recent forms for display, excluding corrupted ones with no ID
+    recent_forms = FormUpload.objects.exclude(id__isnull=True).order_by("-created_at")[:5]
 
     if request.method == "POST":
         name = request.POST.get("name")
@@ -2281,8 +2282,8 @@ def upload_form(request):
 @admin_required
 def forms_list(request):
     """View to display all uploaded forms"""
-    # forms = FormUpload.objects.all().order_by("-created_at")
-    forms = FormUpload.objects.filter(form_file__isnull=False).exclude(form_file='').order_by("-created_at")
+    # Safely filter out valid forms, ignoring corrupted ones without an ID
+    forms = FormUpload.objects.exclude(id__isnull=True).filter(form_file__isnull=False).exclude(form_file='').order_by("-created_at")
     
     # forms = FormUpload.objects.filter(form_file__isnull=False).exclude(form_file='')
 
