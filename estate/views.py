@@ -1982,27 +1982,17 @@ def register_property_sale(request):  # with expiry date
                     payment_plan=payment_plan,
                     # Add to pricing section
                     discount=discount_decimal,
+                    # Set amount_paid directly if initial payment provided
+                    amount_paid=initial_payment_decimal,
                     realtor=realtor,
                     realtor_commission_percentage=realtor_commission_decimal,
                     sponsor_commission_percentage=sponsor_commission_decimal,
                     upline_commission_percentage=upline_commission_decimal,
-                    created_by_name=request.user.get_full_name() or request.user.username,  # Track who created this sale
+                    created_by_name=request.user.get_full_name() or request.user.username,
                 )
                 
-                # Ensure property_sale has an ID before proceeding
-                if not property_sale.pk:
-                    raise ValueError("PropertySale was created without a primary key")
-                
-                # Refresh from DB to ensure we have the latest state
-                property_sale.refresh_from_db()
-                
-                # Create initial payment if provided
+                # Create initial payment record if provided
                 if initial_payment_decimal > 0:
-                    # Update the amount_paid field first
-                    property_sale.amount_paid = initial_payment_decimal
-                    property_sale.save()
-
-                    # Create the payment record with the validated payment_date
                     Payment.objects.create(
                         property_sale=property_sale,
                         amount=initial_payment_decimal,
@@ -2010,10 +2000,6 @@ def register_property_sale(request):  # with expiry date
                         notes="Initial payment at registration",
                         payment_date=payment_date,
                     )
-                
-                # Final validation: ensure property_sale still has an ID
-                if not property_sale.pk:
-                    raise ValueError("PropertySale lost its primary key during save")
 
             messages.success(
                 request,
@@ -2268,11 +2254,10 @@ def upload_form(request):
             messages.error(request, "Please select a file to upload.")
             return redirect("upload_form")
 
-        # Create new form upload
-        form_upload = FormUpload(
+        # Create new form upload using objects.create() for guaranteed ID assignment
+        form_upload = FormUpload.objects.create(
             name=name, description=description, form_file=form_file
         )
-        form_upload.save()
 
         messages.success(request, f"Form '{name}' has been uploaded successfully!")
         return redirect("forms_list")

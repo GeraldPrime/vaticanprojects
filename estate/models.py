@@ -760,16 +760,20 @@ class Payment(models.Model):
         
         # Only update the property sale's amount_paid if this is a new payment
         if is_new:
-            from django.db import transaction
-            with transaction.atomic():
-                # Recalculate the total from the database to ensure accuracy
-                total_payments = Payment.objects.filter(property_sale=self.property_sale).aggregate(
-                    models.Sum('amount'))['amount__sum'] or Decimal('0')
-                
-                # Update the property sale with the accurate total
-                self.property_sale.amount_paid = total_payments
-                # This will trigger PropertySale.save() which handles commissions
-                self.property_sale.save()
+            # Use update() to avoid triggering PropertySale.save() chain
+            # which causes double commission calculations and ID issues
+            total_payments = Payment.objects.filter(
+                property_sale=self.property_sale
+            ).aggregate(
+                models.Sum('amount')
+            )['amount__sum'] or Decimal('0')
+            
+            # Direct database update — no model save(), no commission recalculation
+            PropertySale.objects.filter(pk=self.property_sale.pk).update(
+                amount_paid=total_payments
+            )
+            # Refresh the in-memory instance
+            self.property_sale.refresh_from_db()
     
     
    
@@ -804,16 +808,7 @@ class FormUpload(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     
-    def save(self, *args, **kwargs):
-        if not self.form_file:
-            raise ValueError("Form file is required")
-        super().save(*args, **kwargs)
-    
-    def clean(self):
-        """Validate before saving"""
-        from django.core.exceptions import ValidationError
-        if not self.form_file:
-            raise ValidationError("Form file is required")
+
     
     @property
     def file_type(self):
@@ -868,8 +863,7 @@ class EstateImage(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+
     
     class Meta:
         ordering = ['estate', 'order', '-created_at']
@@ -893,8 +887,7 @@ class Gallery(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+
     
     class Meta:
         ordering = ['order', '-created_at']
