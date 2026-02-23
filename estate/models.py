@@ -813,10 +813,13 @@ class FormUpload(models.Model):
     @property
     def file_type(self):
         """Returns the file extension of the uploaded form"""
-        if not self.form_file:
+        if not self.form_file or getattr(self.form_file, 'name', None) is None:
             return 'N/A'
-        _, extension = os.path.splitext(self.form_file.name)
-        return extension.upper()[1:] if extension else 'N/A'
+        try:
+            _, extension = os.path.splitext(self.form_file.name)
+            return extension.upper()[1:] if extension else 'N/A'
+        except Exception:
+            return 'N/A'
     
     def __str__(self):
         return self.name

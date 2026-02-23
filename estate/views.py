@@ -1949,7 +1949,13 @@ def register_property_sale(request):  # with expiry date
 
             # Create the property sale object with all fields within a transaction
             with transaction.atomic():
+                from django.db.models import Max
+                # Manually calculate the next ID to bypass SQLite sequence errors on the server
+                max_id = PropertySale.objects.aggregate(Max('id'))['id__max'] or 0
+                new_id = max_id + 1
+                
                 property_sale = PropertySale.objects.create(
+                    id=new_id,
                     description=description,
                     property_type=property_type,
                     property_item=property_obj,
@@ -2254,9 +2260,15 @@ def upload_form(request):
             messages.error(request, "Please select a file to upload.")
             return redirect("upload_form")
 
-        # Create new form upload using objects.create() for guaranteed ID assignment
+        from django.db.models import Max
+        
+        # Manually calculate the next ID to bypass SQLite/PostgreSQL sequence errors on the server
+        max_id = FormUpload.objects.aggregate(Max('id'))['id__max'] or 0
+        new_id = max_id + 1
+        
+        # Create new form upload passing the explicit ID
         form_upload = FormUpload.objects.create(
-            name=name, description=description, form_file=form_file
+            id=new_id, name=name, description=description, form_file=form_file
         )
 
         messages.success(request, f"Form '{name}' has been uploaded successfully!")
