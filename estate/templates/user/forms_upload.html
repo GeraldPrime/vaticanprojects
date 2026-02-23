@@ -95,6 +95,7 @@
                                                 <td>{{ form.file_type }}</td>
                                                 <td>{{ form.created_at|date:"M d, Y" }}</td>
                                                 <td>
+                                                    {% if form.id %}
                                                     <a href="{{ form.form_file.url }}" class="btn btn-sm btn-primary" download>
                                                         <i class="ri-download-line"></i> Download
                                                     </a>
@@ -107,6 +108,9 @@
                                                             <i class="ri-delete-bin-line"></i> Delete
                                                         </button>
                                                     </form>
+                                                    {% else %}
+                                                    <span class="text-danger">Invalid ID</span>
+                                                    {% endif %}
                                                 </td>
                                             </tr>
                                             {% empty %}

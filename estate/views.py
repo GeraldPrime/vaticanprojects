@@ -2302,8 +2302,29 @@ def edit_form(request, form_id):
 @login_required
 @admin_required
 def delete_form(request, form_id):
-    """View for deleting a form"""
+    """View for deleting a form or cleaning up invalid forms"""
     if request.method == "POST":
+        # Check if this is a cleanup request for invalid forms (id=None)
+        if request.POST.get('cleanup') == 'true' and form_id == 0:
+            try:
+                # Try standard Django ORM deletion first
+                deleted_count, _ = FormUpload.objects.filter(id__isnull=True).delete()
+                
+                # Fallback to direct SQL if the ORM misses them due to SQLite auto-increment quirks
+                if deleted_count == 0:
+                    from django.db import connection
+                    with connection.cursor() as cursor:
+                        cursor.execute("DELETE FROM estate_formupload WHERE id IS NULL")
+                        deleted_count = cursor.rowcount
+                        
+                if deleted_count > 0:
+                    messages.success(request, f"Successfully cleaned up {deleted_count} invalid form(s).")
+                else:
+                    messages.info(request, "No invalid forms found to clean up.")
+            except Exception as e:
+                messages.error(request, f"Error during cleanup: {str(e)}")
+            return redirect("forms_list")
+
         form = get_object_or_404(FormUpload, id=form_id)
         form_name = form.name
         form.delete()
