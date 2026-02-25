@@ -233,6 +233,10 @@ print(f"✅ Using local media storage at: {MEDIA_ROOT}")
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Increase upload limits to 20MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 20971520  # 20MB in bytes
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20971520  # 20MB in bytes
+
 # Authentication settings
 LOGIN_URL = 'signin'
 LOGOUT_REDIRECT_URL = 'signin'
