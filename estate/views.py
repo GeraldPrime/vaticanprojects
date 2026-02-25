@@ -242,8 +242,8 @@ def realtors_check(request):
 
 def gallery_view(request):
     """Display gallery images with pagination"""
-    # Get all active gallery images ordered by the order field and creation date
-    gallery_images = Gallery.objects.filter(is_active=True).order_by(
+    # Get all active gallery images ordered by the order field and creation date, exclude corrupted records
+    gallery_images = Gallery.objects.filter(is_active=True).exclude(id__isnull=True).order_by(
         "order", "-created_at"
     )
 
@@ -2975,8 +2975,14 @@ def add_gallery_image(request):
             return redirect("gallery_management")
 
         try:
+            from django.db.models import Max
+            # Manually calculate the next ID to bypass SQLite sequence errors on the server
+            max_id = Gallery.objects.aggregate(Max('id'))['id__max'] or 0
+            new_id = max_id + 1
+
             # Create new gallery image
             gallery_image = Gallery.objects.create(
+                id=new_id,
                 title=title if title else None,
                 description=description if description else None,
                 image=image,
@@ -3034,8 +3040,17 @@ def delete_gallery_image(request):
     """View to delete a gallery image"""
     if request.method == "POST":
         image_id = request.POST.get("image_id")
+        cleanup = request.POST.get("cleanup")
 
         try:
+            # Handle bulk cleanup of corrupted records without an ID
+            if cleanup == "true" and str(image_id) == "0":
+                corrupted_images = Gallery.objects.filter(id__isnull=True)
+                count = corrupted_images.count()
+                corrupted_images.delete()
+                messages.success(request, f"Successfully cleaned up {count} corrupted gallery image(s).")
+                return redirect("gallery_management")
+                
             gallery_image = get_object_or_404(Gallery, id=image_id)
 
             # Delete the image file from storage
