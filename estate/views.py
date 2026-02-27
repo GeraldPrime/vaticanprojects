@@ -201,14 +201,14 @@ def realtors_check(request):
     if search_query:
         search_performed = True
 
-        # Search directly against the individual fields
+        # Search directly against the individual fields, and ignore corrupted rows without a primary key
         matches = Realtor.objects.filter(
             Q(referral_code__iexact=search_query) |  # Exact match for referral code
             Q(first_name__icontains=search_query) |  # Case-insensitive partial matches for names
             Q(last_name__icontains=search_query) |
             Q(phone__icontains=search_query) |       # Partial match for phone
             Q(email__icontains=search_query)         # Partial match for email
-        ).order_by('-created_at')
+        ).exclude(id__isnull=True).order_by('-created_at')
 
         # If no matches found, try splitting the search query for full name search
         if not matches.exists() and ' ' in search_query:
@@ -216,15 +216,26 @@ def realtors_check(request):
             name_queries = Q()
             for part in name_parts:
                 name_queries |= Q(first_name__icontains=part) | Q(last_name__icontains=part)
-            matches = Realtor.objects.filter(name_queries).order_by('-created_at')
+            matches = Realtor.objects.filter(name_queries).exclude(id__isnull=True).order_by('-created_at')
 
         if matches.exists():
             # Pick the most recent match if multiple
             realtor = matches.first()
 
-            # Get commissions and direct referrals for the found realtor
-            commissions = Commission.objects.filter(realtor=realtor).order_by('-created_at')
-            direct_referrals = Realtor.objects.filter(sponsor=realtor).order_by('-created_at')
+            # Only query related objects if the realtor instance is valid and has a primary key
+            if realtor and realtor.pk:
+                commissions = Commission.objects.filter(realtor_id=realtor.pk).order_by('-created_at')
+                direct_referrals = Realtor.objects.filter(sponsor_id=realtor.pk).exclude(id__isnull=True).order_by(
+                    '-created_at'
+                )
+            else:
+                # Defensive fallback in case a corrupted realtor record without PK slips through
+                realtor = None
+                messages.error(
+                    request,
+                    "We found an invalid realtor record linked to this search. "
+                    "Please contact the office to verify your registration."
+                )
         else:
             messages.error(request, f"No realtor found matching: {search_query}")
 
