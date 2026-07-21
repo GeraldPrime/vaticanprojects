@@ -507,7 +507,7 @@ class PropertySale(models.Model):
         return ''.join(uuid.uuid4().hex[:12].upper())
     
     reference_number = models.CharField(max_length=12, default=generate_reference_number, unique=True, editable=False)
-    description = models.TextField(max_length=255)
+    description = models.TextField(max_length=255, blank=True, default='')
     property_type = models.CharField(max_length=10, choices=PROPERTY_TYPE_CHOICES)
     property_item = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='sales')  # Renamed from 'property'
     quantity = models.PositiveIntegerField(help_text="Number of plots or buildings")
@@ -523,7 +523,7 @@ class PropertySale(models.Model):
     
     
     # Client additional information
-    marital_status = models.CharField(max_length=10, choices=MARITAL_STATUS_CHOICES, default='single')
+    marital_status = models.CharField(max_length=10, choices=MARITAL_STATUS_CHOICES, blank=True, null=True)
     spouse_name = models.CharField(max_length=255, blank=True, null=True)
     spouse_phone = models.CharField(max_length=20, blank=True, null=True)
     
@@ -553,7 +553,7 @@ class PropertySale(models.Model):
     next_of_kin_phone = models.CharField(max_length=20, blank=True, null=True)
     
     # Pricing information
-    original_price = models.DecimalField(max_digits=12, decimal_places=2)
+    original_price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     selling_price = models.DecimalField(max_digits=12, decimal_places=2)
     amount_paid = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     discount = models.DecimalField(max_digits=12, decimal_places=2, default=0)

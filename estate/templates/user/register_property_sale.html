@@ -103,7 +103,7 @@
                                                         class="col-sm-4 col-form-label">Description</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" id="description"
-                                                            name="description" required>
+                                                            name="description">
                                                     </div>
                                                 </div>
 
@@ -130,7 +130,7 @@
                                                     <label for="client_picture" class="col-sm-4 col-form-label">Client
                                                         Picture</label>
                                                     <div class="col-sm-8">
-                                                        <input type="file" required class="form-control"
+                                                        <input type="file" class="form-control"
                                                             id="client_picture" name="client_picture" accept="image/*">
                                                         <small class="form-text text-muted">Upload client's photo
                                                             </small>
@@ -189,7 +189,8 @@
                                                         Status</label>
                                                     <div class="col-sm-8">
                                                         <select class="form-control" id="marital_status"
-                                                            name="marital_status" required>
+                                                            name="marital_status">
+                                                            <option value="">Unknown / Not recorded</option>
                                                             <option value="single">Single</option>
                                                             <option value="married">Married</option>
                                                             <option value="divorced">Divorced</option>
@@ -425,7 +426,7 @@
                                                             </div>
                                                             <input type="number" class="form-control"
                                                                 id="original_price" name="original_price" min="0"
-                                                                step="0.01" required>
+                                                                step="0.01" placeholder="0.00">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -470,7 +471,7 @@
                                                             </div>
                                                             <input type="number" class="form-control"
                                                                 id="initial_payment" name="initial_payment" min="0"
-                                                                step="0.01" required>
+                                                                step="0.01" value="0">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -478,8 +479,8 @@
                                                 <div class="form-group row mb-3">
                                                     <label for="id_payment_date" class="col-sm-4 col-form-label">Payment Date</label>
                                                     <div class="col-sm-8">
-                                                        <input type="date" class="form-control" name="payment_date" id="id_payment_date" max="{{today}}"
-                                                        required>
+                                                        <input type="date" class="form-control" name="payment_date"
+                                                            id="id_payment_date" max="{{today}}">
                                                     <small class="form-text text-muted">Select the actual date when payment was
                                                         made</small>
                                                     </div>
@@ -490,7 +491,7 @@
                                                         Plan</label>
                                                     <div class="col-sm-8">
                                                         <select class="form-control" id="payment_plan"
-                                                            name="payment_plan" required>
+                                                            name="payment_plan">
                                                             <option value="outright">Outright Purchase</option>
                                                             <option value="3_months">3 Months Plan</option>
                                                             <option value="6_months">6 Months Plan</option>
@@ -559,8 +560,7 @@
                                                                 <input type="number" class="form-control"
                                                                     id="realtor_commission_percentage"
                                                                     name="realtor_commission_percentage" min="0"
-                                                                    max="100" step="0.01" value="0" placeholder="0.00"
-                                                                    required>
+                                                                    max="100" step="0.01" value="0" placeholder="0.00">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
@@ -575,8 +575,7 @@
                                                                 <input type="number" class="form-control"
                                                                     id="sponsor_commission_percentage"
                                                                     name="sponsor_commission_percentage" min="0"
-                                                                    max="100" step="0.01" value="0" placeholder="0.00"
-                                                                    required>
+                                                                    max="100" step="0.01" value="0" placeholder="0.00">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
@@ -591,8 +590,7 @@
                                                                 <input type="number" class="form-control"
                                                                     id="upline_commission_percentage"
                                                                     name="upline_commission_percentage" min="0"
-                                                                    max="100" step="0.01" value="0" placeholder="0.00"
-                                                                    required>
+                                                                    max="100" step="0.01" value="0" placeholder="0.00">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>

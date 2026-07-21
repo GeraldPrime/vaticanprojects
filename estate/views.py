@@ -1685,7 +1685,7 @@ def register_property_sale(request):  # with expiry date
         try:
             # Extract basic property information
             property_id = request.POST.get("property")
-            description = request.POST.get("description")
+            description = request.POST.get("description", "").strip()
             property_type = request.POST.get("property_type")
             quantity = request.POST.get("quantity")
 
@@ -1694,7 +1694,7 @@ def register_property_sale(request):  # with expiry date
             client_address = request.POST.get("client_address")
             client_phone = request.POST.get("client_phone")
             client_email = request.POST.get("client_email")
-            marital_status = request.POST.get("marital_status")
+            marital_status = request.POST.get("marital_status") or None
             spouse_name = request.POST.get("spouse_name", "")
             spouse_phone = request.POST.get("spouse_phone", "")
             # Add after client_email extraction
@@ -1731,7 +1731,7 @@ def register_property_sale(request):  # with expiry date
             original_price = request.POST.get("original_price")
             selling_price = request.POST.get("selling_price")
             initial_payment = request.POST.get("initial_payment")
-            payment_plan = request.POST.get("payment_plan")
+            payment_plan = request.POST.get("payment_plan") or "outright"
             # Add after selling_price extraction
             discount = request.POST.get("discount")
             payment_date_str = request.POST.get("payment_date")
